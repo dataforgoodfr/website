@@ -53,14 +53,6 @@
         }
       }
     },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
     "logo": {
       "type": "media",
       "multiple": false,
@@ -79,9 +71,9 @@
     },
     "seasons": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::season.season",
-      "mappedBy": "season"
+      "mappedBy": "projects"
     },
     "slug": {
       "pluginOptions": {

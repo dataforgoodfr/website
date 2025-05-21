@@ -792,12 +792,6 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'[]'>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     context: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -869,12 +863,16 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    press_releases: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::press-release.press-release'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     related_projects: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
     >;
-    seasons: Schema.Attribute.Relation<'oneToMany', 'api::season.season'>;
+    seasons: Schema.Attribute.Relation<'manyToMany', 'api::season.season'>;
     short_description: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -983,8 +981,8 @@ export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::season.season'>;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
-    season: Schema.Attribute.Relation<'manyToOne', 'api::project.project'>;
     start_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
