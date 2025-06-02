@@ -258,6 +258,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::press-release.press-release"
+    },
+    "website_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

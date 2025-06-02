@@ -944,6 +944,12 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::volunteer.volunteer'
     >;
+    website_link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     youtube_link: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
