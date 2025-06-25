@@ -100,7 +100,7 @@
       },
       "type": "string"
     },
-    "youtube_link": {
+    "demo_video": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -229,22 +229,6 @@
         }
       },
       "type": "richtext"
-    },
-    "video": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     },
     "long_description": {
       "pluginOptions": {

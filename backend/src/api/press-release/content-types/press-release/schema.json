@@ -4,7 +4,8 @@
   "info": {
     "singularName": "press-release",
     "pluralName": "press-releases",
-    "displayName": "Press Release"
+    "displayName": "Press Release",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +31,46 @@
         }
       },
       "type": "blocks"
+    },
+    "media_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "published_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "article_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "article_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "is_about_ai_impact": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
     }
   }
 }
