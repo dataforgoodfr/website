@@ -1,10 +1,10 @@
-import { DashboardTableOfContents } from "@/components/toc";
-import { getTableOfContents } from "@/lib/toc";
-import { getImage, getStrapiData } from "@/lib/utils";
-import { getMarkdownContent } from "@/lib/markdown";
-import { ApiProjectProject } from "@/types/strapi/generated/contentTypes";
-import Image from "next/image";
-import qs from "qs";
+import type { ApiProjectProject } from '@/types/strapi/generated/contentTypes';
+import Image from 'next/image';
+import qs from 'qs';
+import { DashboardTableOfContents } from '@/components/toc';
+import { getMarkdownContent } from '@/lib/markdown';
+import { getTableOfContents } from '@/lib/toc';
+import { getImage, getStrapiData } from '@/lib/utils';
 
 export default async function ProjectArticle({
   params,
@@ -26,7 +26,7 @@ export default async function ProjectArticle({
     },
     {
       encodeValuesOnly: true, // prettify URL
-    }
+    },
   );
   const apiData = await getStrapiData<ApiProjectProject[]>(`projects?${query}`);
   const project = apiData[0];
@@ -35,11 +35,11 @@ export default async function ProjectArticle({
   const toc = await getTableOfContents(project.content);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="container mx-auto max-w-6xl px-4 py-8">
       <article className="flex-col lg:flex lg:gap-8">
         <div className="lg:w-3/4">
           <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+            <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
             <p className="text-xl text-muted-foreground">
               {project.description}
             </p>
@@ -50,12 +50,12 @@ export default async function ProjectArticle({
             alt={project.thumbnail.alt}
             width={800}
             height={400}
-            className="rounded-lg mb-8 w-full"
+            className="mb-8 w-full rounded-lg"
           />
 
           <article>
             <div
-              className="prose dark:prose-invert max-w-none"
+              className="prose max-w-none dark:prose-invert"
               dangerouslySetInnerHTML={{ __html: formattedContent }}
             />
           </article>

@@ -1,69 +1,67 @@
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Send,
+  Twitter,
+} from 'lucide-react';
+import Image from 'next/image';
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Moon,
-  Send,
-  Sun,
-  Twitter,
-} from "lucide-react";
-import Image from "next/image";
+} from '@/components/ui/tooltip';
 
 export function Footer() {
   const about = {
-    title: "à propos",
+    title: 'à propos',
     links: [
-      { title: "Le fonctionnement", href: "#" },
-      { title: "Nos axes d'action", href: "#" },
-      { title: "Nos antennes", href: "#" },
-      { title: "Nos rapports d'activité", href: "#" },
-      { title: "Nous contacter", href: "#" },
-      { title: "On recrute", href: "#" },
-      { title: "FAQ", href: "#" },
-      { title: "CGU", href: "#" },
+      { title: 'Le fonctionnement', href: '#' },
+      { title: 'Nos axes d\'action', href: '#' },
+      { title: 'Nos antennes', href: '#' },
+      { title: 'Nos rapports d\'activité', href: '#' },
+      { title: 'Nous contacter', href: '#' },
+      { title: 'On recrute', href: '#' },
+      { title: 'FAQ', href: '#' },
+      { title: 'CGU', href: '#' },
     ],
   };
 
   const projects = {
-    title: "nos projets",
+    title: 'nos projets',
     links: [
-      { title: "À venir", href: "#" },
-      { title: "En cours", href: "#" },
-      { title: "Passés", href: "#" },
-      { title: "Hors saison", href: "#" },
+      { title: 'À venir', href: '#' },
+      { title: 'En cours', href: '#' },
+      { title: 'Passés', href: '#' },
+      { title: 'Hors saison', href: '#' },
     ],
   };
 
   const events = {
-    title: "nos événements",
+    title: 'nos événements',
     links: [
-      { title: "Webinaires", href: "#" },
-      { title: "Meetings", href: "#" },
-      { title: "Conférnces", href: "#" },
-      { title: "????", href: "#" },
-      { title: "????", href: "#" },
+      { title: 'Webinaires', href: '#' },
+      { title: 'Meetings', href: '#' },
+      { title: 'Conférnces', href: '#' },
+      { title: '????', href: '#' },
+      { title: '????', href: '#' },
     ],
   };
 
   const resources = {
-    title: "Nos ressources",
+    title: 'Nos ressources',
     links: [
-      { title: "Conférences", href: "#" },
-      { title: "Formations", href: "#" },
-      { title: "Articles de presse", href: "#" },
-      { title: "Serment d'Hippocrate", href: "#" },
-      { title: "IA Générative", href: "#" },
-      { title: "Charte diversité", href: "#" },
+      { title: 'Conférences', href: '#' },
+      { title: 'Formations', href: '#' },
+      { title: 'Articles de presse', href: '#' },
+      { title: 'Serment d\'Hippocrate', href: '#' },
+      { title: 'IA Générative', href: '#' },
+      { title: 'Charte diversité', href: '#' },
     ],
   };
 
@@ -72,7 +70,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           <div className="relative px-4">
-            <div className="flex gap-2 items-center mb-2">
+            <div className="mb-2 flex items-center gap-2">
               <Image
                 src="http://localhost:3000/_next/image?url=https%3A%2F%2Fs3.fr-par.scw.cloud%2Fstrapi-uploads%2Flogo_dfg_new2_78089b7aec.png&w=384&q=75"
                 height={36}
@@ -95,7 +93,7 @@ export function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Facebook className="h-4 w-4" />
+                      <Facebook className="size-4" />
                       <span className="sr-only">Facebook</span>
                     </Button>
                   </TooltipTrigger>
@@ -112,7 +110,7 @@ export function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Twitter className="h-4 w-4" />
+                      <Twitter className="size-4" />
                       <span className="sr-only">Twitter</span>
                     </Button>
                   </TooltipTrigger>
@@ -129,7 +127,7 @@ export function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Instagram className="h-4 w-4" />
+                      <Instagram className="size-4" />
                       <span className="sr-only">Instagram</span>
                     </Button>
                   </TooltipTrigger>
@@ -146,7 +144,7 @@ export function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Linkedin className="h-4 w-4" />
+                      <Linkedin className="size-4" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </TooltipTrigger>
@@ -167,27 +165,27 @@ export function Footer() {
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
+                className="absolute right-1 top-1 size-8 rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
               >
-                <Send className="h-4 w-4" />
+                <Send className="size-4" />
                 <span className="sr-only">Subscribe</span>
               </Button>
             </form>
-            <p className="text-xs text-muted-foreground mt-4">
+            <p className="mt-4 text-xs text-muted-foreground">
               {`Data For Good © 2014-${new Date().getFullYear()}`}
             </p>
-            <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
+            <div className="absolute -right-4 top-0 size-24 rounded-full bg-primary/10 blur-2xl" />
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold uppercase">
               {about.title}
             </h3>
             <nav className="space-y-2 text-sm">
-              {about.links.map((link) => (
+              {about.links.map(link => (
                 <a
                   key={link.title}
                   href={link.href}
-                  className="block transition-colors text-muted-foreground hover:text-primary"
+                  className="block text-muted-foreground transition-colors hover:text-primary"
                 >
                   {link.title}
                 </a>
@@ -199,11 +197,11 @@ export function Footer() {
               {projects.title}
             </h3>
             <nav className="space-y-2 text-sm">
-              {projects.links.map((link) => (
+              {projects.links.map(link => (
                 <a
                   key={link.title}
                   href={link.href}
-                  className="block transition-colors text-muted-foreground hover:text-primary"
+                  className="block text-muted-foreground transition-colors hover:text-primary"
                 >
                   {link.title}
                 </a>
@@ -215,11 +213,11 @@ export function Footer() {
               {events.title}
             </h3>
             <nav className="space-y-2 text-sm">
-              {events.links.map((link) => (
+              {events.links.map(link => (
                 <a
                   key={link.title}
                   href={link.href}
-                  className="block transition-colors text-muted-foreground hover:text-primary"
+                  className="block text-muted-foreground transition-colors hover:text-primary"
                 >
                   {link.title}
                 </a>
@@ -231,11 +229,11 @@ export function Footer() {
               {resources.title}
             </h3>
             <nav className="space-y-2 text-sm">
-              {resources.links.map((link) => (
+              {resources.links.map(link => (
                 <a
                   key={link.title}
                   href={link.href}
-                  className="block transition-colors text-muted-foreground hover:text-primary"
+                  className="block text-muted-foreground transition-colors hover:text-primary"
                 >
                   {link.title}
                 </a>

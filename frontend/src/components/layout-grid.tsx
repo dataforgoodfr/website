@@ -1,7 +1,5 @@
-"use client";
-import React from "react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+'use client';
+import React from 'react';
 
 type Card = {
   name: string;
@@ -13,13 +11,13 @@ type Card = {
 
 const Card = ({ card }: { card: Card }) => {
   return (
-    <div className="relative bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
+    <div className="relative rounded-xl border bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-700/70">
       <img
-        className="w-full h-auto rounded-xl"
+        className="h-auto w-full rounded-xl"
         src={card.thumbnail}
         alt="Card Image"
       />
-      <div className="absolute top-0 start-0 end-0">
+      <div className="absolute end-0 start-0 top-0">
         <div className="p-4 md:p-5">
           <h3 className="text-3xl font-semibold text-gray-800">{card.name}</h3>
           <p className="mt-1 text-gray-300">{card.description}</p>
@@ -38,7 +36,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="w-full h-96 p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-4">
+    <div className="mx-auto grid h-96 w-full max-w-7xl grid-cols-1 gap-4 p-10 md:grid-cols-3">
       {cards.map((card, i) => (
         <Card key={i} card={card} />
       ))}

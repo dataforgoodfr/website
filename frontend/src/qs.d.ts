@@ -1,1 +1,1 @@
-declare module "qs";
+declare module 'qs';
