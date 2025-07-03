@@ -2,3 +2,7 @@ packages:
   - backend
   - frontend
   - packages/*
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - core-js-pure
