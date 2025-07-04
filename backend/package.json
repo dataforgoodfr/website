@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
-  "license": "MIT",
   "author": {
     "name": "A Strapi developer"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
   },
   "scripts": {
     "build": "strapi build",
@@ -13,7 +17,9 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
-    "types": "strapi ts:generate-types -o ../frontend/src/types/strapi"
+    "types": "strapi ts:generate-types -o ../frontend/src/types/strapi",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@strapi/design-system": "^1.19.0",
@@ -31,10 +37,6 @@
     "strapi-plugin-tagsinput": "^2.0.2",
     "strapi-provider-email-brevo": "^1.0.4",
     "styled-components": "^6.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
   },
   "strapi": {
     "uuid": "23578308-9b2f-4525-aca3-db1c4f9e3b2d"

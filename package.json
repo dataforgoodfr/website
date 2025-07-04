@@ -1,18 +1,28 @@
 {
   "name": "d4g-website",
-  "private": true,
   "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
   "description": "A monorepo of nuxt packages",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
     "packages": "dotenv -- pnpm --filter",
     "frontend": "pnpm --filter frontend",
-    "backend": "pnpm packages backend"
+    "backend": "pnpm packages backend",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "dotenv-cli": "^8.0.0"
-  },
-  "packageManager": "pnpm@8.15.1+sha1.8adba2d20330c02d3856e18c4eb3819d1d3ca6aa"
+    "@antfu/eslint-config": "^4.16.2",
+    "@eslint-react/eslint-plugin": "^1.52.2",
+    "@next/eslint-plugin-next": "^15.3.4",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-tailwindcss": "^3.18.0"
+  }
 }

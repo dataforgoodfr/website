@@ -2,7 +2,7 @@
 
 Ce dossier contient le backend de l'application construit avec Strapi.
 
-> [!WARNING]  
+> [!WARNING]
 > Il n'a pas vocation a être souvent modifié sauf en cas d'évolution de la structure du site.
 
 Tous les changements relatifs au contenu peuvent être réalisés directement dans le [CMS hébergé par nos soins](https://strapi.services.dataforgood.fr/admin).

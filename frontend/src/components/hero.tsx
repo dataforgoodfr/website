@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 export function Hero() {
   return (
     <div className="w-full py-16">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-2">
-          <div className="flex gap-4 flex-col px-4 lg:px-12">
-            <div className="flex gap-4 flex-col">
-              <h1 className="text-4xl md:text-6xl max-w-lg tracking-tighter text-left font-bold uppercase">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+          <div className="flex flex-col gap-4 px-4 lg:px-12">
+            <div className="flex flex-col gap-4">
+              <h1 className="max-w-lg text-left text-4xl font-bold uppercase tracking-tighter md:text-6xl">
                 Rediriger la technologie au service de l'intérêt général
               </h1>
             </div>
@@ -20,7 +20,7 @@ export function Hero() {
               </Button>
             </div>
           </div>
-          <div className="bg-muted rounded-md aspect-square"></div>
+          <div className="aspect-square rounded-md bg-muted"></div>
         </div>
       </div>
     </div>

@@ -1,41 +1,42 @@
-import { getImage, getStrapiData } from "@/lib/utils";
-import Image from "next/image";
-import qs from "qs";
-import { ApiProjectProject } from "@/types/strapi/generated/contentTypes";
+import type { ApiProjectProject } from '@/types/strapi/generated/contentTypes';
+import Image from 'next/image';
+import Link from 'next/link';
+import qs from 'qs';
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
+} from '@/components/ui/card';
+import { getImage, getStrapiData } from '@/lib/utils';
 
 function ProjectCard({
   description,
   thumbnail,
   title,
   slug,
-}: ApiProjectProject["attributes"]) {
+}: ApiProjectProject['attributes']) {
   const thumbnailUrl = getImage(thumbnail);
 
   return (
     <Link href={`/project/${slug}`}>
       <Card>
-        <div className="rounded-t-lg overflow-hidden">
-          {thumbnailUrl ? (
-            <Image
-              className="w-full h-42 object-cover"
-              src={thumbnailUrl}
-              alt={title}
-              width={300}
-              height={200}
-            />
-          ) : null}
+        <div className="overflow-hidden rounded-t-lg">
+          {thumbnailUrl
+            ? (
+                <Image
+                  className="h-42 w-full object-cover"
+                  src={thumbnailUrl}
+                  alt={title}
+                  width={300}
+                  height={200}
+                />
+              )
+            : null}
         </div>
         <CardContent className="mt-6">
-          <CardTitle className="text-center mb-2">{title}</CardTitle>
+          <CardTitle className="mb-2 text-center">{title}</CardTitle>
           <CardDescription className="text-center">
             {description}
           </CardDescription>
@@ -55,14 +56,14 @@ export default async function Projects() {
     },
     {
       encodeValuesOnly: true, // prettify URL
-    }
+    },
   );
 
   const apiData = await getStrapiData<ApiProjectProject[]>(`projects?${query}`);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-4 px-10 py-4">
-      {apiData.map((project) => (
+    <div className="mx-auto grid grid-cols-1 gap-4 px-10 py-4 md:grid-cols-2 lg:grid-cols-3">
+      {apiData.map(project => (
         <ProjectCard key={project.id} {...project} />
       ))}
     </div>

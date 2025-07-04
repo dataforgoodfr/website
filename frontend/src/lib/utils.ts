@@ -1,5 +1,6 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import type { ClassValue } from 'clsx';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export type TOCItem = {
   id: string;
@@ -16,10 +17,10 @@ export async function getStrapiData<T>(url: string) {
     next: { revalidate: 0 },
   });
   const jsonRes = await res.json();
-  return jsonRes?.data as T["attributes"];
+  return jsonRes?.data as T['attributes'];
 }
 
 export function getImage(image: any) {
   // ? in v5 the image path is prefixed with /uploads
-  return image?.url ? `${image.url.replace("/uploads", "")}` : "";
+  return image?.url ? `${image.url.replace('/uploads', '')}` : '';
 }
