@@ -1,7 +1,28 @@
 {
   "layout": {
     "header": {
-        "title": "Data For Good, accueil"
+      "title": "Data For Good, accueil",
+      "nav": {
+        "toggle": {
+          "alt": "Principale",
+          "open": "Ouvrir le menu",
+          "close": "fermer le menu"
+        },
+        "top": {
+          "label": "Liens acteurs",
+          "project": "Proposer un projet",
+          "volunteer": "Je veux être bénévole",
+          "financier": "Je veux être financier"
+        },
+        "main": {
+          "label": "Liens principaux",
+          "know": "Nous connaitre",
+          "project": "Nos projets",
+          "positions": "Nos positions",
+          "news": "Actualités",
+          "resources": "Ressources"
+        }
+      }
     }
   },
   "siteConfig": {

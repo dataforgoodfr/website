@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import localFont from 'next/font/local';
+import { DM_Mono, DM_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/footer';
-import Header from './_partials/header';
 import { routing } from '@/i18n/routing';
+import Header from './_partials/header';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
 });
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-dm-mono',
 });
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dmSans.variable} ${dmMono.variable} antialiased`}
       >
         <NextIntlClientProvider>
           <Header />
