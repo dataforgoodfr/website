@@ -22,11 +22,27 @@ const Header = () => {
 
   const mainNav: Record<string, string> = {
     know: '/todo',
-    project: '/todo',
+    projects: '/todo',
     positions: '/todo',
     news: '/todo',
     resources: '/todo',
   };
+
+  const authorizeKeys = [
+    'ArrowRight',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowLeft',
+    'Home',
+    'End',
+  ];
+  const idItemsNav = [
+    'home',
+    'toggleOpen',
+    'toggleClose',
+    ...Object.keys(topNav),
+    ...Object.keys(mainNav),
+  ];
 
   const toggleNav = (show: boolean): void => {
     setOpenNav(show);
@@ -46,6 +62,68 @@ const Header = () => {
     toggleNav(show);
   };
 
+  const handleFocusNav: (e: React.KeyboardEvent) => void = (e) => {
+    // Exception: add Escape event in subnav list
+    if (
+      selectedItem !== 'home'
+      && selectedItem !== 'toggleOpen'
+      && navRef?.current
+        ?.querySelector(`[data-ref="toggleClose"]`)
+        ?.checkVisibility()
+        && e.code === 'Escape'
+    ) {
+      return toggleNav(false);
+    }
+
+    // If not authorized key down
+    if (!authorizeKeys.includes(e.code)) {
+      return;
+    }
+
+    let checkVisibleItem = false;
+    let newItemSelected = selectedItem;
+    let newIndexIdItem = 0;
+
+    while (!checkVisibleItem) {
+      const actualIndexItemNav = idItemsNav.indexOf(newItemSelected);
+
+      switch (e.code) {
+        case 'Home':
+          newIndexIdItem = 0;
+          break;
+        case 'End':
+          newIndexIdItem = idItemsNav.length - 1;
+          break;
+        case 'ArrowRight':
+        case 'ArrowDown':
+          newIndexIdItem
+            = actualIndexItemNav === idItemsNav.length - 1
+              ? 0
+              : actualIndexItemNav + 1;
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          newIndexIdItem
+            = actualIndexItemNav === 0
+              ? idItemsNav.length - 1
+              : actualIndexItemNav - 1;
+          break;
+      }
+
+      newItemSelected = idItemsNav[newIndexIdItem];
+
+      const targetElement: HTMLAnchorElement | null | undefined
+        = navRef?.current?.querySelector(`[data-ref="${newItemSelected}"]`);
+
+      if (targetElement && targetElement.checkVisibility()) {
+        targetElement.focus();
+        checkVisibleItem = true;
+      }
+    }
+
+    setSelectedItem(newItemSelected);
+  };
+
   return (
     <header>
       <nav
@@ -59,6 +137,7 @@ const Header = () => {
             data-ref="home"
             role="menuitem"
             aria-current={pathname === '/' ? 'page' : undefined}
+            onKeyDown={handleFocusNav}
           >
             <Image
               src="/images/dataforgood.svg"
@@ -78,6 +157,7 @@ const Header = () => {
             role="menuitem"
             aria-haspopup="true"
             aria-expanded={openNav}
+            onKeyDown={handleFocusNav}
           >
             <Image
               src="/icons/menu.svg"
@@ -101,6 +181,7 @@ const Header = () => {
               role="menuitem"
               aria-haspopup="true"
               aria-expanded={openNav}
+              onKeyDown={handleFocusNav}
             >
               <Image
                 src="/icons/close.svg"
@@ -113,6 +194,7 @@ const Header = () => {
               role="menu"
               aria-label={t('header.nav.top.label')}
               className="flex flex-col lg:flex-row gap-4 lg:gap-[1px] p-4 lg:p-0"
+              onKeyDown={handleFocusNav}
             >
               {Object.keys(topNav).map(link => (
                 <li role="none" key={`topnav-${link}`}>
@@ -140,6 +222,7 @@ const Header = () => {
               role="menu"
               aria-label={t('header.nav.main.label')}
               className="flex flex-col lg:flex-row gap-4 lg:gap-0 p-4 lg:p-0"
+              onKeyDown={handleFocusNav}
             >
               {Object.keys(mainNav).map(link => (
                 <li role="none" key={`mainNav-${link}`}>
