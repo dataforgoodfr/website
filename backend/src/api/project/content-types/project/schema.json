@@ -250,6 +250,12 @@
         }
       },
       "type": "string"
+    },
+    "related_partners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::partner.partner",
+      "inversedBy": "related_projects"
     }
   }
 }
