@@ -3,8 +3,8 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { DM_Mono, DM_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import { Footer } from '@/components/footer';
 import { routing } from '@/i18n/routing';
+import Footer from './_partials/footer';
 import Header from './_partials/header';
 import './globals.css';
 
@@ -74,7 +74,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={clsx([dmSans.variable, dmMono.variable, 'min-h-screen flex flex-col antialiased'])}
+        className={clsx([dmSans.variable, dmMono.variable, 'min-h-screen flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
       >
         <NextIntlClientProvider>
           <Header />

@@ -23,6 +23,30 @@
           "resources": "Ressources"
         }
       }
+    },
+    "footer": {
+      "title": "Data For Good",
+      "description": "Bâtir un contre-pouvoir tech citoyen",
+      "copyright": "Data for Good © 2015-",
+      "author": {
+        "title": "Graphisme :",
+        "name": "Coucou.Design"
+      },
+      "community": {
+        "title": "Communauté",
+        "github": "GitHub",
+        "youtube": "YouTube",
+        "meetup": "Meetup"
+      },
+      "informations": {
+        "title": "Informations",
+        "faq": "FAQ",
+        "cgu": "CGU",
+        "charte": "Charte diversité"
+      },
+      "contact": {
+        "title": "Contact"
+      }
     }
   },
   "siteConfig": {

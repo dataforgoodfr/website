@@ -168,7 +168,7 @@ const Header = () => {
           </button>
           <div
             className={clsx(
-              'fixed left-0 top-0 size-full gap-4 lg:static lg:flex lg:items-end lg:flex-col lg:gap-9 bg-white',
+              'fixed z-50 left-0 top-0 size-full gap-4 lg:static lg:flex lg:items-end lg:flex-col lg:gap-9 bg-white lg:bg-transparent',
               !openNav && 'hidden',
             )}
           >
