@@ -698,6 +698,10 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    related_press_releases: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::press-release.press-release'
+    >;
     related_projects: Schema.Attribute.Relation<
       'manyToMany',
       'api::project.project'
@@ -783,6 +787,10 @@ export interface ApiPressReleasePressRelease
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    related_partners: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::partner.partner'
+    >;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
