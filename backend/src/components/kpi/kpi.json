@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_kpi_kpis",
+  "info": {
+    "displayName": "KPI",
+    "icon": "chartPie"
+  },
+  "options": {},
+  "attributes": {
+    "stat": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

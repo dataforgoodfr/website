@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-14T12:39:49.131Z"
+    "x-generation-date": "2025-07-17T08:05:09.744Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -23231,6 +23231,21 @@
               "name": {
                 "type": "string"
               },
+              "description_2": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              },
+              "quote2": {
+                "type": "string"
+              },
+              "kpis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/KpiKpiComponent"
+                }
+              },
               "locale": {
                 "type": "string"
               },
@@ -25094,6 +25109,21 @@
           "name": {
             "type": "string"
           },
+          "description_2": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "quote2": {
+            "type": "string"
+          },
+          "kpis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KpiKpiComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -25176,6 +25206,21 @@
                 "name": {
                   "type": "string"
                 },
+                "description_2": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "quote2": {
+                  "type": "string"
+                },
+                "kpis": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/KpiKpiComponent"
+                  }
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -25240,6 +25285,20 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "KpiKpiComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "stat": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
           }
         }
       },
