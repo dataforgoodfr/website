@@ -16,8 +16,7 @@
     --c-alive: 67 72% 56%;
     --c-resistance: 37 98% 53%;
     --c-building: 266 84% 61%;
-    
-    
+
     /* OLD values */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -76,5 +75,14 @@
 @layer base {
   body {
     @apply bg-light text-dark font-primary;
+  }
+
+  .blank {
+    @apply inline-flex items-center gap-1;
+  }
+
+  .blank::after {
+    content: '';
+    @apply bg-[url("/icons/blank.svg")] bg-cover w-4 aspect-square;
   }
 }

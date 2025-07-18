@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/components/atoms/Button';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
@@ -23,8 +24,8 @@ const Footer = () => {
     <footer className="pt-sm">
       <Image src="/images/scratch.svg" alt={t('title')} width={212} height={48} className="object-contain w-full" />
       <div className="py-16 bg-white text-black">
-        <div className="container flex justify-between flex-wrap gap-4 mx-auto px-4">
-          <div className="space-y-5 w-full md:w-1/2 lg:w-1/5">
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 mx-auto px-4">
+          <div className="space-y-5">
             <Link href="/">
               <Image
                 src="/images/dataforgood.svg"
@@ -39,24 +40,26 @@ const Footer = () => {
               {t('description')}
             </p>
           </div>
-          <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5 w-full md:w-1/2 lg:w-1/5">
+
+          <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5">
             <p id="footer-community-nav" className="text-lg font-secondary">{t('community.title')}</p>
             <ul className="space-y-5">
               {Object.keys(communityNav).map(community => (
                 <li key={community}>
-                  <Link href={communityNav[community]} target="_blank" className="hover:underline">
+                  <Link href={communityNav[community]} target="_blank" rel="noreferrer" className="blank underline hover:no-underline">
                     {t(`community.${community}`)}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-          <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5 w-full md:w-1/2 lg:w-1/5">
+
+          <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5">
             <p id="footer-informations-nav" className="text-lg font-secondary">{t('informations.title')}</p>
             <ul className="space-y-5">
               {Object.keys(informationsNav).map(informations => (
                 <li key={informations}>
-                  <Link href={informationsNav[informations]} target="_blank" className="hover:underline">
+                  <Link href={informationsNav[informations]} className="underline hover:no-underline">
                     {t(`informations.${informations}`)}
                   </Link>
                 </li>
@@ -64,9 +67,9 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <div className="flex flex-col gap-5 w-full md:w-1/2 lg:w-1/5">
+          <div className="flex flex-col gap-5">
             <p className="text-lg font-secondary">{t('contact.title')}</p>
-            <p>contact@dataforgood.fr</p>
+            <p><Button href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
             <iframe
               width="540"
               height="305"
@@ -88,7 +91,7 @@ const Footer = () => {
           <p>
             {t('author.title')}
             {' '}
-            <Link href="https://coucou.design/" target="_blank" rel="noreferrer" className="underline hover:no-underline">
+            <Link href="https://coucou.design/" target="_blank" rel="noreferrer" className="blank underline hover:no-underline">
               {t('author.name')}
             </Link>
           </p>
