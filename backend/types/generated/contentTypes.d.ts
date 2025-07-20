@@ -443,6 +443,64 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    on_site: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFunderFunder extends Struct.CollectionTypeSchema {
   collectionName: 'funders';
   info: {
@@ -709,6 +767,14 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    related_press_releases: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::press-release.press-release'
+    >;
+    related_projects: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::project.project'
+    >;
     type: Schema.Attribute.Enumeration<['media', 'association', 'funder']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -790,6 +856,10 @@ export interface ApiPressReleasePressRelease
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    related_partners: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::partner.partner'
+    >;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -912,6 +982,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::press-release.press-release'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    related_partners: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::partner.partner'
+    >;
     related_projects: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
@@ -1079,6 +1153,18 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    description_2: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    kpis: Schema.Attribute.Component<'kpi.kpi', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1093,6 +1179,18 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
     partners: Schema.Attribute.Relation<'oneToMany', 'api::partner.partner'>;
     projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    quote: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    quote2: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1659,6 +1757,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
+      'api::event.event': ApiEventEvent;
       'api::funder.funder': ApiFunderFunder;
       'api::hippocrate.hippocrate': ApiHippocrateHippocrate;
       'api::home-page.home-page': ApiHomePageHomePage;

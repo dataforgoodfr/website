@@ -71,6 +71,12 @@
         }
       },
       "type": "boolean"
+    },
+    "related_partners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::partner.partner",
+      "inversedBy": "related_press_releases"
     }
   }
 }

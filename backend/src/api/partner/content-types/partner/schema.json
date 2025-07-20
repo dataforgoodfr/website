@@ -68,6 +68,18 @@
         "association",
         "funder"
       ]
+    },
+    "related_projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "related_partners"
+    },
+    "related_press_releases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::press-release.press-release",
+      "mappedBy": "related_partners"
     }
   }
 }
