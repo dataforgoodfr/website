@@ -1,12 +1,24 @@
 'use client';
 
+import { Linkedin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/atoms/Button';
+import SocialLink from '@/components/atoms/SocialLink';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
+
+  const socialLinks: Record<string, { href: string; icon?: React.ReactNode }> = {
+    bluesky: {
+      href: 'https://bsky.app/profile/dataforgood.fr',
+    },
+    linkedin: {
+      href: 'https://www.linkedin.com/company/dataforgoodfr/',
+      icon: <Linkedin className="w-4 h-4" />,
+    },
+  };
 
   const communityNav: Record<string, string> = {
     github: 'https://github.com/dataforgoodfr',
@@ -41,12 +53,12 @@ const Footer = () => {
             </p>
           </div>
 
-          <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5">
-            <p id="footer-community-nav" className="text-lg font-secondary">{t('community.title')}</p>
+          <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5 text-sm">
+            <p id="footer-community-nav" className="uppercase font-secondary">{t('community.title')}</p>
             <ul className="space-y-5">
               {Object.keys(communityNav).map(community => (
                 <li key={community}>
-                  <Link href={communityNav[community]} target="_blank" rel="noreferrer" className="blank underline hover:no-underline">
+                  <Link href={communityNav[community]} target="_blank" rel="noreferrer" className="blank text-black/60 underline hover:no-underline">
                     {t(`community.${community}`)}
                   </Link>
                 </li>
@@ -54,12 +66,12 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5">
-            <p id="footer-informations-nav" className="text-lg font-secondary">{t('informations.title')}</p>
+          <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5 text-sm">
+            <p id="footer-informations-nav" className="uppercase font-secondary">{t('informations.title')}</p>
             <ul className="space-y-5">
               {Object.keys(informationsNav).map(informations => (
                 <li key={informations}>
-                  <Link href={informationsNav[informations]} className="underline hover:no-underline">
+                  <Link href={informationsNav[informations]} className="text-black/60 underline hover:no-underline">
                     {t(`informations.${informations}`)}
                   </Link>
                 </li>
@@ -67,8 +79,8 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <div className="flex flex-col gap-5">
-            <p className="text-lg font-secondary">{t('contact.title')}</p>
+          <div className="flex flex-col gap-5 text-sm">
+            <p className="uppercase font-secondary">{t('contact.title')}</p>
             <p><Button href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
             <iframe
               width="540"
@@ -81,9 +93,16 @@ const Footer = () => {
               sandbox="allow-scripts allow-forms"
               style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
             />
+            <ul className="flex gap-2">
+              {Object.keys(socialLinks).map(social => (
+                <li key={social}>
+                  <SocialLink href={socialLinks[social].href} icon={socialLinks[social].icon ?? undefined} label={t(`social.${social}`)} />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="container flex flex-wrap gap-8 mx-auto px-4 mt-10 text-sm">
+        <div className="container flex flex-wrap gap-8 mx-auto px-4 mt-10 text-sm text-black/60">
           <p>
             {t('copyright')}
             {new Date().getFullYear()}

@@ -46,6 +46,10 @@
       },
       "contact": {
         "title": "Contact"
+      },
+      "social": {
+        "bluesky": "Bluesky",
+        "linkedin": "LinkedIn"
       }
     }
   },
