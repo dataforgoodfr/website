@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Data For Good",
+  "short_name": "Data For Good",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

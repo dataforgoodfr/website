@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['var(--font-dm-sans)', ...defaultTheme.fontFamily.sans],
-        secondary: ['var(--font-dm-mono)', ...defaultTheme.fontFamily.sans],
+        primary: ['var(--font-primary)', ...defaultTheme.fontFamily.sans],
+        secondary: ['var(--font-secondary)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         dark: 'hsl(var(--c-dark))',

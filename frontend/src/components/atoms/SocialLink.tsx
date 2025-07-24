@@ -1,10 +1,9 @@
 import clsx from 'clsx';
-import { Instagram } from 'lucide-react';
 import Link from 'next/link';
 
 type SocialLinkProps = {
   href: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   label: string;
   className?: string;
 };
@@ -24,7 +23,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({
       href={href}
       aria-label={label}
     >
-      {icon ?? <Instagram className="w-5 h-5" />}
+      {icon}
     </Link>
   );
 };

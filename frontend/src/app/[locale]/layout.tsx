@@ -10,13 +10,13 @@ import './globals.css';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-primary',
 });
 
 const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-dm-mono',
+  variable: '--font-secondary',
 });
 
 // eslint-disable-next-line react-refresh/only-export-components

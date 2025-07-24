@@ -1,22 +1,23 @@
 'use client';
 
-import { Linkedin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaBluesky, FaLinkedin } from 'react-icons/fa6';
 import Button from '@/components/atoms/Button';
 import SocialLink from '@/components/atoms/SocialLink';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
 
-  const socialLinks: Record<string, { href: string; icon?: React.ReactNode }> = {
+  const socialLinks: Record<string, { href: string; icon: React.ReactNode }> = {
     bluesky: {
       href: 'https://bsky.app/profile/dataforgood.fr',
+      icon: <FaBluesky />,
     },
     linkedin: {
       href: 'https://www.linkedin.com/company/dataforgoodfr/',
-      icon: <Linkedin className="w-4 h-4" />,
+      icon: <FaLinkedin />,
     },
   };
 
@@ -31,6 +32,20 @@ const Footer = () => {
     cgu: '/todo',
     charte: '/todo',
   };
+
+  const contactFormIframe = (
+    <iframe
+      width="540"
+      height="305"
+      src="https://ffb35838.sibforms.com/serve/MUIFAClZei-0KJ4S5oAeeoW1_t4ZqHi48tZTWiISEt_s8kJsd-WpJ9Gprg21TiwBT7zskApNu-ifbq4C8PnCBG3dUeJphIPVtJ_2V1IB_fan1WRguNFGrW1TayNKJi1jSQ6_gfgmOlQDGdZSwOpi6VU3R-iX2CN7XyIDDQBo7A9xbiN0fwvRM0kvcKRCzG29MRJ00mGzZzzyaNOO"
+      frameBorder="0"
+      scrolling="auto"
+      allowFullScreen
+      title="Formulaire de contact Data For Good"
+      sandbox="allow-scripts allow-forms"
+      style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
+    />
+  );
 
   return (
     <footer className="pt-sm">
@@ -82,21 +97,11 @@ const Footer = () => {
           <div className="flex flex-col gap-5 text-sm">
             <p className="uppercase font-secondary">{t('contact.title')}</p>
             <p><Button href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
-            <iframe
-              width="540"
-              height="305"
-              src="https://ffb35838.sibforms.com/serve/MUIFAClZei-0KJ4S5oAeeoW1_t4ZqHi48tZTWiISEt_s8kJsd-WpJ9Gprg21TiwBT7zskApNu-ifbq4C8PnCBG3dUeJphIPVtJ_2V1IB_fan1WRguNFGrW1TayNKJi1jSQ6_gfgmOlQDGdZSwOpi6VU3R-iX2CN7XyIDDQBo7A9xbiN0fwvRM0kvcKRCzG29MRJ00mGzZzzyaNOO"
-              frameBorder="0"
-              scrolling="auto"
-              allowFullScreen
-              title="Formulaire de contact Data For Good"
-              sandbox="allow-scripts allow-forms"
-              style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
-            />
+            {contactFormIframe}
             <ul className="flex gap-2">
               {Object.keys(socialLinks).map(social => (
                 <li key={social}>
-                  <SocialLink href={socialLinks[social].href} icon={socialLinks[social].icon ?? undefined} label={t(`social.${social}`)} />
+                  <SocialLink href={socialLinks[social].href} icon={socialLinks[social].icon ?? ''} label={t(`social.${social}`)} />
                 </li>
               ))}
             </ul>
