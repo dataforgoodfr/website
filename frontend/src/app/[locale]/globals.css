@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -14,6 +10,14 @@ body {
 
 @layer base {
   :root {
+    --c-dark: 0 0 0;
+    --c-light: 0 0 100%;
+    --c-blue: 187 67% 53%;
+    --c-alive: 67 72% 56%;
+    --c-resistance: 37 98% 53%;
+    --c-building: 266 84% 61%;
+
+    /* OLD values */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -69,10 +73,16 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-light text-dark font-primary;
+  }
+
+  .blank {
+    @apply inline-flex items-center gap-1;
+  }
+
+  .blank::after {
+    content: '';
+    @apply bg-[url("/icons/blank.svg")] bg-cover w-4 aspect-square;
   }
 }

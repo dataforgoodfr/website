@@ -21,7 +21,18 @@ export default antfu(
 
     ignores: ['migrations/**/*', 'next-env.d.ts', '**/contentTypes.d.ts'],
   },
-  ...tailwind.configs['flat/recommended'],
+  {
+    ...tailwind.configs['flat/recommended'][0],
+    settings: {
+      tailwindcss: {
+        callees: ['clsx', 'cn', 'tw'],
+        config: './tailwind.config.ts',
+      },
+    },
+    rules: {
+      'tailwindcss/no-custom-classname': 'off',
+    },
+  },
   jsxA11y.flatConfigs.recommended,
   {
     plugins: {
@@ -39,6 +50,7 @@ export default antfu(
       'ts/consistent-type-definitions': ['error', 'type'], // Use `type` instead of `interface`
       'react/prefer-destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
       'node/prefer-global/process': 'off', // Allow using `process.env`
+      'jsx-quotes': ['error', 'prefer-double'], // Force double quotes in JSX
     },
   },
 );
