@@ -11,6 +11,8 @@
     "packages": "dotenv -- pnpm --filter",
     "frontend": "pnpm --filter frontend",
     "backend": "pnpm packages backend",
+    "storybook": "pnpm --filter frontend storybook",
+    "build-storybook": "pnpm --filter frontend build-storybook",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },

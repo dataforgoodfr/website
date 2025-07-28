@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 
-type ButtonProps = {
+export type ButtonProps = {
   href?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
