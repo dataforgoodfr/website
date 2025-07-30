@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-type SocialLinkProps = {
+export type SocialLinkProps = {
   href: string;
   icon: React.ReactNode;
   label: string;

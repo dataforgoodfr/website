@@ -11,6 +11,7 @@ Le frontend est responsable de l'interface utilisateur et de l'interaction avec 
 - Next.js
 - TailwindCSS
 - ShadCn UI
+- Storybook
 
 ## Ajout de Contenu
 
@@ -18,6 +19,53 @@ Pour ajouter du contenu, modifiez les composants dans le dossier `src/components
 
 > [!TIP]
 > Si jamais aucune donée n'est remontée pour un champ populate malgré une requête juste, véfiriez les permissions "Find" côté Strapi
+
+### Structure des dossiers
+
+**Les composants sont en Atomics Design** et doivent être placés dans le bon dossier (`/atoms`, `/molecules` ou `/organisms`).
+
+### Storybook
+
+Storybook est configuré pour développer et tester les composants de manière isolée.
+
+#### Commandes disponibles
+
+```bash
+# Démarrer Storybook en mode développement
+pnpm run storybook
+
+# Construire Storybook pour la production
+pnpm run build-storybook
+```
+
+#### Structure des composants
+
+Les composants sont organisés selon l'Atomic Design dans le dossier `src/components/[atoms|molecules|organisms]/` :
+
+```
+src/components/[atoms|molecules|organisms]/
+├── Button/
+│   ├── Button.tsx
+│   └── Button.stories.tsx
+└── SocialLink/
+    ├── SocialLink.tsx
+    └── SocialLink.stories.tsx
+```
+
+#### Fonctionnalités
+
+- **Tests d'accessibilité** automatiques avec l'addon a11y
+- **Documentation automatique** des composants
+- **Tests unitaires** avec Vitest
+- **Interface interactive** pour tester les props
+- **Support TypeScript** complet
+- **Styles Tailwind CSS** intégrés
+
+#### Créer un nouveau composant
+
+1. Créez un dossier pour votre composant dans `src/components/[atoms|molecules|organisms]/`
+2. Ajoutez le fichier du composant (ex: `MonComposant.tsx`)
+3. Créez le fichier de story (ex: `MonComposant.stories.tsx`)
 
 ### Appel au backend
 
@@ -45,6 +93,8 @@ export default async function Homepage() {
 
 > [!NOTE]
 > Avec le client fetch type-safe, les routes sont typées automatiquement ainsi que les paramètres et les données de réponse.
+
+
 
 ## Déploiement
 
