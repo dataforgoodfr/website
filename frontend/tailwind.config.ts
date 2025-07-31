@@ -12,6 +12,7 @@ const config: Config = {
       fontFamily: {
         primary: ['var(--font-primary)', ...defaultTheme.fontFamily.sans],
         secondary: ['var(--font-secondary)', ...defaultTheme.fontFamily.sans],
+        tertiary: ['var(--font-secondary)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         dark: 'hsl(var(--c-dark))',
