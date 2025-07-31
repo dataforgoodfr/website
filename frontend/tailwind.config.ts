@@ -120,7 +120,16 @@ const config: Config = {
         '.transition-base-colors': {
           '@apply transition-colors ease-in-out duration-200': {},
         },
-
+        /* Font size */
+        '.text-h1': {
+          '@apply text-3xl lg:text-[4.125rem]': {},
+        },
+        '.text-h2': {
+          '@apply text-xl lg:text-[2.5rem]': {},
+        },
+        '.text-h3': {
+          '@apply text-lg lg:text-3xl': {},
+        },
       };
       addUtilities(newUtilities);
     },
