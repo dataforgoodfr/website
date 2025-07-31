@@ -4,8 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBluesky, FaLinkedin } from 'react-icons/fa6';
-import Button from '@/components/atoms/Button';
-import SocialLink from '@/components/atoms/SocialLink';
+import { Button, SocialLink } from '@/components/atoms';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
