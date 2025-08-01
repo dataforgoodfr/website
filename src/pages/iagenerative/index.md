@@ -17,10 +17,12 @@ Nous sommes ravis de vous partager notre premier livre blanc "Les grands défis 
 :::
 
 
-<div style={{position:"relative",paddingTop:"max(60%,326px)",marginBottom:50,height:"0",width:"100%"}}><iframe allow="clipboard-write" sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-forms" allowFullScreen="true" style={{position:"absolute",border:"none",width:"100%",height:"100%",left:0,right:0,top:0,bottom:0}} src="https://e.issuu.com/embed.html?d=dataforgood_livreblanc_iagenerative_v1.0&u=dataforgood"></iframe></div>
+<div style={{position:"relative",paddingTop:"max(60%,326px)",marginBottom:50,height:"0",width:"100%"}}>
+<iframe allow="clipboard-write" allowFullScreen style={{position:"absolute",border:"none",width:"100%",height:"100%",left:0,right:0,top:0,bottom:0}} src="/documents/livre_blanc_ia_generative.pdf#view=fit"></iframe>
+</div>
 
-<div style={{"text-align":"center","margin-bottom":"20px"}}>
-<a href="https://issuu.com/dataforgood/docs/dataforgood_livreblanc_iagenerative_v1.0?fr=sZGE0MjYyNjE5MTU" target="_blank" className="button button--secondary button--lg button-home">
+<div style={{"textAlign":"center","marginBottom":"20px"}}>
+<a href="/documents/livre_blanc_ia_generative.pdf" target="_blank" className="button button--secondary button--lg button-home">
 Ouvrir le livre blanc
 </a>
 </div>
@@ -37,7 +39,7 @@ Ce premier rapport aborde 4 sujets principaux :
 
 ## 📺 Webinar IA générative
 
-Le livre blanc a été présenté pendant un webinar accessible ici 
+Le livre blanc a été présenté pendant un webinar accessible ici
 
 <iframe width="100%" height="500px" src="https://www.youtube.com/embed/uf62I49mmok?si=CLHSkWOmgf2RVBAy" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
