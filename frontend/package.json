@@ -30,6 +30,7 @@
     "openapi-typescript": "^7.8.0",
     "qs": "^6.14.0",
     "react": "^18",
+    "react-confetti": "^6.4.0",
     "react-dom": "^18",
     "react-icons": "^5.5.0",
     "rehype-autolink-headings": "^7.1.0",

@@ -141,6 +141,9 @@ importers:
       react:
         specifier: ^18
         version: 18.3.1
+      react-confetti:
+        specifier: ^6.4.0
+        version: 6.4.0(react@18.3.1)
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
@@ -8753,6 +8756,12 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
 
+  react-confetti@6.4.0:
+    resolution: {integrity: sha512-5MdGUcqxrTU26I2EU7ltkWPwxvucQTuqMm8dUz72z2YMqTD6s9vMcDUysk7n9jnC+lXuCPeJJ7Knf98VEYE9Rg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.1 || ^18.0.0 || ^19.0.0
+
   react-dnd-html5-backend@16.0.1:
     resolution: {integrity: sha512-Wu3dw5aDJmOGw8WjH1I1/yTH+vlXEL4vmjk5p+MHxP8HuHJS1lAGeIdG/hze1AvNeXWo/JgULV87LyQOr+r5jw==}
 
@@ -10070,6 +10079,9 @@ packages:
 
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
+
+  tween-functions@1.2.0:
+    resolution: {integrity: sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -12538,7 +12550,7 @@ snapshots:
       react-refresh: 0.14.0
       schema-utils: 4.3.2
       source-map: 0.7.4
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
     optionalDependencies:
       type-fest: 4.41.0
       webpack-hot-middleware: 2.26.1
@@ -16099,7 +16111,7 @@ snapshots:
       styled-components: 6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       typescript: 5.3.2
       vite: 5.2.14(@types/node@20.17.48)(terser@5.39.2)
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
       webpack-bundle-analyzer: 4.10.2
       webpack-dev-middleware: 6.1.2(webpack@5.99.8(esbuild@0.21.3))
       webpack-hot-middleware: 2.26.1
@@ -18346,7 +18358,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.7.2
     optionalDependencies:
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   css-select@4.3.0:
     dependencies:
@@ -18814,7 +18826,7 @@ snapshots:
       json5: 2.2.3
       loader-utils: 2.0.4
       tapable: 2.2.1
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
       webpack-sources: 1.4.3
 
   esbuild-register@3.5.0(esbuild@0.20.2):
@@ -19696,7 +19708,7 @@ snapshots:
       semver: 7.7.2
       tapable: 2.2.1
       typescript: 5.3.2
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   form-data@4.0.2:
     dependencies:
@@ -20224,7 +20236,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.2.1
     optionalDependencies:
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   htmlparser2@6.1.0:
     dependencies:
@@ -21707,7 +21719,7 @@ snapshots:
   mini-css-extract-plugin@2.7.7(webpack@5.99.8(esbuild@0.21.3)):
     dependencies:
       schema-utils: 4.3.2
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   minimalistic-assert@1.0.1: {}
 
@@ -22747,6 +22759,11 @@ snapshots:
       react-themeable: 1.1.0
       section-iterator: 2.0.0
       shallow-equal: 1.2.1
+
+  react-confetti@6.4.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      tween-functions: 1.2.0
 
   react-dnd-html5-backend@16.0.1:
     dependencies:
@@ -24005,7 +24022,7 @@ snapshots:
 
   style-loader@3.3.4(webpack@5.99.8(esbuild@0.21.3)):
     dependencies:
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   style-mod@4.1.2: {}
 
@@ -24173,16 +24190,16 @@ snapshots:
 
   tarn@3.0.2: {}
 
-  terser-webpack-plugin@5.3.14(esbuild@0.21.3)(webpack@5.99.8(esbuild@0.21.3)):
+  terser-webpack-plugin@5.3.14(esbuild@0.21.5)(webpack@5.99.8(esbuild@0.21.3)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.29
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.39.2
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
     optionalDependencies:
-      esbuild: 0.21.3
+      esbuild: 0.21.5
 
   terser@5.39.2:
     dependencies:
@@ -24338,6 +24355,8 @@ snapshots:
   tunnel-agent@0.6.0:
     dependencies:
       safe-buffer: 5.2.1
+
+  tween-functions@1.2.0: {}
 
   type-check@0.4.0:
     dependencies:
@@ -24856,7 +24875,7 @@ snapshots:
       range-parser: 1.2.1
       schema-utils: 4.3.2
     optionalDependencies:
-      webpack: 5.99.8(esbuild@0.21.3)
+      webpack: 5.99.8(esbuild@0.21.5)
 
   webpack-hot-middleware@2.26.1:
     dependencies:
@@ -24873,7 +24892,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.99.8(esbuild@0.21.3):
+  webpack@5.99.8(esbuild@0.21.5):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.7
@@ -24896,7 +24915,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.14(esbuild@0.21.3)(webpack@5.99.8(esbuild@0.21.3))
+      terser-webpack-plugin: 5.3.14(esbuild@0.21.5)(webpack@5.99.8(esbuild@0.21.3))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
