@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-17T08:05:09.744Z"
+    "x-generation-date": "2025-07-24T07:48:03.185Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -12577,7 +12577,8 @@
                               "enum": [
                                 "media",
                                 "association",
-                                "funder"
+                                "funder",
+                                "company"
                               ]
                             },
                             "related_projects": {
@@ -14422,7 +14423,8 @@
                 "enum": [
                   "media",
                   "association",
-                  "funder"
+                  "funder",
+                  "company"
                 ]
               },
               "related_projects": {
@@ -15130,7 +15132,8 @@
             "enum": [
               "media",
               "association",
-              "funder"
+              "funder",
+              "company"
             ]
           },
           "related_projects": {
@@ -16232,7 +16235,8 @@
                               "enum": [
                                 "media",
                                 "association",
-                                "funder"
+                                "funder",
+                                "company"
                               ]
                             },
                             "related_projects": {
@@ -17271,7 +17275,8 @@
                   "enum": [
                     "media",
                     "association",
-                    "funder"
+                    "funder",
+                    "company"
                   ]
                 },
                 "related_projects": {
@@ -20515,7 +20520,8 @@
                                     "enum": [
                                       "media",
                                       "association",
-                                      "funder"
+                                      "funder",
+                                      "company"
                                     ]
                                   },
                                   "related_projects": {
@@ -22914,7 +22920,8 @@
                               "enum": [
                                 "media",
                                 "association",
-                                "funder"
+                                "funder",
+                                "company"
                               ]
                             },
                             "related_projects": {
@@ -24882,7 +24889,8 @@
                               "enum": [
                                 "media",
                                 "association",
-                                "funder"
+                                "funder",
+                                "company"
                               ]
                             },
                             "related_projects": {
@@ -27110,7 +27118,8 @@
                               "enum": [
                                 "media",
                                 "association",
-                                "funder"
+                                "funder",
+                                "company"
                               ]
                             },
                             "related_projects": {

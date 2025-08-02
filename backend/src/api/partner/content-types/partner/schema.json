@@ -66,7 +66,8 @@
       "enum": [
         "media",
         "association",
-        "funder"
+        "funder",
+        "company"
       ]
     },
     "related_projects": {

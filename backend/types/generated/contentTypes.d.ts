@@ -775,7 +775,9 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::project.project'
     >;
-    type: Schema.Attribute.Enumeration<['media', 'association', 'funder']> &
+    type: Schema.Attribute.Enumeration<
+      ['media', 'association', 'funder', 'company']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
