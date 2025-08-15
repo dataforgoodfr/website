@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Confetti from 'react-confetti';
-import { Button } from '@/components/atoms';
+import { Button, Title } from '@/components/atoms';
 
 export type ResultsCardProps = {
   title: string;
@@ -23,8 +23,6 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   className,
   ...props
 }) => {
-  const TitleComponent = `h${titleLevel}` as keyof JSX.IntrinsicElements;
-
   if (!title || !results.length) {
     return null;
   }
@@ -32,7 +30,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   return (
     <div
       className={clsx(
-        'container py-lg px-4 relative overflow-hidden',
+        'container py-lg relative overflow-hidden',
         className,
       )}
       {...props}
@@ -70,9 +68,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           height={70}
           className="mx-auto mb-xs"
         />
-        <TitleComponent className="mb-md text-h2 font-tertiary font-bold text-center">
+        <Title className="mb-md text-center" level={titleLevel} variant="medium">
           {title}
-        </TitleComponent>
+        </Title>
 
         <ul className="flex flex-wrap justify-between gap-sm mt-md">
           {results.map(result => (
@@ -82,7 +80,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             >
               <p className="mb-4 font-tertiary">
                 <span className="block font-secondary text-7xl">{result.number.toLocaleString()}</span>
-                <span className="text-h3">
+                <span className="h3-like">
                   {result.text}
                 </span>
               </p>

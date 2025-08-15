@@ -1,15 +1,16 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Title } from '@/components';
 
 export default function DonationsPage() {
   const t = useTranslations('donations');
 
   return (
     <div className="container mx-auto py-lg px-4">
-      <h1 className="text-h1 font-tertiary font-bold mb-md">
+      <Title className="mb-md">
         {t('title')}
-      </h1>
+      </Title>
       <iframe
         id="haWidget"
         allowTransparency={true}
