@@ -19,7 +19,6 @@ const dmMono = DM_Mono({
   variable: '--font-secondary',
 });
 
-// eslint-disable-next-line react-refresh/only-export-components
 export async function generateMetadata({
   params,
 }: {

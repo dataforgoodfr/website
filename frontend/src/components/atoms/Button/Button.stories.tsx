@@ -49,6 +49,7 @@ export const WithClickHandler: Story = {
   args: {
     children: 'Cliquez-moi',
     variant: 'primary',
+    // eslint-disable-next-line no-console
     onClick: () => console.log('Bouton cliqué !'),
   },
 };
