@@ -1,10 +1,10 @@
 .git
 *Dockerfile*
 *docker-compose*
-node_modules
+**node_modules
 *.md
 dist
 .DS_Store
 .devcontainer
-.env
-.next
+**.env
+**.next
