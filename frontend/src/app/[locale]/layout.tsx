@@ -21,14 +21,15 @@ const dmMono = DM_Mono({
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: (typeof routing.locales)[number] };
+  params: Promise<{ locale: (typeof routing.locales)[number] }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale: locale as string, namespace: 'siteConfig' });
 
   return {
-    // metadataBase: new URL(t('url')),
+    metadataBase: new URL(t('url')),
     title: {
       default: t('title'),
       template: `%s | ${t('title')}`,

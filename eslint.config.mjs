@@ -1,59 +1,47 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
-
-import antfu from '@antfu/eslint-config';
 import nextPlugin from '@next/eslint-plugin-next';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tailwind from 'eslint-plugin-tailwindcss';
 
-export default antfu(
+export default [
   {
-    react: true,
-    typescript: true,
-
-    lessOpinionated: true,
-    isInEditor: false,
-
-    stylistic: {
-      semi: true,
-    },
-
-    formatters: {
-      css: true,
-    },
-
-    ignores: ['migrations/**/*', 'next-env.d.ts', '**/contentTypes.d.ts'],
+    ignores: ['migrations/**/*', 'next-env.d.ts', '**/contentTypes.d.ts', '**/storybook-static/**/*', '.next/**/*'],
   },
   {
-    ...tailwind.configs['flat/recommended'][0],
-    settings: {
-      tailwindcss: {
-        callees: ['clsx', 'cn', 'tw'],
-        config: './tailwind.config.ts',
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
     rules: {
-      'tailwindcss/no-custom-classname': 'off',
-    },
-  },
-  jsxA11y.flatConfigs.recommended,
-  {
-    plugins: {
-      '@next/next': nextPlugin,
-    },
-    rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs['core-web-vitals'].rules,
+      // Basic rules
+      'no-unused-vars': 'warn',
+      'no-console': 'warn',
+      'prefer-const': 'error',
+      'no-var': 'error',
     },
   },
   {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
     rules: {
-      'antfu/no-top-level-await': 'off', // Allow top-level await
-      'style/brace-style': ['error', '1tbs'], // Use the default brace style
-      'ts/consistent-type-definitions': ['error', 'type'], // Use `type` instead of `interface`
-      'react/prefer-destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
-      'node/prefer-global/process': 'off', // Allow using `process.env`
-      'jsx-quotes': ['error', 'prefer-double'], // Force double quotes in JSX
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/prefer-const': 'error',
     },
   },
-);
+];
