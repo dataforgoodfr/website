@@ -2,6 +2,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig = {
+  output: 'standalone',
   images: {
     domains: [
       'localhost',
