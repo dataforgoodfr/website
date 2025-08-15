@@ -2,6 +2,7 @@ import type { MouseEventHandler, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
+import { Button as ButtonUI } from '@/components/ui/button';
 
 export type ButtonProps = {
   href?: string;
@@ -51,7 +52,7 @@ const Button: React.FC<ButtonProps> = ({
             </Link>
           )
         : (
-            <button
+            <ButtonUI
               onClick={onClick}
               type={type}
               disabled={disabled}
@@ -59,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({
               {...props}
             >
               <span className={classChildren}>{children}</span>
-            </button>
+            </ButtonUI>
           )}
     </>
   );
