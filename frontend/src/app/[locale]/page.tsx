@@ -1,16 +1,9 @@
-import { Title } from '@/components/atoms';
+import Homepage from './home';
 
-export default async function Homepage() {
-  /* const { data, error } = await client.GET('/home-page');
-  if (error) {
-    return <div>Error</div>;
-  } */
-
+export default async function Page() {
   return (
-    <div className="p-8 space-y-6">
-      <Title level={1} variant="big">
-        Page d'accueil DataForGood
-      </Title>
-    </div>
+    <>
+      <Homepage />
+    </>
   );
 }

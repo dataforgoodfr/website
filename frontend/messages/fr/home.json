@@ -1,0 +1,19 @@
+{
+  "home": {
+    "results": {
+      "title": "Rejoignez le mouvement !",
+      "realizedProjects": {
+        "title": "projets réussis",
+        "linkLabel": "Soutenir l’association"
+      },
+      "activeVolunteers": {
+        "title": "bénévoles heureux",
+        "linkLabel": "Rejoindre la communauté"
+      },
+      "partnersOrganizations": {
+        "title": "association partenaire",
+        "linkLabel": "Proposer un projet"
+      }
+    }
+  }
+}
