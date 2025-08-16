@@ -6,8 +6,8 @@ import useEmblaCarousel, {
 } from "embla-carousel-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
 import { useTranslations } from "next-intl"
+import Image from "next/image"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -205,18 +205,18 @@ const CarouselPrevious = React.forwardRef<
     <Button
       ref={ref}
       className={cn(
-        "h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        "transition-colors relative z-1",
+        orientation !== "horizontal" && "rotate-90",
+        canScrollPrev ? 'cursor-pointer before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:bg-black before:top-0.5 before:left-0.5 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base' : "cursor-not-allowed opacity-50",
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeftIcon className="h-4 w-4" />
-      <span className="sr-only">{t('previous')}</span>
+      <span className="relative flex items-center justify-center bg-building h-12 w-12">
+        <Image src="/images/carousel-previous.svg" alt={t('previous')} width={14} height={14} />
+      </span>
     </Button>
   )
 })
@@ -233,18 +233,18 @@ const CarouselNext = React.forwardRef<
     <Button
       ref={ref}
       className={cn(
-        "h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        "transition-colors relative z-1",
+        orientation !== "horizontal" && "rotate-90",
+        canScrollNext ? 'cursor-pointer before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:bg-black before:top-0.5 before:left-0.5 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base' : "cursor-not-allowed opacity-50",
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRightIcon className="h-4 w-4" />
-      <span className="sr-only">{t('next')}</span>
+      <span className="relative flex items-center justify-center bg-building h-12 w-12">
+        <Image src="/images/carousel-next.svg" alt={t('next')} width={14} height={14} />
+      </span>
     </Button>
   )
 })

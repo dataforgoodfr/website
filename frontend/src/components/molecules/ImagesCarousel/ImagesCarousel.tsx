@@ -81,9 +81,9 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
             />
 
             {/* Dark overlay to improve text readability */}
-            <div className="col-start-1 row-start-1 row-span-3 bg-black/30" />
+            <div className="z-1 col-start-1 row-start-1 row-span-3 bg-black/30" />
             {/* Slide content */}
-            <div className="col-start-1 row-start-2 container">
+            <div className="z-2 col-start-1 row-start-2 container">
               <div className="max-w-md">
                 {image.title && (
                   <Title level={titleLevel} variant="medium" className="mb-xs">
