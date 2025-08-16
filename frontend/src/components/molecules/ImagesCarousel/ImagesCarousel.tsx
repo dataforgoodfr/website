@@ -56,11 +56,32 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
     )}>
       <CarouselContent>
         {images.map((image) => (
-          <CarouselItem key={image.id} className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-full sm:h-[700px] bg-black text-white">
-            <Image src={image.src} alt={image.alt ?? ''} width={1000} height={400} className="col-start-1 row-start-1 row-span-3 w-full h-full object-cover" />
+          <CarouselItem 
+            key={image.id} 
+            className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-full sm:h-[700px] bg-black text-white"
+            
+          >
+            <Image 
+              src={image.src} 
+              alt={image.alt ?? ''} 
+              width={1000} 
+              height={400} 
+              className="col-start-1 row-start-1 row-span-3 w-full h-full object-cover"
+              style={{
+                // Get real image
+                maskImage: 'url(/images/mask-papper.png)',
+                maskSize: 'cover',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskImage: 'url(/images/mask-papper.png)',
+                WebkitMaskSize: 'cover',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center',
+              }}
+            />
+
             {/* Dark overlay to improve text readability */}
             <div className="col-start-1 row-start-1 row-span-3 bg-black/30" />
-
             {/* Slide content */}
             <div className="col-start-1 row-start-2 container">
               <div className="max-w-md">
@@ -87,20 +108,23 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
         ))}
       </CarouselContent>
 
-      <div className="absolute bottom-4 left-0 right-0 text-white">
+      <div className="absolute bottom-8 left-0 right-0 text-white">
         <div className="container">
           <div className="ml-auto flex flex-wrap items-center justify-between w-52">
             <CarouselPrevious />
-            <div className="text-sm font-medium">
+            <div className="flex-1 text-center h4-like">
               {current}/{count}
             </div>
             <CarouselNext />
 
             {/* Progress bar */}
-            <div 
-              className="h-full bg-white transition-all duration-300"
-              style={{ width: `${(current / count) * 100}%` }}
-            />
+            <div className="h-4 w-full mt-8 bg-[url('/images/carousel-progressbar-bg.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat">
+              {/* @TODO: Add progress bar image */}
+              <div 
+                className="h-full bg-[url('/images/carousel-progressbar.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat transition-all duration-300"
+                style={{ width: `${(current / count) * 100}%` }}
+              />
+            </div>
           </div>
         </div>
       </div>
