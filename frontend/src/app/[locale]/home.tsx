@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ResultsCard } from '@/components';
+import { ImagesCarousel, ResultsCard, Title } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -10,6 +10,29 @@ export default function Homepage() {
   if (error) {
     return <div>Error</div>;
   } */
+
+  const carouselImages = [
+    {
+      id: 1,
+      src: '/temp-images/carousel-1.jpg',
+      ctaHref: '/projets/trawlwatch',
+  },
+  {
+      id: 2,
+      src: '/temp-images/carousel-1.jpg',
+      ctaHref: '/projets/biodiversity',
+    },
+    {
+      id: 3,
+      src: '/temp-images/carousel-1.jpg',
+      ctaHref: '/projets/greenenergy',
+    },
+    {
+      id: 4,
+      src: '/temp-images/carousel-1.jpg',
+      ctaHref: '/projets/mountainguard',
+    },
+  ];
 
   const results = [
     {
@@ -31,8 +54,23 @@ export default function Homepage() {
 
   return (
     <>
+
+      <div className="container mt-lg mb-sm">
+        <Title level={2} variant="medium">
+          {t('carousel.title')}
+        </Title>
+      </div>
+      <ImagesCarousel className="mb-lg" images={carouselImages.map(image => ({
+          ...image,
+          title: t(`carousel.${image.id}.title`),
+          alt: t(`carousel.${image.id}.alt`),
+          description: t(`carousel.${image.id}.description`),
+          ctaText: t(`carousel.${image.id}.ctaText`),
+        }))} />
+
       <ResultsCard
         title={t('results.title')}
+        className="my-lg"
         results={results.map(result => ({
           ...result,
           text: t(`results.${result.id}.title`),
