@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ResultsCard } from '@/components';
+import { ResultsCard, NewsSmallBlock } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -29,6 +29,16 @@ export default function Homepage() {
     },
   ];
 
+  const news = [
+    {
+      title: 'Nouvelle technologie révolutionnaire dans le domaine de la data',
+      tag: 'Innovation',
+      image: '/images/bg-paper.jpg',
+      link: '/news/technologie-revolutionnaire',
+      date: '15 DÉC 2024',
+    },
+  ];
+
   return (
     <>
       <ResultsCard
@@ -38,6 +48,12 @@ export default function Homepage() {
           text: t(`results.${result.id}.title`),
           linkLabel: t(`results.${result.id}.linkLabel`),
         }))}
+      />
+
+      <NewsSmallBlock
+        title={t('news.title')}
+        blocks={news}
+        className='my-lg'
       />
     </>
   );
