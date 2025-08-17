@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ResultsCard } from '@/components';
+import { ResultsCard, TalksBlock } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -29,8 +29,34 @@ export default function Homepage() {
     },
   ];
 
+  const talks = [
+    {
+      author: 'Sophie Bernard',
+      talk: 'Méthodes de collecte de données éthiques',
+      image: '/images/marty-1.svg',
+      ctaText: 'En savoir plus',
+      ctaLink: '/methodes-collecte',
+    },
+    {
+      author: 'Pierre Dubois',
+      talk: 'Comment optimiser la gestion des bénévoles grâce à l\'analyse prédictive et l\'intelligence artificielle',
+      image: '/images/marty-2.svg',
+      ctaText: 'Découvrir',
+      ctaLink: '/optimisation-benevoles',
+    },
+    {
+      author: 'A. L.',
+      talk: 'Introduction à la visualisation de données',
+      image: '/images/marty-3.svg',
+    },
+  ];
+
   return (
     <>
+      <TalksBlock
+        title={t('talks.title')}
+        talks={talks}
+      />
       <ResultsCard
         title={t('results.title')}
         results={results.map(result => ({
