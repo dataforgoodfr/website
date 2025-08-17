@@ -19,6 +19,7 @@ const config: Config = {
         light: 'hsl(var(--c-light))',
         blue: 'hsl(var(--c-blue))',
         alive: 'hsl(var(--c-alive))',
+        "alive-light": 'hsl(var(--c-alive-light))',
         resistance: 'hsl(var(--c-resistance))',
         building: 'hsl(var(--c-building))',
       },

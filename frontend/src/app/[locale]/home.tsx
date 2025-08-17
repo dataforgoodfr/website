@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ResultsCard } from '@/components';
+import { ResultsCard, NewsletterBlock } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -38,6 +38,11 @@ export default function Homepage() {
           text: t(`results.${result.id}.title`),
           linkLabel: t(`results.${result.id}.linkLabel`),
         }))}
+      />
+
+      <NewsletterBlock
+        title={t('newsletter.title')}
+        content={t('newsletter.content')}
       />
     </>
   );

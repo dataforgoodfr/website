@@ -47,8 +47,8 @@ const Footer = () => {
   );
 
   return (
-    <footer className="pt-sm">
-      <Image src="/images/scratch.svg" alt={t('title')} width={212} height={48} className="object-contain w-full" />
+    <footer className="relative">
+      <Image src="/images/scratch.svg" alt={t('title')} width={212} height={48} className="absolute bottom-full left-0 object-contain w-full" />
       <div className="py-16 bg-white text-black">
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 mx-auto px-4">
           <div className="space-y-5">
