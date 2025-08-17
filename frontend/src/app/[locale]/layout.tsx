@@ -19,12 +19,12 @@ const dmMono = DM_Mono({
   variable: '--font-secondary',
 });
 
-// eslint-disable-next-line react-refresh/only-export-components
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: (typeof routing.locales)[number] };
+  params: Promise<{ locale: (typeof routing.locales)[number] }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale: locale as string, namespace: 'siteConfig' });
 
   return {

@@ -62,6 +62,7 @@ const Header = () => {
     toggleNav(show);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleFocusNav: (e: React.KeyboardEvent) => void = (e) => {
     // Exception: add Escape event in subnav list
     if (

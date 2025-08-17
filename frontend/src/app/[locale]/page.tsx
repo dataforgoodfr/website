@@ -1,15 +1,9 @@
-import client from '@/lib/strapi-client';
+import Homepage from './home';
 
-export default async function Homepage() {
-  const { data, error } = await client.GET('/home-page');
-  if (error) {
-    return <div>Error</div>;
-  }
-
+export default async function Page() {
   return (
-    <div>
-      Title:
-      {data.data?.title}
-    </div>
+    <>
+      <Homepage />
+    </>
   );
 }
