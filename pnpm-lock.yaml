@@ -14352,7 +14352,7 @@ snapshots:
       '@strapi/design-system': 2.0.0-rc.11(@babel/runtime@7.27.1)(@codemirror/state@6.5.2)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.36.8)(@strapi/icons@2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(@types/react-dom@18.3.7(@types/react@18.3.21))(@types/react@18.3.21)(codemirror@6.0.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@strapi/icons': 2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@strapi/permissions': 5.0.2
-      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.3.2)
+      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.8.3)
       '@strapi/typescript-utils': 5.0.2
       '@strapi/utils': 5.0.2
       '@testing-library/dom': 10.1.0
@@ -14840,7 +14840,7 @@ snapshots:
       '@strapi/database': 5.0.2(@types/node@20.17.48)
       '@strapi/design-system': 2.0.0-rc.11(@babel/runtime@7.27.1)(@codemirror/state@6.5.2)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.36.8)(@strapi/icons@2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(@types/react-dom@18.3.7(@types/react@18.3.21))(@types/react@18.3.21)(codemirror@6.0.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@strapi/icons': 2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.3.2)
+      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.8.3)
       '@strapi/utils': 5.0.2
       date-fns: 2.30.0
       date-fns-tz: 2.0.1(date-fns@2.30.0)
@@ -15015,7 +15015,7 @@ snapshots:
       '@strapi/logger': 5.0.2
       '@strapi/pack-up': 5.0.0(@swc/helpers@0.5.17)(@types/node@20.17.48)(debug@4.3.4)(terser@5.39.2)
       '@strapi/permissions': 5.0.2
-      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.3.2)
+      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.8.3)
       '@strapi/typescript-utils': 5.0.2
       '@strapi/utils': 5.0.2
       bcryptjs: 2.4.3
@@ -16051,7 +16051,7 @@ snapshots:
       '@strapi/pack-up': 5.0.0(@swc/helpers@0.5.17)(@types/node@20.17.48)(debug@4.3.4)(terser@5.39.2)
       '@strapi/permissions': 5.0.2
       '@strapi/review-workflows': 5.0.2(bf893f0c7137dedd930dbccb215afd1c)
-      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.3.2)
+      '@strapi/types': 5.0.2(@types/node@20.17.48)(typescript@5.8.3)
       '@strapi/typescript-utils': 5.0.2
       '@strapi/upload': 5.0.2(e77102604eb07c898f2d88ead6e2837e)
       '@strapi/utils': 5.0.2
@@ -16274,34 +16274,6 @@ snapshots:
       - webpack-cli
       - webpack-dev-server
       - webpack-plugin-serve
-
-  '@strapi/types@5.0.2(@types/node@20.17.48)(typescript@5.3.2)':
-    dependencies:
-      '@casl/ability': 6.5.0
-      '@koa/cors': 5.0.0
-      '@koa/router': 12.0.1
-      '@strapi/database': 5.0.2(@types/node@20.17.48)
-      '@strapi/logger': 5.0.2
-      '@strapi/permissions': 5.0.2
-      '@strapi/utils': 5.0.2
-      commander: 8.3.0
-      koa: 2.15.2
-      koa-body: 6.0.1
-      node-schedule: 2.1.1
-      typedoc: 0.25.10(typescript@5.3.2)
-      typedoc-github-wiki-theme: 1.1.0(typedoc-plugin-markdown@3.17.1(typedoc@0.25.10(typescript@5.8.3)))(typedoc@0.25.10(typescript@5.8.3))
-      typedoc-plugin-markdown: 3.17.1(typedoc@0.25.10(typescript@5.8.3))
-    transitivePeerDependencies:
-      - '@types/node'
-      - better-sqlite3
-      - mysql
-      - mysql2
-      - pg
-      - pg-native
-      - sqlite3
-      - supports-color
-      - tedious
-      - typescript
 
   '@strapi/types@5.0.2(@types/node@20.17.48)(typescript@5.8.3)':
     dependencies:

@@ -1,0 +1,79 @@
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import ThematicsCard from './ThematicsCard';
+import { C } from 'vitest/dist/chunks/reporters.d.BFLkQcL6.js';
+
+const meta: Meta<typeof ThematicsCard> = {
+  title: 'Molecules/ThematicsCard',
+  component: ThematicsCard,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    title: {
+        children: {
+            control: {type: 'text'}
+        },
+        props: {
+            bgColor: {
+      control: { type: 'text' },
+    },
+color: {
+      control: { type: 'text' },
+    },
+drop: {
+      control: { type: 'text' },
+    },
+rotation: {
+      control: { type: 'text' },
+    }
+        }
+    },
+    image: {
+      control: { type: 'text' },
+    },
+    ctaText: {
+      control: { type: 'text' },
+    },
+    ctaLink: {
+      control: { type: 'text' },
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    title: { 
+        children: "Climat et biodiversité",
+        props: {
+            color: 'white',
+bgColor: 'building',
+rotation: -2.58,
+drop: true,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    image: 'https://picsum.photos/500/500?random=1',
+  },
+};
+
+export const WithCTA: Story = {
+  args: {
+    title: { 
+        children: "justice sociale",
+        props: {
+            color: 'white',
+            bgColor: 'building',
+            rotation: -2.58,
+            drop: true,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    image: 'https://picsum.photos/500/500?random=2',
+    ctaText: 'Voir les projets',
+    ctaLink: '/presentations/impact-donnees',
+  },
+};
