@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -84,6 +84,62 @@ export default function Homepage() {
     },
   ];
 
+const thematics = [
+  {
+    title: { 
+        children: "Climat et biodiversité",
+        props: {
+          color: 'black',
+          bgColor: 'alive',
+          rotation: -2.58,
+          drop: true,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    image: '/images/thematics-climate.svg',
+    imageWidth: 301,
+    imageHeight: 401,
+    ctaText: "Voir les projets",
+    ctaLink: "/projets",
+  },
+  {
+    title: { 
+        children: "justice sociale",
+        props: {
+          color: 'black',
+          bgColor: 'resistance',
+          rotation: -2.58,
+          drop: true,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    talkOffset: 10,
+    image: '/images/thematics-social.png',
+    imageWidth: 264,
+    imageHeight: 332,
+    ctaText: "Voir les projets",
+    ctaLink: "/projets",
+  },
+  {
+    title: { 
+        children: "Démocratie",
+        props: {
+          color: 'black',
+          bgColor: 'blue',
+          rotation: -2.58,
+          drop: true,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    talkOffset: 10,
+    image: '/images/thematics-democracy.svg',
+    imageWidth: 251,
+    imageHeight: 318,
+    ctaText: "Voir les projets",
+    ctaLink: "/projets",
+  },
+]
+
   return (
     <>
       <div className="container mt-lg mb-sm">
@@ -103,7 +159,11 @@ export default function Homepage() {
         title={t('talks.title')}
         talks={talks}
       />
-
+      <ThematicsBlock
+        title={t('thematics.title')}
+        subtitle={t('thematics.subtitle')}
+        thematics={thematics}
+        />
       <ResultsCard
         title={t('results.title')}
         className="my-lg"
