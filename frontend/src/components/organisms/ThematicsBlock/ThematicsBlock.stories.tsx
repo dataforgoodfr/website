@@ -96,16 +96,6 @@ export const Default: Story = {
   },
 };
 
-export const WithH1Title: Story = {
-  args: {
-    title: 'Trois thèmes',
-    subtitle: 'Le tout, sur trois grandes thématiques:',
-    titleLevel: 1,
-    subtitleLevel: 3,
-    thematics: defaultThematics,
-  },
-};
-
 export const SingleResult: Story = {
   args: {
     title: 'Trois thèmes',

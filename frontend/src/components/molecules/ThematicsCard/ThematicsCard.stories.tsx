@@ -56,6 +56,8 @@ export const Default: Story = {
     },
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     image: 'https://picsum.photos/500/500?random=1',
+    imageWidth: 300,
+    imageHeight: 300,
   },
 };
 
@@ -72,6 +74,8 @@ export const WithCTA: Story = {
     },
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     image: 'https://picsum.photos/500/500?random=1',
+    imageWidth: 300,
+    imageHeight: 300,
     ctaText: 'Voir les projets',
     ctaLink: '/presentations/impact-donnees',
   },

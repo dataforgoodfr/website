@@ -27,7 +27,7 @@ const TiltedTitle: React.FC<TiltedTitleProps> = ({
           drop ? `before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:bg-black` : ``,
           `text-${color} bg-${bgColor}`,
           // `transform rotate-[${rotation}deg]`, 
-          `transform rotate-[-3deg]`, 
+          `transform rotate-[${rotation}deg]`, 
           className,
         )}>
         {children}
