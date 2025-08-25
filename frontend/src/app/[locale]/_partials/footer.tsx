@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5 text-sm">
-            <p id="footer-community-nav" className="uppercase font-secondary">{t('community.title')}</p>
+            <p id="footer-community-nav" className="uppercase font-black font-secondary">{t('community.title')}</p>
             <ul className="space-y-5">
               {Object.keys(communityNav).map(community => (
                 <li key={community}>
@@ -81,7 +81,7 @@ const Footer = () => {
           </nav>
 
           <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5 text-sm">
-            <p id="footer-informations-nav" className="uppercase font-secondary">{t('informations.title')}</p>
+            <p id="footer-informations-nav" className="uppercase font-black font-secondary">{t('informations.title')}</p>
             <ul className="space-y-5">
               {Object.keys(informationsNav).map(informations => (
                 <li key={informations}>
@@ -94,8 +94,8 @@ const Footer = () => {
           </nav>
 
           <div className="flex flex-col gap-5 text-sm">
-            <p className="uppercase font-secondary">{t('contact.title')}</p>
-            <p><Button href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
+            <p className="uppercase font-black font-secondary">{t('contact.title')}</p>
+            <p><Button variant="secondary" href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
             {contactFormIframe}
             <ul className="flex gap-2">
               {Object.keys(socialLinks).map(social => (

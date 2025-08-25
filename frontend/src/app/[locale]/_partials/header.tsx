@@ -236,7 +236,7 @@ const Header = () => {
                     role="menuitem"
                     className={clsx(
                       'block px-4 py-1',
-                      'font-secondary uppercase',
+                      'font-secondary uppercase font-black',
                       'relative before:absolute before:bottom-0 before:left-0 before:w-0 before:right-0 lg:before:m-auto before:h-0.5 before:bg-black',
                       'hover:before:w-1/4 focus:before:w-1/4 lg:hover:before:w-full lg:focus:before:w-full before:transition-all before:duration-300',
                       mainNav[link] === pathname && 'before:w-1/4 lg:before:w-full',

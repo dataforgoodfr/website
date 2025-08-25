@@ -87,7 +87,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
               <Button
                 href={result.linkTarget}
-                variant="secondary"
+                color="white"
               >
                 {result.linkLabel}
               </Button>
