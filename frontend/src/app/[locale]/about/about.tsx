@@ -8,8 +8,8 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="container mx-auto py-lg px-4">
-        <Title className="mb-md max-w-5xl" variant="medium">
+      <div className="container mx-auto my-lg">
+        <Title className="max-w-5xl" variant="medium">
           {t('title')}
         </Title>
       </div>

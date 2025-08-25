@@ -1,7 +1,8 @@
 {
   "donations": {
     "meta": {
-      "title": "S'engager pour un monde meilleur"
+      "title": "S'engager pour un monde meilleur",
+      "description": ""
     },
     "title": "S'engager pour un monde meilleur",
     "helloasso": "Donner sur HelloAsso"
