@@ -67,7 +67,9 @@ ENV NODE_ENV=production
 # Enable health check
 # HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
 
-COPY --from=builder /app/frontend/ .
+COPY --from=builder /app/frontend/.next/standalone ./.next/standalone
+COPY --from=builder /app/frontend/.next/static ./.next/standalone/frontend/.next/static
+COPY --from=builder /app/frontend/public ./.next/standalone/frontend/public
 
 EXPOSE 3000
 

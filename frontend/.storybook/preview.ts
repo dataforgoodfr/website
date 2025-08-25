@@ -1,8 +1,16 @@
 import type { Preview } from '@storybook/nextjs-vite'
 import '../src/app/[locale]/globals.css'
+import nextIntl from './next-intl'
 
 const preview: Preview = {
+  initialGlobals: {
+    locale: 'fr',
+    locales: {
+      fr: 'Français',
+    },
+  },
   parameters: {
+    nextIntl,
     controls: {
       matchers: {
        color: /(background|color)$/i,

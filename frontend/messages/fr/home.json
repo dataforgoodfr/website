@@ -1,5 +1,32 @@
 {
   "home": {
+    "carousel": {
+      "title": "En construisant des projets concrets,",
+      "1": {
+        "title": "TrawlWatch",
+        "alt": "Océan avec bateau de pêche",
+        "description": "Un outil de surveillance en temps réel des navires de pêche industrielle dans les aires marines protégées",
+        "ctaText": "Voir projet"
+      },
+      "2": {
+        "title": "BioDiversity",
+        "alt": "Forêt et biodiversité",
+        "description": "Protection et préservation de la biodiversité forestière",
+        "ctaText": "Découvrir"
+      },
+      "3": {
+        "title": "GreenEnergy",
+        "alt": "Énergie renouvelable",
+        "description": "Transition vers des sources d'énergie durables et renouvelables",
+        "ctaText": "En savoir plus"
+      },
+      "4": {
+        "title": "MountainGuard",
+        "alt": "Montagnes et environnement",
+        "description": "Surveillance et protection des écosystèmes montagneux",
+        "ctaText": "Explorer"
+      }
+    },
     "results": {
       "title": "Rejoignez le mouvement !",
       "realizedProjects": {
@@ -17,6 +44,9 @@
     },
     "news": {
       "title": "En ce moment !"
+    },
+    "talks": {
+      "title": "et en interrogeant sur nos usages"
     }
   }
 }
