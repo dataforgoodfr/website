@@ -82,13 +82,13 @@
 
   /* Typography */
   .prose h1, .h1-like {
-    @apply text-3xl lg:text-[4.125rem] font-tertiary font-bold;
+    @apply text-3xl lg:text-[4.125rem] font-tertiary font-bold leading-tight;
   }
   .prose h2, .h2-like {
-    @apply text-xl lg:text-[2.5rem] font-tertiary font-bold;
+    @apply text-xl lg:text-[2.5rem] font-tertiary font-bold leading-tight;
   }
   .prose h3, .h3-like {
-    @apply text-lg lg:text-3xl font-tertiary font-bold;
+    @apply text-lg lg:text-3xl font-tertiary font-bold leading-tight;
   }
   .prose h4, .h4-like {
     @apply text-sm font-black uppercase;

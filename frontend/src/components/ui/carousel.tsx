@@ -199,7 +199,7 @@ const CarouselPrevious = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-  const t = useTranslations('ui.carousel')
+  const t = useTranslations('components.ui.carousel')
 
   return (
     <Button
@@ -227,7 +227,7 @@ const CarouselNext = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
-  const t = useTranslations('ui.carousel')
+  const t = useTranslations('components.ui.carousel')
   
   return (
     <Button
