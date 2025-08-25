@@ -3,6 +3,14 @@
     "meta": {
       "title": "Nous connaitre"
     },
-    "title": "Data for Good c'est avant tout une communauté de plus de 7000 personnes qui se rassemblent autour de deux modes d'action :"
+    "title": "Data for Good c'est avant tout une communauté de plus de 7000 personnes qui se rassemblent autour de deux modes d'action :",
+    "edito": {
+      "title": "Des bénévoles partout en France",
+      "content": {
+        "0": "Bordeaux, Nantes, Grenoble, Paris, Pays basques, Lille, Lyon, Provence et Toulouse, les antennes locales sont bien lancées et se développent aussi en Bretagne, Caen, Cherbourg, Chambéry, Montpellier, Nice..",
+        "1": "Rejoignez les canaux #antenne pour rencontrer Data for Good autour de chez vous. "
+      },
+      "ctaText": "Rejoindre l'association"
+    }
   }
 }
