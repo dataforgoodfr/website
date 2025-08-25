@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title } from '@/components';
+import { ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -118,6 +118,11 @@ export default function Homepage() {
         title={t('news.title')}
         blocks={news}
         className='my-lg'
+      />
+      
+      <NewsletterBlock
+        title={t('newsletter.title')}
+        content={t('newsletter.content')}
       />
     </>
   );

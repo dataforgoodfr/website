@@ -42,6 +42,10 @@
         "linkLabel": "Proposer un projet"
       }
     },
+    "newsletter": {
+      "title": "Pourquoi rejoindre la Newsletter ?",
+      "content": "Lis notre charte du bénévole, notre manifeste et notre charte diversité.  Si tu te reconnais dans ces valeurs, bienvenue : clique sur ce lien pour être ajouté à notre outil de discussion interne. Tu n’auras qu’à remplir un petit questionnaire et te présenter à la communauté."
+    },
     "news": {
       "title": "En ce moment !"
     },
