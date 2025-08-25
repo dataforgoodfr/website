@@ -41,6 +41,9 @@
         "title": "association partenaire",
         "linkLabel": "Proposer un projet"
       }
+    },
+    "talks": {
+      "title": "et en interrogeant sur nos usages"
     }
   }
 }
