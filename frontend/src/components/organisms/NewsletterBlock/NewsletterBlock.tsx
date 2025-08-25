@@ -1,6 +1,7 @@
 import { Title } from '@/components/atoms';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 
 export type NewsletterBlockProps = {
@@ -17,6 +18,10 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
   className,
   ...props
 }) => {
+  const t = useTranslations('components.newsletterBlock');
+
+  const componentTitle = title ?? t('title');
+  const componentContent = content ?? t('content');
 
   return (
     <div
@@ -27,13 +32,13 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
       {...props}
     >
       <div className="container flex flex-col md:flex-row gap-md">
-        {title &&<div className="flex items-center gap-sm pt-xs">
+        <div className="flex items-center gap-sm pt-xs">
           <Image src="/images/marty-2.svg" alt="" width={52} height={70} />
-          <Title level={titleLevel} variant="medium" className="max-w-80">{title}</Title>
-        </div>}
+          <Title level={titleLevel} variant="medium" className="max-w-80">{componentTitle}</Title>
+        </div>
 
         <div className="pt-xs flex-1">
-          <p className="mb-md font-secondary font-bold">{content}</p>
+          <p className="mb-md font-secondary font-bold">{componentContent}</p>
           <iframe
             width="540"
             height="305"

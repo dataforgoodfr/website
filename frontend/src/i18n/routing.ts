@@ -1,7 +1,21 @@
 import { defineRouting } from 'next-intl/routing';
+import { Pathnames } from 'next-intl/routing';
+
+const locales = ['fr'] as const;
+
+const pathnames = {
+  "/": "/",
+  "/donations": {
+    fr: "/donner",
+  },
+  "/about": {
+    fr: "/nous-connaitre",
+  },
+} satisfies Pathnames<typeof locales>;
 
 export const routing = defineRouting({
-  locales: ['fr'],
+  locales,
   localePrefix: 'as-needed',
   defaultLocale: 'fr',
+  pathnames,
 });

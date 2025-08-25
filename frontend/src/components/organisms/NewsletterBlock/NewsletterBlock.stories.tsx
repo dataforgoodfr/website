@@ -33,9 +33,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    title: 'Restez informé de nos actualités',
-    titleLevel: 2,
-    content: 'Inscrivez-vous à notre newsletter pour recevoir les dernières nouvelles, événements et opportunités de Data For Good.',
-  },
+  args: {},
 };

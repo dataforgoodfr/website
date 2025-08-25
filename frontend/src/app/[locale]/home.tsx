@@ -120,10 +120,7 @@ export default function Homepage() {
         className='my-lg'
       />
       
-      <NewsletterBlock
-        title={t('newsletter.title')}
-        content={t('newsletter.content')}
-      />
+      <NewsletterBlock />
     </>
   );
 }
