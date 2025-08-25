@@ -42,6 +42,9 @@
         "linkLabel": "Proposer un projet"
       }
     },
+    "news": {
+      "title": "En ce moment !"
+    },
     "talks": {
       "title": "et en interrogeant sur nos usages"
     }
