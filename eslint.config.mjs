@@ -74,6 +74,9 @@ export default [
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
+      // Indentation rules
+      'indent': ['error', 2],
+      'no-mixed-spaces-and-tabs': 'error',
     },
   },
   {
@@ -94,6 +97,9 @@ export default [
     rules: {
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-var-requires': 'error',
+      // TypeScript indentation rules
+      '@typescript-eslint/indent': ['error', 2],
+      'no-mixed-spaces-and-tabs': 'error',
     },
   },
 ];

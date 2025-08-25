@@ -1,0 +1,9 @@
+{
+  "ui": {
+    "carousel": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "progress": "Progression"
+    }
+  }
+}

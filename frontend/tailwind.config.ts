@@ -28,6 +28,10 @@ const config: Config = {
       center: true,
       padding: '1rem',
     },
+    zIndex: {
+      '1': '1',
+      '2': '2',
+    },
   },
   plugins: [
     function ({ addUtilities }: any) {

@@ -1,5 +1,32 @@
 {
   "home": {
+    "carousel": {
+      "title": "En construisant des projets concrets,",
+      "1": {
+        "title": "TrawlWatch",
+        "alt": "Océan avec bateau de pêche",
+        "description": "Un outil de surveillance en temps réel des navires de pêche industrielle dans les aires marines protégées",
+        "ctaText": "Voir projet"
+      },
+      "2": {
+        "title": "BioDiversity",
+        "alt": "Forêt et biodiversité",
+        "description": "Protection et préservation de la biodiversité forestière",
+        "ctaText": "Découvrir"
+      },
+      "3": {
+        "title": "GreenEnergy",
+        "alt": "Énergie renouvelable",
+        "description": "Transition vers des sources d'énergie durables et renouvelables",
+        "ctaText": "En savoir plus"
+      },
+      "4": {
+        "title": "MountainGuard",
+        "alt": "Montagnes et environnement",
+        "description": "Surveillance et protection des écosystèmes montagneux",
+        "ctaText": "Explorer"
+      }
+    },
     "results": {
       "title": "Rejoignez le mouvement !",
       "realizedProjects": {
@@ -18,6 +45,12 @@
     "newsletter": {
       "title": "Pourquoi rejoindre la Newsletter ?",
       "content": "Lis notre charte du bénévole, notre manifeste et notre charte diversité.  Si tu te reconnais dans ces valeurs, bienvenue : clique sur ce lien pour être ajouté à notre outil de discussion interne. Tu n’auras qu’à remplir un petit questionnaire et te présenter à la communauté."
+    },
+    "news": {
+      "title": "En ce moment !"
+    },
+    "talks": {
+      "title": "et en interrogeant sur nos usages"
     }
   }
 }
