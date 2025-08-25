@@ -1,6 +1,7 @@
 import type { MouseEventHandler, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { Button as ButtonUI } from '@/components/ui/button';
 
 type Variant = 'primary' | 'secondary' | 'tertiary';
 type Color = 'black' | 'white' | 'violet';
@@ -119,7 +120,7 @@ const Button: React.FC<ButtonProps> = ({
             </Link>
           )
         : (
-            <button
+            <ButtonUI
               onClick={onClick}
               type={type}
               disabled={disabled}
@@ -129,7 +130,7 @@ const Button: React.FC<ButtonProps> = ({
               <ButtonChildren variant={variant} color={color} hasArrow={hasArrow}>
                 {children}
               </ButtonChildren>
-            </button>
+            </ButtonUI>
           )}
     </>
   );
