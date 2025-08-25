@@ -26,7 +26,27 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     children: 'Bouton Principal',
-    variant: 'primary',
+  },
+};
+
+export const PrimaryWithoutArrow: Story = {
+  args: {
+    children: 'Bouton Principal',
+    hasArrow: false,
+  },
+};
+
+export const PrimaryViolet: Story = {
+  args: {
+    children: 'Bouton Principal',
+    color: 'violet',
+  },
+};
+
+export const PrimaryWhite: Story = {
+  args: {
+    children: 'Bouton Principal',
+    color: 'white',
   },
 };
 
@@ -34,6 +54,22 @@ export const Secondary: Story = {
   args: {
     children: 'Bouton Secondaire',
     variant: 'secondary',
+  },
+};
+
+export const SecondaryViolet: Story = {
+  args: {
+    children: 'Bouton Secondaire',
+    variant: 'secondary',
+    color: 'violet',
+  },
+};
+
+export const SecondaryWhite: Story = {
+  args: {
+    children: 'Bouton Secondaire',
+    variant: 'secondary',
+    color: 'white',
   },
 };
 
@@ -45,18 +81,31 @@ export const WithLink: Story = {
   },
 };
 
-export const WithClickHandler: Story = {
+export const Tertiary: Story = {
   args: {
     children: 'Cliquez-moi',
-    variant: 'primary',
-    // eslint-disable-next-line no-console
-    onClick: () => console.log('Bouton cliqué !'),
+    variant: 'tertiary',
   },
 };
 
-export const LongText: Story = {
+export const TertiaryViolet: Story = {
   args: {
-    children: 'Ceci est un bouton avec un texte très long pour tester l\'affichage',
-    variant: 'primary',
+    children: 'Cliquez-moi',
+    variant: 'tertiary',
+    color: 'violet',
   },
-}; 
+};
+
+export const TertiaryWhite: Story = {
+  args: {
+    children: 'Cliquez-moi',
+    variant: 'tertiary',
+    color: 'white',
+  },
+};
+
+export const WithLongText: Story = {
+  args: {
+    children: 'Bouton avec un texte très long pour tester l\'affichage',
+  },
+};
