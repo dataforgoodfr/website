@@ -1,6 +1,8 @@
 import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 
+export type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
 export type TitleProps = HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
