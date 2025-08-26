@@ -110,7 +110,6 @@ const thematics = [
           colors: 'text-black bg-resistance',
           className:"drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
-          drop: true,
         }
     },
     id: 'social',
@@ -129,7 +128,6 @@ const thematics = [
           colors: 'text-black bg-blue',
           className:"drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
-          drop: true,
         }
     },
     id: 'democracy',
