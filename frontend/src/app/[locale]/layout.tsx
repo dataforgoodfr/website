@@ -1,17 +1,12 @@
 import clsx from 'clsx';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { DM_Mono, DM_Sans } from 'next/font/google';
+import { DM_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Footer from './_partials/footer';
 import Header from './_partials/header';
 import './globals.css';
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-primary',
-});
 
 const dmMono = DM_Mono({
   subsets: ['latin'],
@@ -74,7 +69,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={clsx([dmSans.variable, dmMono.variable, 'min-h-screen flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
+        className={clsx([dmMono.variable, 'min-h-screen flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
       >
         <NextIntlClientProvider>
           <Header />
