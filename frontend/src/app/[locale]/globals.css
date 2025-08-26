@@ -116,7 +116,21 @@
     @apply text-lg lg:text-3xl font-tertiary font-bold leading-tight;
   }
   .prose h4, .h4-like {
-    @apply text-sm font-black uppercase;
+    @apply text-sm font-black uppercase tracking-widest;
+  }
+
+  /* Components */
+  .shadow-link {
+    @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base;
+  }
+  .shadow-link > * {
+    @apply relative z-1;
+  }
+  .shadow-link--building {
+    @apply before:bg-building;
+  }
+  .shadow-link--black {
+    @apply before:bg-black;
   }
 
   .prose p {

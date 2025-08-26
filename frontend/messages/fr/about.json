@@ -5,6 +5,31 @@
       "description": ""
     },
     "title": "Data for Good c'est avant tout une communauté de plus de 7000 personnes qui se rassemblent autour de deux modes d'action :",
+    "partners": {
+      "title": "Ils nous soutiennent",
+      "partners": [
+        {
+          "name": "Fondation de France",
+          "image": "/images/partners/fondation-de-france.webp",
+          "link": "https://www.fondationdefrance.org/fr/"
+        },
+        {
+          "name": "Fondation pour un monde meilleur",
+          "image": "/images/partners/fpmm.png",
+          "link": "https://fpmm.eu/"
+        },
+        {
+          "name": "Entreprendre et plus",
+          "image": "/images/partners/ie.png",
+          "link": "https://www.entreprendreetplus.org/"
+        },
+        {
+          "name": "Institut permanumérique",
+          "image": "/images/partners/institut-du-permanumerique.jpg",
+          "link": "https://www.linkedin.com/showcase/institut-du-permanumerique/about/"
+        }
+      ]
+    },
     "edito": {
       "title": "Des bénévoles partout en France",
       "content": {
