@@ -19,6 +19,56 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -36,33 +86,8 @@
     --c-alive-light: 68 78% 84%;
 
     /* Font variables */
+    --font-primary: 'DMSans', system-ui, sans-serif;
     --font-tertiary: 'TCJimmySansPro', system-ui, sans-serif;
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
   }
 }
 
@@ -106,5 +131,43 @@
   }
   .shadow-link--black {
     @apply before:bg-black;
+  }
+
+  .prose p {
+    @apply mb-xs;
+  }
+
+  .prose a {
+    @apply underline text-building;
+  }
+  .prose a:hover {
+    @apply no-underline;
+  }
+  .prose em {
+    @apply italic;
+  }
+  .prose strong {
+    @apply font-bold;
+  }
+  .prose h2 {
+    @apply mt-md mb-sm;
+  }
+  .prose :has(h2, h3, h4, h5, h6):first-child {
+    @apply mt-0;
+  }
+  .prose :has(h3, h4, h5, h6) {
+    @apply mt-sm mb-xs;
+  }
+  .prose ul {
+    @apply list-disc mt-sm;
+  }
+  .prose ol {
+    @apply list-decimal mt-sm;
+  }
+  .prose li {
+    @apply mb-xs list-outside;
+  }
+  .prose li li {
+    @apply ml-4;
   }
 }
