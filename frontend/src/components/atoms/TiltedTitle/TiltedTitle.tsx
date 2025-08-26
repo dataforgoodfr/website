@@ -4,32 +4,26 @@ import Title from '../Title/Title'
 export type TiltedTitleProps = {
   children: React.ReactNode;
   variant?: 'big' | 'medium' | 'small' | 'x-small';
-  bgColor: string;
-  color?: string;
-  drop?: boolean;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   rotation?: number;
   className?: string;
+  colors: string;
 };
 
 const TiltedTitle: React.FC<TiltedTitleProps> = ({
   children,
   variant = "small",
-  color = 'black',
-  bgColor,
-  drop, 
+  level = 1,
   rotation = 0,
   className,
+  colors="text-white bg-building" 
 }) => {
   return (
-    <Title className="min-w-max" variant={variant}>
-      <div
-        className={clsx('relative inline-flex p-2',
-          drop ? `before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:bg-black` : ``,
-          `text-${color} bg-${bgColor}`,
-          // `transform rotate-[${rotation}deg]`, 
-          `transform rotate-[${rotation}deg]`, 
+    <Title className={clsx('min-w-max relative inline-flex',
           className,
-        )}>
+        )} style={{"transform": `rotate(${rotation}deg`}} variant={variant} level={level}>
+      <div className={clsx(colors, "relative p-2")}
+        >
         {children}
       </div>
     </Title>

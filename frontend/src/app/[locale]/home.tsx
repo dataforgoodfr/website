@@ -89,12 +89,13 @@ const thematics = [
     title: { 
         children: "Climat et biodiversité",
         props: {
-          color: 'black',
-          bgColor: 'alive',
+          colors: 'text-black bg-alive',
+          className:"drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
           drop: true,
         }
     },
+    id: 'climate',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     image: '/images/thematics-climate.svg',
     imageWidth: 301,
@@ -106,12 +107,13 @@ const thematics = [
     title: { 
         children: "justice sociale",
         props: {
-          color: 'black',
-          bgColor: 'resistance',
+          colors: 'text-black bg-resistance',
+          className:"drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
           drop: true,
         }
     },
+    id: 'social',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     talkOffset: 10,
     image: '/images/thematics-social.png',
@@ -124,12 +126,13 @@ const thematics = [
     title: { 
         children: "Démocratie",
         props: {
-          color: 'black',
-          bgColor: 'blue',
+          colors: 'text-black bg-blue',
+          className:"drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
           drop: true,
         }
     },
+    id: 'democracy',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     talkOffset: 10,
     image: '/images/thematics-democracy.svg',

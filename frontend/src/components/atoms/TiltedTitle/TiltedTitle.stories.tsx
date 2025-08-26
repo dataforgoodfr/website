@@ -9,12 +9,6 @@ const meta: Meta<typeof TiltedTitle> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    color: {
-      control: 'text'
-    },
-    bgColor: {
-      control: 'text'
-    },
     children: {
       control: 'text',
     },
@@ -26,40 +20,73 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    color: 'white',
-    bgColor: 'building',
     children: 'White title',
     rotation: -2.58,
-    drop: true,
+    colors: 'text-white bg-building'
   },
 };
 
-export const Resistance: Story = {
+export const ResistanceWithRotation: Story = {
   args: {
-    bgColor: 'resistance',
     children: 'Black title',
-    rotation: -2.58
+    rotation: -20,
+    colors: 'text-black bg-resistance'
   },
 };
 
-export const NoRotation: Story = {
+export const BlueSmallRotation: Story = {
   args: {
-    bgColor: 'resistance',
+    children: 'Blue small rotation',
+    rotation: -2.58,
+    colors: 'text-black bg-blue',
+  },
+};
+
+export const BlueSmallRotationWithDrop: Story = {
+  args: {
+    children: 'Blue small rotation with drop',
+    rotation: -2.58,
+    colors: 'text-black bg-blue',
+    className: "drop-shadow-1 drop-shadow-black before:-z-1"
+  },
+};
+
+export const BlueSmallRotationWithImportantDrop: Story = {
+  args: {
+    children: 'Blue small rotation with important drop',
+    rotation: -2.58,
+    colors: 'text-black bg-blue',
+    className: 'drop-shadow-3 drop-shadow-black before:-z-1'
+  },
+};
+
+export const BuildingNoRotation: Story = {
+  args: {
     children: 'No rotation',
-    rotation: 0
+    rotation: 0, 
+    colors: 'text-white bg-building'
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="space-y-4">
-      <TiltedTitle color="white" bgColor="building" rotation={-2.58} drop={true}>
+    <div className="space-y-5 space-x-5">
+      <TiltedTitle rotation={-2.58} colors='text-white bg-building'>
         White title
       </TiltedTitle>
-      <TiltedTitle color="black" bgColor="resistance" rotation={-2.58}>
+      <TiltedTitle rotation={-20} colors='text-black bg-resistance'>
         Black title
       </TiltedTitle>
-      <TiltedTitle color="black" bgColor="resistance" rotation={0}>
+      <TiltedTitle rotation={-2.58} colors='text-black bg-blue'>
+        Blue small rotation
+      </TiltedTitle>
+      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-1 drop-shadow-black before:-z-1"> 
+        Blue small rotation with drop
+      </TiltedTitle>
+      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-3 drop-shadow-black before:-z-1">
+        Blue small rotation with important drop
+      </TiltedTitle>
+      <TiltedTitle rotation={0} colors='text-white bg-building'>
         No rotation
       </TiltedTitle>
     </div>

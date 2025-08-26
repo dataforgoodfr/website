@@ -10,22 +10,19 @@ const meta: Meta<typeof ThematicsCard> = {
   tags: ['autodocs'],
   argTypes: {
     title: {
-        children: {
-            control: {type: 'text'}
+      children: {
+          control: {type: 'text'}
+      },
+      props: {
+        colors: {
+          control: { type: 'text' },
         },
-        props: {
-            bgColor: {
-      control: { type: 'text' },
-    },
-      color: {
-            control: { type: 'text' },
-          },
-      drop: {
-            control: { type: 'text' },
-          },
-      rotation: {
-            control: { type: 'text' },
-          }
+        className: {
+          control: { type: 'text' },
+        },
+        rotation: {
+          control: { type: 'text' },
+        }
     }
     },
     image: {
@@ -48,10 +45,9 @@ export const Default: Story = {
     title: { 
         children: "Climat et biodiversité",
         props: {
-          color: 'white',
-          bgColor: 'building',
+          colors: 'text-white bg-building',
+          className: 'drop-shadow-1 drop-shadow-black before:-z-1',
           rotation: -2.58,
-          drop: true,
         }
     },
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
@@ -66,10 +62,27 @@ export const WithCTA: Story = {
     title: { 
         children: "justice sociale",
         props: {
-            color: 'white',
-            bgColor: 'building',
-            rotation: -2.58,
-            drop: true,
+          colors: 'text-black bg-resistance',
+          className: 'drop-shadow-3 drop-shadow-black before:-z-1',
+          rotation: -2.58,
+        }
+    },
+    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+    image: 'https://picsum.photos/500/500?random=1',
+    imageWidth: 300,
+    imageHeight: 300,
+    ctaText: 'Voir les projets',
+    ctaLink: '/presentations/impact-donnees',
+  },
+};
+
+export const WithCTAWithoutDropTitle: Story = {
+  args: {
+    title: { 
+        children: "un titre long pour dépasser de l'image",
+        props: {
+          colors: 'text-black bg-resistance',
+          rotation: -2.58,
         }
     },
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',

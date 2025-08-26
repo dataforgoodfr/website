@@ -130,6 +130,16 @@ const config: Config = {
         '.transition-base-colors': {
           '@apply transition-colors ease-in-out duration-200': {},
         },
+        /* Drop shadow */
+        '.drop-shadow-black': {
+          '@apply before:bg-black': {},
+        },
+        '.drop-shadow-1': {
+          '@apply before:absolute before:content-[""] before:w-full before:h-full before:top-1 before:left-1 before:bg-black': {},
+        },
+        '.drop-shadow-3': {
+          '@apply before:absolute before:content-[""] before:w-full before:h-full before:top-3 before:left-3 before:bg-black': {},
+        },
       };
       addUtilities(newUtilities);
     },

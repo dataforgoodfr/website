@@ -47,14 +47,7 @@ const ResultsCard: React.FC<ThematicsProps> = ({
               className="max-w-80"
             >
                 <ThematicsCard 
-                    title={thematic.title} 
-                    talk={thematic.talk} 
-                    talkOffset={thematic.talkOffset}
-                    image={thematic.image} 
-                    imageWidth={thematic.imageWidth} 
-                    imageHeight={thematic.imageHeight} 
-                    ctaText={thematic.ctaText} 
-                    ctaLink={thematic.ctaLink}
+                    {...thematic}
                 />
             </li>
           ))}

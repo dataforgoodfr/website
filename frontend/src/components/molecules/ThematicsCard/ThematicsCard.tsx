@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Button, TiltedTitle, TiltedTitleProps } from '@/components';
 
 export type ThematicsCardProps = {
+  id: string;
   title: {
     children: React.ReactNode,
     props: Omit<TiltedTitleProps, "children">
@@ -18,6 +19,7 @@ export type ThematicsCardProps = {
 };
 
 const ThematicsCard: React.FC<ThematicsCardProps> = ({
+  id,
   title,
   talk,
   talkOffset = 0,
