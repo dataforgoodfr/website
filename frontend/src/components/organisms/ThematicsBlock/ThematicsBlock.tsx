@@ -46,9 +46,9 @@ const ResultsCard: React.FC<ThematicsProps> = ({
               key={index}
               className="max-w-80"
             >
-                <ThematicsCard 
-                    {...thematic}
-                />
+              <ThematicsCard
+                {...thematic}
+              />
             </li>
           ))}
         </ul>
