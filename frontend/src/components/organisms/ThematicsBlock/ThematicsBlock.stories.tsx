@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import ThematicsBlock from './ThematicsBlock';
+import { ThematicsCardProps } from '@/components/molecules';
 
 const meta: Meta<typeof ThematicsBlock> = {
   title: 'Organisms/ThematicsBlock',
@@ -32,7 +33,7 @@ const meta: Meta<typeof ThematicsBlock> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const defaultThematicsCards = [
+const defaultThematicsCards: ThematicsCardProps[] = [
   {
     title: {
       children: "Climat et biodiversité",
@@ -40,7 +41,6 @@ const defaultThematicsCards = [
         colors: 'text-black bg-alive',
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
-        drop: true,
       }
     },
     id: 'climate',
@@ -58,7 +58,6 @@ const defaultThematicsCards = [
         colors: 'text-black bg-resistance',
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
-        drop: true,
       }
     },
     id: 'social',
@@ -77,7 +76,6 @@ const defaultThematicsCards = [
         colors: 'text-black bg-blue',
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
-        drop: true,
       }
     },
     id: 'democracy',
