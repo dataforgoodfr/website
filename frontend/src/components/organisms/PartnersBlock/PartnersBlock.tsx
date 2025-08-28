@@ -1,11 +1,11 @@
-import { Title, TitleLevel } from '@/components/atoms';
+import { Title, TitleProps } from '@/components';
 import { PartnerCard, PartnerCardProps } from '@/components/molecules';
 import Image from 'next/image';
 import clsx from 'clsx';
 
 export type PartnersBlockProps = {
   title?: string;
-  titleLevel?: TitleLevel;
+  titleLevel?: TitleProps['level'];
   partners: PartnerCardProps[];
   className?: string;
 };
@@ -35,7 +35,7 @@ const PartnersBlock: React.FC<PartnersBlockProps> = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {partners.map((partner, index) => (
-          <PartnerCard key={index} titleLevel={titleLevel + 1 as TitleLevel} {...partner} />
+          <PartnerCard key={index} titleLevel={titleLevel + 1 as TitleProps['level']} {...partner} />
         ))}
       </div>
     </div>

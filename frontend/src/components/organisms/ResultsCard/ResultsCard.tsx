@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Confetti from 'react-confetti';
-import { Button, Title } from '@/components/atoms';
+import { Button, Title, TitleProps } from '@/components';
 
 export type ResultsCardProps = {
   title: string;
-  titleLevel?: 1 | 2 | 3;
+  titleLevel?: TitleProps['level'];
   results: {
     id: string;
     text: string;

@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Button, Title } from '@/components';
+import { Button, Title, TitleProps } from '@/components';
 
 export type EditoCardProps = {
   title: string;
-  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  titleVariant?: 'medium' | 'big' | 'small' | 'x-small';
+  titleLevel?: TitleProps['level'];
+  titleVariant?: TitleProps['variant'];
   titleClassName?: string;
   content: React.ReactNode;
   contentClassName?: string;

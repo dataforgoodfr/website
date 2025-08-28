@@ -1,6 +1,8 @@
 export { default as EditoCard } from './EditoCard/EditoCard';
 export type { EditoCardProps } from './EditoCard/EditoCard';
 export { default as ImagesCarousel } from './ImagesCarousel/ImagesCarousel';
+export { default as LargeTextImage } from './LargeTextImage/LargeTextImage';
+export type { LargeTextImageProps } from './LargeTextImage/LargeTextImage';
 export { default as NewsSmallCard } from './NewsSmallCard/NewsSmallCard';
 export type { NewsSmallCardProps } from './NewsSmallCard/NewsSmallCard';
 export { default as PartnerCard } from './PartnerCard/PartnerCard';

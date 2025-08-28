@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Title, TitleLevel } from '@/components/atoms';
-
+import { Title, TitleProps } from '@/components';
 
 export type PartnerCardProps = {
   name: string;
-  titleLevel?: TitleLevel;
+  titleLevel?: TitleProps['level'];
   description?: string;
   image: string;
   link: string;

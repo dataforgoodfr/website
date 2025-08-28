@@ -1,10 +1,10 @@
-import { Title } from '@/components/atoms';
+import { Title, TitleProps } from '@/components';
 import { TalkCard } from '@/components/molecules';
 import clsx from 'clsx';
 
 export type TalksBlockProps = {
   title?: string;
-  titleLevel?: 1 | 2 | 3;
+  titleLevel?: TitleProps['level'];
   talks: {
     author: string;
     talk: string;

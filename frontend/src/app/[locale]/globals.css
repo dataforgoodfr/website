@@ -79,11 +79,11 @@
   :root {
     --c-dark: 0 0 0;
     --c-light: 0 0 100%;
-    --c-blue: 187 67% 53%;
-    --c-alive: 67 72% 56%;
-    --c-resistance: 37 98% 53%;
-    --c-building: 266 84% 61%;
-    --c-alive-light: 68 78% 84%;
+    --c-blue: 187 67% 53%; /* blue */
+    --c-alive: 67 72% 56%; /* green */
+    --c-resistance: 37 98% 53%; /* orange */
+    --c-building: 266 84% 61%; /* purple */
+    --c-alive-light: 68 78% 84%; /* light green */
 
     /* Font variables */
     --font-primary: 'DMSans', system-ui, sans-serif;
