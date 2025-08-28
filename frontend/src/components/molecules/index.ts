@@ -9,3 +9,5 @@ export { default as PartnerCard } from './PartnerCard/PartnerCard';
 export type { PartnerCardProps } from './PartnerCard/PartnerCard';
 export { default as TalkCard } from './TalkCard/TalkCard';
 export type { TalkCardProps } from './TalkCard/TalkCard';
+export { default as ThematicsCard } from './ThematicsCard/ThematicsCard';
+export type { ThematicsCardProps } from './ThematicsCard/ThematicsCard';
