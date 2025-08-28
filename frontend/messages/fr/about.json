@@ -37,6 +37,11 @@
         "1": "Rejoignez les canaux #antenne pour rencontrer Data for Good autour de chez vous. "
       },
       "ctaText": "Rejoindre l'association"
+    },
+    "joinus": {
+      "title": "Déjà 10 303",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nec risus at porttitor. ",
+      "ctaText": "Être volontaire"
     }
   }
 }

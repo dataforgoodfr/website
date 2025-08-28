@@ -8,7 +8,7 @@ export { default as TiltedTitle} from './TiltedTitle/TiltedTitle';
 export type { TiltedTitleProps } from './TiltedTitle/TiltedTitle'
 
 export { default as Title } from './Title/Title';
-export type { TitleProps, TitleLevel } from './Title/Title';
+export type { TitleProps } from './Title/Title';
 
 export { default as Tag } from './Tag/Tag';
 export type { TagProps } from './Tag/Tag';

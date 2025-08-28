@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, Title } from '@/components';
+import { Button, Title, TitleProps } from '@/components';
 
 export type ImagesCarouselProps = {
   images: Array<{
@@ -22,7 +22,7 @@ export type ImagesCarouselProps = {
     ctaText?: string;
     ctaHref?: string;
   }>;
-  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  titleLevel?: TitleProps['level'];
   className?: string;
 };
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { EditoCard, NewsletterBlock, PartnersBlock, Title } from '@/components';
+import { EditoCard, LargeTextImage, NewsletterBlock, PartnersBlock, Title } from '@/components';
 
 export default function AboutPage() {
   const t = useTranslations('about');
@@ -36,12 +36,6 @@ export default function AboutPage() {
           {t('title')}
         </Title>
       </div>
-      
-      <PartnersBlock 
-        title={t('partners.title')} 
-        partners={partners} 
-        className="my-lg"
-      />
 
       <EditoCard
         title={t('edito.title')}
@@ -52,6 +46,21 @@ export default function AboutPage() {
         image="/images/pages/carte-benevoles.png"
         ctaText={t('edito.ctaText')}
         ctaLink="/volunteer"
+        className="my-lg"
+      />
+
+      <LargeTextImage
+        title={t('joinus.title')}
+        content={t('joinus.content')}
+        image="/images/pages/carte-benevoles.png"
+        ctaText={t('edito.ctaText')}
+        ctaLink="/volunteer"
+        className="my-lg"
+      />
+      
+      <PartnersBlock 
+        title={t('partners.title')} 
+        partners={partners} 
         className="my-lg"
       />
 

@@ -1,11 +1,11 @@
 import { NewsSmallCard, NewsSmallCardProps } from '@/components/molecules';
-import { Title } from '@/components/atoms';
+import { Title, TitleProps } from '@/components';
 import clsx from 'clsx';
 
 
 export type NewsSmallBlockProps = {
   title: string;
-  titleLevel?: 1 | 2 | 3;
+  titleLevel?: TitleProps['level'];
   blocks: NewsSmallCardProps[];
   className?: string;
 };
