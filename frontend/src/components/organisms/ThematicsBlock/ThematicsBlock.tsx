@@ -4,7 +4,7 @@ import ThematicsCard, { ThematicsCardProps } from '@/components/molecules/Themat
 
 export type ThematicsProps = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   titleLevel?: 1 | 2 | 3;
   subtitleLevel?: 1 | 2 | 3;
   thematics: ThematicsCardProps[];
@@ -36,9 +36,9 @@ const ResultsCard: React.FC<ThematicsProps> = ({
         <Title className="mb-xs text-left font-tertiary font-normal" level={titleLevel} variant="medium">
           {title}
         </Title>
-        <p className="mb-sm text-left font-secondary font-medium">
+        {subtitle && <p className="mb-sm text-left font-secondary font-medium">
           {subtitle}
-        </p>
+        </p>}
 
         <ul className="flex flex-wrap justify-between gap-xs mt-md">
           {thematics.map((thematic, index) => (
