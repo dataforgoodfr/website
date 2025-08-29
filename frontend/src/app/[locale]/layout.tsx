@@ -69,7 +69,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={clsx([dmMono.variable, 'min-h-screen flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
+        className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
       >
         <NextIntlClientProvider>
           <Header />

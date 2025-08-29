@@ -1,3 +1,5 @@
+export { default as CtaWithImage } from './CtaWithImage/CtaWithImage';
+export type { CtaWithImageProps } from './CtaWithImage/CtaWithImage';
 export { default as EditoCard } from './EditoCard/EditoCard';
 export type { EditoCardProps } from './EditoCard/EditoCard';
 export { default as ImagesCarousel } from './ImagesCarousel/ImagesCarousel';
