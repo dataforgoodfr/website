@@ -57,6 +57,9 @@
       "title": "Déjà 10 303",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nec risus at porttitor. ",
       "ctaText": "Être volontaire"
+    },
+    "members": {
+      "title": "L’équipe"
     }
   }
 }

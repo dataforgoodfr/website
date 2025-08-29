@@ -1,3 +1,6 @@
+export { default as MembersBlock } from './MembersBlock/MembersBlock';
+export type { MembersBlockProps } from './MembersBlock/MembersBlock';
+
 export { default as NewsSmallBlock } from './NewsSmallBlock/NewsSMallBlock';
 export type { NewsSmallBlockProps } from './NewsSmallBlock/NewsSMallBlock';
 
