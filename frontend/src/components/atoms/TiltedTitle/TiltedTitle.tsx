@@ -16,14 +16,13 @@ const TiltedTitle: React.FC<TiltedTitleProps> = ({
   level = 1,
   rotation = 0,
   className,
-  colors="text-white bg-building" 
+  colors = "text-white bg-building"
 }) => {
   return (
     <Title className={clsx('min-w-max relative inline-flex',
-          className,
-        )} style={{"transform": `rotate(${rotation}deg`}} variant={variant} level={level}>
-      <span className={clsx(colors, "relative p-2")}
-        >
+      className,
+    )} style={{"transform": `rotate(${rotation}deg`}} variant={variant} level={level}>
+      <span className={clsx(colors, "relative p-2")}>
         {children}
       </span>
     </Title>

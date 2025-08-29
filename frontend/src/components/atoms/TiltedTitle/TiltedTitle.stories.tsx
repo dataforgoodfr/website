@@ -63,7 +63,7 @@ export const BlueSmallRotationWithImportantDrop: Story = {
 export const BuildingNoRotation: Story = {
   args: {
     children: 'No rotation',
-    rotation: 0, 
+    rotation: 0,
     colors: 'text-white bg-building'
   },
 };
@@ -80,7 +80,7 @@ export const AllVariants: Story = {
       <TiltedTitle rotation={-2.58} colors='text-black bg-blue'>
         Blue small rotation
       </TiltedTitle>
-      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-1 drop-shadow-black before:-z-1"> 
+      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-1 drop-shadow-black before:-z-1">
         Blue small rotation with drop
       </TiltedTitle>
       <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-3 drop-shadow-black before:-z-1">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -16,8 +16,8 @@ export default function Homepage() {
       id: 1,
       src: '/temp-images/carousel-1.jpg',
       ctaHref: '/projets/trawlwatch',
-  },
-  {
+    },
+    {
       id: 2,
       src: '/temp-images/carousel-1.jpg',
       ctaHref: '/projets/biodiversity',
@@ -61,7 +61,7 @@ export default function Homepage() {
       date: '15 DÉC 2024',
     },
   ];
-  
+
   const talks = [
     {
       author: 'Sophie Bernard',
@@ -84,62 +84,61 @@ export default function Homepage() {
     },
   ];
 
-const thematics = [
-  {
-    title: { 
+  const thematics: ThematicsCardProps[] = [
+    {
+      title: {
         children: "Climat et biodiversité",
         props: {
           colors: 'text-black bg-alive',
-          className:"drop-shadow-3 drop-shadow-black before:-z-1",
+          className: "drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
-          drop: true,
         }
+      },
+      id: 'climate',
+      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+      image: '/images/thematics-climate.svg',
+      imageWidth: 301,
+      imageHeight: 401,
+      ctaText: "Voir les projets",
+      ctaLink: "/projets",
     },
-    id: 'climate',
-    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-    image: '/images/thematics-climate.svg',
-    imageWidth: 301,
-    imageHeight: 401,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
-  },
-  {
-    title: { 
+    {
+      title: {
         children: "justice sociale",
         props: {
           colors: 'text-black bg-resistance',
-          className:"drop-shadow-3 drop-shadow-black before:-z-1",
+          className: "drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
         }
+      },
+      id: 'social',
+      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+      talkOffset: 10,
+      image: '/images/thematics-social.png',
+      imageWidth: 264,
+      imageHeight: 332,
+      ctaText: "Voir les projets",
+      ctaLink: "/projets",
     },
-    id: 'social',
-    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-    talkOffset: 10,
-    image: '/images/thematics-social.png',
-    imageWidth: 264,
-    imageHeight: 332,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
-  },
-  {
-    title: { 
+    {
+      title: {
         children: "Démocratie",
         props: {
           colors: 'text-black bg-blue',
-          className:"drop-shadow-3 drop-shadow-black before:-z-1",
+          className: "drop-shadow-3 drop-shadow-black before:-z-1",
           rotation: -2.58,
         }
+      },
+      id: 'democracy',
+      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
+      talkOffset: 10,
+      image: '/images/thematics-democracy.svg',
+      imageWidth: 251,
+      imageHeight: 318,
+      ctaText: "Voir les projets",
+      ctaLink: "/projets",
     },
-    id: 'democracy',
-    talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-    talkOffset: 10,
-    image: '/images/thematics-democracy.svg',
-    imageWidth: 251,
-    imageHeight: 318,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
-  },
-]
+  ]
 
   return (
     <>
@@ -149,12 +148,12 @@ const thematics = [
         </Title>
       </div>
       <ImagesCarousel className="mb-lg" images={carouselImages.map(image => ({
-          ...image,
-          title: t(`carousel.${image.id}.title`),
-          alt: t(`carousel.${image.id}.alt`),
-          description: t(`carousel.${image.id}.description`),
-          ctaText: t(`carousel.${image.id}.ctaText`),
-        }))} />
+        ...image,
+        title: t(`carousel.${image.id}.title`),
+        alt: t(`carousel.${image.id}.alt`),
+        description: t(`carousel.${image.id}.description`),
+        ctaText: t(`carousel.${image.id}.ctaText`),
+      }))} />
 
       <TalksBlock
         title={t('talks.title')}
@@ -164,7 +163,7 @@ const thematics = [
         title={t('thematics.title')}
         subtitle={t('thematics.subtitle')}
         thematics={thematics}
-        />
+      />
       <ResultsCard
         title={t('results.title')}
         className="my-lg"
@@ -180,7 +179,7 @@ const thematics = [
         blocks={news}
         className='my-lg'
       />
-      
+
       <NewsletterBlock />
     </>
   );
