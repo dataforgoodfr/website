@@ -119,20 +119,6 @@
     @apply text-sm font-black uppercase tracking-widest;
   }
 
-  /* Components */
-  .shadow-link {
-    @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base;
-  }
-  .shadow-link > * {
-    @apply relative z-1;
-  }
-  .shadow-link--building {
-    @apply before:bg-building;
-  }
-  .shadow-link--black {
-    @apply before:bg-black;
-  }
-
   .prose p {
     @apply mb-xs;
   }
@@ -169,5 +155,23 @@
   }
   .prose li li {
     @apply ml-4;
+  }
+
+
+  /* Components */
+  .shadow-link {
+    @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:transition-base;
+  }
+  a.shadow-link, button.shadow-link {
+    @apply hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:bg-building;
+  }
+  .shadow-link > * {
+    @apply relative z-1;
+  }
+  .shadow-link--building {
+    @apply before:bg-building;
+  }
+  .shadow-link--black {
+    @apply before:bg-black;
   }
 }

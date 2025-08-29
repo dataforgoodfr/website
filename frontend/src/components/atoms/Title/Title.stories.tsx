@@ -56,12 +56,12 @@ export const H4XSmall: Story = {
   },
 };
 
-export const WithCustomClass: Story = {
+export const WithSeparator: Story = {
   args: {
     level: 2,
     variant: 'medium',
-    children: 'Titre avec classe personnalisée',
-    className: 'text-blue-600 underline',
+    children: 'Titre avec séparateur',
+    hasSeparator: true,
   },
 };
 

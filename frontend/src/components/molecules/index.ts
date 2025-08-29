@@ -1,3 +1,5 @@
+export { default as CtaWithImage } from './CtaWithImage/CtaWithImage';
+export type { CtaWithImageProps } from './CtaWithImage/CtaWithImage';
 export { default as EditoCard } from './EditoCard/EditoCard';
 export type { EditoCardProps } from './EditoCard/EditoCard';
 export { default as ImagesCarousel } from './ImagesCarousel/ImagesCarousel';
@@ -11,3 +13,5 @@ export { default as TalkCard } from './TalkCard/TalkCard';
 export type { TalkCardProps } from './TalkCard/TalkCard';
 export { default as ThematicsCard } from './ThematicsCard/ThematicsCard';
 export type { ThematicsCardProps } from './ThematicsCard/ThematicsCard';
+export { default as TestimoniesCarousel } from './TestimoniesCarousel/TestimoniesCarousel';
+export type { TestimoniesCarouselProps } from './TestimoniesCarousel/TestimoniesCarousel';

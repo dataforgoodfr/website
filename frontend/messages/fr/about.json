@@ -5,6 +5,21 @@
       "description": ""
     },
     "title": "Data for Good c'est avant tout une communauté de plus de 7000 personnes qui se rassemblent autour de deux modes d'action :",
+    "presentation": [
+      {
+        "title": "Batir",
+        "content": "faire des projets: concrets, main dans la main avec des ONG de terrain.",
+        "cta": "Nos projets"
+      },
+      {
+        "title": "Playdoyer",
+        "content": "lutter pour un numérique d'intérêt général Contre une vision hégémonique de la tech.",
+        "cta": "Nos positions"
+      }
+    ],
+    "testimonies": {
+      "title": "On parle de nous!"
+    },
     "partners": {
       "title": "Ils nous soutiennent",
       "partners": [

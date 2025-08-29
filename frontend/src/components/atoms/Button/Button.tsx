@@ -1,4 +1,4 @@
-import type { MouseEventHandler, PropsWithChildren } from 'react';
+import type { HTMLAttributes, MouseEventHandler, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Button as ButtonUI } from '@/components/ui/button';
@@ -12,7 +12,7 @@ type ButtonChildrenProps = {
   hasArrow: boolean;
 } & PropsWithChildren;
 
-export type ButtonProps = {
+export type ButtonProps = HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> & {
   href?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
