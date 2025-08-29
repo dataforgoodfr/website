@@ -1,5 +1,9 @@
 {
   "home": {
+    "hero": {
+      "title": "Bâtir",
+      "subtitle": "Un contre-pouvoir tech citoyen"
+    },
     "carousel": {
       "title": "En construisant des projets concrets,",
       "1": {
@@ -49,8 +53,7 @@
       "title": "et en interrogeant sur nos usages"
     },
     "thematics": {
-      "title": "Trois thèmes",
-      "subtitle": "Le tout, sur trois grandes thématiques:"
+      "title": "Sur trois grandes thématiques"
     }
   }
 }

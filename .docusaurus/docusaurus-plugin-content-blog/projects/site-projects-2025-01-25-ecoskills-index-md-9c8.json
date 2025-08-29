@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/ecoskills",
+  "source": "@site/projects/2025-01-25-ecoskills/index.md",
+  "title": "Ecoskills : un agent conversationnel pour la transition écologique",
+  "description": "Un agent conversationnel intelligent pour accompagner les agents publics dans l'adaptation de leurs pratiques professionnelles aux enjeux écologiques.",
+  "date": "2025-01-25T00:00:00.000Z",
+  "formattedDate": "January 25, 2025",
+  "tags": [
+    {
+      "label": "Saison 13",
+      "permalink": "/projects/tags/saison-13"
+    }
+  ],
+  "readingTime": 3.18,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Éclaireur Public",
+    "permalink": "/projects/eclaireurpublic"
+  },
+  "nextItem": {
+    "title": "L’empreinte souffrance des produits d’origine animale",
+    "permalink": "/projects/empreintesouffrance"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/recofish",
+  "source": "@site/projects/2023-03-25-recofish/index.md",
+  "title": "Recofish",
+  "description": "Reconnaître les espèces de poissons pour sensibiliser à la biodiversité marine et inciter à une consommation plus responsable 🐟",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    },
+    {
+      "label": "Biodiversité",
+      "permalink": "/projects/tags/biodiversite"
+    },
+    {
+      "label": "Poissons",
+      "permalink": "/projects/tags/poissons"
+    }
+  ],
+  "readingTime": 0.89,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Open Food Facts",
+    "permalink": "/projects/openfoodfacts"
+  },
+  "nextItem": {
+    "title": "The Shift Data Portal",
+    "permalink": "/projects/shiftdataportal"
+  }
+}

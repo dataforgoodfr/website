@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/newbed",
+  "source": "@site/projects/2017-09-01-newbed/index.md",
+  "title": "NewBed",
+  "description": "",
+  "date": "2017-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2017",
+  "tags": [
+    {
+      "label": "Saison 2",
+      "permalink": "/projects/tags/saison-2"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Ministère de l'éducation nationale",
+    "permalink": "/projects/ministeredeleducationnationale"
+  },
+  "nextItem": {
+    "title": "Search Research",
+    "permalink": "/projects/searchresearch"
+  }
+}

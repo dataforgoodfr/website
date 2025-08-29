@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/isara",
+  "source": "@site/projects/2018-03-01-isara/index.md",
+  "title": "Isara",
+  "description": "Deep learning pour la langue des signes.",
+  "date": "2018-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2018",
+  "tags": [
+    {
+      "label": "Saison 3",
+      "permalink": "/projects/tags/saison-3"
+    },
+    {
+      "label": "Accessibilité",
+      "permalink": "/projects/tags/accessibilite"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Data4Tunisia",
+    "permalink": "/projects/datafortunisia"
+  },
+  "nextItem": {
+    "title": "Make.org",
+    "permalink": "/projects/makeorg"
+  }
+}

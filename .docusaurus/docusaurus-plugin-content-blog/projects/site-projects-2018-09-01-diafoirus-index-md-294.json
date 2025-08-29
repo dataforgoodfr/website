@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/diafoirus",
+  "source": "@site/projects/2018-09-01-diafoirus/index.md",
+  "title": "Diafoirus",
+  "description": "Exploiter et rendre exploitable les données médicales.",
+  "date": "2018-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2018",
+  "tags": [
+    {
+      "label": "Saison 4",
+      "permalink": "/projects/tags/saison-4"
+    },
+    {
+      "label": "Santé",
+      "permalink": "/projects/tags/sante"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Mediachecker",
+    "permalink": "/projects/mediachecker"
+  },
+  "nextItem": {
+    "title": "Redécoupage citoyen",
+    "permalink": "/projects/redecoupagecitoyen"
+  }
+}

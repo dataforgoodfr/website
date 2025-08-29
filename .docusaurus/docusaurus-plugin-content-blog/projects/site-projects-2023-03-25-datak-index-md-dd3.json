@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/datak",
+  "source": "@site/projects/2023-03-25-datak/index.md",
+  "title": "Datak",
+  "description": "Systématicien Entomologiste, identification et description des espèces du vivant, de leurs habitats et de leurs interactions et classification suivant leur évolution 🪲",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    },
+    {
+      "label": "Biodiversité",
+      "permalink": "/projects/tags/biodiversite"
+    },
+    {
+      "label": "Insectes",
+      "permalink": "/projects/tags/insectes"
+    }
+  ],
+  "readingTime": 0.725,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Constellation Sociale",
+    "permalink": "/projects/constellation_sociale"
+  },
+  "nextItem": {
+    "title": "E-CartoMobile",
+    "permalink": "/projects/ecartomobile"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/liris",
+  "source": "@site/projects/2019-03-01-liris/index.md",
+  "title": "Liris",
+  "description": "Consulter les recettes et les dépense de l'État",
+  "date": "2019-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2019",
+  "tags": [
+    {
+      "label": "Saison 5",
+      "permalink": "/projects/tags/saison-5"
+    },
+    {
+      "label": "Transparence",
+      "permalink": "/projects/tags/transparence"
+    },
+    {
+      "label": "Citoyenneté",
+      "permalink": "/projects/tags/citoyennete"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Arkhn",
+    "permalink": "/projects/arkhn"
+  },
+  "nextItem": {
+    "title": "Phénix",
+    "permalink": "/projects/phenix"
+  }
+}

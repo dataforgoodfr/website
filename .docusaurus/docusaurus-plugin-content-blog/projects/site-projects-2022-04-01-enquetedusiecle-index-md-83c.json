@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/lenquetedusiecle",
+  "source": "@site/projects/2022-04-01-enquetedusiecle/index.md",
+  "title": "L'enquête du siècle",
+  "description": "Développement de la plateforme de comparaison des programmes à la présidentielle 2022 pour comprendre qui sortira la France de l'illégalité climatique",
+  "date": "2022-04-01T00:00:00.000Z",
+  "formattedDate": "April 1, 2022",
+  "tags": [
+    {
+      "label": "Hors-saison",
+      "permalink": "/projects/tags/hors-saison"
+    },
+    {
+      "label": "Justice climatique",
+      "permalink": "/projects/tags/justice-climatique"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Baromètre RSE 2022",
+    "permalink": "/projects/barometre"
+  },
+  "nextItem": {
+    "title": "BechdelAI",
+    "permalink": "/projects/bechdelai"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "permalink": "/projects/dyslexia",
+  "source": "@site/projects/2021-03-01-dyslexia/index.md",
+  "title": "Dyslex'IA",
+  "description": "",
+  "date": "2021-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2021",
+  "tags": [
+    {
+      "label": "Saison 9",
+      "permalink": "/projects/tags/saison-9"
+    },
+    {
+      "label": "Education",
+      "permalink": "/projects/tags/education"
+    },
+    {
+      "label": "Santé",
+      "permalink": "/projects/tags/sante"
+    },
+    {
+      "label": "sdg04",
+      "permalink": "/projects/tags/sdg-04"
+    },
+    {
+      "label": "sdg03",
+      "permalink": "/projects/tags/sdg-03"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Labelia.org",
+    "permalink": "/projects/labelia"
+  },
+  "nextItem": {
+    "title": "Open Fake Facts",
+    "permalink": "/projects/openfakefacts"
+  }
+}

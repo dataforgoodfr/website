@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/collectif5050",
+  "source": "@site/projects/2025-01-25-collectif5050/index.md",
+  "title": "Égalité et inclusion dans le cinéma et l'audiovisuel : une boîte à outils data",
+  "description": "Une boîte à outils data pour analyser et promouvoir la diversité et l'égalité dans le cinéma et l'audiovisuel français.",
+  "date": "2025-01-25T00:00:00.000Z",
+  "formattedDate": "January 25, 2025",
+  "tags": [
+    {
+      "label": "Saison 13",
+      "permalink": "/projects/tags/saison-13"
+    }
+  ],
+  "readingTime": 2.155,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Démocratiser la sobriété : un agent conversationnel basé sur la science",
+    "permalink": "/projects/democratisersobriete"
+  },
+  "nextItem": {
+    "title": "Éclaireur Public",
+    "permalink": "/projects/eclaireurpublic"
+  }
+}

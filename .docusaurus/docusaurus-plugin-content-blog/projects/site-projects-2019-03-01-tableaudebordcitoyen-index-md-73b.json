@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/tableaudebordcitoyen",
+  "source": "@site/projects/2019-03-01-tableaudebordcitoyen/index.md",
+  "title": "Tableau de bord citoyen",
+  "description": "Du choc des idées jaillit l’information",
+  "date": "2019-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2019",
+  "tags": [
+    {
+      "label": "Saison 5",
+      "permalink": "/projects/tags/saison-5"
+    },
+    {
+      "label": "Citoyenneté",
+      "permalink": "/projects/tags/citoyennete"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Transplant",
+    "permalink": "/projects/transplant"
+  },
+  "nextItem": {
+    "title": "La Data en Clair",
+    "permalink": "/projects/dataenclair"
+  }
+}

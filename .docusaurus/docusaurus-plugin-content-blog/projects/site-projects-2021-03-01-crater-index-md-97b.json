@@ -1,0 +1,37 @@
+{
+  "permalink": "/projects/crater",
+  "source": "@site/projects/2021-03-01-crater/index.md",
+  "title": "CRATer",
+  "description": "",
+  "date": "2021-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2021",
+  "tags": [
+    {
+      "label": "Saison 9",
+      "permalink": "/projects/tags/saison-9"
+    },
+    {
+      "label": "Résilience alimentaire",
+      "permalink": "/projects/tags/resilience-alimentaire"
+    },
+    {
+      "label": "sdg02",
+      "permalink": "/projects/tags/sdg-02"
+    },
+    {
+      "label": "sdg03",
+      "permalink": "/projects/tags/sdg-03"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "CodeCarbon",
+    "permalink": "/projects/codecarbon"
+  },
+  "nextItem": {
+    "title": "Labelia.org",
+    "permalink": "/projects/labelia"
+  }
+}

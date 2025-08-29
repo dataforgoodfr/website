@@ -1,0 +1,43 @@
+{
+  "permalink": "/blog/monthly-marty4",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-12-18-monthly-marty4/index.md",
+  "source": "@site/blog/2021-12-18-monthly-marty4/index.md",
+  "title": "Monthly Marty n°4 - 12/2021",
+  "description": "Retour sur le 4e Monthly Marty de Décembre 2021 avec les présentations de Féminisme Populaire, Carbon4Finance et ElectricityMap",
+  "date": "2021-12-18T00:00:00.000Z",
+  "formattedDate": "December 18, 2021",
+  "tags": [
+    {
+      "label": "Monthly Marty",
+      "permalink": "/blog/tags/monthly-marty"
+    },
+    {
+      "label": "Féminisme",
+      "permalink": "/blog/tags/feminisme"
+    },
+    {
+      "label": "Bilan Carbone",
+      "permalink": "/blog/tags/bilan-carbone"
+    },
+    {
+      "label": "Rétrospective",
+      "permalink": "/blog/tags/retrospective"
+    }
+  ],
+  "readingTime": 2.685,
+  "truncated": false,
+  "authors": [
+    {
+      "name": "Théo Alves Da Costa",
+      "url": "mailto:contact@dataforgood.fr"
+    }
+  ],
+  "prevItem": {
+    "title": "Intervention Data For Good au Ministère de la Transition",
+    "permalink": "/blog/event-greentech"
+  },
+  "nextItem": {
+    "title": "Ceebios et le projet Pokédex",
+    "permalink": "/blog/ceebios-s08"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/redecoupagecitoyen",
+  "source": "@site/projects/2018-09-01-redecoupagecitoyen/index.md",
+  "title": "Redécoupage citoyen",
+  "description": "Nous votons, nous dessinons !",
+  "date": "2018-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2018",
+  "tags": [
+    {
+      "label": "Saison 4",
+      "permalink": "/projects/tags/saison-4"
+    },
+    {
+      "label": "Citoyenneté",
+      "permalink": "/projects/tags/citoyennete"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Diafoirus",
+    "permalink": "/projects/diafoirus"
+  },
+  "nextItem": {
+    "title": "Serment d'Hippocrate pour Data Scientist",
+    "permalink": "/projects/sermenthippocrate"
+  }
+}

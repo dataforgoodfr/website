@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/constellation_sociale",
+  "source": "@site/projects/2023-03-25-constellationsociale/index.md",
+  "title": "Constellation Sociale",
+  "description": "Constellation Sociale est une association humanitaire qui soutient les communautés rurales isolées 👥",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    },
+    {
+      "label": "Ruralité",
+      "permalink": "/projects/tags/ruralite"
+    },
+    {
+      "label": "Knowledge Graph",
+      "permalink": "/projects/tags/knowledge-graph"
+    }
+  ],
+  "readingTime": 1.14,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Climate Chance",
+    "permalink": "/projects/climatechance"
+  },
+  "nextItem": {
+    "title": "Datak",
+    "permalink": "/projects/datak"
+  }
+}

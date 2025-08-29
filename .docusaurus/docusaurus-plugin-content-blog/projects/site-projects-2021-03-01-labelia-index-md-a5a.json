@@ -1,0 +1,45 @@
+{
+  "permalink": "/projects/labelia",
+  "source": "@site/projects/2021-03-01-labelia/index.md",
+  "title": "Labelia.org",
+  "description": "Le référentiel de Data Science Responsable et de Confiance a été élaboré de manière ouverte et participative afin de permettre à chaque organisme d’évaluer son niveau de maturité sur ces nouveaux enjeux. L'objectif de ce projet visait à renforcer les ressources du référentiel d'évaluation.",
+  "date": "2021-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2021",
+  "tags": [
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Saison 9",
+      "permalink": "/projects/tags/saison-9"
+    },
+    {
+      "label": "Data Science Ethique",
+      "permalink": "/projects/tags/data-science-ethique"
+    },
+    {
+      "label": "Golden Rules",
+      "permalink": "/projects/tags/golden-rules"
+    },
+    {
+      "label": "AI Ethics",
+      "permalink": "/projects/tags/ai-ethics"
+    },
+    {
+      "label": "sdg16",
+      "permalink": "/projects/tags/sdg-16"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "CRATer",
+    "permalink": "/projects/crater"
+  },
+  "nextItem": {
+    "title": "Dyslex'IA",
+    "permalink": "/projects/dyslexia"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "permalink": "/projects/notaclimat",
+  "source": "@site/projects/2022-03-12-notaclimat/index.md",
+  "title": "NotaClimat",
+  "description": "Développer l'observatoire open data de l'action climat des entreprises, pour faire passer à l'action les entreprises en jouant sur la transparence et maximiser le partage de l'expertise climat entre entreprises",
+  "date": "2022-03-12T00:00:00.000Z",
+  "formattedDate": "March 12, 2022",
+  "tags": [
+    {
+      "label": "Saison 10",
+      "permalink": "/projects/tags/saison-10"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    },
+    {
+      "label": "Climat",
+      "permalink": "/projects/tags/climat"
+    },
+    {
+      "label": "Data Analysis",
+      "permalink": "/projects/tags/data-analysis"
+    },
+    {
+      "label": "Data Science",
+      "permalink": "/projects/tags/data-science"
+    },
+    {
+      "label": "Data Engineering",
+      "permalink": "/projects/tags/data-engineering"
+    },
+    {
+      "label": "UX/UI",
+      "permalink": "/projects/tags/ux-ui"
+    },
+    {
+      "label": "Développement Web",
+      "permalink": "/projects/tags/developpement-web"
+    }
+  ],
+  "readingTime": 2.245,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Ceebios",
+    "permalink": "/projects/ceebios"
+  },
+  "nextItem": {
+    "title": "OGRE",
+    "permalink": "/projects/ogre"
+  }
+}

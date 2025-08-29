@@ -1,0 +1,49 @@
+{
+  "permalink": "/projects/bechdelai",
+  "source": "@site/projects/2022-03-13-bechdelai/index.md",
+  "title": "BechdelAI",
+  "description": "Mesure et automatisation du test de Bechdel, de la (sous)représentation féminine et des inégalités de représentation dans le cinéma et l'audiovisuel",
+  "date": "2022-03-13T00:00:00.000Z",
+  "formattedDate": "March 13, 2022",
+  "tags": [
+    {
+      "label": "Saison10",
+      "permalink": "/projects/tags/saison-10"
+    },
+    {
+      "label": "Monthly Marty 2",
+      "permalink": "/projects/tags/monthly-marty-2"
+    },
+    {
+      "label": "Actif",
+      "permalink": "/projects/tags/actif"
+    },
+    {
+      "label": "Féminisme",
+      "permalink": "/projects/tags/feminisme"
+    },
+    {
+      "label": "Culture",
+      "permalink": "/projects/tags/culture"
+    },
+    {
+      "label": "Cinéma",
+      "permalink": "/projects/tags/cinema"
+    },
+    {
+      "label": "sdg05",
+      "permalink": "/projects/tags/sdg-05"
+    }
+  ],
+  "readingTime": 2.21,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "L'enquête du siècle",
+    "permalink": "/projects/lenquetedusiecle"
+  },
+  "nextItem": {
+    "title": "Ceebios",
+    "permalink": "/projects/ceebios"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "permalink": "/projects/imagineai",
+  "source": "@site/projects/2022-09-01-imagineai/index.md",
+  "title": "ImagineAI",
+  "description": "Développement d'outils open source pour mesurer les stéréotypes écocides et les nouveaux récits autour de la transition écologique dans la culture et les médias",
+  "date": "2022-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2022",
+  "tags": [
+    {
+      "label": "Hors-saison",
+      "permalink": "/projects/tags/hors-saison"
+    },
+    {
+      "label": "Actif",
+      "permalink": "/projects/tags/actif"
+    },
+    {
+      "label": "Imaginaires",
+      "permalink": "/projects/tags/imaginaires"
+    },
+    {
+      "label": "Changement climatique",
+      "permalink": "/projects/tags/changement-climatique"
+    },
+    {
+      "label": "Culture",
+      "permalink": "/projects/tags/culture"
+    },
+    {
+      "label": "Computer Vision",
+      "permalink": "/projects/tags/computer-vision"
+    }
+  ],
+  "readingTime": 0.265,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "QuotaClimat",
+    "permalink": "/projects/quotaclimat"
+  },
+  "nextItem": {
+    "title": "Baromètre RSE 2022",
+    "permalink": "/projects/barometre"
+  }
+}

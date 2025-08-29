@@ -1,0 +1,45 @@
+{
+  "permalink": "/projects/microfaune",
+  "source": "@site/projects/2020-09-01-microfaune/index.md",
+  "title": "Microfaune",
+  "description": "",
+  "date": "2020-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2020",
+  "tags": [
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Saison 6",
+      "permalink": "/projects/tags/saison-6"
+    },
+    {
+      "label": "Biodiversité",
+      "permalink": "/projects/tags/biodiversite"
+    },
+    {
+      "label": "Deep Learning",
+      "permalink": "/projects/tags/deep-learning"
+    },
+    {
+      "label": "Sound Analysis",
+      "permalink": "/projects/tags/sound-analysis"
+    },
+    {
+      "label": "sdg15",
+      "permalink": "/projects/tags/sdg-15"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Mednum",
+    "permalink": "/projects/mednum"
+  },
+  "nextItem": {
+    "title": "Riepost",
+    "permalink": "/projects/riepost"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "permalink": "/projects/pyronear",
+  "source": "@site/projects/2024-02-05-pyronear/index.md",
+  "title": "Pyronear",
+  "description": "Pyronear a créé au cours des différentes saisons de Data For Good un prototype pour détecter les départs d'incendie dans les forêts",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    },
+    {
+      "label": "Saison 10",
+      "permalink": "/projects/tags/saison-10"
+    },
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Saison 6",
+      "permalink": "/projects/tags/saison-6"
+    },
+    {
+      "label": "Environnement",
+      "permalink": "/projects/tags/environnement"
+    },
+    {
+      "label": "Deep Learning",
+      "permalink": "/projects/tags/deep-learning"
+    },
+    {
+      "label": "API",
+      "permalink": "/projects/tags/api"
+    },
+    {
+      "label": "Computer Vision",
+      "permalink": "/projects/tags/computer-vision"
+    },
+    {
+      "label": "Rasberry Pi",
+      "permalink": "/projects/tags/rasberry-pi"
+    },
+    {
+      "label": "Dashboarding",
+      "permalink": "/projects/tags/dashboarding"
+    },
+    {
+      "label": "Predictive modeling",
+      "permalink": "/projects/tags/predictive-modeling"
+    },
+    {
+      "label": "Web development",
+      "permalink": "/projects/tags/web-development"
+    },
+    {
+      "label": "Data aggregation",
+      "permalink": "/projects/tags/data-aggregation"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    }
+  ],
+  "readingTime": 3.78,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Pink Bombs",
+    "permalink": "/projects/pinkbombs"
+  },
+  "nextItem": {
+    "title": "Questionner la seconde main - CMCM & Fashion Revolution France",
+    "permalink": "/projects/secondemain"
+  }
+}

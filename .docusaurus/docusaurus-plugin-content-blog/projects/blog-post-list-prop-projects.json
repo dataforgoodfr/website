@@ -1,0 +1,25 @@
+{
+  "title": "Recent posts",
+  "items": [
+    {
+      "title": "Brigade de surveillance des coupes rases",
+      "permalink": "/projects/brigadecoupesrases"
+    },
+    {
+      "title": "Démocratiser la sobriété : un agent conversationnel basé sur la science",
+      "permalink": "/projects/democratisersobriete"
+    },
+    {
+      "title": "Égalité et inclusion dans le cinéma et l'audiovisuel : une boîte à outils data",
+      "permalink": "/projects/collectif5050"
+    },
+    {
+      "title": "Éclaireur Public",
+      "permalink": "/projects/eclaireurpublic"
+    },
+    {
+      "title": "Ecoskills : un agent conversationnel pour la transition écologique",
+      "permalink": "/projects/ecoskills"
+    }
+  ]
+}

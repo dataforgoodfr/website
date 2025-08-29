@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/foretsdegradees",
+  "source": "@site/projects/2020-03-01-foretsdegradees/index.md",
+  "title": "Détection des forêts dégradées",
+  "description": "Détecter les forêts dégradées de Guinée et du Congo par imagerie satellite haute résolution et deep learning.",
+  "date": "2020-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2020",
+  "tags": [
+    {
+      "label": "Saison 7",
+      "permalink": "/projects/tags/saison-7"
+    },
+    {
+      "label": "Environnement",
+      "permalink": "/projects/tags/environnement"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "CO2 Plume Detector",
+    "permalink": "/projects/co2plumedetector"
+  },
+  "nextItem": {
+    "title": "Impact des plats",
+    "permalink": "/projects/impactdesplats"
+  }
+}

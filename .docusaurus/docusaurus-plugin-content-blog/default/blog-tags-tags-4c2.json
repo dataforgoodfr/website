@@ -1,0 +1,93 @@
+{
+  "/blog/tags/data-for-good": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/data-for-good",
+    "name": "Data For Good",
+    "count": 4,
+    "permalink": "/blog/tags/data-for-good"
+  },
+  "/blog/tags/saison-10": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/saison-10",
+    "name": "Saison 10",
+    "count": 2,
+    "permalink": "/blog/tags/saison-10"
+  },
+  "/blog/tags/biomimetisme": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/biomimetisme",
+    "name": "Biomimétisme",
+    "count": 2,
+    "permalink": "/blog/tags/biomimetisme"
+  },
+  "/blog/tags/nlp": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/nlp",
+    "name": "NLP",
+    "count": 3,
+    "permalink": "/blog/tags/nlp"
+  },
+  "/blog/tags/changement-climatique": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/changement-climatique",
+    "name": "Changement Climatique",
+    "count": 1,
+    "permalink": "/blog/tags/changement-climatique"
+  },
+  "/blog/tags/adaptation": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/adaptation",
+    "name": "Adaptation",
+    "count": 1,
+    "permalink": "/blog/tags/adaptation"
+  },
+  "/blog/tags/lassociation-data-for-good": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/lassociation-data-for-good",
+    "name": "L'association Data For Good",
+    "count": 2,
+    "permalink": "/blog/tags/lassociation-data-for-good"
+  },
+  "/blog/tags/transition-ecologique": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/transition-ecologique",
+    "name": "Transition Ecologique",
+    "count": 1,
+    "permalink": "/blog/tags/transition-ecologique"
+  },
+  "/blog/tags/monthly-marty": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/monthly-marty",
+    "name": "Monthly Marty",
+    "count": 1,
+    "permalink": "/blog/tags/monthly-marty"
+  },
+  "/blog/tags/feminisme": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/feminisme",
+    "name": "Féminisme",
+    "count": 1,
+    "permalink": "/blog/tags/feminisme"
+  },
+  "/blog/tags/bilan-carbone": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/bilan-carbone",
+    "name": "Bilan Carbone",
+    "count": 1,
+    "permalink": "/blog/tags/bilan-carbone"
+  },
+  "/blog/tags/retrospective": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/retrospective",
+    "name": "Rétrospective",
+    "count": 1,
+    "permalink": "/blog/tags/retrospective"
+  },
+  "/blog/tags/saison-8": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/saison-8",
+    "name": "Saison 8",
+    "count": 1,
+    "permalink": "/blog/tags/saison-8"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "permalink": "/projects/ogre",
+  "source": "@site/projects/2022-03-12-ogre/index.md",
+  "title": "OGRE",
+  "description": "Développement d'une application pour digitaliser et passer à l'échelle l'atelier OGRE, un serious game ludique et collaboratif pour découvrir et comprendre les ordres de grandeur des énergies.",
+  "date": "2022-03-12T00:00:00.000Z",
+  "formattedDate": "March 12, 2022",
+  "tags": [
+    {
+      "label": "Saison 10",
+      "permalink": "/projects/tags/saison-10"
+    },
+    {
+      "label": "Monthly Marty 1",
+      "permalink": "/projects/tags/monthly-marty-1"
+    },
+    {
+      "label": "Actif",
+      "permalink": "/projects/tags/actif"
+    },
+    {
+      "label": "Education",
+      "permalink": "/projects/tags/education"
+    },
+    {
+      "label": "Sensibilisation",
+      "permalink": "/projects/tags/sensibilisation"
+    },
+    {
+      "label": "Transition énergétique",
+      "permalink": "/projects/tags/transition-energetique"
+    },
+    {
+      "label": "Développement Web",
+      "permalink": "/projects/tags/developpement-web"
+    },
+    {
+      "label": "UX/UI",
+      "permalink": "/projects/tags/ux-ui"
+    }
+  ],
+  "readingTime": 1.795,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "NotaClimat",
+    "permalink": "/projects/notaclimat"
+  },
+  "nextItem": {
+    "title": "Solinum",
+    "permalink": "/projects/solinum"
+  }
+}

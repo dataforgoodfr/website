@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/transplant",
+  "source": "@site/projects/2019-03-01-transplant/index.md",
+  "title": "Transplant",
+  "description": "Améliorer la prédiction de l'autonomie respiratoire après transplantation pulmonaire",
+  "date": "2019-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2019",
+  "tags": [
+    {
+      "label": "Saison 5",
+      "permalink": "/projects/tags/saison-5"
+    },
+    {
+      "label": "Santé",
+      "permalink": "/projects/tags/sante"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Phénix",
+    "permalink": "/projects/phenix"
+  },
+  "nextItem": {
+    "title": "Tableau de bord citoyen",
+    "permalink": "/projects/tableaudebordcitoyen"
+  }
+}

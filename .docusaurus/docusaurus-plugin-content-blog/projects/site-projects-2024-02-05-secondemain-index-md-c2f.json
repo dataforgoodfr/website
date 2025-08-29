@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/secondemain",
+  "source": "@site/projects/2024-02-05-secondemain/index.md",
+  "title": "Questionner la seconde main - CMCM & Fashion Revolution France",
+  "description": "Révéler les faux arguments écologiques, la représentation et les flux de revente de produits de fast fashion par les marques.",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    }
+  ],
+  "readingTime": 3.295,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Pyronear",
+    "permalink": "/projects/pyronear"
+  },
+  "nextItem": {
+    "title": "Utopia56 - Cartographie des campements parisiens",
+    "permalink": "/projects/utopia56"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "permalink": "/projects/accurolab",
+  "source": "@site/projects/2020-09-01-accurolab/index.md",
+  "title": "Accurolab",
+  "description": "",
+  "date": "2020-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2020",
+  "tags": [
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Désinformation",
+      "permalink": "/projects/tags/desinformation"
+    },
+    {
+      "label": "NLP",
+      "permalink": "/projects/tags/nlp"
+    },
+    {
+      "label": "Virtual Assistant",
+      "permalink": "/projects/tags/virtual-assistant"
+    },
+    {
+      "label": "sdg16",
+      "permalink": "/projects/tags/sdg-16"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Validalab",
+    "permalink": "/projects/validalab"
+  },
+  "nextItem": {
+    "title": "Action Contre la Faim",
+    "permalink": "/projects/actioncontrelafaim"
+  }
+}

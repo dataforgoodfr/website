@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/bimbamjob",
+  "source": "@site/projects/2018-03-01-bimbamjob/index.md",
+  "title": "BimBamJob",
+  "description": "",
+  "date": "2018-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2018",
+  "tags": [
+    {
+      "label": "Saison 3",
+      "permalink": "/projects/tags/saison-3"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Serment d'Hippocrate pour Data Scientist",
+    "permalink": "/projects/sermenthippocrate"
+  },
+  "nextItem": {
+    "title": "Cour des comptes",
+    "permalink": "/projects/courdescomptes"
+  }
+}

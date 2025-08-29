@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/carbonbombs",
+  "source": "@site/projects/2023-10-31-carbonbombs/index.md",
+  "title": "CarbonBombs.org",
+  "description": "CarbonBombs.org: lumière sur les bombes carbone, ces méga-projets fossiles qui menacent nos engagements climatiques",
+  "date": "2023-10-31T00:00:00.000Z",
+  "formattedDate": "October 31, 2023",
+  "tags": [
+    {
+      "label": "Hors-saison",
+      "permalink": "/projects/tags/hors-saison"
+    },
+    {
+      "label": "Climat",
+      "permalink": "/projects/tags/climat"
+    },
+    {
+      "label": "Energie",
+      "permalink": "/projects/tags/energie"
+    }
+  ],
+  "readingTime": 4.63,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "MerTerre - Zero Déchet Sauvage",
+    "permalink": "/projects/zerodechetsauvage"
+  },
+  "nextItem": {
+    "title": "CarbonFight",
+    "permalink": "/projects/carbonfight"
+  }
+}

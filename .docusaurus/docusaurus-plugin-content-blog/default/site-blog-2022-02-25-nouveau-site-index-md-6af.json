@@ -1,0 +1,31 @@
+{
+  "permalink": "/blog/nouveau-site",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2022-02-25-nouveau_site/index.md",
+  "source": "@site/blog/2022-02-25-nouveau_site/index.md",
+  "title": "Enfin un nouveau site !",
+  "description": "Retour sur le nouveau site de Data For Good, les nouveaux features et comment répliquer vous-même ce qui a été développé pour votre association.",
+  "date": "2022-02-25T00:00:00.000Z",
+  "formattedDate": "February 25, 2022",
+  "tags": [
+    {
+      "label": "L'association Data For Good",
+      "permalink": "/blog/tags/lassociation-data-for-good"
+    }
+  ],
+  "readingTime": 6.9,
+  "truncated": false,
+  "authors": [
+    {
+      "name": "Théo Alves Da Costa",
+      "url": "mailto:contact@dataforgood.fr"
+    }
+  ],
+  "prevItem": {
+    "title": "Mesurer la réaction publique et médiatique à la sortie du nouveau rapport du GIEC",
+    "permalink": "/blog/giec"
+  },
+  "nextItem": {
+    "title": "Intervention Data For Good au Ministère de la Transition",
+    "permalink": "/blog/event-greentech"
+  }
+}

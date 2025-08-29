@@ -1,0 +1,37 @@
+{
+  "permalink": "/projects/worldbank",
+  "source": "@site/projects/2020-09-01-worldbank/index.md",
+  "title": "Banque Mondiale",
+  "description": "",
+  "date": "2020-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2020",
+  "tags": [
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Risque climatique",
+      "permalink": "/projects/tags/risque-climatique"
+    },
+    {
+      "label": "Predictive modeling",
+      "permalink": "/projects/tags/predictive-modeling"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Riepost",
+    "permalink": "/projects/riepost"
+  },
+  "nextItem": {
+    "title": "2tonnes",
+    "permalink": "/projects/2tonnes"
+  }
+}

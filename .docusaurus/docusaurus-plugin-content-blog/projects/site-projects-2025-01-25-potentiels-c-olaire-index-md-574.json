@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/potentielscolaire",
+  "source": "@site/projects/2025-01-25-potentiels(c)olaire/index.md",
+  "title": "Potentiel s(c)olaire",
+  "description": "Évaluer et cartographier le potentiel photovoltaïque des établissements scolaires pour accélérer la transition énergétique.",
+  "date": "2025-01-25T00:00:00.000Z",
+  "formattedDate": "January 25, 2025",
+  "tags": [
+    {
+      "label": "Saison 13",
+      "permalink": "/projects/tags/saison-13"
+    }
+  ],
+  "readingTime": 2.665,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Stop Cyberviolences : un baromètre pour mieux prévenir et accompagner",
+    "permalink": "/projects/stopcyberviolence"
+  },
+  "nextItem": {
+    "title": "505 : Un chatbot WhatsApp basé sur les émojis pour l'accès aux services essentiels",
+    "permalink": "/projects/watizat"
+  }
+}

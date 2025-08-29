@@ -28,7 +28,7 @@ const meta: Meta<typeof HeroBlock> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis finibus, dolor nec iaculis vestibulum, ligula urna vestibulum turpis, eu egestas magna odio et sem. In vel dui est. Donec dictum, quam at commodo pulvinar, turpis risus iaculis purus, gravida condimentum diam nulla in ipsum. Morbi felis ante, bibendum vitae sem sed, tempus aliquam ligula. Cras blandit aliquet ante, eget posuere diam. Maecenas ultrices ipsum et lacus porta facilisis. Donec et venenatis dui. Fusce mattis, sem vitae hendrerit imperdiet, enim nisi finibus ligula, eget semper eros leo eu odio. Donec tincidunt tortor augue, vel condimentum enim varius at. Morbi lacus lorem, pellentesque sed purus in, lobortis faucibus eros. Donec nulla dolor, bibendum eget scelerisque id, fermentum quis arcu. Mauris a enim commodo, gravida purus ac, porta lacus."
+const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis finibus, dolor nec iaculis vestibulum, ligula urna vestibulum turpis, eu egestas magna odio et sem. In vel dui est. Donec dictum, quam at commodo pulvinar, turpis risus iaculis purus, gravida condimentum diam nulla in ipsum. Morbi felis ante, bibendum vitae sem sed, tempus aliquam ligula."
 
 const titleWithColorAndRotation =
 {
@@ -37,7 +37,7 @@ const titleWithColorAndRotation =
     children: "Bâtir",
     colors: 'text-white bg-building',
     className: "drop-shadow-3 drop-shadow-black before:-z-1",
-    rotation: -5,
+    rotation: -3.47,
 
 }
 
@@ -88,12 +88,21 @@ const subtitleWithSmallRotation =
     children: "Un contre-pouvoir tech citoyen",
     colors: 'text-black bg-white',
     className: "drop-shadow-1 drop-shadow-black before:-z-1",
-    rotation: -2,
+    rotation: -3.47,
 }
 
 export const Default: Story = {
     args: {
-        image: 'https://picsum.photos/100/100?random=2',
+        image: '/public/images/pages/image-accueil.png',
+        title: titleWithColorAndRotation,
+        subtitle: subtitleWithSmallRotation,
+        talk: loremIpsum,
+    },
+};
+
+export const LongSousTitre: Story = {
+    args: {
+        image: '/public/images/pages/image-accueil.png',
         title: titleWithColorAndRotation,
         subtitle: subtitleWithColorAndRotation,
         talk: loremIpsum,
@@ -102,7 +111,7 @@ export const Default: Story = {
 
 export const LongTitresRotationFaible: Story = {
     args: {
-        image: 'https://picsum.photos/100/100?random=2',
+        image: '/public/images/pages/image-accueil.png',
         title: titleWithSmallRotation,
         subtitle: subtitleWithSmallRotation,
         talk: loremIpsum,
@@ -111,7 +120,7 @@ export const LongTitresRotationFaible: Story = {
 
 export const LongTitresRotationImportante: Story = {
     args: {
-        image: 'https://picsum.photos/100/100?random=2',
+        image: '/public/images/pages/image-accueil.png',
         title: titleWithImportantRotation,
         subtitle: subtitleWithImportantRotation,
         talk: loremIpsum,
@@ -120,7 +129,7 @@ export const LongTitresRotationImportante: Story = {
 
 export const NoSubtitle: Story = {
     args: {
-        image: 'https://picsum.photos/100/100?random=2',
+        image: '/public/images/pages/image-accueil.png',
         title: titleWithColorAndRotation,
         talk: loremIpsum,
     },

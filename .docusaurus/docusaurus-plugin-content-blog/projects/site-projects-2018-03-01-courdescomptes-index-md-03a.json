@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/courdescomptes",
+  "source": "@site/projects/2018-03-01-courdescomptes/index.md",
+  "title": "Cour des comptes",
+  "description": "",
+  "date": "2018-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2018",
+  "tags": [
+    {
+      "label": "Saison 3",
+      "permalink": "/projects/tags/saison-3"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "BimBamJob",
+    "permalink": "/projects/bimbamjob"
+  },
+  "nextItem": {
+    "title": "Data4Tunisia",
+    "permalink": "/projects/datafortunisia"
+  }
+}

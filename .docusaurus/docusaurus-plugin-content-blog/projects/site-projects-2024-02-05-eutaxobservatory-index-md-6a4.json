@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/eutaxobservatory",
+  "source": "@site/projects/2024-02-05-eutaxobservatory/index.md",
+  "title": "EU Tax Observatory - Country by country tax reporting",
+  "description": "Compilation de données sur la localisation des profits de multinationales afin de mieux appréhender l’évasion fiscale et l’optimisation fiscale agressive",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    },
+    {
+      "label": "Lutte contre l'optimisation fiscale",
+      "permalink": "/projects/tags/lutte-contre-loptimisation-fiscale"
+    }
+  ],
+  "readingTime": 3.22,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Bloom - Trawl Watch",
+    "permalink": "/projects/bloom"
+  },
+  "nextItem": {
+    "title": "GenAI Impact - Les impacts environnementaux de l'IA générative",
+    "permalink": "/projects/genai-impacts"
+  }
+}

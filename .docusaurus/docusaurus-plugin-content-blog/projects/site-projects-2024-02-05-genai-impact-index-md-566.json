@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/genai-impacts",
+  "source": "@site/projects/2024-02-05-genai-impact/index.md",
+  "title": "GenAI Impact - Les impacts environnementaux de l'IA générative",
+  "description": "Mettre en lumière l’impacts des technologie de GenAI sur l’environnement, de mieux les comprendre, de les quantifier et de sensibiliser les utilisateurs.",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    },
+    {
+      "label": "Climat",
+      "permalink": "/projects/tags/climat"
+    },
+    {
+      "label": "Energie",
+      "permalink": "/projects/tags/energie"
+    }
+  ],
+  "readingTime": 3.08,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "EU Tax Observatory - Country by country tax reporting",
+    "permalink": "/projects/eutaxobservatory"
+  },
+  "nextItem": {
+    "title": "Interhop - LinkR",
+    "permalink": "/projects/linkr"
+  }
+}

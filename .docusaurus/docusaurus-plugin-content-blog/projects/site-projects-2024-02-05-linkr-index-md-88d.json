@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/linkr",
+  "source": "@site/projects/2024-02-05-linkr/index.md",
+  "title": "Interhop - LinkR",
+  "description": "Développer des plugins qui apporteront de nouvelles fonctionnalités low-code à l’application, aidant ainsi les cliniciens et data scientists à analyser les données de santé",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    }
+  ],
+  "readingTime": 3.11,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "GenAI Impact - Les impacts environnementaux de l'IA générative",
+    "permalink": "/projects/genai-impacts"
+  },
+  "nextItem": {
+    "title": "The Shifters - Observatoire des imaginaires",
+    "permalink": "/projects/observatoireimaginaires"
+  }
+}

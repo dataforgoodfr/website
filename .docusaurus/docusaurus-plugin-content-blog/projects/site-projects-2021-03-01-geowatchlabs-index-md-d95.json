@@ -1,0 +1,41 @@
+{
+  "permalink": "/projects/geowatchlabs",
+  "source": "@site/projects/2021-03-01-geowatchlabs/index.md",
+  "title": "Geowatch Labs",
+  "description": "",
+  "date": "2021-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2021",
+  "tags": [
+    {
+      "label": "Saison 9",
+      "permalink": "/projects/tags/saison-9"
+    },
+    {
+      "label": "Résilience alimentaire",
+      "permalink": "/projects/tags/resilience-alimentaire"
+    },
+    {
+      "label": "sdg02",
+      "permalink": "/projects/tags/sdg-02"
+    },
+    {
+      "label": "sdg01",
+      "permalink": "/projects/tags/sdg-01"
+    },
+    {
+      "label": "sdg03",
+      "permalink": "/projects/tags/sdg-03"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Open Fake Facts",
+    "permalink": "/projects/openfakefacts"
+  },
+  "nextItem": {
+    "title": "Open Geo Scales",
+    "permalink": "/projects/opengeoscales"
+  }
+}

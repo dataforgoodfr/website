@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/shiftdataportal",
+  "source": "@site/projects/2023-03-25-shiftdataportal/index.md",
+  "title": "The Shift Data Portal",
+  "description": "Portail d’open data et data visualisation de la énergie-climat",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    },
+    {
+      "label": "Energie",
+      "permalink": "/projects/tags/energie"
+    },
+    {
+      "label": "Visualisation",
+      "permalink": "/projects/tags/visualisation"
+    }
+  ],
+  "readingTime": 1.28,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Recofish",
+    "permalink": "/projects/recofish"
+  },
+  "nextItem": {
+    "title": "QuotaClimat",
+    "permalink": "/projects/quotaclimat"
+  }
+}

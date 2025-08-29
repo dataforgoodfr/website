@@ -1,0 +1,29 @@
+{
+  "permalink": "/projects/cites",
+  "source": "@site/projects/2019-09-01-cites/index.md",
+  "title": "CITES",
+  "description": "Diffuser et sensibiliser le public aux règles du commerce des espèces de faune et flore sauvages menacées d’extinction.",
+  "date": "2019-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2019",
+  "tags": [
+    {
+      "label": "Saison 6",
+      "permalink": "/projects/tags/saison-6"
+    },
+    {
+      "label": "Biodiversité",
+      "permalink": "/projects/tags/biodiversite"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Eczéma(s)",
+    "permalink": "/projects/eczema"
+  },
+  "nextItem": {
+    "title": "EurosForDocs",
+    "permalink": "/projects/eurosfordocs"
+  }
+}

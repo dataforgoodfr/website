@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/pollutioneau",
+  "source": "@site/projects/2025-01-25-pollutioneau/index.md",
+  "title": "Rendre visible la pollution de l’eau potable",
+  "description": "Développer une plateforme interactive pour rendre transparentes et accessibles les données sur la pollution chimique de l'eau.",
+  "date": "2025-01-25T00:00:00.000Z",
+  "formattedDate": "January 25, 2025",
+  "tags": [
+    {
+      "label": "Saison 13",
+      "permalink": "/projects/tags/saison-13"
+    }
+  ],
+  "readingTime": 3.08,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "OD&IS : Optimiser l'Accueil des Personnes Réfugiées",
+    "permalink": "/projects/odis"
+  },
+  "nextItem": {
+    "title": "Stop Cyberviolences : un baromètre pour mieux prévenir et accompagner",
+    "permalink": "/projects/stopcyberviolence"
+  }
+}

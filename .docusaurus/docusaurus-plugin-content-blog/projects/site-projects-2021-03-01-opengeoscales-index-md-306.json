@@ -1,0 +1,41 @@
+{
+  "permalink": "/projects/opengeoscales",
+  "source": "@site/projects/2021-03-01-opengeoscales/index.md",
+  "title": "Open Geo Scales",
+  "description": "",
+  "date": "2021-03-01T00:00:00.000Z",
+  "formattedDate": "March 1, 2021",
+  "tags": [
+    {
+      "label": "Saison 9",
+      "permalink": "/projects/tags/saison-9"
+    },
+    {
+      "label": "Open Data",
+      "permalink": "/projects/tags/open-data"
+    },
+    {
+      "label": "Climat",
+      "permalink": "/projects/tags/climat"
+    },
+    {
+      "label": "Environnement",
+      "permalink": "/projects/tags/environnement"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Geowatch Labs",
+    "permalink": "/projects/geowatchlabs"
+  },
+  "nextItem": {
+    "title": "Science Feedback",
+    "permalink": "/projects/sciencefeedback"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "permalink": "/projects/carbonfight",
+  "source": "@site/projects/2023-03-25-carbonfight/index.md",
+  "title": "CarbonFight",
+  "description": "Développement d'un calculateur d'empreinte carbone du quotidien",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Hors-saison",
+      "permalink": "/projects/tags/hors-saison"
+    },
+    {
+      "label": "Actif",
+      "permalink": "/projects/tags/actif"
+    },
+    {
+      "label": "Empreinte Carbone",
+      "permalink": "/projects/tags/empreinte-carbone"
+    },
+    {
+      "label": "Changement climatique",
+      "permalink": "/projects/tags/changement-climatique"
+    },
+    {
+      "label": "Data Analyse",
+      "permalink": "/projects/tags/data-analyse"
+    },
+    {
+      "label": "UX/UI",
+      "permalink": "/projects/tags/ux-ui"
+    },
+    {
+      "label": "Dev",
+      "permalink": "/projects/tags/dev"
+    },
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    }
+  ],
+  "readingTime": 1.69,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "CarbonBombs.org",
+    "permalink": "/projects/carbonbombs"
+  },
+  "nextItem": {
+    "title": "Basta",
+    "permalink": "/projects/basta"
+  }
+}

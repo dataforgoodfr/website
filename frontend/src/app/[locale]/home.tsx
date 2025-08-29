@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps, TitleProps, HeroBlock, HeroBlockProps } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -10,6 +10,28 @@ export default function Homepage() {
   if (error) {
     return <div>Error</div>;
   } */
+
+  const hero = {
+    image: '/images/pages/image-accueil.png',
+    title: {
+      level: 1 as TitleProps['level'],
+      variant: "big" as TitleProps['variant'],
+      children: "Bâtir",
+      colors: 'text-white bg-building',
+      className: "drop-shadow-3 drop-shadow-black before:-z-1",
+      rotation: -3.47,
+
+    },
+    subtitle: {
+      level: 2 as TitleProps['level'],
+      variant: "medium" as TitleProps['variant'],
+      children: "Un contre-pouvoir tech citoyen",
+      colors: 'text-black bg-white',
+      className: "drop-shadow-1 drop-shadow-black before:-z-1",
+      rotation: -3.47,
+    },
+    talk: "Utiliser la technologie à des fins utiles tout en luttant contre l’hégémonie des schémas de pensée qui l’ont engendrée : c’est ce chemin de crête que nous souhaitons emprunter pour que le numérique soit émancipateur.",
+  }
 
   const carouselImages = [
     {
@@ -96,7 +118,7 @@ export default function Homepage() {
       },
       id: 'climate',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      image: '/images/thematics-climate.svg',
+      image: '/images/thematics/thematics-climate.svg',
       imageWidth: 301,
       imageHeight: 401,
       ctaText: "Voir les projets",
@@ -114,7 +136,7 @@ export default function Homepage() {
       id: 'social',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
       talkOffset: 10,
-      image: '/images/thematics-social.png',
+      image: '/images/thematics/thematics-social.png',
       imageWidth: 264,
       imageHeight: 332,
       ctaText: "Voir les projets",
@@ -132,7 +154,7 @@ export default function Homepage() {
       id: 'democracy',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
       talkOffset: 10,
-      image: '/images/thematics-democracy.svg',
+      image: '/images/thematics/thematics-democracy.svg',
       imageWidth: 251,
       imageHeight: 318,
       ctaText: "Voir les projets",
@@ -142,6 +164,11 @@ export default function Homepage() {
 
   return (
     <>
+      <HeroBlock className='mt-lg'
+        {...hero}
+        title={{ ...hero.title, children: t('hero.title') }}
+        subtitle={{ ...hero.subtitle, children: t('hero.subtitle') }}
+      />
       <div className="container mt-lg mb-sm">
         <Title level={2} variant="medium">
           {t('carousel.title')}
@@ -161,7 +188,6 @@ export default function Homepage() {
       />
       <ThematicsBlock
         title={t('thematics.title')}
-        subtitle={t('thematics.subtitle')}
         thematics={thematics}
       />
       <ResultsCard

@@ -1,0 +1,53 @@
+{
+  "permalink": "/projects/impactscore",
+  "source": "@site/projects/2020-09-01-impactscore/index.md",
+  "title": "ImpactScore",
+  "description": "",
+  "date": "2020-09-01T00:00:00.000Z",
+  "formattedDate": "September 1, 2020",
+  "tags": [
+    {
+      "label": "Saison 8",
+      "permalink": "/projects/tags/saison-8"
+    },
+    {
+      "label": "Environnement",
+      "permalink": "/projects/tags/environnement"
+    },
+    {
+      "label": "Fiscalité",
+      "permalink": "/projects/tags/fiscalite"
+    },
+    {
+      "label": "Open Data",
+      "permalink": "/projects/tags/open-data"
+    },
+    {
+      "label": "Data aggregation",
+      "permalink": "/projects/tags/data-aggregation"
+    },
+    {
+      "label": "Dashboarding",
+      "permalink": "/projects/tags/dashboarding"
+    },
+    {
+      "label": "sdg16",
+      "permalink": "/projects/tags/sdg-16"
+    },
+    {
+      "label": "sdg13",
+      "permalink": "/projects/tags/sdg-13"
+    }
+  ],
+  "readingTime": 0.23,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Carbon4Finance",
+    "permalink": "/projects/carbon4finance"
+  },
+  "nextItem": {
+    "title": "JOGL",
+    "permalink": "/projects/jogl"
+  }
+}

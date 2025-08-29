@@ -1,0 +1,33 @@
+{
+  "permalink": "/projects/basta",
+  "source": "@site/projects/2023-03-25-basta/index.md",
+  "title": "Basta",
+  "description": "Libérer la parole fait bouger les lignes et mieux lutter contre le sexisme et les violences sexuelles",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "March 25, 2023",
+  "tags": [
+    {
+      "label": "Saison 11",
+      "permalink": "/projects/tags/saison-11"
+    },
+    {
+      "label": "Social",
+      "permalink": "/projects/tags/social"
+    },
+    {
+      "label": "Sexisme",
+      "permalink": "/projects/tags/sexisme"
+    }
+  ],
+  "readingTime": 0.955,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "CarbonFight",
+    "permalink": "/projects/carbonfight"
+  },
+  "nextItem": {
+    "title": "Cartovegetation",
+    "permalink": "/projects/cartovegetation"
+  }
+}

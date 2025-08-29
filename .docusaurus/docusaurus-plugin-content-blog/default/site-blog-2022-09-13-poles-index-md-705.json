@@ -1,0 +1,31 @@
+{
+  "permalink": "/blog/restructuration",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2022-09-13-poles/index.md",
+  "source": "@site/blog/2022-09-13-poles/index.md",
+  "title": "Data For Good se restructure et crée les pôles thématiques",
+  "description": "Après 10 saisons et plus de 100 projets d'intérêt général, il est temps de passer à la vitesse supérieure en ouvrant la gouvernance de l'association à de nouveaux membres bénévoles pour développer 7 pôles thématiques. Plus d'informations pour candidater dans cet article.",
+  "date": "2022-09-13T00:00:00.000Z",
+  "formattedDate": "September 13, 2022",
+  "tags": [
+    {
+      "label": "Data For Good",
+      "permalink": "/blog/tags/data-for-good"
+    }
+  ],
+  "readingTime": 4.555,
+  "truncated": false,
+  "authors": [
+    {
+      "name": "Théo Alves Da Costa et Clément Mayer",
+      "url": "contact@dataforgood.fr"
+    }
+  ],
+  "prevItem": {
+    "title": "Appel à projet Saison 12 Data For Good",
+    "permalink": "/blog/aap-saison12"
+  },
+  "nextItem": {
+    "title": "Ceebios et le projet GAWDI pour accélérer la recherche biomimétique",
+    "permalink": "/blog/ceebios-s10"
+  }
+}

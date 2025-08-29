@@ -1,0 +1,21 @@
+{
+  "permalink": "/projects/brigadecoupesrases",
+  "source": "@site/projects/2025-01-25-brigadecoupesrases/index.md",
+  "title": "Brigade de surveillance des coupes rases",
+  "description": "Développer une plateforme de détection et de signalement des coupes rases forestières abusives à partir des données satellites.",
+  "date": "2025-01-25T00:00:00.000Z",
+  "formattedDate": "January 25, 2025",
+  "tags": [
+    {
+      "label": "Saison 13",
+      "permalink": "/projects/tags/saison-13"
+    }
+  ],
+  "readingTime": 2.855,
+  "truncated": false,
+  "authors": [],
+  "nextItem": {
+    "title": "Démocratiser la sobriété : un agent conversationnel basé sur la science",
+    "permalink": "/projects/democratisersobriete"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "permalink": "/blog/saison10",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2022-03-12-saison10/index.md",
+  "source": "@site/blog/2022-03-12-saison10/index.md",
+  "title": "Lancement de la saison 10 de Data For Good",
+  "description": "C'est parti pour la saison 10 de Data For Good ! Retrouvez les 9 projets d'intérêt général de cette saison d'accélération (affichage environnemental, diagnostic de l'aide alimentaire, inégalités dans le cinéma, détection d'incendies forestiers, observatoire de l'action climat, assistant pour la recherche en biomimétisme, ...)",
+  "date": "2022-03-12T00:00:00.000Z",
+  "formattedDate": "March 12, 2022",
+  "tags": [
+    {
+      "label": "Saison 10",
+      "permalink": "/blog/tags/saison-10"
+    },
+    {
+      "label": "Data For Good",
+      "permalink": "/blog/tags/data-for-good"
+    }
+  ],
+  "readingTime": 17.73,
+  "truncated": false,
+  "authors": [
+    {
+      "name": "Théo Alves Da Costa",
+      "url": "mailto:theo.alves.da.costa@gmail.com"
+    }
+  ],
+  "prevItem": {
+    "title": "Ceebios et le projet GAWDI pour accélérer la recherche biomimétique",
+    "permalink": "/blog/ceebios-s10"
+  },
+  "nextItem": {
+    "title": "Mesurer la réaction publique et médiatique à la sortie du nouveau rapport du GIEC",
+    "permalink": "/blog/giec"
+  }
+}

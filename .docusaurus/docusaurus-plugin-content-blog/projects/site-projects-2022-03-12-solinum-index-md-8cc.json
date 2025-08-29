@@ -1,0 +1,37 @@
+{
+  "permalink": "/projects/solinum",
+  "source": "@site/projects/2022-03-12-solinum/index.md",
+  "title": "Solinum",
+  "description": "Proposer des dashboards de données analytiques pour les associations et les pouvoirs publics, permettant d'observer en un clin d'oeil les besoins des territoires sur l'aide alimentaire",
+  "date": "2022-03-12T00:00:00.000Z",
+  "formattedDate": "March 12, 2022",
+  "tags": [
+    {
+      "label": "Saison 10",
+      "permalink": "/projects/tags/saison-10"
+    },
+    {
+      "label": "Lutte contre la précarité",
+      "permalink": "/projects/tags/lutte-contre-la-precarite"
+    },
+    {
+      "label": "Data Analyse",
+      "permalink": "/projects/tags/data-analyse"
+    },
+    {
+      "label": "Data Science",
+      "permalink": "/projects/tags/data-science"
+    }
+  ],
+  "readingTime": 1.96,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "OGRE",
+    "permalink": "/projects/ogre"
+  },
+  "nextItem": {
+    "title": "Mission Transition Ecologique",
+    "permalink": "/projects/missiontransition"
+  }
+}

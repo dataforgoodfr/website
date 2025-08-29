@@ -1,0 +1,25 @@
+{
+  "permalink": "/projects/zerodechetsauvage",
+  "source": "@site/projects/2024-02-05-zerodechetsauvage/index.md",
+  "title": "MerTerre - Zero Déchet Sauvage",
+  "description": "Développer des visualisations sur le ramassage de déchets à destination des collectivités.",
+  "date": "2024-02-05T00:00:00.000Z",
+  "formattedDate": "February 5, 2024",
+  "tags": [
+    {
+      "label": "Saison 12",
+      "permalink": "/projects/tags/saison-12"
+    }
+  ],
+  "readingTime": 3.33,
+  "truncated": false,
+  "authors": [],
+  "prevItem": {
+    "title": "Utopia56 - Cartographie des campements parisiens",
+    "permalink": "/projects/utopia56"
+  },
+  "nextItem": {
+    "title": "CarbonBombs.org",
+    "permalink": "/projects/carbonbombs"
+  }
+}
