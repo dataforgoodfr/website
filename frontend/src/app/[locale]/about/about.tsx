@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CtaWithImage, EditoCard, LargeTextImage, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
+import { CtaWithImage, EditoCard, LargeTextImage, MembersBlock, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
 
 export default function AboutPage() {
   const t = useTranslations('about');
@@ -49,6 +49,75 @@ export default function AboutPage() {
       image: "/images/pages/carte-benevoles.png",
     },
   ];
+
+  const members = [
+    {
+      title: 'Équipe de direction',
+      members: [
+        {
+          name: 'Marie Dubois',
+          role: 'Directrice Générale',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Thomas Martin',
+          role: 'Directeur Technique',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Sophie Bernard',
+          role: 'Directrice des Opérations',
+          image: '/images/pages/carte-benevoles.png',
+        },
+      ],
+    },
+    {
+      title: 'Data Scientists',
+      members: [
+        {
+          name: 'Lucas Moreau',
+          role: 'Lead Data Scientist',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Emma Rousseau',
+          role: 'Data Scientist',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Pierre Durand',
+          role: 'Machine Learning Engineer',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Ana Silva',
+          role: 'Data Analyst',
+          image: '/images/pages/carte-benevoles.png',
+        },
+      ],
+    },
+    {
+      title: 'Développeurs',
+      members: [
+        {
+          name: 'Maxime Leroy',
+          role: 'Lead Developer',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Julie Moreau',
+          role: 'Full-Stack Developer',
+          image: '/images/pages/carte-benevoles.png',
+        },
+        {
+          name: 'Alexandre Petit',
+          role: 'Frontend Developer',
+          image: '/images/pages/carte-benevoles.png',
+        },
+      ],
+    },
+  ];
+
 
   return (
     <>
@@ -132,6 +201,12 @@ export default function AboutPage() {
       <PartnersBlock 
         title={t('partners.title')} 
         partners={partners} 
+        className="my-lg"
+      />
+
+      <MembersBlock
+        title={t('members.title')}
+        categories={members}
         className="my-lg"
       />
 

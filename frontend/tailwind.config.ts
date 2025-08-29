@@ -28,6 +28,9 @@ const config: Config = {
       center: true,
       padding: '1rem',
     },
+    boxShadow: {
+      'base': '2px 2px 0 0 rgba(0, 0, 0)',
+    },
     zIndex: {
       '1': '1',
       '2': '2',
