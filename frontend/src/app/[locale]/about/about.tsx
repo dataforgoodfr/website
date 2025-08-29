@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CtaWithImage, EditoCard, LargeTextImage, NewsletterBlock, PartnersBlock, Title } from '@/components';
+import { CtaWithImage, EditoCard, LargeTextImage, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
 
 export default function AboutPage() {
   const t = useTranslations('about');
@@ -26,6 +26,27 @@ export default function AboutPage() {
       name: t('partners.partners.3.name'),
       image: t('partners.partners.3.image'),
       link: t('partners.partners.3.link'),
+    },
+  ];
+
+  const testimonies = [
+    {
+      id: 1,
+      author: "Jean-Pierre",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "/images/pages/carte-benevoles.png",
+    },
+    {
+      id: 2,
+      author: "Jean-Pierre",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "/images/pages/carte-benevoles.png",
+    },
+    {
+      id: 3,
+      author: "Jean-Pierre",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "/images/pages/carte-benevoles.png",
     },
   ];
 
@@ -75,6 +96,15 @@ export default function AboutPage() {
           cta={
             { text: t('presentation.1.cta'), link: '/positions', rotation: 0.5, className: "relative sm:left-48 -top-2" }
           }
+        />
+      </div>
+
+      <div className="my-lg container">
+        <Title className="mb-md" level={2} hasSeparator variant="medium">
+          {t('testimonies.title')}
+        </Title>
+        <TestimoniesCarousel 
+          testimonies={testimonies}
         />
       </div>
 

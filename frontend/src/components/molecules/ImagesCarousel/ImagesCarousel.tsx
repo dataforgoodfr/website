@@ -119,7 +119,6 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
 
             {/* Progress bar */}
             <div className="h-4 w-full mt-8 bg-[url('/images/carousel-progressbar-bg.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat">
-              {/* @TODO: Add progress bar image */}
               <div 
                 className="h-full bg-[url('/images/carousel-progressbar.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat transition-all duration-300"
                 style={{ width: `${(current / count) * 100}%` }}
