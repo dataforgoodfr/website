@@ -189,6 +189,7 @@ export default function Homepage() {
       <ThematicsBlock
         title={t('thematics.title')}
         thematics={thematics}
+        className="my-lg"
       />
       <ResultsCard
         title={t('results.title')}

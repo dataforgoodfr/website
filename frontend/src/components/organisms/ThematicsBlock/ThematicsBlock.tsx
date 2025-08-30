@@ -27,7 +27,7 @@ const ResultsCard: React.FC<ThematicsProps> = ({
   return (
     <div
       className={clsx(
-        'container py-lg relative overflow-hidden',
+        'container relative overflow-hidden',
         className,
       )}
       {...props}
