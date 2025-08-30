@@ -1,3 +1,6 @@
+export { default as BaseCardsBlock } from './BaseCardsBlock/BaseCardsBlock';
+export type { BaseCardsBlockProps } from './BaseCardsBlock/BaseCardsBlock';
+
 export { default as MembersBlock } from './MembersBlock/MembersBlock';
 export type { MembersBlockProps } from './MembersBlock/MembersBlock';
 
