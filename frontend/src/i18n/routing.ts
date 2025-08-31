@@ -11,6 +11,9 @@ const pathnames = {
   "/about": {
     fr: "/nous-connaitre",
   },
+  "/projects": {
+    fr: "/projets",
+  },
 } satisfies Pathnames<typeof locales>;
 
 export const routing = defineRouting({

@@ -22,7 +22,7 @@ const Header = () => {
 
   const mainNav: Record<string, string> = {
     know: '/about',
-    projects: '/todo',
+    projects: '/projects',
     positions: '/todo',
     news: '/todo',
     resources: '/todo',
