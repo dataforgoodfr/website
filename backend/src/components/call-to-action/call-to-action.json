@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_call_to_action_call_to_actions",
+  "info": {
+    "displayName": "call_to_action",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
