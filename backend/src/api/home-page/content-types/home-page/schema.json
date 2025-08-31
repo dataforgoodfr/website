@@ -16,124 +16,95 @@
     }
   },
   "attributes": {
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
-    "cta_join": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "cta_projects": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "cta_donation": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "hero": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "vision_description": {
+      "type": "component",
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext"
+      "component": "hero.hero"
     },
-    "mission_description": {
+    "project_carousel_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "string"
     },
-    "values_description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
-    "association_description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
-    "projects": {
+    "featured_projects": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::project.project"
     },
-    "members": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::member.member"
+    "thematics_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     },
-    "partners": {
+    "thematics": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::partner.partner"
+      "target": "api::thematic.thematic"
+    },
+    "press_releases_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "featured_press_releases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::press-release.press-release"
+    },
+    "results_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "results": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "kpi.kpi"
+    },
+    "call_to_actions": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "call-to-action.call-to-action"
+    },
+    "event_section_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event"
     }
   }
 }
