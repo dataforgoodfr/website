@@ -1,6 +1,6 @@
 'use client';
 
-import { InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
+import { CtaWithImage, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
 import { useTranslations } from 'next-intl';
 
 export default function ProjectsPage() {
@@ -63,62 +63,86 @@ export default function ProjectsPage() {
   ]
 
   const informations = [
-  {
-    title: 'Collecter des données au service du plaidoyer',
-    text: [
-      {
-        'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
-      },
-      { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
-      { 'info': "dans les médias avec Quota Climat." }
-    ]
-  },
-  {
-    title: 'Construire des outils internes',
-    text: [
-      {
-        'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
-      },
-      { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
-      { 'info': "industrielle avec Bloom." }
-    ]
-  },
-  {
-    title: 'Concevoir des plateformes de mobilisation citoyenne',
-    text: [
-      {
-        'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
-      },
-      { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
-      { 'info': "avec Seastemik." }
-    ]
-  },
-];
+    {
+      title: 'Collecter des données au service du plaidoyer',
+      text: [
+        {
+          'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
+        },
+        { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
+        { 'info': "dans les médias avec Quota Climat." }
+      ]
+    },
+    {
+      title: 'Construire des outils internes',
+      text: [
+        {
+          'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
+        },
+        { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
+        { 'info': "industrielle avec Bloom." }
+      ]
+    },
+    {
+      title: 'Concevoir des plateformes de mobilisation citoyenne',
+      text: [
+        {
+          'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
+        },
+        { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
+        { 'info': "avec Seastemik." }
+      ]
+    },
+  ];
 
   return (
     <>
-      <div className="container my-lg">
-        <Title className="mb-md max-w-5xl" variant="medium">
-          {t('title')}
-        </Title>
+
+      <div className="my-lg container flex flex-col md:flex-row">
+        <div className="md:flex-1 md:flex justify-end">
+          <Title className="mb-md max-w-4xl content-center" variant="medium">
+            {t('title')}
+          </Title>
+
+          <CtaWithImage
+            title={{
+              children: t('presentation.title'),
+              rotation: -4,
+            }}
+            content={{
+              text: t('presentation.content'),
+              rotation: 1.5,
+              className: "sm:left-6",
+            }}
+            image="/images/pages/image-projets.png"
+            imageClassName='object-fill'
+            className="md:flex-1"
+            contentClassName="relative md:top-24"
+            cta={
+              { text: t('presentation.cta'), link: '/projects', rotation: 0.7, className: "relative sm:left-48 -top-2" }
+            }
+          />
+        </div>
       </div>
 
-      <ThematicsBlock
-        title={t('thematics.title')}
-        titleLevel={1}
-        subtitle={t('thematics.subtitle')}
-        subtitleLevel={2}
-        thematics={thematics}
-        className='my-lg'
-      />
 
-      <InformationsBlock
-        title="Informations"
-        titleLevel={1}
-        informations={informations}
-        className='my-lg'
-      />
 
-    </>
-  );
+        <ThematicsBlock
+          title={t('thematics.title')}
+          titleLevel={1}
+          subtitle={t('thematics.subtitle')}
+          subtitleLevel={2}
+          thematics={thematics}
+          className='my-lg'
+        />
+
+        <InformationsBlock
+          title="Informations"
+          titleLevel={1}
+          informations={informations}
+          className='my-lg'
+        />
+
+      </>
+      );
 }

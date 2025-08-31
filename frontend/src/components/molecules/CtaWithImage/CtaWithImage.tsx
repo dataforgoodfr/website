@@ -10,6 +10,7 @@ export type CtaWithImageProps = {
     className?: string;
   };
   image: string;
+  imageClassName?: string;
   imagePosition?: "left" | "right";
   cta: {
     text: string;
@@ -25,6 +26,7 @@ const CtaWithImage: React.FC<CtaWithImageProps> = ({
   title,
   content,
   image,
+  imageClassName,
   imagePosition = "right",
   cta,
   className,
@@ -57,7 +59,7 @@ const CtaWithImage: React.FC<CtaWithImageProps> = ({
           {cta.text}
         </Button>
       </div>
-      <Image src={image} alt="" width={770} height={770} className={clsx("absolute -z-1 top-0 bottom-0 my-auto w-96 h-96 sm:w-[770px] sm:h-[770px] max-w-none", imagePosition === "left" ? "right-0" : "left-24")} />
+      <Image src={image} alt="" width={770} height={770} className={clsx("absolute -z-1 top-0 bottom-0 my-auto w-96 h-96 sm:w-[770px] sm:h-[770px] max-w-none", imageClassName, imagePosition === "left" ? "right-0" : "left-24")} />
     </div>
   );
 };
