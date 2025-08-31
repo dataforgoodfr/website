@@ -38,7 +38,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
   return (
     <div
       className={clsx(
-        'container pb-lg relative overflow-visible fit-content',
+        'container pb-lg md:pb-0 relative overflow-visible fit-content',
         'flex flex-col sm:flex-row sm:items-center gap-md max-w-xl',
         className,
       )}

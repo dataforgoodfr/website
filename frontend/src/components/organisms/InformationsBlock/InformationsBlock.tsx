@@ -17,7 +17,7 @@ export type InformationsBlockProps = {
     className?: string;
 };
 
-const TalksBlock: React.FC<InformationsBlockProps> = ({
+const InformationsBlock: React.FC<InformationsBlockProps> = ({
     title,
     titleLevel = 2,
     informations,
@@ -41,26 +41,26 @@ const TalksBlock: React.FC<InformationsBlockProps> = ({
 
             <div className="flex flex-col items-start">
                 {informations.map((information, index) => (
-                    <>
+                    <div key={index}>
                         <Title variant='small' className='mb-xs' level={information.titleLevel ?? 3}>
                             {information.title}
                         </Title>
                         <p className='font-normal text-md font-medium font-tertiary relative'>
-                            {information.text.map((info) => {
+                            {information.text.map((info, index) => {
                                 if(info.ctaLink) {
-                                    return (<span><Link className="underline" href={info.ctaLink}>{info.info}</Link>&nbsp;</span>)
+                                    return (<span key={index}><Link className="underline" href={info.ctaLink}>{info.info}</Link>&nbsp;</span>)
                                 }
-                                return <span>{info.info}&nbsp;</span>
+                                return <span key={index}>{info.info}&nbsp;</span>
                             })}
                         </p>
                         {index !== informations.length - 1 &&
                             <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-sm mb-sm w-full h-auto" />
                         }
-                    </>
+                    </div>
                 ))}
             </div>
         </div>
     );
 };
 
-export default TalksBlock;
+export default InformationsBlock;

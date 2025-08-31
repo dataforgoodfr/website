@@ -40,7 +40,7 @@ const ResultsCard: React.FC<ThematicsProps> = ({
           {subtitle}
         </p>}
 
-        <ul className="flex flex-wrap justify-between gap-xs mt-md">
+        <ul className="flex flex-wrap justify-between gap-md md:gap-xs mt-md">
           {thematics.map((thematic, index) => (
             <li
               key={index}

@@ -1,0 +1,14 @@
+{
+    "projects": {
+        "meta": {
+            "title": "Tous les projets",
+            "description": ""
+        },
+        "title": "Tous les projets",
+        "thematics": {
+          "title": "Trois thèmes",
+          "subtitle": "Le tout, sur trois grandes thématiques:"
+        }
+    }
+    
+}
