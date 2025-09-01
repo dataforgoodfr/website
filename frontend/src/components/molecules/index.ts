@@ -19,3 +19,5 @@ export { default as ThematicsCard } from './ThematicsCard/ThematicsCard';
 export type { ThematicsCardProps } from './ThematicsCard/ThematicsCard';
 export { default as TestimoniesCarousel } from './TestimoniesCarousel/TestimoniesCarousel';
 export type { TestimoniesCarouselProps } from './TestimoniesCarousel/TestimoniesCarousel';
+export { default as Kpis } from './Kpis/Kpis';
+export type { KpisProps } from './Kpis/Kpis';
