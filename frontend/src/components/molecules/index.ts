@@ -1,3 +1,5 @@
+export { default as BaseCard } from './BaseCard/BaseCard';
+export type { BaseCardProps } from './BaseCard/BaseCard';
 export { default as CtaWithImage } from './CtaWithImage/CtaWithImage';
 export type { CtaWithImageProps } from './CtaWithImage/CtaWithImage';
 export { default as EditoCard } from './EditoCard/EditoCard';

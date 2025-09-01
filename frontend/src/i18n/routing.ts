@@ -11,6 +11,9 @@ const pathnames = {
   "/about": {
     fr: "/nous-connaitre",
   },
+  "/positions": {
+    fr: "/nos-positions",
+  },
   "/projects": {
     fr: "/projets",
   },

@@ -23,7 +23,7 @@ const Header = () => {
   const mainNav: Record<string, string> = {
     know: '/about',
     projects: '/projects',
-    positions: '/todo',
+    positions: '/positions',
     news: '/todo',
     resources: '/todo',
   };
