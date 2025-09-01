@@ -38,7 +38,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
   return (
     <div
       className={clsx(
-        'container pb-lg relative overflow-visible fit-content',
+        'container pb-lg md:pb-0 relative overflow-visible fit-content',
         'flex flex-col sm:flex-row sm:items-center gap-md max-w-xl',
         className,
       )}
@@ -52,7 +52,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
         width={imageWidth}
         height={imageHeight}
       />
-      <div className="pt-lg sm:w-calc(50% - 1rem)">
+      <div className="pt-lg mb-xs sm:w-calc(50% - 1rem)">
         <TiltedTitle {...title.props} variant='medium' className={`${title.props.className} z-1. mb-xs`}>
           {title.children}
         </TiltedTitle>

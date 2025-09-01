@@ -14,6 +14,9 @@ const pathnames = {
   "/positions": {
     fr: "/nos-positions",
   },
+  "/projects": {
+    fr: "/projets",
+  },
 } satisfies Pathnames<typeof locales>;
 
 export const routing = defineRouting({
