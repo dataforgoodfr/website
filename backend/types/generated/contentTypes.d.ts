@@ -965,6 +965,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::press-release.press-release'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    related_funders: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::funder.funder'
+    >;
     related_partners: Schema.Attribute.Relation<
       'manyToMany',
       'api::partner.partner'
@@ -1045,6 +1049,34 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiResourceResource extends Struct.CollectionTypeSchema {
+  collectionName: 'resources';
+  info: {
+    displayName: 'Resource';
+    pluralName: 'resources';
+    singularName: 'resource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blog: Schema.Attribute.Relation<'oneToOne', 'api::blog.blog'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::resource.resource'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -1734,6 +1766,7 @@ declare module '@strapi/strapi' {
       'api::partner.partner': ApiPartnerPartner;
       'api::press-release.press-release': ApiPressReleasePressRelease;
       'api::project.project': ApiProjectProject;
+      'api::resource.resource': ApiResourceResource;
       'api::season.season': ApiSeasonSeason;
       'api::thematic.thematic': ApiThematicThematic;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;

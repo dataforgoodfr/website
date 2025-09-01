@@ -256,6 +256,11 @@
       "relation": "manyToMany",
       "target": "api::partner.partner",
       "inversedBy": "related_projects"
+    },
+    "related_funders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::funder.funder"
     }
   }
 }
