@@ -22,6 +22,9 @@ export type { TalksBlockProps } from './TalksBlock/TalksBlock';
 export { default as ThematicsBlock } from './ThematicsBlock/ThematicsBlock';
 export type { ThematicsProps } from './ThematicsBlock/ThematicsBlock';
 
+export { default as ThematicHeroBlock } from './ThematicHeroBlock/ThematicHeroBlock';
+export type { ThematicHeroBlockProps } from './ThematicHeroBlock/ThematicHeroBlock';
+
 export { default as HeroBlock } from './HeroBlock/HeroBlock';
 export type { HeroBlockProps } from './HeroBlock/HeroBlock';
 
