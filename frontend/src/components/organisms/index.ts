@@ -25,6 +25,9 @@ export type { ThematicsProps } from './ThematicsBlock/ThematicsBlock';
 export { default as ThematicHeroBlock } from './ThematicHeroBlock/ThematicHeroBlock';
 export type { ThematicHeroBlockProps } from './ThematicHeroBlock/ThematicHeroBlock';
 
+export { default as ThumbnailProjectsBlock } from './ThumbnailProjectsBlock/ThumbnailProjectsBlock';
+export type { ThumbnailProjectsBlockProps } from './ThumbnailProjectsBlock/ThumbnailProjectsBlock';
+
 export { default as HeroBlock } from './HeroBlock/HeroBlock';
 export type { HeroBlockProps } from './HeroBlock/HeroBlock';
 

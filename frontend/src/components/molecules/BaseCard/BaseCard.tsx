@@ -29,7 +29,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
   return (
     <Link
       className={clsx(
-        'relative block shadow-link shadow-link--building h-full',
+        'relative block shadow-block shadow-block--building h-full',
         className,
       )}
       href={link}

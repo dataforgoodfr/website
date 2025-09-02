@@ -28,7 +28,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
   return (
     <Link
       className={clsx(
-        'shadow-link shadow-link--black w-full h-full',
+        'shadow-block shadow-block--black w-full h-full',
         className,
       )}
       href={link}
