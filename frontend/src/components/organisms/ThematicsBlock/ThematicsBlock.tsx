@@ -11,7 +11,7 @@ export type ThematicsProps = {
   className?: string;
 };
 
-const ResultsCard: React.FC<ThematicsProps> = ({
+const ThematicsBlock: React.FC<ThematicsProps> = ({
   title,
   subtitle,
   titleLevel = 1,
@@ -57,4 +57,4 @@ const ResultsCard: React.FC<ThematicsProps> = ({
   );
 };
 
-export default ResultsCard;
+export default ThematicsBlock;
