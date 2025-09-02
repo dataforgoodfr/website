@@ -50,7 +50,7 @@ const CtaWithImage: React.FC<CtaWithImageProps> = ({
         <TiltedTitle level="p" variant={title.variant ?? 'medium'} rotation={title.rotation ?? -4} className={clsx("drop-shadow-3 drop-shadow-black before:-z-1 z-2", title.className)}>
           {title.children}
         </TiltedTitle>
-        <div className={clsx("relative shadow-link shadow-link--black max-w-sm", content.className)} style={{transform: `rotate(${content.rotation}deg)`}}>
+        <div className={clsx("relative shadow-block shadow-block--black max-w-sm", content.className)} style={{transform: `rotate(${content.rotation}deg)`}}>
           <div className="font-secondary text-black bg-white p-5">
             <p>{content.text}</p>
           </div>
