@@ -30,12 +30,16 @@ RUN apk add --no-cache \
   nasm \
   git
 
-# Copy all monorepo files
-COPY . .
+# Copy dependencies
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY frontend/package.json ./frontend/
 
 # Install dependencies from root
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
-  pnpm install --frozen-lockfile
+  pnpm install --frozen-lockfile --filter=frontend
+
+# Copy frontend package
+COPY frontend ./frontend
 
 # Build frontend package
 RUN pnpm frontend build
@@ -67,12 +71,12 @@ ENV NODE_ENV=production
 # Enable health check
 # HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
 
-COPY --from=builder /app/frontend/.next/standalone ./.next/standalone
-COPY --from=builder /app/frontend/.next/static ./.next/standalone/frontend/.next/static
-COPY --from=builder /app/frontend/public ./.next/standalone/frontend/public
+COPY --from=builder /app/frontend/.next/standalone/ /app/
+COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
+COPY --from=builder /app/frontend/public /app/frontend/public
+COPY --from=builder /app/frontend/messages /app/frontend/messages
 
 EXPOSE 3000
-
 ENV PORT=3000
 
-CMD ["node", ".next/standalone/frontend/server.js"]
+CMD ["node", "frontend/server.js"]

@@ -18,7 +18,7 @@ Le frontend est responsable de l'interface utilisateur et de l'interaction avec 
 Pour ajouter du contenu, modifiez les composants dans le dossier `src/components` et assurez-vous que les appels API pointent vers le backend.
 
 > [!TIP]
-> Si jamais aucune donée n'est remontée pour un champ populate malgré une requête juste, véfiriez les permissions "Find" côté Strapi
+> Si jamais aucune donnée n'est remontée pour un champ populate malgré une requête juste, véfiriez les permissions "Find" côté Strapi
 
 ### Structure des dossiers
 
