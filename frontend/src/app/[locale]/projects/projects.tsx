@@ -1,6 +1,7 @@
 'use client';
 
 import { CtaWithImage, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
+import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectListBlock';
 import { useTranslations } from 'next-intl';
 
 export default function ProjectsPage() {
@@ -95,6 +96,67 @@ export default function ProjectsPage() {
     },
   ];
 
+const projects = [
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'climate', color: 'alive'},{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'climate', color: 'alive'},{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'climate', color: 'alive'},{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'climate', color: 'alive'},{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+  {
+    project: 'Trawlwatch',
+    association: 'Bloom association',
+    description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
+    thematics: [{ name: 'climate', color: 'alive'},{ name: 'democracy', color: 'resistance'} ],
+    image: '/images/thematics/thematics-social.png',
+  },
+];
+
+
+
   return (
     <>
 
@@ -141,6 +203,13 @@ export default function ProjectsPage() {
           titleLevel={1}
           informations={informations}
           className='my-lg'
+        />
+
+        <ProjectListBlock
+          title="Tous les projets"
+          titleLevel={1}
+          projects={projects}
+          className='my-lg bg-black mx-auto w-full'
         />
 
       </>

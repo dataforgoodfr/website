@@ -20,6 +20,7 @@ const config: Config = {
         blue: 'hsl(var(--c-blue))',
         alive: 'hsl(var(--c-alive))',
         "alive-light": 'hsl(var(--c-alive-light))',
+        "violet-light": 'hsl(var(--c-violet-light))',
         resistance: 'hsl(var(--c-resistance))',
         building: 'hsl(var(--c-building))',
       },
@@ -143,6 +144,13 @@ const config: Config = {
         '.drop-shadow-3': {
           '@apply before:absolute before:content-[""] before:w-full before:h-full before:top-3 before:left-3 before:bg-black': {},
         },
+        /* Style search input */
+        '.search-placeholder::placeholder': {
+          '@apply text-white': {},
+        },
+        '.remove-outline:focus': {
+          '@apply outline-none': {},
+        }
       };
       addUtilities(newUtilities);
     },

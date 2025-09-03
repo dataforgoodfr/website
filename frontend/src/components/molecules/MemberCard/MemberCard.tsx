@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Button, TiltedTitle, Title, TitleProps } from '@/components';
+import { TiltedTitle } from '@/components';
 
 export type MemberCardProps = {
   name: string;

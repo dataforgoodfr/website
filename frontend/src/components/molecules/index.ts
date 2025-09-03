@@ -21,3 +21,9 @@ export { default as TestimoniesCarousel } from './TestimoniesCarousel/Testimonie
 export type { TestimoniesCarouselProps } from './TestimoniesCarousel/TestimoniesCarousel';
 export { default as Kpis } from './Kpis/Kpis';
 export type { KpisProps } from './Kpis/Kpis';
+
+export { default as SearchInput } from './SearchInput/SearchInput';
+export type { SearchInputProps } from './SearchInput/SearchInput';
+
+export { default as ProjectListCard } from './ProjectListCard/ProjectListCard';
+export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';

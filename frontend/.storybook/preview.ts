@@ -11,6 +11,12 @@ const preview: Preview = {
   },
   parameters: {
     nextIntl,
+    backgrounds: {
+      options: {
+        dark: { name: 'Dark', value: '#333' },
+        light: { name: 'Light', value: '#F7F9F2' },
+      },
+    },
     controls: {
       matchers: {
        color: /(background|color)$/i,
