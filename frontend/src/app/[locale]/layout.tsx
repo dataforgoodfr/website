@@ -69,7 +69,8 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat'])}
+        className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
+        style={{ backgroundSize: '100vw 100vh' }}
       >
         <NextIntlClientProvider>
           <Header />

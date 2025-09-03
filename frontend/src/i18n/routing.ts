@@ -14,8 +14,17 @@ const pathnames = {
   "/positions": {
     fr: "/nos-positions",
   },
+  "/climate-and-biodiversity": {
+    fr: "/climat-et-biodiversite",
+  },
   "/projects": {
     fr: "/projets",
+  },
+  "/social-justice": {
+    fr: "/justice-sociale",
+  },
+  "/democracy": {
+    fr: "/democratie",
   },
 } satisfies Pathnames<typeof locales>;
 

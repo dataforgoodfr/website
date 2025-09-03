@@ -23,7 +23,7 @@ const Kpis: React.FC<KpisProps> = ({
   return (
     <ul
       className={clsx(
-        'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16',
+        'container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16',
         className,
       )}
       {...props}
