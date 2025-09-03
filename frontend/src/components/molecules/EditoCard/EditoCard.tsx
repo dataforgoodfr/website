@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Button, Title, TitleProps } from '@/components';
 
 export type EditoCardProps = {
-  title: string;
+  title?: string;
   titleLevel?: TitleProps['level'];
   titleVariant?: TitleProps['variant'];
   titleClassName?: string;
@@ -15,6 +15,7 @@ export type EditoCardProps = {
   imageAlt?: string;
   imageText?: string;
   imageTextClassName?: string;
+  imageTextRotation?: number;
   ctaText?: string;
   ctaLink?: string;
   ctaClassName?: string;
@@ -34,6 +35,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
   imageAlt = '',
   imageText,
   imageTextClassName = 'left-4 top-4',
+  imageTextRotation = 0,
   ctaText,
   ctaLink,
   ctaClassName = 'mt-sm',
@@ -82,7 +84,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
             <div className={clsx(
               'absolute z-1 before:absolute before:content-[""] before:-z-1 before:bg-black before:w-full before:h-full before:top-1 before:left-1',
               imageTextClassName,
-            )}>
+            )} style={{ transform: `rotate(${imageTextRotation}deg)` }}>
               <p className="relative z-2 h2-like p-2 text-black bg-white">{imageText}</p>
             </div>
           )}
