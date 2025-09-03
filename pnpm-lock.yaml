@@ -1585,8 +1585,8 @@ packages:
   '@next/env@14.2.14':
     resolution: {integrity: sha512-/0hWQfiaD5//LvGNgc8PjvyqV50vGK0cADYzaoOOGN8fxzBn3iAiaq3S0tCRnFBldq0LVveLcxCTi41ZoYgAgg==}
 
-  '@next/env@15.4.4':
-    resolution: {integrity: sha512-SJKOOkULKENyHSYXE5+KiFU6itcIb6wSBjgM92meK0HVKpo94dNOLZVdLLuS7/BxImROkGoPsjR4EnuDucqiiA==}
+  '@next/env@15.5.2':
+    resolution: {integrity: sha512-Qe06ew4zt12LeO6N7j8/nULSOe3fMXE4dM6xgpBQNvdzyK1sv5y4oAP3bq4LamrvGCZtmRYnW8URFCeX5nFgGg==}
 
   '@next/eslint-plugin-next@15.3.4':
     resolution: {integrity: sha512-lBxYdj7TI8phbJcLSAqDt57nIcobEign5NYIKCiy0hXQhrUbTqLqOaSDi568U6vFg4hJfBdZYsG4iP/uKhCqgg==}
@@ -12613,7 +12613,7 @@ snapshots:
 
   '@next/env@14.2.14': {}
 
-  '@next/env@15.4.4': {}
+  '@next/env@15.5.2': {}
 
   '@next/eslint-plugin-next@15.3.4':
     dependencies:
@@ -24998,7 +24998,7 @@ snapshots:
 
   vite-plugin-storybook-nextjs@2.0.5(next@14.2.14(@babel/core@7.28.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(storybook@9.0.18(@testing-library/dom@10.4.1)(prettier@2.8.8))(typescript@5.8.3)(vite@5.4.8(@types/node@20.17.48)(terser@5.39.2)):
     dependencies:
-      '@next/env': 15.4.4
+      '@next/env': 15.5.2
       image-size: 2.0.2
       magic-string: 0.30.17
       module-alias: 2.2.3

@@ -2,21 +2,40 @@
 
 import { useTranslations } from 'next-intl';
 import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps, TitleProps, HeroBlock, HeroBlockProps } from '@/components';
+import client from '@/lib/strapi-client';
 
-export default function Homepage() {
+export default async function Homepage() {
   const t = useTranslations('home');
 
-  /* const { data, error } = await client.GET('/home-page');
-  if (error) {
-    return <div>Error</div>;
-  } */
+  const { data } = await client.GET('/home-page', {
+    params: {
+      query: {
+        populate: {
+          hero: {
+            populate: "*"
+          },
+          results: {
+            populate: "*"
+          }
+        }
+      }
+    }
+  });
 
+  console.log(JSON.stringify(data, null, 2))
+
+  const heroData = data?.data?.hero as {
+    title: string;
+    subtitle?: string;
+    image: string;
+    talk: string;
+  };
   const hero = {
-    image: '/images/pages/image-accueil.png',
+    image: heroData.image.url,
     title: {
       level: 1 as TitleProps['level'],
       variant: "big" as TitleProps['variant'],
-      children: "Bâtir",
+      children: heroData.title,
       colors: 'text-white bg-building',
       className: "drop-shadow-3 drop-shadow-black before:-z-1",
       rotation: -3.47,
@@ -24,12 +43,12 @@ export default function Homepage() {
     subtitle: {
       level: 2 as TitleProps['level'],
       variant: "medium" as TitleProps['variant'],
-      children: "Un contre-pouvoir tech citoyen",
+      children: heroData.subtitle,
       colors: 'text-black bg-white',
       className: "drop-shadow-1 drop-shadow-black before:-z-1",
       rotation: -3.47,
     },
-    talk: "Utiliser la technologie à des fins utiles tout en luttant contre l’hégémonie des schémas de pensée qui l’ont engendrée : c’est ce chemin de crête que nous souhaitons emprunter pour que le numérique soit émancipateur.",
+    talk: heroData.talk,
   }
 
   const carouselImages = [
@@ -55,6 +74,7 @@ export default function Homepage() {
     },
   ];
 
+  const resultData = data?.data.results
   const results = [
     {
       id: 'realizedProjects',
@@ -170,7 +190,7 @@ export default function Homepage() {
       />
       <div className="container mt-lg mb-sm">
         <Title level={2} variant="medium">
-          {t('carousel.title')}
+          {data?.data.project_carousel_title}
         </Title>
       </div>
       <ImagesCarousel className="mb-lg" images={carouselImages.map(image => ({
@@ -182,16 +202,16 @@ export default function Homepage() {
       }))} />
 
       <TalksBlock
-        title={t('talks.title')}
+        title={data?.data.press_releases_section_title}
         talks={talks}
       />
       <ThematicsBlock
-        title={t('thematics.title')}
+        title={data?.data.thematics_section_title}
         thematics={thematics}
         className="my-lg"
       />
       <ResultsCard
-        title={t('results.title')}
+        title={data?.data.results_section_title}
         className="my-lg"
         results={results.map(result => ({
           ...result,
