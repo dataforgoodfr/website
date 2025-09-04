@@ -16,7 +16,7 @@ const meta: Meta<typeof Filter> = {
     filterName: {
       control: { type: 'text' },
     },
-    thematicColor: {
+    thematic: {
       control: { type: 'text' },
     },
     className: {
@@ -31,14 +31,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     filterName: 'Filtre thématique',
-    thematicColor: 'alive',
+    thematic: 'social',
   },
 };
 
 export const FilterCheckbox: Story = {
   args: {
     filterName: 'Filtre thématique',
-    thematicColor: 'blue',
+    thematic: 'democracy',
   },
 };
 

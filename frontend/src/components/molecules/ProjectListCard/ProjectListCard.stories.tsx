@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import ProjectListCard from './ProjectListCard';
+import { ThematicValues } from '@/lib/utils';
 
 const meta: Meta<typeof ProjectListCard> = {
   title: 'Molecules/ProjectListCard',
@@ -45,28 +46,28 @@ const sampleProjects = [
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'climate', color: 'alive'},{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'climate', color: 'alive'},{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'climate', color: 'alive'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['climate', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
 ];
@@ -76,7 +77,7 @@ export const Default: Story = {
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'climate', color: 'alive'},{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
 };
@@ -86,7 +87,7 @@ export const WithLessThematics: Story = {
     project: 'Trawlwatch',
     association: 'Bloom association',
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-    thematics: [{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
 };
@@ -95,7 +96,7 @@ export const WithoutDescription: Story = {
   args: {
     project: 'Trawlwatch',
     association: 'Bloom association',
-    thematics: [{ name: 'social', color: 'blue'},{ name: 'democracy', color: 'resistance'} ],
+    thematics: ['social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
 };

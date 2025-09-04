@@ -13,14 +13,17 @@ const preview: Preview = {
     nextIntl,
     backgrounds: {
       options: {
-        dark: { name: 'Dark', value: '#333' },
-        light: { name: 'Light', value: '#F7F9F2' },
+        dark: { name: 'dark', value: '#333' },
+        light: { name: 'light', value: '#F7F9F2' },
       },
+    },
+    initialGlobals: {
+      backgrounds: { value: 'light' },
     },
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 

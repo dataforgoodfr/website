@@ -3,29 +3,31 @@ import { Button, ButtonProps } from '@/components';
 import { clsx } from 'clsx';
 
 export type SearchInputProps = HTMLAttributes<HTMLDivElement> & {
-    onSubmit: (e: any) => void;
+    searchFilter?: string;
+    handleChange: any;
     className?: string;
 };
 
 const SearchInput = ({
-    onSubmit,
+    searchFilter,
+    handleChange,
     className = '',
     ...props
 }: SearchInputProps) => {
     return (
         <div className={clsx(
-                    'flex flex-row',
+                    'flex flex-row max-h-[50px] align-start',
                     className,
                 )} {...props}>
-            <form className="flex flex-row" onSubmit={onSubmit}>
                 <input
                     type="text"
-                    placeholder='Search'
+                    placeholder='Rechercher'
                     className='p-4 bg-building text-white placeholder:text-white search-placeholder remove-outline'
                     name='search'
+                    value={searchFilter}
+                    onChange={(e) => handleChange(e.target)}
                 />
                 <Button type="submit" variant="secondary" color={'violet' as ButtonProps['color']} className='hover:bg-building'></Button>
-            </form>
         </div>
     );
 };

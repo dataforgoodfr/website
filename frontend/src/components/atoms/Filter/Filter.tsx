@@ -1,20 +1,23 @@
 import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 import { Button, ButtonProps } from '@/components';
+import { thematicsColors, ThematicValues } from '@/lib/utils';
 
 export type FilterProps = HTMLAttributes<HTMLDivElement> & {
     filterName: string;
-    thematicColor: string;
-    checkboxValue: string;
-    onChangeCheckbox: (e: { target: { checked: boolean; value: React.SetStateAction<string>; }; }) => void;
+    filterValue: string;
+    thematic?: ThematicValues;
+    checked: any;
+    onClick: any;
     className?: string;
 };
 
 const Filter = ({
     filterName,
-    thematicColor,
-    checkboxValue,
-    onChangeCheckbox,
+    filterValue,
+    thematic,
+    checked,
+    onClick,
     className = '',
     ...props
 }: FilterProps) => {
@@ -23,25 +26,28 @@ const Filter = ({
     }
 
     return (
-        <Button variant="tertiary" color={'violet' as ButtonProps['color']} hasArrow={false} htmlFor={checkboxValue} className={clsx(
+        <Button variant="tertiary" color="violet" onClick={onClick} hasArrow={false} filtervalue={filterValue} thematic={thematic} className={clsx(
             'flex flex-row text-violet-light text-sm px-2.5 py-2 bg-opacity-0',
             className,
         )} {...props}>
             <>
-                {thematicColor && <p className={`size-[23px] rounded-full bg-${thematicColor}`}>
+                {thematic && <p className={`size-[23px] rounded-full bg-${thematicsColors[thematic]}`}>
                 </p>
                 }
-                <label className='cursor-pointer after:align-middle after:cursor-pointer after:ml-4 after:inline-block after:h-[17px] after:w-[17px] after:border-2 after:border-violet-light group-hover:after:border-0'>
+                {!checked && (<label htmlFor={filterValue} className='checkbox'>
                     {filterName}
-                </label>
+                </label>)}
+                {checked && <label htmlFor={filterValue} className='checkbox checked-label'>
+                    {filterName}
+                </label>}
                 <input
                     type="checkbox"
-                    value={checkboxValue}
-                    name="filter"
-                    onChange={onChangeCheckbox}
-                    id={checkboxValue}
-                    className='hidden'
-                // checked={item.checked}
+                    value={filterValue}
+                    name={filterValue}
+                    onChange={onClick}
+                    id={filterValue}
+                    className='absolute opacity-0'
+                    checked={checked}
                 />
             </>
         </Button>
