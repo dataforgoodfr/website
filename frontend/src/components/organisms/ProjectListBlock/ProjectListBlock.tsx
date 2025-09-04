@@ -110,7 +110,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
       </div>
 
       <div className='flex justify-center my-md'>
-        <Pagination pageCount={Math.ceil(projects.length / pageSize)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination pageCount={Math.ceil(filteredProjects.length / pageSize)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
 
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { CtaWithImage, Filter, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
+import { CtaWithImage, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
 import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectListBlock';
 import { IFilter, IInformation, IProject } from '@/lib/types';
 import { ThematicValues } from '@/lib/utils';
