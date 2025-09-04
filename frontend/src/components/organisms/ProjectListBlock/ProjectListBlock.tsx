@@ -1,4 +1,4 @@
-import { Button, Filter, FilterProps, Title, TitleProps } from '@/components';
+import { Button, Filter, FilterProps, Pagination, Title, TitleProps } from '@/components';
 import { ProjectListCard, ProjectListCardProps, SearchInput } from '@/components/molecules';
 import { IProject } from '@/lib/types';
 import clsx from 'clsx';
@@ -10,6 +10,7 @@ export type ProjectListBlockProps = {
   titleLevel?: TitleProps['level'];
   filters: Omit<FilterProps, "onClick" | 'checked'>[];
   projects: IProject[];
+  pageSize: number;
   className?: string;
 };
 
@@ -18,6 +19,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   titleLevel = 2,
   filters,
   projects,
+  pageSize,
   className,
   ...props
 }) => {
@@ -25,9 +27,11 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
   const [projectFilter, setProjectFilter] = useState<string>()
   const [filteredProjects, setFilteredProjects] = useState<IProject[]>(projects)
+  const [displayProjects, setDisplayProjects] = useState<IProject[]>(projects)
   const [tagFilters, setTagFilters] = useState<string[]>([])
   const [thematicFilters, setThematicFilters] = useState<string[]>([])
   const [hideFilters, setHideFilters] = useState<boolean>(false)
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   if (!projects.length) {
     return null;
@@ -38,8 +42,14 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
       && (tagFilters.length === 0 || project.tags?.some((tag) => (tagFilters.includes(tag.toLowerCase()))))
       && (thematicFilters.length === 0 || project.thematics?.some((thematic) => (thematicFilters.includes(thematic.toLowerCase()))))
     ))
-  }
-    , [projectFilter, tagFilters, thematicFilters])
+  }, [projectFilter, tagFilters, thematicFilters])
+
+  useEffect(() => {
+    const start = (currentPage-1) * pageSize
+    const end = start + pageSize
+    setDisplayProjects(filteredProjects.slice(start, end))
+  }, [currentPage, filteredProjects])
+
 
   const handleChange = (e: any) => {
     setProjectFilter(e?.value)
@@ -86,7 +96,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
 
       <div className="flex gap-xs justify-center flex-wrap">
-        {filteredProjects?.sort((a, b) => (new Date(b.date).valueOf() - new Date(a.date).valueOf())).map((project, index) => (
+        {displayProjects?.sort((a, b) => (new Date(b.date).valueOf() - new Date(a.date).valueOf())).map((project, index) => (
           <ProjectListCard
             key={index}
             project={project.project}
@@ -98,6 +108,11 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
           />
         ))}
       </div>
+
+      <div className='flex justify-center my-md'>
+        <Pagination pageCount={Math.ceil(projects.length / pageSize)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      </div>
+
 
       <div className='flex justify-center my-md'>
         <Button href={"/todo"} color="white" hasArrow> Devenir bénévole sur un projet </Button>

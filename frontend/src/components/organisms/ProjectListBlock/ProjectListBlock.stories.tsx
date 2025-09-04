@@ -159,7 +159,7 @@ type Story = StoryObj<typeof meta>;
       tags: ["saison2025", "saison2024"],
     },
     {
-      project: 'Trawlwatch',
+      project: 'Page3',
       association: 'Bloom association',
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
@@ -176,6 +176,7 @@ export const Default: Story = {
     titleLevel: 1,
     filters: filters,
     projects: projects,
+    pageSize: 4
   },
 };
 

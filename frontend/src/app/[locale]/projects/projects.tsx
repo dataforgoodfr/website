@@ -291,6 +291,7 @@ export default function ProjectsPage() {
         titleLevel={1}
         filters={filters}
         projects={projects}
+        pageSize={16}
         className='my-lg bg-black mx-auto w-full'
       />
 
