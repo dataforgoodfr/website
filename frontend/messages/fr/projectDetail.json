@@ -1,0 +1,15 @@
+{
+    "projectDetail": {
+        "meta": {
+            "title": "Détail du projet",
+            "description": ""
+        },
+        "news": {
+          "title": "Dans la presse"
+        },
+        "members": {
+          "title": "L'équipe du projet"
+        }
+    }
+    
+}

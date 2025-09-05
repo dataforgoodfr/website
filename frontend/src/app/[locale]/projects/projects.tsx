@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl';
 
 export default function ProjectsPage() {
   const t = useTranslations('projects');
-
   const thematics: ThematicsCardProps[] = [
     {
       title: {
@@ -133,7 +132,7 @@ export default function ProjectsPage() {
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
       tags: ["saison2025"],
-      link: "/"
+      link: "projects/bloom"
     },
     {
       project: 'Bloom',
@@ -143,7 +142,7 @@ export default function ProjectsPage() {
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
       tags: ["saison2025"],
-      link: "/"
+      link: "projects/bloomies"
     },
     {
       project: 'Trawlwatch',

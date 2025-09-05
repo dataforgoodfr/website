@@ -22,6 +22,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       ...(await import(`../../messages/${locale}/home.json`)).default,
       ...(await import(`../../messages/${locale}/layout.json`)).default,
       ...(await import(`../../messages/${locale}/positions.json`)).default,
+      ...(await import(`../../messages/${locale}/projectDetail.json`)).default,
       ...(await import(`../../messages/${locale}/projects.json`)).default,
       ...(await import(`../../messages/${locale}/social.json`)).default,
     },
