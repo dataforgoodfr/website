@@ -47,31 +47,6 @@ const Pagination = ({
             </div>
 
         </div>
-        // <Button variant="tertiary" color="violet" onClick={onClick} hasArrow={false} filtervalue={filterValue} thematic={thematic} className={clsx(
-        //     'flex flex-row text-violet-light text-sm px-2.5 py-2 bg-opacity-0',
-        //     className,
-        // )} {...props}>
-        //     <>
-        //         {thematic && <p className={`size-[23px] rounded-full bg-${thematicsColors[thematic]}`}>
-        //         </p>
-        //         }
-        //         {!checked && (<label htmlFor={filterValue} className='checkbox'>
-        //             {filterName}
-        //         </label>)}
-        //         {checked && <label htmlFor={filterValue} className='checkbox checked-label'>
-        //             {filterName}
-        //         </label>}
-        //         <input
-        //             type="checkbox"
-        //             value={filterValue}
-        //             name={filterValue}
-        //             onChange={onClick}
-        //             id={filterValue}
-        //             className='absolute opacity-0'
-        //             checked={checked}
-        //         />
-        //     </>
-        // </Button>
     );
 };
 
