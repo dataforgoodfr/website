@@ -23,10 +23,6 @@ const Pagination = ({
         return null;
     }
 
-    useEffect(() => {
-        console.log(currentPage)
-    }, [currentPage])
-
     return (
         <div className={clsx('flex flex-row gap-sm items-center h-[22px]', className)} {...props} >
             <div className='cursor-pointer max-h-full h-full' onClick={() => {

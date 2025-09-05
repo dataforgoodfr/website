@@ -16,8 +16,14 @@ const meta: Meta<typeof Filter> = {
     filterName: {
       control: { type: 'text' },
     },
+    filterValue:{
+      control: { type: 'text' },
+    }, 
     thematic: {
       control: { type: 'text' },
+    },
+    checked: {
+      control: { type: 'boolean' },
     },
     className: {
       control: 'text',
@@ -31,19 +37,33 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     filterName: 'Filtre thématique',
+    filterValue: 'thematic',
     thematic: 'social',
+    checked: true,
   },
 };
 
 export const FilterCheckbox: Story = {
   args: {
     filterName: 'Filtre thématique',
+    filterValue: 'thematic',
     thematic: 'democracy',
+    checked: true,
+  },
+};
+
+export const FilterCheckboxUnchecked: Story = {
+  args: {
+    filterName: 'Filtre thématique',
+    filterValue: 'thematic',
+    thematic: 'democracy',
+    checked: false,
   },
 };
 
 export const FilterCheckboxWithoutColor: Story = {
   args: {
     filterName: 'Filtre thématique',
+    filterValue: 'thematic',
   },
 };

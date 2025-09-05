@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import Pagination from './Pagination';
+import { useState } from 'react';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Atoms/Pagination',
@@ -28,17 +29,17 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    pageCount: 3,
-    currentPage: 2,
-  },
+export const Default = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  return (
+    <Pagination pageCount={3} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+  )
 };
 
-export const OnlyPage: Story = {
-  args: {
-    pageCount: 1,
-    currentPage: 1,
-  },
+export const OnePage = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  return (
+    <Pagination pageCount={1} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+  )
 };
 
