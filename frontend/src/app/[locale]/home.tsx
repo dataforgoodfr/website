@@ -1,13 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps, TitleProps, HeroBlock, HeroBlockProps } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
 import client from '@/lib/strapi-client';
 
-export default async function Homepage() {
-  const t = useTranslations('home');
-
-  const { data } = await client.GET('/home-page', {
+async function fetchHomepageData() {
+  return await client.GET('/home-page', {
     params: {
       query: {
         populate: {
@@ -35,14 +33,11 @@ export default async function Homepage() {
       }
     }
   });
+}
 
-  const heroData = data?.data?.hero as {
-    title: string;
-    subtitle?: string;
-    image: string;
-    talk: string;
-  };
-  const hero = {
+// Data transformation functions
+function transformHeroData(heroData: any) {
+  return {
     image: heroData.image.url,
     title: {
       level: 1 as TitleProps['level'],
@@ -55,42 +50,60 @@ export default async function Homepage() {
     subtitle: {
       level: 2 as TitleProps['level'],
       variant: "medium" as TitleProps['variant'],
-      children: heroData.subtitle,
+      children: heroData.subtitle || '',
       colors: 'text-black bg-white',
       className: "drop-shadow-1 drop-shadow-black before:-z-1",
       rotation: -3.47,
     },
     talk: heroData.talk,
-  }
+  };
+}
 
-  const projectCarousel = data?.data?.featured_projects
+function transformProjectsData(projects: any) {
+  return projects.map(project => ({
+    id: project.id,
+    src: project.thumbnail?.url || '',
+    title: project.title || '',
+    alt: project.title || '',
+    description: project.short_description || '',
+    ctaText: 'Voir le projet',
+  }))
+}
 
-  const results = data?.data.results.map((result) => ({
-    id: result.id,
-    number: result.stat,
+function transformResultsData(results: any[]) {
+  return results.map((result) => ({
+    id: result.id.toString(),
+    number: parseInt(result.stat),
     text: result.description,
     linkTarget: `/projects/${result.id}`,
+    linkLabel: 'Voir le projet',
   }));
+}
 
-  const events = data?.data.events.map((event) => ({
+function transformEventsData(events: any[]) {
+  return events.map((event) => ({
     id: event.id,
     title: event.name,
-    date: new Date(event.date).toLocaleString(undefined, {  month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+    date: new Date(event.date).toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
     image: event.image.url,
     tag: "Evenement",
     link: event.link,
   }));
+}
 
-  const articles = data?.data.articles.map((article) => ({
+function transformArticlesData(articles: any[]) {
+  return articles.map((article) => ({
     id: article.id,
-    author: article.author ?? 'Data For Good',
+    author: 'Data For Good',
     talk: article.title,
     image: article.thumbnail.url,
     ctaText: 'Lire l\'article',
     ctaLink: `/articles/${article.slug}`,
   }));
+}
 
-  const thematics = data?.data?.thematics?.map(thematic => ({
+function transformThematicsData(thematics: any[]) {
+  return thematics.map(thematic => ({
     title: {
       children: thematic.name,
       props: {
@@ -99,7 +112,7 @@ export default async function Homepage() {
         rotation: -2.58,
       }
     },
-    id: thematic.id,
+    id: thematic.id.toString(),
     talk: thematic.description,
     talkOffset: 10,
     image: thematic.thumbnail.url,
@@ -107,7 +120,21 @@ export default async function Homepage() {
     imageHeight: 318,
     ctaText: "Voir les projets",
     ctaLink: "/projets",
-  }))
+  }));
+}
+
+export default async function Homepage() {
+  const t = useTranslations('home');
+
+  const { data } = await fetchHomepageData()
+
+  const homePageData = data!.data!;
+  const hero = transformHeroData(homePageData.hero);
+  const projects = transformProjectsData(homePageData.featured_projects || []);
+  const results = transformResultsData(homePageData.results || []);
+  const events = transformEventsData(homePageData.events || []);
+  const articles = transformArticlesData(homePageData.articles || []);
+  const thematics = transformThematicsData(homePageData.thematics || []);
 
   return (
     <>
@@ -118,30 +145,24 @@ export default async function Homepage() {
       />
       <div className="container mt-lg mb-sm">
         <Title level={2} variant="medium">
-          {data?.data.project_carousel_title}
+          {homePageData.project_carousel_title!}
         </Title>
       </div>
-      <ImagesCarousel className="mb-lg" images={projectCarousel!.map(project => ({
-        src: project.thumbnail.url,
-        title: project.title,
-        alt: project.title,
-        description: project.short_description,
-        ctaText: t('carousel.ctaText'),
-      }))} />
+      <ImagesCarousel className="mb-lg" images={projects} />
 
       <TalksBlock
-        title={data?.data?.articles_section_title}
+        title={homePageData.articles_section_title!}
         talks={articles}
       />
       <ThematicsBlock
-        title={data?.data.thematics_section_title}
-        thematics={thematics}
+        title={homePageData.thematics_section_title!}
+        thematics={thematics.map(t => ({ ...t, id: t.id.toString() }))}
         className="my-lg"
       />
       <ResultsCard
-        title={data?.data.results_section_title}
+        title={homePageData.results_section_title!}
         className="my-lg"
-        results={results}
+        results={results.map(r => ({ ...r, linkLabel: 'Voir le projet' }))}
       />
 
       <NewsSmallBlock
