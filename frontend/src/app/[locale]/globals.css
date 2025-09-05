@@ -84,6 +84,7 @@
     --c-resistance: 37 98% 53%; /* orange */
     --c-violet-light: 270, 77%, 91%; /* light purple */
     --c-building: 266 84% 61%; /* purple */
+    --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
 
     /* Font variables */
@@ -160,19 +161,28 @@
 
 
   /* Components */
-  .shadow-link {
+  .shadow-block {
     @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:transition-base;
   }
-  a.shadow-link, button.shadow-link {
+  a.shadow-block, button.shadow-block {
     @apply hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:bg-building;
   }
-  .shadow-link > * {
+  .shadow-block > * {
     @apply relative z-1;
   }
-  .shadow-link--building {
+  .shadow-block--building {
     @apply before:bg-building;
   }
-  .shadow-link--black {
+  .shadow-block--alive {
+    @apply before:bg-alive;
+  }
+  .shadow-block--resistance {
+    @apply before:bg-resistance;
+  }
+  .shadow-block--blue {
+    @apply before:bg-blue;
+  }
+  .shadow-block--black {
     @apply before:bg-black;
   }
 }
