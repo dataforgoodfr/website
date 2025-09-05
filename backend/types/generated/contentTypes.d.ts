@@ -602,6 +602,13 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+    articles_section_title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     call_to_actions: Schema.Attribute.Component<
       'call-to-action.call-to-action',
       true
@@ -621,10 +628,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         };
       }>;
     events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
-    featured_press_releases: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::press-release.press-release'
-    >;
     featured_projects: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
@@ -635,17 +638,17 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::home-page.home-page'
-    >;
-    press_releases_section_title: Schema.Attribute.String &
+    join_newsletter_text: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
     project_carousel_title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1201,6 +1204,14 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
         };
       }>;
     quote2: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

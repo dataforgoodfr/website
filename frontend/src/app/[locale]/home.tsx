@@ -16,13 +16,25 @@ export default async function Homepage() {
           },
           results: {
             populate: "*"
+          },
+          featured_projects: {
+            fields: ["title", "short_description"],
+            populate: "thumbnail"
+          },
+          thematics: {
+            populate: "*"
+          },
+          events: {
+            populate: "*"
+          },
+          articles: {
+            fields: ["title", "tags", "slug", "published_date", "description"],
+            populate: "*"
           }
         }
       }
     }
   });
-
-  console.log(JSON.stringify(data, null, 2))
 
   const heroData = data?.data?.hero as {
     title: string;
@@ -51,135 +63,51 @@ export default async function Homepage() {
     talk: heroData.talk,
   }
 
-  const carouselImages = [
-    {
-      id: 1,
-      src: '/temp-images/carousel-1.jpg',
-      ctaHref: '/projets/trawlwatch',
-    },
-    {
-      id: 2,
-      src: '/temp-images/carousel-1.jpg',
-      ctaHref: '/projets/biodiversity',
-    },
-    {
-      id: 3,
-      src: '/temp-images/carousel-1.jpg',
-      ctaHref: '/projets/greenenergy',
-    },
-    {
-      id: 4,
-      src: '/temp-images/carousel-1.jpg',
-      ctaHref: '/projets/mountainguard',
-    },
-  ];
+  const projectCarousel = data?.data?.featured_projects
 
-  const resultData = data?.data.results
-  const results = [
-    {
-      id: 'realizedProjects',
-      number: 130,
-      linkTarget: '/soutenir',
-    },
-    {
-      id: 'activeVolunteers',
-      number: 866,
-      linkTarget: '/benevoles',
-    },
-    {
-      id: 'partnersOrganizations',
-      number: 1320,
-      linkTarget: '/partenaires',
-    },
-  ];
+  const results = data?.data.results.map((result) => ({
+    id: result.id,
+    number: result.stat,
+    text: result.description,
+    linkTarget: `/projects/${result.id}`,
+  }));
 
-  const news = [
-    {
-      title: 'Nouvelle technologie révolutionnaire dans le domaine de la data',
-      tag: 'Innovation',
-      image: '/images/bg-paper.jpg',
-      link: '/news/technologie-revolutionnaire',
-      date: '15 DÉC 2024',
-    },
-  ];
+  const events = data?.data.events.map((event) => ({
+    id: event.id,
+    title: event.name,
+    date: new Date(event.date).toLocaleString(undefined, {  month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+    image: event.image.url,
+    tag: "Evenement",
+    link: event.link,
+  }));
 
-  const talks = [
-    {
-      author: 'Sophie Bernard',
-      talk: 'Méthodes de collecte de données éthiques',
-      image: '/images/marty-1.svg',
-      ctaText: 'En savoir plus',
-      ctaLink: '/methodes-collecte',
-    },
-    {
-      author: 'Pierre Dubois',
-      talk: 'Comment optimiser la gestion des bénévoles grâce à l\'analyse prédictive et l\'intelligence artificielle',
-      image: '/images/marty-2.svg',
-      ctaText: 'Découvrir',
-      ctaLink: '/optimisation-benevoles',
-    },
-    {
-      author: 'A. L.',
-      talk: 'Introduction à la visualisation de données',
-      image: '/images/marty-3.svg',
-    },
-  ];
+  const articles = data?.data.articles.map((article) => ({
+    id: article.id,
+    author: article.author ?? 'Data For Good',
+    talk: article.title,
+    image: article.thumbnail.url,
+    ctaText: 'Lire l\'article',
+    ctaLink: `/articles/${article.slug}`,
+  }));
 
-  const thematics: ThematicsCardProps[] = [
-    {
-      title: {
-        children: "Climat et biodiversité",
-        props: {
-          colors: 'text-black bg-alive',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'climate',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      image: '/images/thematics/thematics-climate.svg',
-      imageWidth: 301,
-      imageHeight: 401,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
+  const thematics = data?.data?.thematics?.map(thematic => ({
+    title: {
+      children: thematic.name,
+      props: {
+        colors: 'text-black bg-alive',
+        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        rotation: -2.58,
+      }
     },
-    {
-      title: {
-        children: "justice sociale",
-        props: {
-          colors: 'text-black bg-resistance',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'social',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-social.png',
-      imageWidth: 264,
-      imageHeight: 332,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-    {
-      title: {
-        children: "Démocratie",
-        props: {
-          colors: 'text-black bg-blue',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'democracy',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-democracy.svg',
-      imageWidth: 251,
-      imageHeight: 318,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-  ]
+    id: thematic.id,
+    talk: thematic.description,
+    talkOffset: 10,
+    image: thematic.thumbnail.url,
+    imageWidth: 251,
+    imageHeight: 318,
+    ctaText: "Voir les projets",
+    ctaLink: "/projets",
+  }))
 
   return (
     <>
@@ -193,17 +121,17 @@ export default async function Homepage() {
           {data?.data.project_carousel_title}
         </Title>
       </div>
-      <ImagesCarousel className="mb-lg" images={carouselImages.map(image => ({
-        ...image,
-        title: t(`carousel.${image.id}.title`),
-        alt: t(`carousel.${image.id}.alt`),
-        description: t(`carousel.${image.id}.description`),
-        ctaText: t(`carousel.${image.id}.ctaText`),
+      <ImagesCarousel className="mb-lg" images={projectCarousel!.map(project => ({
+        src: project.thumbnail.url,
+        title: project.title,
+        alt: project.title,
+        description: project.short_description,
+        ctaText: t('carousel.ctaText'),
       }))} />
 
       <TalksBlock
-        title={data?.data.press_releases_section_title}
-        talks={talks}
+        title={data?.data?.articles_section_title}
+        talks={articles}
       />
       <ThematicsBlock
         title={data?.data.thematics_section_title}
@@ -213,16 +141,12 @@ export default async function Homepage() {
       <ResultsCard
         title={data?.data.results_section_title}
         className="my-lg"
-        results={results.map(result => ({
-          ...result,
-          text: t(`results.${result.id}.title`),
-          linkLabel: t(`results.${result.id}.linkLabel`),
-        }))}
+        results={results}
       />
 
       <NewsSmallBlock
         title={t('news.title')}
-        blocks={news}
+        blocks={events}
         className='my-lg'
       />
 
