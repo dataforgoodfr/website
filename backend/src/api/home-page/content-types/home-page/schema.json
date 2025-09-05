@@ -52,18 +52,13 @@
       "relation": "oneToMany",
       "target": "api::thematic.thematic"
     },
-    "press_releases_section_title": {
+    "articles_section_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "string"
-    },
-    "featured_press_releases": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::press-release.press-release"
     },
     "results_section_title": {
       "pluginOptions": {
@@ -105,6 +100,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event"
+    },
+    "join_newsletter_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
     }
   }
 }
