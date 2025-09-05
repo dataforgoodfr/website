@@ -1,6 +1,6 @@
 'use client';
 
-import { CtaWithImage, Filter, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
+import { CtaWithImage, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
 import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectListBlock';
 import { IFilter, IInformation, IProject } from '@/lib/types';
 import { ThematicValues } from '@/lib/utils';
@@ -291,6 +291,7 @@ export default function ProjectsPage() {
         titleLevel={1}
         filters={filters}
         projects={projects}
+        pageSize={16}
         className='my-lg bg-black mx-auto w-full'
       />
 

@@ -156,7 +156,14 @@ const config: Config = {
         },
         '.remove-outline:focus': {
           '@apply outline-none': {},
-        }
+        },
+        /* Rotate button arrow */
+        '.rotate-arrow': {
+          '@apply [&_svg]:rotate-90 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
+        },
+        '.not-rotate-arrow': {
+          '@apply [&_svg]:rotate-0 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
+        },
       };
       addUtilities(newUtilities);
     },
