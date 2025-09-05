@@ -20,10 +20,14 @@ const config: Config = {
         blue: 'hsl(var(--c-blue))',
         alive: 'hsl(var(--c-alive))',
         "alive-light": 'hsl(var(--c-alive-light))',
+        "violet-light": 'hsl(var(--c-violet-light))',
         "building-light": 'hsl(var(--c-building-light))',
         resistance: 'hsl(var(--c-resistance))',
         building: 'hsl(var(--c-building))',
       },
+      content: {
+        'checkmark': 'url("/images/checkmark.png")',
+      }
     },
     container: {
       center: true,
@@ -143,6 +147,23 @@ const config: Config = {
         },
         '.drop-shadow-3': {
           '@apply before:absolute before:content-[""] before:w-full before:h-full before:top-3 before:left-3 before:bg-black': {},
+        },
+        /* Style search input */
+        '.checkbox': {
+          '@apply cursor-pointer after:align-middle after:pb-4 after:cursor-pointer after:ml-4 after:inline-block after:h-[17px] after:w-[22px] after:border-2 after:border-violet-light group-hover:after:border-0': {},
+        },
+        '.checked-label': {
+          '@apply after:content-checkmark after:pl-1': {},
+        },
+        '.remove-outline:focus': {
+          '@apply outline-none': {},
+        },
+        /* Rotate button arrow */
+        '.rotate-arrow': {
+          '@apply [&_svg]:rotate-90 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
+        },
+        '.not-rotate-arrow': {
+          '@apply [&_svg]:rotate-0 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
         },
       };
       addUtilities(newUtilities);

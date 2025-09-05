@@ -10,3 +10,11 @@ export function getImage(image: any) {
   // ? in v5 the image path is prefixed with /uploads
   return image?.url ? `${image.url.replace('/uploads', '')}` : '';
 }
+
+export const thematicsColors = {
+  social: 'resistance',
+  democracy: 'blue',
+  climate: 'alive'
+} as const;
+
+export type ThematicValues = keyof typeof thematicsColors;

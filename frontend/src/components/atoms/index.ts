@@ -12,3 +12,9 @@ export type { TitleProps } from './Title/Title';
 
 export { default as Tag } from './Tag/Tag';
 export type { TagProps } from './Tag/Tag';
+
+export { default as Filter } from './Filter/Filter';
+export type { FilterProps } from './Filter/Filter';
+
+export { default as Pagination } from './Pagination/Pagination';
+export type { PaginationProps } from './Pagination/Pagination';

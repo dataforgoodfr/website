@@ -23,3 +23,9 @@ export { default as ThumbnailProject } from './ThumbnailProject/ThumbnailProject
 export type { ThumbnailProjectProps } from './ThumbnailProject/ThumbnailProject';
 export { default as Kpis } from './Kpis/Kpis';
 export type { KpisProps } from './Kpis/Kpis';
+
+export { default as SearchInput } from './SearchInput/SearchInput';
+export type { SearchInputProps } from './SearchInput/SearchInput';
+
+export { default as ProjectListCard } from './ProjectListCard/ProjectListCard';
+export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';
