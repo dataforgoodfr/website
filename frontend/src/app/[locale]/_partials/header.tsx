@@ -24,8 +24,8 @@ const Header = () => {
     know: '/about',
     projects: '/projects',
     positions: '/positions',
-    news: '/todo',
-    resources: '/todo',
+    news: '/blog',
+    events: '/events',
   };
 
   const authorizeKeys = [

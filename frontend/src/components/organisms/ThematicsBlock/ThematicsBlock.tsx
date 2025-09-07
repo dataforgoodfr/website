@@ -1,12 +1,11 @@
 import clsx from 'clsx';
-import { Title } from '@/components/atoms';
+import { Title, TitleProps } from '@/components/atoms';
 import ThematicsCard, { ThematicsCardProps } from '@/components/molecules/ThematicsCard/ThematicsCard';
 
 export type ThematicsProps = {
   title: string;
   subtitle?: string;
   titleLevel?: 1 | 2 | 3;
-  subtitleLevel?: 1 | 2 | 3;
   thematics: ThematicsCardProps[];
   className?: string;
 };
@@ -14,8 +13,7 @@ export type ThematicsProps = {
 const ThematicsBlock: React.FC<ThematicsProps> = ({
   title,
   subtitle,
-  titleLevel = 1,
-  subtitleLevel = 3,
+  titleLevel = 2,
   thematics,
   className,
   ...props
@@ -47,7 +45,15 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
               className="max-w-80"
             >
               <ThematicsCard
-                {...thematic}
+                {...{...thematic,
+                  title: {
+                    ...thematic.title,
+                    props: {
+                      ...thematic.title.props,
+                      level: titleLevel +1 as TitleProps['level'],
+                    },
+                  },
+                }}
               />
             </li>
           ))}

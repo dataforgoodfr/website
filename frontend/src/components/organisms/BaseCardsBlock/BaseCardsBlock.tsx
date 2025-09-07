@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 
 export type BaseCardsBlockProps = {
-  title: string;
+  title?: string;
   titleLevel?: TitleProps['level'];
   blocks: BaseCardProps[];
   className?: string;
@@ -31,11 +31,13 @@ const BaseCardsBlock: React.FC<BaseCardsBlockProps> = ({
     >
       {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {blocks.map((block) => (
-          <BaseCard key={block.title} {...block} />
+          <li key={block.title}>
+            <BaseCard {...block} />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
