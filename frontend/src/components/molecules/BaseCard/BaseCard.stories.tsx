@@ -81,6 +81,17 @@ export const Default: Story = {
   },
 };
 
+export const Blank: Story = {
+  args: {
+    title: 'Nouveau projet de surveillance des océans',
+    tags: ['Environnement', 'IA'],
+    image: 'https://picsum.photos/400/300?random=1',
+    link: '/projets/surveillance-oceans',
+    subInfos: ['2024', 'En cours'],
+    isBlank: true,
+  },
+};
+
 export const WithManyTags: Story = {
   args: {
     title: 'Projet multi-thématique complexe',

@@ -20,7 +20,7 @@ const SearchInput = ({
                     className,
                 )} {...props}>
                 <input
-                    type="text"
+                    type="search"
                     placeholder='Rechercher'
                     className='p-4 bg-building text-white placeholder:text-white search-placeholder remove-outline'
                     name='search'

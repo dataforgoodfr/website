@@ -8,13 +8,15 @@ export type PaginationProps = HTMLAttributes<HTMLDivElement> & {
     currentPage: number;
     setCurrentPage: any;
     className?: string;
+    color?: 'white' | 'black';
 };
 
 const Pagination = ({
     pageCount,
     currentPage,
     setCurrentPage,
-    className = '',
+    className,
+    color = 'white',
     ...props
 }: PaginationProps) => {
     const t = useTranslations('components');
@@ -30,9 +32,9 @@ const Pagination = ({
                     setCurrentPage(currentPage - 1)
                 }
             }}>
-                <Image src="/images/arrow-left.svg" alt={t('pagination.left')} width={212} height={48} className="relative left-0 object-contain max-h-full max-w-full" />
+                <Image src={color === 'white' ? '/images/arrow-left.svg' : '/images/arrow-left-black.svg'} alt={t('pagination.left')} width={212} height={48} loading="lazy" className="relative left-0 object-contain max-h-full max-w-full" />
             </div>
-            <div className='flex flex-row gap-xs text-white'>
+            <div className={clsx('flex flex-row gap-xs font-black', color === 'white' ? 'text-white' : 'text-black')}>
                 {Array.from(Array(pageCount).keys()).map((number, index) => (
                     <div key={index} className='cursor-pointer' onClick={() => setCurrentPage(number + 1)} style={{ "textDecoration": currentPage === number + 1 ? "underline" : "none" }}>
                         {number + 1}
@@ -43,7 +45,7 @@ const Pagination = ({
                     setCurrentPage(currentPage + 1)
                 }
             }}>
-                <Image src="/images/arrow-right.svg" alt={t('pagination.right')} width={212} height={48} className="relative right-0 object-contain max-h-full max-w-full" />
+                <Image src={color === 'white' ? '/images/arrow-right.svg' : '/images/arrow-right-black.svg'} alt={t('pagination.right')} width={212} height={48} loading="lazy" className="relative right-0 object-contain max-h-full max-w-full" />
             </div>
 
         </div>
