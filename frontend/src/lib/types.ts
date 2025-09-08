@@ -22,3 +22,12 @@ export interface IInformation {
     text: {info: string; ctaLink?: string;}[];
 }
 
+interface IMember {
+    name: string;
+    role: string;
+    image: string;
+}
+export interface IMembers {
+    title: string;
+    members: IMember[];
+}

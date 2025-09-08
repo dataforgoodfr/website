@@ -31,9 +31,11 @@ const NewsSmallBlock: React.FC<NewsSmallBlockProps> = ({
     >
       {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
 
-      {blocks.map((block) => (
-          <NewsSmallCard key={block.title} {...block} />
-      ))}
+      <div className='flex flex-col gap-xs'>
+        {blocks.map((block) => (
+            <NewsSmallCard key={block.title} {...block} />
+        ))}
+      </div>
     </div>
   );
 };

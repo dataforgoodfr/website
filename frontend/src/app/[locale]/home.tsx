@@ -20,7 +20,6 @@ export default function Homepage() {
       colors: 'text-white bg-building',
       className: "drop-shadow-3 drop-shadow-black before:-z-1",
       rotation: -3.47,
-
     },
     subtitle: {
       level: 2 as TitleProps['level'],

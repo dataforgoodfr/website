@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { CtaWithImage, EditoCard, LargeTextImage, MembersBlock, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
+import { IMembers } from '@/lib/types';
 
 export default function AboutPage() {
   const t = useTranslations('about');
@@ -50,7 +51,7 @@ export default function AboutPage() {
     },
   ];
 
-  const members = [
+  const members: IMembers[] = [
     {
       title: 'Équipe de direction',
       members: [

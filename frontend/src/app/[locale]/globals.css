@@ -86,6 +86,7 @@
     --c-building: 266 84% 61%; /* purple */
     --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
+    --c-back-green: 92 14% 81%; /* light green */
 
     /* Font variables */
     --font-primary: 'DMSans', system-ui, sans-serif;
