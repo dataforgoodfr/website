@@ -273,7 +273,6 @@ export default function ProjectsPage() {
         title={t('thematics.title')}
         titleLevel={1}
         subtitle={t('thematics.subtitle')}
-        subtitleLevel={2}
         thematics={thematics}
         className='my-lg'
       />

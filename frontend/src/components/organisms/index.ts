@@ -34,3 +34,6 @@ export type { HeroBlockProps } from './HeroBlock/HeroBlock';
 export { default as InformationsBlock } from './InformationsBlock/InformationsBlock';
 export type { InformationsBlockProps } from './InformationsBlock/InformationsBlock';
 
+export { default as ProjectPresentation } from './ProjectPresentation/ProjectPresentation';
+export type { ProjectPresentationProps } from './ProjectPresentation/ProjectPresentation';
+
