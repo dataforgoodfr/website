@@ -1,6 +1,8 @@
-import { Title, TitleProps } from '@/components';
-import { PartnerCard, PartnerCardProps } from '@/components/molecules';
+import type { TitleProps } from '@/components';
+import type { PartnerCardProps } from '@/components/molecules';
 import clsx from 'clsx';
+import { Title } from '@/components';
+import { PartnerCard } from '@/components/molecules';
 
 export type PartnersBlockProps = {
   title?: string;
@@ -25,9 +27,11 @@ const PartnersBlock: React.FC<PartnersBlockProps> = ({
       className={clsx('container', className)}
       {...props}
     >
-      {title && <Title variant="medium" className="mb-sm" level={titleLevel} hasSeparator>
-        {title}
-      </Title>}
+      {title && (
+        <Title variant="medium" className="mb-sm" level={titleLevel} hasSeparator>
+          {title}
+        </Title>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {partners.map((partner, index) => (

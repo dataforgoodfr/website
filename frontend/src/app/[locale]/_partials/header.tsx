@@ -62,7 +62,6 @@ const Header = () => {
     toggleNav(show);
   };
 
-  // eslint-disable-next-line no-unused-vars
   const handleFocusNav: (e: React.KeyboardEvent) => void = (e) => {
     // Exception: add Escape event in subnav list
     if (
@@ -89,26 +88,26 @@ const Header = () => {
       const actualIndexItemNav = idItemsNav.indexOf(newItemSelected);
 
       switch (e.code) {
-        case 'Home':
-          newIndexIdItem = 0;
-          break;
-        case 'End':
-          newIndexIdItem = idItemsNav.length - 1;
-          break;
-        case 'ArrowRight':
-        case 'ArrowDown':
-          newIndexIdItem
+      case 'Home':
+        newIndexIdItem = 0;
+        break;
+      case 'End':
+        newIndexIdItem = idItemsNav.length - 1;
+        break;
+      case 'ArrowRight':
+      case 'ArrowDown':
+        newIndexIdItem
             = actualIndexItemNav === idItemsNav.length - 1
-              ? 0
-              : actualIndexItemNav + 1;
-          break;
-        case 'ArrowLeft':
-        case 'ArrowUp':
-          newIndexIdItem
+            ? 0
+            : actualIndexItemNav + 1;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        newIndexIdItem
             = actualIndexItemNav === 0
-              ? idItemsNav.length - 1
-              : actualIndexItemNav - 1;
-          break;
+            ? idItemsNav.length - 1
+            : actualIndexItemNav - 1;
+        break;
       }
 
       newItemSelected = idItemsNav[newIndexIdItem];

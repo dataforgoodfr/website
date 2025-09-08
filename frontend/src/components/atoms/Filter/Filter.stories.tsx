@@ -16,9 +16,9 @@ const meta: Meta<typeof Filter> = {
     filterName: {
       control: { type: 'text' },
     },
-    filterValue:{
+    filterValue: {
       control: { type: 'text' },
-    }, 
+    },
     thematic: {
       control: { type: 'text' },
     },

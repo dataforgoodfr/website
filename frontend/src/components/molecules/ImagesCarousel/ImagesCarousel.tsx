@@ -1,16 +1,17 @@
-
-import React from 'react';
+import type { TitleProps } from '@/components';
+import type { CarouselApi } from '@/components/ui/carousel';
 import clsx from 'clsx';
 import Image from 'next/image';
+import React from 'react';
+import { Button, Title } from '@/components';
 import {
   Carousel,
+
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, Title, TitleProps } from '@/components';
 
 export type ImagesCarouselProps = {
   images: Array<{
@@ -43,29 +44,31 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
-
   return (
-    <Carousel setApi={setApi} className={clsx(
-      'w-full relative',
-      className,
-    )}>
+    <Carousel
+      setApi={setApi}
+      className={clsx(
+        'w-full relative',
+        className,
+      )}
+    >
       <CarouselContent>
-        {images.map((image) => (
-          <CarouselItem 
-            key={image.id} 
+        {images.map(image => (
+          <CarouselItem
+            key={image.id}
             className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-full sm:h-[700px] bg-black text-white"
-            
+
           >
-            <Image 
-              src={image.src} 
-              alt={image.alt ?? ''} 
-              width={1000} 
-              height={400} 
+            <Image
+              src={image.src}
+              alt={image.alt ?? ''}
+              width={1000}
+              height={400}
               className="col-start-1 row-start-1 row-span-3 w-full h-full object-cover"
               style={{
                 // Get real image
@@ -87,16 +90,16 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
               <div className="max-w-md">
                 {image.title && (
                   <Title level={titleLevel} variant="medium" className="mb-xs">
-                      {image.title}
+                    {image.title}
                   </Title>
                 )}
-                
+
                 {image.description && (
                   <p className="font-secondary my-xs">
                     {image.description}
                   </p>
                 )}
-                
+
                 {image.ctaText && image.ctaHref && (
                   <Button href={image.ctaHref}>
                     {image.ctaText}
@@ -113,13 +116,15 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
           <div className="ml-auto flex flex-wrap items-center justify-between w-52">
             <CarouselPrevious />
             <div className="flex-1 text-center h4-like">
-              {current}/{count}
+              {current}
+              /
+              {count}
             </div>
             <CarouselNext />
 
             {/* Progress bar */}
             <div className="h-4 w-full mt-8 bg-[url('/images/carousel-progressbar-bg.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat">
-              <div 
+              <div
                 className="h-full bg-[url('/images/carousel-progressbar.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat transition-all duration-300"
                 style={{ width: `${(current / count) * 100}%` }}
               />

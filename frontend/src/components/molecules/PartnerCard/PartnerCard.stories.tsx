@@ -88,4 +88,3 @@ export const CustomImage: Story = {
     link: 'https://techforgood.fr',
   },
 };
-

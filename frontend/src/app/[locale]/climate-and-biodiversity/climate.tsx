@@ -1,11 +1,10 @@
 'use client';
- 
-import { EditoCard, Kpis, NewsletterBlock, PartnersBlock, ThematicHeroBlock, ThumbnailProjectsBlock } from '@/components';
+
 import { useTranslations } from 'next-intl';
+import { EditoCard, Kpis, NewsletterBlock, PartnersBlock, ThematicHeroBlock, ThumbnailProjectsBlock } from '@/components';
 
 export default function ClimatePage() {
   const t = useTranslations('climate');
-
 
   const kpis = [
     {
@@ -72,7 +71,7 @@ export default function ClimatePage() {
         },
       ],
     },
-    
+
     {
       id: '3',
       name: {
@@ -115,7 +114,7 @@ export default function ClimatePage() {
     <>
       <ThematicHeroBlock
         title={t('title')}
-        image={'/images/pages/image-climat-biodiversite.png'}
+        image="/images/pages/image-climat-biodiversite.png"
         className="my-lg"
       />
 
@@ -143,9 +142,9 @@ export default function ClimatePage() {
         className="my-lg"
       />
 
-      <PartnersBlock 
-        title={t('partners')} 
-        partners={partners} 
+      <PartnersBlock
+        title={t('partners')}
+        partners={partners}
         className="my-lg"
       />
 

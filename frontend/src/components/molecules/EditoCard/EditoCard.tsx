@@ -1,6 +1,7 @@
+import type { TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Button, Title, TitleProps } from '@/components';
+import { Button, Title } from '@/components';
 
 export type EditoCardProps = {
   title?: string;
@@ -77,14 +78,18 @@ const EditoCard: React.FC<EditoCardProps> = ({
           'relative w-full sm:w-[calc(50%_-_1rem)]',
           imageClassName,
           imagePosition === 'left' && 'sm:-order-1',
-        )}>
+        )}
+        >
           <Image src={image} alt={imageAlt} className="w-full h-full object-contain" loading="lazy" width={400} height={400} />
 
           {imageText && (
-            <div className={clsx(
-              'absolute z-1 before:absolute before:content-[""] before:-z-1 before:bg-black before:w-full before:h-full before:top-1 before:left-1',
-              imageTextClassName,
-            )} style={{ transform: `rotate(${imageTextRotation}deg)` }}>
+            <div
+              className={clsx(
+                'absolute z-1 before:absolute before:content-[""] before:-z-1 before:bg-black before:w-full before:h-full before:top-1 before:left-1',
+                imageTextClassName,
+              )}
+              style={{ transform: `rotate(${imageTextRotation}deg)` }}
+            >
               <p className="relative z-2 h2-like p-2 text-black bg-white">{imageText}</p>
             </div>
           )}

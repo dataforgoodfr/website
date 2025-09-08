@@ -1,4 +1,3 @@
-
 import components from '../messages/fr/components.json';
 
 // Combine all messages into one object

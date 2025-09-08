@@ -156,7 +156,6 @@ export const LargeTeam: Story = {
   },
 };
 
-
 export const MixedCategories: Story = {
   args: {
     title: 'Équipe mixte',

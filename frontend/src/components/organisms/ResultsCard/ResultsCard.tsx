@@ -1,7 +1,8 @@
+import type { TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Confetti from 'react-confetti';
-import { Button, Title, TitleProps } from '@/components';
+import { Button, Title } from '@/components';
 
 export type ResultsCardProps = {
   title: string;

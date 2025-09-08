@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { TitleProps } from '@/components';
 import InformationsBlock from './InformationsBlock';
-import { TitleProps } from '@/components';
 
 const meta: Meta<typeof InformationsBlock> = {
   title: 'Organisms/InformationsBlock',
@@ -44,31 +44,31 @@ const sampleInformations = [
     title: 'Collecter des données au service du plaidoyer',
     text: [
       {
-        'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
+        info: 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,',
       },
-      { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
-      { 'info': "dans les médias avec Quota Climat." }
-    ]
+      { info: 'en quantifiant la désinformation climatique', ctaLink: '/home' },
+      { info: 'dans les médias avec Quota Climat.' },
+    ],
   },
   {
     title: 'Construire des outils internes',
     text: [
       {
-        'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
+        info: 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un',
       },
-      { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
-      { 'info': "industrielle avec Bloom." }
-    ]
+      { info: 'outil de suivi des plus gros bateaux de pêche', ctaLink: '/test' },
+      { info: 'industrielle avec Bloom.' },
+    ],
   },
   {
     title: 'Concevoir des plateformes de mobilisation citoyenne',
     text: [
       {
-        'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
+        info: 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour',
       },
-      { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
-      { 'info': "avec Seastemik." }
-    ]
+      { info: 'raconter l\'histoire de la surpêche du saumon', ctaLink: '/seastemik' },
+      { info: 'avec Seastemik.' },
+    ],
   },
 ];
 
@@ -78,25 +78,25 @@ const infoWithMultipleLinks = [
     title: 'Collecter des données au service du plaidoyer',
     text: [
       {
-        'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
+        info: 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,',
       },
-      { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
-      { 'info': "dans les médias avec Quota Climat." },
-      { 'info': 'Ceci est un autre lien.', 'ctaLink': '/home' },
-      { 'info': 'Mais ici pas de lien.' },
-    ]
+      { info: 'en quantifiant la désinformation climatique', ctaLink: '/home' },
+      { info: 'dans les médias avec Quota Climat.' },
+      { info: 'Ceci est un autre lien.', ctaLink: '/home' },
+      { info: 'Mais ici pas de lien.' },
+    ],
   },
   {
     title: 'Construire des outils internes',
     text: [
       {
-        'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
+        info: 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un',
       },
-      { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
-      { 'info': "industrielle avec Bloom." },
-      { 'info': 'Ceci est un autre lien.', 'ctaLink': '/home' },
-      { 'info': 'Mais ici pas de lien.' },
-    ]
+      { info: 'outil de suivi des plus gros bateaux de pêche', ctaLink: '/test' },
+      { info: 'industrielle avec Bloom.' },
+      { info: 'Ceci est un autre lien.', ctaLink: '/home' },
+      { info: 'Mais ici pas de lien.' },
+    ],
   },
 ];
 
@@ -106,33 +106,33 @@ const withH2Informations = [
     titleLevel: 2 as TitleProps['level'],
     text: [
       {
-        'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
+        info: 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,',
       },
-      { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
-      { 'info': "dans les médias avec Quota Climat." }
-    ]
+      { info: 'en quantifiant la désinformation climatique', ctaLink: '/home' },
+      { info: 'dans les médias avec Quota Climat.' },
+    ],
   },
   {
     title: 'Construire des outils internes',
     titleLevel: 2 as TitleProps['level'],
     text: [
       {
-        'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
+        info: 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un',
       },
-      { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
-      { 'info': "industrielle avec Bloom." }
-    ]
+      { info: 'outil de suivi des plus gros bateaux de pêche', ctaLink: '/test' },
+      { info: 'industrielle avec Bloom.' },
+    ],
   },
   {
     title: 'Concevoir des plateformes de mobilisation citoyenne',
     titleLevel: 2 as TitleProps['level'],
     text: [
       {
-        'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
+        info: 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour',
       },
-      { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
-      { 'info': "avec Seastemik." }
-    ]
+      { info: 'raconter l\'histoire de la surpêche du saumon', ctaLink: '/seastemik' },
+      { info: 'avec Seastemik.' },
+    ],
   },
 ];
 
@@ -141,11 +141,11 @@ const singleInformation = [
     title: 'Concevoir des plateformes de mobilisation citoyenne',
     text: [
       {
-        'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
+        info: 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour',
       },
-      { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
-      { 'info': "avec Seastemik." }
-    ]
+      { info: 'raconter l\'histoire de la surpêche du saumon', ctaLink: '/seastemik' },
+      { info: 'avec Seastemik.' },
+    ],
   },
 ];
 

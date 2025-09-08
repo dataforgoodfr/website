@@ -1,6 +1,6 @@
-import type { Preview } from '@storybook/nextjs-vite'
-import '../src/app/[locale]/globals.css'
-import nextIntl from './next-intl'
+import type { Preview } from '@storybook/nextjs-vite';
+import nextIntl from './next-intl';
+import '../src/app/[locale]/globals.css';
 
 const preview: Preview = {
   initialGlobals: {
@@ -31,8 +31,8 @@ const preview: Preview = {
       // 'todo' - show a11y violations in the test UI only
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
-      test: 'todo'
-    }
+      test: 'todo',
+    },
   },
 };
 

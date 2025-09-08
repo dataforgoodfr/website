@@ -52,14 +52,13 @@ export default function AboutPage() {
     authorImage: '/images/pages/carte-benevoles.png',
   };
 
-
   return (
     <>
-    <div className="flex justify-center items-center h-screen">1</div>
-    <div className="flex justify-center items-center h-screen">2</div>
-    <div className="flex justify-center items-center h-screen">3</div>
-    <div className="flex justify-center items-center h-screen">4</div>
-    <div className="flex justify-center items-center h-screen">5</div>
+      <div className="flex justify-center items-center h-screen">1</div>
+      <div className="flex justify-center items-center h-screen">2</div>
+      <div className="flex justify-center items-center h-screen">3</div>
+      <div className="flex justify-center items-center h-screen">4</div>
+      <div className="flex justify-center items-center h-screen">5</div>
       <div className="container my-lg">
         <Title className="mb-md max-w-5xl" variant="medium">
           {t('title')}
@@ -79,7 +78,7 @@ export default function AboutPage() {
         title={t('press')}
         blocks={press}
         className="my-lg"
-        />
+      />
       <BaseCardsBlock
         title={t('resources')}
         blocks={resources}

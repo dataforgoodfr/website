@@ -18,11 +18,14 @@ const Tag = ({
   }
 
   return (
-    <div className={clsx(
-      'text-white text-sm font-black px-2.5 py-2 uppercase',
-      bgColor,
-      className,
-    )} {...props}>
+    <div
+      className={clsx(
+        'text-white text-sm font-black px-2.5 py-2 uppercase',
+        bgColor,
+        className,
+      )}
+      {...props}
+    >
       {children}
     </div>
   );

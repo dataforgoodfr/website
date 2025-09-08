@@ -1,7 +1,9 @@
+import type { TitleProps } from '@/components/atoms';
+import type { ThumbnailProjectProps } from '@/components/molecules';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Title, TitleProps } from '@/components/atoms';
-import { ThumbnailProject, ThumbnailProjectProps } from '@/components/molecules';
+import { Title } from '@/components/atoms';
+import { ThumbnailProject } from '@/components/molecules';
 
 export type ThumbnailProjectsBlockProps = {
   title: string;
@@ -29,27 +31,27 @@ const ThumbnailProjectsBlock: React.FC<ThumbnailProjectsBlockProps> = ({
       )}
       {...props}
     >
-        <Image src="/images/scratch-purple.svg" alt="" width={212} height={48} className="object-contain w-full h-auto" />
-        <div className="bg-building-light pt-sm pb-md">
-          <div className="container">
-            <Title hasSeparator className="mb-xs" level={titleLevel} variant="medium">
-              {title}
-            </Title>
+      <Image src="/images/scratch-purple.svg" alt="" width={212} height={48} className="object-contain w-full h-auto" />
+      <div className="bg-building-light pt-sm pb-md">
+        <div className="container">
+          <Title hasSeparator className="mb-xs" level={titleLevel} variant="medium">
+            {title}
+          </Title>
 
-            {projects.map((project, index) => (
-              <ThumbnailProject
-                {...project}
-                name={{
-                  ...project.name,
-                  level: project.name.level ?? (titleLevel as number + 1) as TitleProps['level'],
-                }}
-                key={index}
-                className="mt-lg"
-              />
-            ))}
-          </div>
+          {projects.map((project, index) => (
+            <ThumbnailProject
+              {...project}
+              name={{
+                ...project.name,
+                level: project.name.level ?? (titleLevel as number + 1) as TitleProps['level'],
+              }}
+              key={index}
+              className="mt-lg"
+            />
+          ))}
         </div>
-        <Image src="/images/scratch-purple.svg" alt="" width={212} height={48} className="object-contain w-full h-auto rotate-180" />
+      </div>
+      <Image src="/images/scratch-purple.svg" alt="" width={212} height={48} className="object-contain w-full h-auto rotate-180" />
     </div>
   );
 };

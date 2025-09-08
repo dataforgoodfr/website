@@ -1,11 +1,12 @@
+import type { TiltedTitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Button, TiltedTitle, TiltedTitleProps } from '@/components';
+import { Button, TiltedTitle } from '@/components';
 
 export type ThematicsCardProps = {
   title: {
-    children: React.ReactNode,
-    props: Omit<TiltedTitleProps, "children">
+    children: React.ReactNode;
+    props: Omit<TiltedTitleProps, 'children'>;
   };
   id: string;
   talk: string;
@@ -53,11 +54,11 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
         height={imageHeight}
       />
       <div className="pt-lg mb-xs sm:w-calc(50% - 1rem)">
-        <TiltedTitle {...title.props} variant='medium' className={`${title.props.className} z-1. mb-xs`}>
+        <TiltedTitle {...title.props} variant="medium" className={`${title.props.className} z-1. mb-xs`}>
           {title.children}
         </TiltedTitle>
         <div className={`max-w-[289px] ml-${talkOffset}`}>
-          <p className='font-normal p-2 mb-xs -z-5 text-sm md:text-sm bg-white font-medium font-primary relative inline-flex before:absolute before:content-[""] before:bg-black before:-z-2 before:w-full before:h-full before:top-1 before:left-1 before:border-0' >
+          <p className='font-normal p-2 mb-xs -z-5 text-sm md:text-sm bg-white font-medium font-primary relative inline-flex before:absolute before:content-[""] before:bg-black before:-z-2 before:w-full before:h-full before:top-1 before:left-1 before:border-0'>
             {talk}
           </p>
         </div>

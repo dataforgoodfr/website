@@ -1,5 +1,6 @@
+import type { TitleProps } from '@/components/';
 import clsx from 'clsx';
-import { Title, TitleProps } from '@/components/';
+import { Title } from '@/components/';
 
 export type TiltedTitleProps = {
   children: React.ReactNode;
@@ -12,17 +13,20 @@ export type TiltedTitleProps = {
 
 const TiltedTitle: React.FC<TiltedTitleProps> = ({
   children,
-  variant = "small",
+  variant = 'small',
   level = 1,
   rotation = 0,
   className,
-  colors = "text-white bg-building"
+  colors = 'text-white bg-building',
 }) => {
   return (
-    <Title className={clsx('min-w-max relative inline-flex',
-      className,
-    )} style={{ "transform": `rotate(${rotation}deg` }} variant={variant} level={level}>
-      <span className={clsx(colors, "relative p-2")}>
+    <Title
+      className={clsx('min-w-max relative inline-flex', className)}
+      style={{ transform: `rotate(${rotation}deg` }}
+      variant={variant}
+      level={level}
+    >
+      <span className={clsx(colors, 'relative p-2')}>
         {children}
       </span>
     </Title>

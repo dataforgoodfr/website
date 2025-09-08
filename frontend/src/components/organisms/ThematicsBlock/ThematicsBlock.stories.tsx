@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { ThematicsCardProps } from '@/components/molecules';
 import ThematicsBlock from './ThematicsBlock';
-import { ThematicsCardProps } from '@/components/molecules';
 
 const meta: Meta<typeof ThematicsBlock> = {
   title: 'Organisms/ThematicsBlock',
@@ -36,29 +36,29 @@ type Story = StoryObj<typeof meta>;
 const defaultThematicsCards: ThematicsCardProps[] = [
   {
     title: {
-      children: "Climat et biodiversité",
+      children: 'Climat et biodiversité',
       props: {
         colors: 'text-black bg-alive',
-        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        className: 'drop-shadow-3 drop-shadow-black before:-z-1',
         rotation: -2.58,
-      }
+      },
     },
     id: 'climate',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
     image: '/images/thematics-climate.svg',
     imageWidth: 301,
     imageHeight: 401,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
+    ctaText: 'Voir les projets',
+    ctaLink: '/projets',
   },
   {
     title: {
-      children: "justice sociale",
+      children: 'justice sociale',
       props: {
         colors: 'text-black bg-resistance',
-        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        className: 'drop-shadow-3 drop-shadow-black before:-z-1',
         rotation: -2.58,
-      }
+      },
     },
     id: 'social',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
@@ -66,17 +66,17 @@ const defaultThematicsCards: ThematicsCardProps[] = [
     image: '/images/thematics-social.png',
     imageWidth: 264,
     imageHeight: 332,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
+    ctaText: 'Voir les projets',
+    ctaLink: '/projets',
   },
   {
     title: {
-      children: "Démocratie",
+      children: 'Démocratie',
       props: {
         colors: 'text-black bg-blue',
-        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        className: 'drop-shadow-3 drop-shadow-black before:-z-1',
         rotation: -2.58,
-      }
+      },
     },
     id: 'democracy',
     talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
@@ -84,8 +84,8 @@ const defaultThematicsCards: ThematicsCardProps[] = [
     image: '/images/thematics-democracy.svg',
     imageWidth: 251,
     imageHeight: 318,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
+    ctaText: 'Voir les projets',
+    ctaLink: '/projets',
   },
 ];
 
@@ -108,11 +108,11 @@ export const SingleResult: Story = {
     thematics: [
       {
         title: {
-          children: "justice sociale",
+          children: 'justice sociale',
           props: {
             rotation: -2.58,
-            colors: "text-white bg-building"
-          }
+            colors: 'text-white bg-building',
+          },
         },
         id: 'test2',
         talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',

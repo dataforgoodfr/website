@@ -1,6 +1,7 @@
-import { Title, TitleProps } from '@/components';
-import { MemberCard, TalkCard } from '@/components/molecules';
+import type { TitleProps } from '@/components';
 import clsx from 'clsx';
+import { Title } from '@/components';
+import { MemberCard } from '@/components/molecules';
 
 export type MembersBlockProps = {
   title?: string;

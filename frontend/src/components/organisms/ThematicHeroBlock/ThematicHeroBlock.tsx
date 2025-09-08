@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import Image from 'next/image'
-import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
+import Image from 'next/image';
+import { TiltedTitle } from '@/components/atoms';
 
 export type ThematicHeroBlockProps = {
   image: string;
   title: string;
   className?: string;
   titleClassName?: string;
-  colors?: "blue" | "alive" | "resistance" | "building";
+  colors?: 'blue' | 'alive' | 'resistance' | 'building';
 };
 
 const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
@@ -15,7 +15,7 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
   title,
   className,
   titleClassName,
-  colors = "alive",
+  colors = 'alive',
   ...props
 }) => {
   if (!title) {
@@ -23,10 +23,10 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
   }
 
   const colorsClass = {
-    blue: "text-black bg-blue",
-    alive: "text-black bg-alive",
-    resistance: "text-black bg-resistance",
-    building: "text-white bg-building",
+    blue: 'text-black bg-blue',
+    alive: 'text-black bg-alive',
+    resistance: 'text-black bg-resistance',
+    building: 'text-white bg-building',
   };
 
   return (
@@ -41,7 +41,7 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
         <Image src={image} alt="" width={1000} height={400} className="object-contain h-full w-full" />
       </div>
       <div className="col-start-1 row-start-1 flex items-center justify-center">
-        <TiltedTitle variant="big" className={clsx(titleClassName, "drop-shadow-3 drop-shadow-black")} colors={colorsClass[colors]}>{title}</TiltedTitle>
+        <TiltedTitle variant="big" className={clsx(titleClassName, 'drop-shadow-3 drop-shadow-black')} colors={colorsClass[colors]}>{title}</TiltedTitle>
       </div>
     </div>
   );

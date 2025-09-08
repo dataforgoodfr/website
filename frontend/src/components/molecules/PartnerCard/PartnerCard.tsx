@@ -1,7 +1,8 @@
+import type { TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Title, TitleProps } from '@/components';
+import { Title } from '@/components';
 
 export type PartnerCardProps = {
   name: string;

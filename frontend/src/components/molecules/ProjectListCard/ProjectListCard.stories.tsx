@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { ThematicValues } from '@/lib/utils';
 import ProjectListCard from './ProjectListCard';
-import { ThematicValues } from '@/lib/utils';
 
 const meta: Meta<typeof ProjectListCard> = {
   title: 'Molecules/ProjectListCard',

@@ -1,7 +1,8 @@
-import { NewsSmallCard, NewsSmallCardProps } from '@/components/molecules';
-import { Title, TitleProps } from '@/components';
+import type { TitleProps } from '@/components';
+import type { NewsSmallCardProps } from '@/components/molecules';
 import clsx from 'clsx';
-
+import { Title } from '@/components';
+import { NewsSmallCard } from '@/components/molecules';
 
 export type NewsSmallBlockProps = {
   title: string;
@@ -31,8 +32,8 @@ const NewsSmallBlock: React.FC<NewsSmallBlockProps> = ({
     >
       {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
 
-      {blocks.map((block) => (
-          <NewsSmallCard key={block.title} {...block} />
+      {blocks.map(block => (
+        <NewsSmallCard key={block.title} {...block} />
       ))}
     </div>
   );

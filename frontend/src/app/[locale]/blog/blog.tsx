@@ -1,12 +1,10 @@
-
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
+import { BaseCardsBlock, Pagination, SearchInput, Title } from '@/components';
 
 export default function BlogPage() {
   const t = useTranslations('blog');
-
 
   const blocksNext = [
     {
@@ -36,31 +34,31 @@ export default function BlogPage() {
       image: '/images/events/event-4.jpg',
       link: '/blog/article-4',
       subInfos: ['2024', 'En cours'],
-    }
+    },
   ];
 
   return (
-      <div className="container my-lg">
-        <Title className="mb-md max-w-5xl" variant="big">
-          {t('title')}
-        </Title>
-        <SearchInput
-          className="my-lg"
-          handleChange={() => {}}
-        />
+    <div className="container my-lg">
+      <Title className="mb-md max-w-5xl" variant="big">
+        {t('title')}
+      </Title>
+      <SearchInput
+        className="my-lg"
+        handleChange={() => {}}
+      />
 
-        <BaseCardsBlock
-          blocks={blocksNext}
-          className="my-lg"
-        />
+      <BaseCardsBlock
+        blocks={blocksNext}
+        className="my-lg"
+      />
 
-        <Pagination
-          pageCount={4}
-          currentPage={1}
-          setCurrentPage={() => {}}
-          className="mt-sm mb-lg mx-auto max-w-max"
-          color="black"
-        />
+      <Pagination
+        pageCount={4}
+        currentPage={1}
+        setCurrentPage={() => {}}
+        className="mt-sm mb-lg mx-auto max-w-max"
+        color="black"
+      />
     </div>
   );
 }

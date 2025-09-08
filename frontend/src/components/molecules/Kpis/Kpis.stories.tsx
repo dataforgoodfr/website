@@ -110,7 +110,7 @@ export const AllVariants: Story = {
         <h3 className="text-lg font-bold mb-4">3 KPIs (Default)</h3>
         <Kpis kpis={defaultKpis} />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">2 KPIs</h3>
         <Kpis
@@ -128,7 +128,7 @@ export const AllVariants: Story = {
           ]}
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">1 KPI</h3>
         <Kpis
@@ -141,7 +141,7 @@ export const AllVariants: Story = {
           ]}
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">4 KPIs</h3>
         <Kpis

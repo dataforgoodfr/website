@@ -33,8 +33,8 @@ const sampleImages = [
     description: 'Un outil de surveillance en temps réel des navires de pêche industrielle dans les aires marines protégées',
     ctaText: 'VOIR PROJET',
     ctaHref: '/projets/trawlwatch',
-},
-{
+  },
+  {
     id: 2,
     src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=600&fit=crop',
     alt: 'Forêt et biodiversité',

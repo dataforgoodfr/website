@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Github, Twitter as TwitterIcon, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter as TwitterIcon } from 'lucide-react';
 import SocialLink from './SocialLink';
 
 const meta: Meta<typeof SocialLink> = {
@@ -79,4 +79,4 @@ export const MultipleSocialLinks: Story = {
       />
     </div>
   ),
-}; 
+};

@@ -1,22 +1,22 @@
 {
-    "projects": {
-        "meta": {
-            "title": "Tous les projets",
-            "description": ""
-        },
-        "title": "Collaborer et co-construire des projets avec des associations qui luttent pour la justice sociale et climatique.",
-        "presentation": {
-          "title": "Saison en cours",
-          "content": "lutter pour un numérique d'intérêt général Contre une vision hégémonique de la tech.",
-          "cta": "Découvrir les projets"
-        },
-        "thematics": {
-          "title": "Trois thèmes",
-          "subtitle": "Le tout, sur trois grandes thématiques:"
-        },
-        "scratch": {
-          "alt": "masque"
-        }
+  "projects": {
+    "meta": {
+      "title": "Tous les projets",
+      "description": ""
+    },
+    "title": "Collaborer et co-construire des projets avec des associations qui luttent pour la justice sociale et climatique.",
+    "presentation": {
+      "title": "Saison en cours",
+      "content": "lutter pour un numérique d'intérêt général Contre une vision hégémonique de la tech.",
+      "cta": "Découvrir les projets"
+    },
+    "thematics": {
+      "title": "Trois thèmes",
+      "subtitle": "Le tout, sur trois grandes thématiques:"
+    },
+    "scratch": {
+      "alt": "masque"
     }
-    
+  }
+
 }

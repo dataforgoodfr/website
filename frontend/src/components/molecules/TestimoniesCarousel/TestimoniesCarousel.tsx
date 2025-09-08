@@ -1,16 +1,16 @@
-
-import React from 'react';
+import type { CarouselApi } from '@/components/ui/carousel';
 import clsx from 'clsx';
 import Image from 'next/image';
+import React from 'react';
+import { TiltedTitle } from '@/components';
 import {
   Carousel,
+
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, TiltedTitle, Title, TitleProps } from '@/components';
 
 export type TestimoniesCarouselProps = {
   testimonies: Array<{
@@ -30,7 +30,9 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
   const [current, setCurrent] = React.useState(0);
 
   React.useEffect(() => {
-    if (!api) return;
+    if (!api) {
+      return;
+    }
 
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap());
@@ -38,8 +40,8 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
   }, [api]);
 
   return (
-    <Carousel 
-      setApi={setApi} 
+    <Carousel
+      setApi={setApi}
       opts={{
         align: 'center',
         loop: false,
@@ -54,11 +56,11 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
     >
       <CarouselContent noOverflow className="px-[calc(50%-24rem)]">
         {testimonies.map((testimony, index) => (
-          <CarouselItem 
-            key={testimony.id} 
+          <CarouselItem
+            key={testimony.id}
             className={clsx(
-              "max-w-3xl py-6 px-8",
-              index !== current && "opacity-20"
+              'max-w-3xl py-6 px-8',
+              index !== current && 'opacity-20',
             )}
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
@@ -69,8 +71,8 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
                 </TiltedTitle>
               </div>
               <p className="relative flex-1 font-tertiary text-lg md:text-3xl py-10 px-8 md:pl-0 md:pr-12">
-                  {testimony.content}
-                </p>
+                {testimony.content}
+              </p>
             </blockquote>
           </CarouselItem>
         ))}

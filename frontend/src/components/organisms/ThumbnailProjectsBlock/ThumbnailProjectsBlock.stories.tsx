@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { TitleProps } from '@/components/atoms';
 import ThumbnailProjectsBlock from './ThumbnailProjectsBlock';
-import { TitleProps } from '@/components/atoms';
 
 const meta: Meta<typeof ThumbnailProjectsBlock> = {
   title: 'Organisms/ThumbnailProjectsBlock',
@@ -251,7 +251,7 @@ export const AllVariants: Story = {
           projects={defaultProjects}
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">1 Projet</h3>
         <ThumbnailProjectsBlock
@@ -273,7 +273,7 @@ export const AllVariants: Story = {
           ]}
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">Projets Minimaux</h3>
         <ThumbnailProjectsBlock

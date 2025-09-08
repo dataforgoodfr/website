@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Tag, Title } from '@/components/atoms';
 import Link from 'next/link';
-
+import { Tag, Title } from '@/components/atoms';
 
 export type BaseCardProps = {
   title: string;
@@ -59,9 +58,11 @@ const BaseCard: React.FC<BaseCardProps> = ({
             </div>
           )}
         </div>
-        {isBlank && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
-          <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
-        </div>}
+        {isBlank && (
+          <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
+            <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
+          </div>
+        )}
         <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-cover" />
       </div>
     </Link>

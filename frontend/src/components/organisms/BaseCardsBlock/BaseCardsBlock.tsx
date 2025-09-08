@@ -1,7 +1,8 @@
-import { BaseCard, BaseCardProps } from '@/components/molecules';
-import { Title, TitleProps } from '@/components';
+import type { TitleProps } from '@/components';
+import type { BaseCardProps } from '@/components/molecules';
 import clsx from 'clsx';
-
+import { Title } from '@/components';
+import { BaseCard } from '@/components/molecules';
 
 export type BaseCardsBlockProps = {
   title?: string;
@@ -32,7 +33,7 @@ const BaseCardsBlock: React.FC<BaseCardsBlockProps> = ({
       {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {blocks.map((block) => (
+        {blocks.map(block => (
           <li key={block.title}>
             <BaseCard {...block} />
           </li>

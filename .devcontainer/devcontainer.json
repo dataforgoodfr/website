@@ -1,8 +1,8 @@
 {
-    "name": "Frontend",
-    "build": {
-        "dockerfile": "../docker/frontend/Dockerfile",
-        "context": ".."
-    },
-    "appPort": "3000"
+  "name": "Frontend",
+  "build": {
+    "dockerfile": "../docker/frontend/Dockerfile",
+    "context": ".."
+  },
+  "appPort": "3000"
 }

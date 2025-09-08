@@ -1,7 +1,8 @@
 'use client';
 
+import type { ThematicsCardProps, TitleProps } from '@/components';
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, ThematicsCardProps, TitleProps, HeroBlock, HeroBlockProps } from '@/components';
+import { HeroBlock, ImagesCarousel, NewsletterBlock, NewsSmallBlock, ResultsCard, TalksBlock, ThematicsBlock, Title } from '@/components';
 
 export default function Homepage() {
   const t = useTranslations('home');
@@ -15,23 +16,23 @@ export default function Homepage() {
     image: '/images/pages/image-accueil.png',
     title: {
       level: 1 as TitleProps['level'],
-      variant: "big" as TitleProps['variant'],
-      children: "Bâtir",
+      variant: 'big' as TitleProps['variant'],
+      children: 'Bâtir',
       colors: 'text-white bg-building',
-      className: "drop-shadow-3 drop-shadow-black before:-z-1",
+      className: 'drop-shadow-3 drop-shadow-black before:-z-1',
       rotation: -3.47,
 
     },
     subtitle: {
       level: 2 as TitleProps['level'],
-      variant: "medium" as TitleProps['variant'],
-      children: "Un contre-pouvoir tech citoyen",
+      variant: 'medium' as TitleProps['variant'],
+      children: 'Un contre-pouvoir tech citoyen',
       colors: 'text-black bg-white',
-      className: "drop-shadow-1 drop-shadow-black before:-z-1",
+      className: 'drop-shadow-1 drop-shadow-black before:-z-1',
       rotation: -3.47,
     },
-    talk: "Utiliser la technologie à des fins utiles tout en luttant contre l’hégémonie des schémas de pensée qui l’ont engendrée : c’est ce chemin de crête que nous souhaitons emprunter pour que le numérique soit émancipateur.",
-  }
+    talk: 'Utiliser la technologie à des fins utiles tout en luttant contre l’hégémonie des schémas de pensée qui l’ont engendrée : c’est ce chemin de crête que nous souhaitons emprunter pour que le numérique soit émancipateur.',
+  };
 
   const carouselImages = [
     {
@@ -109,29 +110,29 @@ export default function Homepage() {
   const thematics: ThematicsCardProps[] = [
     {
       title: {
-        children: "Climat et biodiversité",
+        children: 'Climat et biodiversité',
         props: {
           colors: 'text-black bg-alive',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
+          className: 'drop-shadow-3 drop-shadow-black before:-z-1',
           rotation: -2.58,
-        }
+        },
       },
       id: 'climate',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
       image: '/images/thematics/thematics-climate.svg',
       imageWidth: 301,
       imageHeight: 401,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
+      ctaText: 'Voir les projets',
+      ctaLink: '/projets',
     },
     {
       title: {
-        children: "justice sociale",
+        children: 'justice sociale',
         props: {
           colors: 'text-black bg-resistance',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
+          className: 'drop-shadow-3 drop-shadow-black before:-z-1',
           rotation: -2.58,
-        }
+        },
       },
       id: 'social',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
@@ -139,17 +140,17 @@ export default function Homepage() {
       image: '/images/thematics/thematics-social.png',
       imageWidth: 264,
       imageHeight: 332,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
+      ctaText: 'Voir les projets',
+      ctaLink: '/projets',
     },
     {
       title: {
-        children: "Démocratie",
+        children: 'Démocratie',
         props: {
           colors: 'text-black bg-blue',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
+          className: 'drop-shadow-3 drop-shadow-black before:-z-1',
           rotation: -2.58,
-        }
+        },
       },
       id: 'democracy',
       talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
@@ -157,14 +158,15 @@ export default function Homepage() {
       image: '/images/thematics/thematics-democracy.svg',
       imageWidth: 251,
       imageHeight: 318,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
+      ctaText: 'Voir les projets',
+      ctaLink: '/projets',
     },
-  ]
+  ];
 
   return (
     <>
-      <HeroBlock className='mt-lg'
+      <HeroBlock
+        className="mt-lg"
         {...hero}
         title={{ ...hero.title, children: t('hero.title') }}
         subtitle={{ ...hero.subtitle, children: t('hero.subtitle') }}
@@ -174,13 +176,16 @@ export default function Homepage() {
           {t('carousel.title')}
         </Title>
       </div>
-      <ImagesCarousel className="mb-lg" images={carouselImages.map(image => ({
-        ...image,
-        title: t(`carousel.${image.id}.title`),
-        alt: t(`carousel.${image.id}.alt`),
-        description: t(`carousel.${image.id}.description`),
-        ctaText: t(`carousel.${image.id}.ctaText`),
-      }))} />
+      <ImagesCarousel
+        className="mb-lg"
+        images={carouselImages.map(image => ({
+          ...image,
+          title: t(`carousel.${image.id}.title`),
+          alt: t(`carousel.${image.id}.alt`),
+          description: t(`carousel.${image.id}.description`),
+          ctaText: t(`carousel.${image.id}.ctaText`),
+        }))}
+      />
 
       <TalksBlock
         title={t('talks.title')}
@@ -204,7 +209,7 @@ export default function Homepage() {
       <NewsSmallBlock
         title={t('news.title')}
         blocks={news}
-        className='my-lg'
+        className="my-lg"
       />
 
       <NewsletterBlock />

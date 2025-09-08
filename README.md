@@ -16,7 +16,7 @@ Ce projet est un monorepo contenant un frontend construit avec Next.js et un bac
     docker compose watch
    ```
 
-   > [!IMPORTANT]  
+   > [!IMPORTANT]
    > Docker et docker-compose doivent être installés sur votre machine pour exécuter cette commande. Veuillez vous référer à la documentation officielle de Docker pour plus d'informations.
 
 3. **Accès aux Applications** :

@@ -64,7 +64,6 @@ export const Default: Story = {
   },
 };
 
-
 export const NoTitle: Story = {
   args: {
     blocks: sampleNewsData,

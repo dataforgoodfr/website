@@ -22,7 +22,7 @@ export const Default: Story = {
   args: {
     children: 'White title',
     rotation: -2.58,
-    colors: 'text-white bg-building'
+    colors: 'text-white bg-building',
   },
 };
 
@@ -30,7 +30,7 @@ export const ResistanceWithRotation: Story = {
   args: {
     children: 'Black title',
     rotation: -20,
-    colors: 'text-black bg-resistance'
+    colors: 'text-black bg-resistance',
   },
 };
 
@@ -47,7 +47,7 @@ export const BlueSmallRotationWithDrop: Story = {
     children: 'Blue small rotation with drop',
     rotation: -2.58,
     colors: 'text-black bg-blue',
-    className: "drop-shadow-1 drop-shadow-black before:-z-1"
+    className: 'drop-shadow-1 drop-shadow-black before:-z-1',
   },
 };
 
@@ -56,7 +56,7 @@ export const BlueSmallRotationWithImportantDrop: Story = {
     children: 'Blue small rotation with important drop',
     rotation: -2.58,
     colors: 'text-black bg-blue',
-    className: 'drop-shadow-3 drop-shadow-black before:-z-1'
+    className: 'drop-shadow-3 drop-shadow-black before:-z-1',
   },
 };
 
@@ -64,29 +64,29 @@ export const BuildingNoRotation: Story = {
   args: {
     children: 'No rotation',
     rotation: 0,
-    colors: 'text-white bg-building'
+    colors: 'text-white bg-building',
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
     <div className="space-y-5 space-x-5">
-      <TiltedTitle rotation={-2.58} colors='text-white bg-building'>
+      <TiltedTitle rotation={-2.58} colors="text-white bg-building">
         White title
       </TiltedTitle>
-      <TiltedTitle rotation={-20} colors='text-black bg-resistance'>
+      <TiltedTitle rotation={-20} colors="text-black bg-resistance">
         Black title
       </TiltedTitle>
-      <TiltedTitle rotation={-2.58} colors='text-black bg-blue'>
+      <TiltedTitle rotation={-2.58} colors="text-black bg-blue">
         Blue small rotation
       </TiltedTitle>
-      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-1 drop-shadow-black before:-z-1">
+      <TiltedTitle rotation={-2.58} colors="text-black bg-blue" className="drop-shadow-1 drop-shadow-black before:-z-1">
         Blue small rotation with drop
       </TiltedTitle>
-      <TiltedTitle rotation={-2.58} colors='text-black bg-blue' className="drop-shadow-3 drop-shadow-black before:-z-1">
+      <TiltedTitle rotation={-2.58} colors="text-black bg-blue" className="drop-shadow-3 drop-shadow-black before:-z-1">
         Blue small rotation with important drop
       </TiltedTitle>
-      <TiltedTitle rotation={0} colors='text-white bg-building'>
+      <TiltedTitle rotation={0} colors="text-white bg-building">
         No rotation
       </TiltedTitle>
     </div>

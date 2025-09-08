@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Tag } from '@/components/atoms';
 import Link from 'next/link';
-
+import { Tag } from '@/components/atoms';
 
 export type NewsSmallCardProps = {
   title: string;

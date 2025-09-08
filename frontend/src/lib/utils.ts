@@ -14,7 +14,7 @@ export function getImage(image: any) {
 export const thematicsColors = {
   social: 'resistance',
   democracy: 'blue',
-  climate: 'alive'
+  climate: 'alive',
 } as const;
 
 export type ThematicValues = keyof typeof thematicsColors;

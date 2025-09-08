@@ -94,8 +94,6 @@ export default async function Homepage() {
 > [!NOTE]
 > Avec le client fetch type-safe, les routes sont typées automatiquement ainsi que les paramètres et les données de réponse.
 
-
-
 ## Déploiement
 
 Rien pour le moment

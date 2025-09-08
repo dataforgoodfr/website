@@ -1,8 +1,8 @@
-import { Title, TitleProps } from '@/components';
+import type { TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-
+import Image from 'next/image';
+import { Title } from '@/components';
 
 export type NewsletterBlockProps = {
   title?: string;

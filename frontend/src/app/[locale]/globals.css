@@ -67,8 +67,6 @@
   font-display: swap;
 }
 
-
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -108,16 +106,20 @@
   }
 
   /* Typography */
-  .prose h1, .h1-like {
+  .prose h1,
+  .h1-like {
     @apply text-3xl lg:text-[4.125rem] font-tertiary font-bold leading-tight;
   }
-  .prose h2, .h2-like {
+  .prose h2,
+  .h2-like {
     @apply text-xl lg:text-[2.5rem] font-tertiary font-bold leading-tight;
   }
-  .prose h3, .h3-like {
+  .prose h3,
+  .h3-like {
     @apply text-lg lg:text-3xl font-tertiary font-bold leading-tight;
   }
-  .prose h4, .h4-like {
+  .prose h4,
+  .h4-like {
     @apply text-sm font-black uppercase tracking-widest;
   }
 
@@ -159,12 +161,12 @@
     @apply ml-4;
   }
 
-
   /* Components */
   .shadow-block {
     @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:transition-base;
   }
-  a.shadow-block, button.shadow-block {
+  a.shadow-block,
+  button.shadow-block {
     @apply hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:bg-building;
   }
   .shadow-block > * {

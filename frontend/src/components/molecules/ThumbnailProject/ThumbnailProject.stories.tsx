@@ -195,7 +195,7 @@ export const AllVariants: Story = {
           kpis={defaultKpis}
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">Projet Minimal</h3>
         <ThumbnailProject
@@ -206,7 +206,7 @@ export const AllVariants: Story = {
           link="/projets/minimal"
         />
       </div>
-      
+
       <div>
         <h3 className="text-lg font-bold mb-4">Sans Images</h3>
         <ThumbnailProject

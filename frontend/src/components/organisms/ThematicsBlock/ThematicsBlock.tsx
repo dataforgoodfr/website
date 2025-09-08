@@ -1,6 +1,8 @@
+import type { TitleProps } from '@/components/atoms';
+import type { ThematicsCardProps } from '@/components/molecules/ThematicsCard/ThematicsCard';
 import clsx from 'clsx';
-import { Title, TitleProps } from '@/components/atoms';
-import ThematicsCard, { ThematicsCardProps } from '@/components/molecules/ThematicsCard/ThematicsCard';
+import { Title } from '@/components/atoms';
+import ThematicsCard from '@/components/molecules/ThematicsCard/ThematicsCard';
 
 export type ThematicsProps = {
   title: string;
@@ -34,9 +36,11 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
         <Title className="mb-xs text-left font-tertiary font-normal" level={titleLevel} variant="medium">
           {title}
         </Title>
-        {subtitle && <p className="mb-sm text-left font-secondary font-medium">
-          {subtitle}
-        </p>}
+        {subtitle && (
+          <p className="mb-sm text-left font-secondary font-medium">
+            {subtitle}
+          </p>
+        )}
 
         <ul className="flex flex-wrap justify-between gap-md md:gap-xs mt-md">
           {thematics.map((thematic, index) => (
@@ -45,15 +49,13 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
               className="max-w-80"
             >
               <ThematicsCard
-                {...{...thematic,
-                  title: {
-                    ...thematic.title,
-                    props: {
-                      ...thematic.title.props,
-                      level: titleLevel +1 as TitleProps['level'],
-                    },
+                {...{ ...thematic, title: {
+                  ...thematic.title,
+                  props: {
+                    ...thematic.title.props,
+                    level: titleLevel + 1 as TitleProps['level'],
                   },
-                }}
+                } }}
               />
             </li>
           ))}
