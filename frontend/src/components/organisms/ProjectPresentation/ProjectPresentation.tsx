@@ -34,7 +34,6 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
       className={clsx('container', className)}
       {...props}
     >
-      {/* <div className="flex flex-col items-center"> */}
       <div
         className={clsx(
           'flex flex-col sm:flex-row sm:items-start gap-md',
@@ -76,7 +75,6 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
       </div>
 
     </div>
-    // </div>
   );
 };
 
