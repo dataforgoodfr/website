@@ -166,6 +166,10 @@ const config: Config = {
         '.not-rotate-arrow': {
           '@apply [&_svg]:rotate-0 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
         },
+        /* Background shadow */
+        '.bg-shadow': {
+          '@apply bg-black bg-opacity-75': {},
+        },
       };
       addUtilities(newUtilities);
     },
