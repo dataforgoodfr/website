@@ -29,3 +29,6 @@ export type { SearchInputProps } from './SearchInput/SearchInput';
 
 export { default as ProjectListCard } from './ProjectListCard/ProjectListCard';
 export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';
+
+export { default as Banner } from './Banner/Banner';
+export type { BannerProps } from './Banner/Banner';

@@ -1,6 +1,6 @@
 'use client';
 
-import { MembersBlock, NewsSmallBlock, ProjectPresentation, Title } from '@/components';
+import { Banner, MembersBlock, NewsSmallBlock, ProjectPresentation, Title } from '@/components';
 import { IMembers } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -47,6 +47,10 @@ export default function ProjectDetailPage() {
     }
   };
 
+  const presentationContent = ['En Europe, 1% des plus gros navires pêchent la moitié des poissons et s’approprient le vivant au détriment de la santé de l’océan et des animaux marins, donc du climat, et des pêcheurs côtiers. Le lancement de « Trawl Watch » se complète d’une pétition adressée aux institutions et aux États membres de l’Union européenne contre les méga chalutiers et les navires-usines, à retrouver sur le site internet de Bloom.',
+    "Les images sont implacables : elles montrent qu’aucune contrainte ne pèse sur les engins destructeurs dans des zones sensibles. Pourtant, un seul de ces navires pêche jusqu’à 400 000 kilos de poissons en une journée1, soit l’équivalent des captures journalières de 1000 navires de pêche artisanale.",
+    "La prise de conscience accrue et la collaboration entre les différentes parties prenantes pourront permettre d’accélérer la transition vers des pratiques de pêche plus durables. Trawl Watch est un exemple concret de la manière dont la technologie et l’innovation peuvent être utilisées pour lutter contre les problèmes environnementaux et sociaux qui touchent notre monde. "
+  ]
 
   const news = [
     {
@@ -103,22 +107,24 @@ export default function ProjectDetailPage() {
     },
   ];
 
-
-
   return (
     <>
-
-      <div className="my-lg container flex flex-col md:flex-row">
-        <div className="md:flex-1 md:flex justify-start">
-          <Title className="mb-md max-w-4xl content-center" variant="medium">
-            {name}
-          </Title>
-        </div>
-      </div>
+      <Banner 
+        image='/images/pages/carte-benevoles.png'
+        altImage='Project banner'
+        className="mb-lg "
+      />
 
       <ProjectPresentation
         {...project}
         className='my-lg'
+      />
+
+      <Banner 
+        image='/images/pages/carte-benevoles.png'
+        altImage='Project banner'
+        content={presentationContent}
+        className="my-lg "
       />
 
       <NewsSmallBlock
