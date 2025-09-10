@@ -37,3 +37,6 @@ export type { InformationsBlockProps } from './InformationsBlock/InformationsBlo
 export { default as ProjectPresentation } from './ProjectPresentation/ProjectPresentation';
 export type { ProjectPresentationProps } from './ProjectPresentation/ProjectPresentation';
 
+export { default as ProjectProcesses } from './ProjectProcesses/ProjectProcesses';
+export type { ProjectProcessesProps } from './ProjectProcesses/ProjectProcesses';
+

@@ -34,7 +34,7 @@ const Banner: React.FC<BannerProps> = ({
         <div className={clsx(
           'flex flex-col justify-center items-center h-full p-8 text-center',
         )}>
-          {content.map((paragraph) => (<p className="font-secondary my-xs">{paragraph}</p>))}
+          {content.map((paragraph, index) => (<p key={index} className="font-secondary my-xs">{paragraph}</p>))}
 
         </div>
       </div>
