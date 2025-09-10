@@ -18,6 +18,10 @@
     "thumbnailProject": {
       "impacts": "Impacts",
       "cta": "Voir le projet"
+    },
+    "articleHeroBlock": {
+      "readTime": "Temps de lecture :",
+      "author": "Écrit par"
     }
   }
 }
