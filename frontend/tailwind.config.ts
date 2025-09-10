@@ -35,6 +35,7 @@ const config: Config = {
     },
     boxShadow: {
       'base': '2px 2px 0 0 rgba(0, 0, 0)',
+      'lg': '8px 8px 0 0 rgba(0, 0, 0)',
     },
     zIndex: {
       '1': '1',

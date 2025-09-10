@@ -19,7 +19,7 @@ const TiltedTitle: React.FC<TiltedTitleProps> = ({
   colors = "text-white bg-building"
 }) => {
   return (
-    <Title className={clsx('min-w-max relative inline-flex',
+    <Title className={clsx('relative inline-flex',
       className,
     )} style={{ "transform": `rotate(${rotation}deg` }} variant={variant} level={level}>
       <span className={clsx(colors, "relative p-2")}>

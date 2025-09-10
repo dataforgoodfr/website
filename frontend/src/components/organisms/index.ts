@@ -1,3 +1,6 @@
+export { default as ArticleHeroBlock } from './ArticleHeroBlock/ArticleHeroBlock';
+export type { ArticleHeroBlockProps } from './ArticleHeroBlock/ArticleHeroBlock';
+
 export { default as BaseCardsBlock } from './BaseCardsBlock/BaseCardsBlock';
 export type { BaseCardsBlockProps } from './BaseCardsBlock/BaseCardsBlock';
 
