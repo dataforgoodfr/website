@@ -1,6 +1,6 @@
 'use client';
 
-import { Banner, MembersBlock, NewsSmallBlock, ProjectPresentation, Title } from '@/components';
+import { Banner, MembersBlock, NewsSmallBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
 import { IMembers } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -51,6 +51,30 @@ export default function ProjectDetailPage() {
     "Les images sont implacables : elles montrent qu’aucune contrainte ne pèse sur les engins destructeurs dans des zones sensibles. Pourtant, un seul de ces navires pêche jusqu’à 400 000 kilos de poissons en une journée1, soit l’équivalent des captures journalières de 1000 navires de pêche artisanale.",
     "La prise de conscience accrue et la collaboration entre les différentes parties prenantes pourront permettre d’accélérer la transition vers des pratiques de pêche plus durables. Trawl Watch est un exemple concret de la manière dont la technologie et l’innovation peuvent être utilisées pour lutter contre les problèmes environnementaux et sociaux qui touchent notre monde. "
   ]
+
+  const processes = {
+  summary: "Depuis plus d'un an et demie une vingtaine de bénévoles ont travaillé d'arrache pied sur 2 workstream",
+  processes: [
+    {
+      name: "Création de l'architecture de données",
+      description: [
+        "Création de l'application depuis zéro.",
+        "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
+        "Développement d'une  interface utilisateur intuitive et performante.",
+      ],
+    },
+    {
+      name: "Création de l'architecture de données",
+      description: [
+        "Création de l'application depuis zéro.",
+        "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
+        "Développement d'une  interface utilisateur intuitive et performante.",
+        "Développement d'un système de filtres et de calques pour les aires marines protégées.",
+      ],
+    },
+  ],
+  link: 'https://github.com/associationbloom/trawlwatch'
+}
 
   const news = [
     {
@@ -125,6 +149,12 @@ export default function ProjectDetailPage() {
         altImage='Project banner'
         content={presentationContent}
         className="my-lg "
+      />
+
+      <ProjectProcesses
+        {...processes}
+        title={t('processes.title')
+      }
       />
 
       <NewsSmallBlock

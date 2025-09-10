@@ -4,6 +4,10 @@
             "title": "Détail du projet",
             "description": ""
         },
+        "processes": {
+          "title": "Processes",
+          "repoLink": "lien vers le repository"
+        },
         "news": {
           "title": "Dans la presse"
         },
