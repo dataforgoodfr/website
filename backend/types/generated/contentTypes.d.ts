@@ -1209,6 +1209,12 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    short_description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
