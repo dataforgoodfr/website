@@ -25,9 +25,19 @@ async function fetchHomepageData() {
           events: {
             populate: "*"
           },
-          articles: {
-            fields: ["title", "tags", "slug", "published_date", "description"],
-            populate: "*"
+          resources: {
+            populate: {
+              blog: {
+                populate: {
+                  author: {
+                    fields: ["name"]
+                  }
+                }
+              },
+              press_release: {
+                populate: "*"
+              }
+            }
           }
         }
       }
@@ -35,8 +45,10 @@ async function fetchHomepageData() {
   });
 }
 
+type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchHomepageData>>["data"]>["data"]>;
+
 // Data transformation functions
-function transformHeroData(heroData: any) {
+function transformHeroData(heroData: NonNullable<HomepageData["hero"]>) {
   return {
     image: heroData.image.url,
     title: {
@@ -59,7 +71,7 @@ function transformHeroData(heroData: any) {
   };
 }
 
-function transformProjectsData(projects: any) {
+function transformProjectsData(projects: NonNullable<HomepageData["featured_projects"]>) {
   return projects.map(project => ({
     id: project.id,
     src: project.thumbnail?.url || '',
@@ -70,7 +82,7 @@ function transformProjectsData(projects: any) {
   }))
 }
 
-function transformResultsData(results: any[]) {
+function transformResultsData(results: NonNullable<HomepageData["results"]>) {
   return results.map((result) => ({
     id: result.id.toString(),
     number: parseInt(result.stat),
@@ -80,7 +92,7 @@ function transformResultsData(results: any[]) {
   }));
 }
 
-function transformEventsData(events: any[]) {
+function transformEventsData(events: NonNullable<HomepageData["events"]>) {
   return events.map((event) => ({
     id: event.id,
     title: event.name,
@@ -91,18 +103,24 @@ function transformEventsData(events: any[]) {
   }));
 }
 
-function transformArticlesData(articles: any[]) {
-  return articles.map((article) => ({
-    id: article.id,
-    author: 'Data For Good',
-    talk: article.title,
-    image: article.thumbnail.url,
-    ctaText: 'Lire l\'article',
-    ctaLink: `/articles/${article.slug}`,
-  }));
+
+function transformResourcesData(resources: NonNullable<HomepageData["resources"]>) {
+  return resources.map((resource) => {
+    const isBlog = !!resource.blog;
+
+    return {
+      id: resource.id,
+      type: isBlog ? 'article' : 'press_release',
+      author: isBlog ? ( resource.blog?.author?.name || 'Data For Good') : resource.press_release.media_name,
+      talk: isBlog ? resource.blog.title : resource.press_release.title,
+      image: isBlog ? resource.blog.thumbnail.url : "/images/dataforgood.svg",
+      ctaText: isBlog ? 'Lire l\'article' : 'Lire la presse',
+      ctaLink: isBlog ? `/articles/${resource.blog.slug}` : resource.press_release.article_link,
+    }
+  });
 }
 
-function transformThematicsData(thematics: any[]) {
+function transformThematicsData(thematics: NonNullable<HomepageData['thematics']>) {
   return thematics.map(thematic => ({
     title: {
       children: thematic.name,
@@ -133,7 +151,7 @@ export default async function Homepage() {
   const projects = transformProjectsData(homePageData.featured_projects || []);
   const results = transformResultsData(homePageData.results || []);
   const events = transformEventsData(homePageData.events || []);
-  const articles = transformArticlesData(homePageData.articles || []);
+  const resources = transformResourcesData(homePageData.resources || []);
   const thematics = transformThematicsData(homePageData.thematics || []);
 
   return (
@@ -151,8 +169,8 @@ export default async function Homepage() {
       <ImagesCarousel className="mb-lg" images={projects} />
 
       <TalksBlock
-        title={homePageData.articles_section_title!}
-        talks={articles}
+        title={homePageData.resources_section_title!}
+        talks={resources}
       />
       <ThematicsBlock
         title={homePageData.thematics_section_title!}
