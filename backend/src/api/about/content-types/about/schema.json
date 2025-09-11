@@ -30,11 +30,6 @@
       "repeatable": false,
       "component": "call-to-action.call-to-action-with-image"
     },
-    "members": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::volunteer.volunteer"
-    },
     "cta_left": {
       "type": "component",
       "repeatable": false,
@@ -49,6 +44,31 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::funder.funder"
+    },
+    "board_of_directors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "employees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "scientific_committee": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "strategic_committee": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "division_managers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
     }
   }
 }
