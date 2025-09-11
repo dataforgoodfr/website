@@ -362,6 +362,50 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutAbout extends Struct.SingleTypeSchema {
+  collectionName: 'abouts';
+  info: {
+    description: '';
+    displayName: 'About';
+    pluralName: 'abouts';
+    singularName: 'about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_left: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      false
+    >;
+    cta_right: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      false
+    >;
+    funders: Schema.Attribute.Relation<'oneToMany', 'api::funder.funder'>;
+    introduction: Schema.Attribute.Text;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'>;
+    map_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      false
+    >;
+    members: Schema.Attribute.Relation<'oneToMany', 'api::volunteer.volunteer'>;
+    publishedAt: Schema.Attribute.DateTime;
+    testimonials: Schema.Attribute.Component<'testimonial.testimonial', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    volunteer_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      false
+    >;
+  };
+}
+
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
@@ -1787,6 +1831,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
       'api::event.event': ApiEventEvent;
       'api::funder.funder': ApiFunderFunder;

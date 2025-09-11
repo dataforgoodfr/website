@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_call_to_action_call_to_action_with_images",
+  "info": {
+    "displayName": "Call_to_action_with_image",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "call-to-action.call-to-action"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
