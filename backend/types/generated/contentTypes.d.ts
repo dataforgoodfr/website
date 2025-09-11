@@ -379,6 +379,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::volunteer.volunteer'>;
     content: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
