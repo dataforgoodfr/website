@@ -374,6 +374,10 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    board_of_directors: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer.volunteer'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -385,6 +389,14 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
       'call-to-action.call-to-action-with-image',
       false
     >;
+    division_managers: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer.volunteer'
+    >;
+    employees: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer.volunteer'
+    >;
     funders: Schema.Attribute.Relation<'oneToMany', 'api::funder.funder'>;
     introduction: Schema.Attribute.Text;
     locale: Schema.Attribute.String;
@@ -393,8 +405,15 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
       'call-to-action.call-to-action-with-image',
       false
     >;
-    members: Schema.Attribute.Relation<'oneToMany', 'api::volunteer.volunteer'>;
     publishedAt: Schema.Attribute.DateTime;
+    scientific_committee: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer.volunteer'
+    >;
+    strategic_committee: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer.volunteer'
+    >;
     testimonials: Schema.Attribute.Component<'testimonial.testimonial', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

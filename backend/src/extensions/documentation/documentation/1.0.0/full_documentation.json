@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-11T19:45:28.500Z"
+    "x-generation-date": "2025-09-11T19:58:31.268Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -8049,7 +8049,13 @@
               "volunteer_cta": {
                 "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
               },
-              "members": {
+              "cta_left": {
+                "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+              },
+              "cta_right": {
+                "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+              },
+              "funders": {
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -8063,13 +8069,63 @@
                   "example": "string or id"
                 }
               },
-              "cta_left": {
-                "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+              "board_of_directors": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
               },
-              "cta_right": {
-                "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+              "employees": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
               },
-              "funders": {
+              "scientific_committee": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
+              },
+              "strategic_committee": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
+              },
+              "division_managers": {
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -8163,7 +8219,218 @@
           "volunteer_cta": {
             "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
           },
-          "members": {
+          "cta_left": {
+            "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+          },
+          "cta_right": {
+            "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+          },
+          "funders": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "documentId": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "logo": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {},
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number",
+                      "format": "float"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {},
+                    "related": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "folder": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "folderPath": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "localizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "scope": {
+                  "type": "string",
+                  "enum": [
+                    "global",
+                    "saison",
+                    "thématique"
+                  ]
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "publishedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createdBy": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "updatedBy": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "board_of_directors": {
             "type": "array",
             "items": {
               "type": "object",
@@ -9504,197 +9771,6 @@
                             },
                             "documentId": {
                               "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "logo": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                },
-                                "name": {
-                                  "type": "string"
-                                },
-                                "alternativeText": {
-                                  "type": "string"
-                                },
-                                "caption": {
-                                  "type": "string"
-                                },
-                                "width": {
-                                  "type": "integer"
-                                },
-                                "height": {
-                                  "type": "integer"
-                                },
-                                "formats": {},
-                                "hash": {
-                                  "type": "string"
-                                },
-                                "ext": {
-                                  "type": "string"
-                                },
-                                "mime": {
-                                  "type": "string"
-                                },
-                                "size": {
-                                  "type": "number",
-                                  "format": "float"
-                                },
-                                "url": {
-                                  "type": "string"
-                                },
-                                "previewUrl": {
-                                  "type": "string"
-                                },
-                                "provider": {
-                                  "type": "string"
-                                },
-                                "provider_metadata": {},
-                                "related": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "number"
-                                      },
-                                      "documentId": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  }
-                                },
-                                "folder": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "documentId": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "folderPath": {
-                                  "type": "string"
-                                },
-                                "createdAt": {
-                                  "type": "string",
-                                  "format": "date-time"
-                                },
-                                "updatedAt": {
-                                  "type": "string",
-                                  "format": "date-time"
-                                },
-                                "publishedAt": {
-                                  "type": "string",
-                                  "format": "date-time"
-                                },
-                                "createdBy": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "documentId": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "updatedBy": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "documentId": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "locale": {
-                                  "type": "string"
-                                },
-                                "localizations": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "number"
-                                      },
-                                      "documentId": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "scope": {
-                              "type": "string",
-                              "enum": [
-                                "global",
-                                "saison",
-                                "thématique"
-                              ]
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "locale": {
-                              "type": "string"
-                            },
-                            "localizations": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "documentId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
                             }
                           }
                         }
@@ -9807,13 +9883,49 @@
               }
             }
           },
-          "cta_left": {
-            "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+          "employees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "cta_right": {
-            "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+          "scientific_committee": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "funders": {
+          "strategic_committee": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "division_managers": {
             "type": "array",
             "items": {
               "type": "object",
@@ -9890,7 +10002,13 @@
                 "volunteer_cta": {
                   "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
                 },
-                "members": {
+                "cta_left": {
+                  "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+                },
+                "cta_right": {
+                  "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+                },
+                "funders": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -9904,13 +10022,63 @@
                     }
                   }
                 },
-                "cta_left": {
-                  "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+                "board_of_directors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 },
-                "cta_right": {
-                  "$ref": "#/components/schemas/CallToActionCallToActionWithImageComponent"
+                "employees": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 },
-                "funders": {
+                "scientific_committee": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "strategic_committee": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "division_managers": {
                   "type": "array",
                   "items": {
                     "type": "object",

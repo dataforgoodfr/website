@@ -1824,10 +1824,14 @@ export interface components {
                 testimonials?: components["schemas"]["TestimonialTestimonialComponent"][];
                 map_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 volunteer_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
-                members?: (number | string)[];
                 cta_left?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 cta_right?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 funders?: (number | string)[];
+                board_of_directors?: (number | string)[];
+                employees?: (number | string)[];
+                scientific_committee?: (number | string)[];
+                strategic_committee?: (number | string)[];
+                division_managers?: (number | string)[];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -1850,7 +1854,82 @@ export interface components {
             testimonials?: components["schemas"]["TestimonialTestimonialComponent"][];
             map_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
             volunteer_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
-            members?: {
+            cta_left?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
+            cta_right?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
+            funders?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                logo?: {
+                    id?: number;
+                    documentId?: string;
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: unknown;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** Format: float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: unknown;
+                    related?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    folder?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    folderPath?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                };
+                /** @enum {string} */
+                scope?: "global" | "saison" | "thématique";
+                /** Format: date-time */
+                createdAt?: string;
+                /** Format: date-time */
+                updatedAt?: string;
+                /** Format: date-time */
+                publishedAt?: string;
+                createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+            }[];
+            board_of_directors?: {
                 id?: number;
                 documentId?: string;
                 name?: string;
@@ -2325,75 +2404,6 @@ export interface components {
                     related_funders?: {
                         id?: number;
                         documentId?: string;
-                        name?: string;
-                        logo?: {
-                            id?: number;
-                            documentId?: string;
-                            name?: string;
-                            alternativeText?: string;
-                            caption?: string;
-                            width?: number;
-                            height?: number;
-                            formats?: unknown;
-                            hash?: string;
-                            ext?: string;
-                            mime?: string;
-                            /** Format: float */
-                            size?: number;
-                            url?: string;
-                            previewUrl?: string;
-                            provider?: string;
-                            provider_metadata?: unknown;
-                            related?: {
-                                id?: number;
-                                documentId?: string;
-                            }[];
-                            folder?: {
-                                id?: number;
-                                documentId?: string;
-                            };
-                            folderPath?: string;
-                            /** Format: date-time */
-                            createdAt?: string;
-                            /** Format: date-time */
-                            updatedAt?: string;
-                            /** Format: date-time */
-                            publishedAt?: string;
-                            createdBy?: {
-                                id?: number;
-                                documentId?: string;
-                            };
-                            updatedBy?: {
-                                id?: number;
-                                documentId?: string;
-                            };
-                            locale?: string;
-                            localizations?: {
-                                id?: number;
-                                documentId?: string;
-                            }[];
-                        };
-                        /** @enum {string} */
-                        scope?: "global" | "saison" | "thématique";
-                        /** Format: date-time */
-                        createdAt?: string;
-                        /** Format: date-time */
-                        updatedAt?: string;
-                        /** Format: date-time */
-                        publishedAt?: string;
-                        createdBy?: {
-                            id?: number;
-                            documentId?: string;
-                        };
-                        updatedBy?: {
-                            id?: number;
-                            documentId?: string;
-                        };
-                        locale?: string;
-                        localizations?: {
-                            id?: number;
-                            documentId?: string;
-                        }[];
                     }[];
                     /** Format: date-time */
                     createdAt?: string;
@@ -2435,9 +2445,19 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
-            cta_left?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
-            cta_right?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
-            funders?: {
+            employees?: {
+                id?: number;
+                documentId?: string;
+            }[];
+            scientific_committee?: {
+                id?: number;
+                documentId?: string;
+            }[];
+            strategic_committee?: {
+                id?: number;
+                documentId?: string;
+            }[];
+            division_managers?: {
                 id?: number;
                 documentId?: string;
             }[];
@@ -2463,13 +2483,29 @@ export interface components {
                 testimonials?: components["schemas"]["TestimonialTestimonialComponent"][];
                 map_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 volunteer_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
-                members?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
                 cta_left?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 cta_right?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 funders?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                board_of_directors?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                employees?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                scientific_committee?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                strategic_committee?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                division_managers?: {
                     id?: number;
                     documentId?: string;
                 }[];
