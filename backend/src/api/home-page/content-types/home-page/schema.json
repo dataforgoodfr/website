@@ -52,7 +52,7 @@
       "relation": "oneToMany",
       "target": "api::thematic.thematic"
     },
-    "articles_section_title": {
+    "resources_section_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -109,10 +109,10 @@
       },
       "type": "text"
     },
-    "articles": {
+    "resources": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::blog.blog"
+      "target": "api::resource.resource"
     }
   }
 }

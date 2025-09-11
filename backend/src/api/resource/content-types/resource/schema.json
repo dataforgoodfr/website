@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resource",
     "pluralName": "resources",
-    "displayName": "Resource"
+    "displayName": "Resource",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,8 +17,10 @@
       "relation": "oneToOne",
       "target": "api::blog.blog"
     },
-    "url": {
-      "type": "string"
+    "press_release": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::press-release.press-release"
     }
   }
 }
