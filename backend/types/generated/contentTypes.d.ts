@@ -602,13 +602,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
-    articles_section_title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     call_to_actions: Schema.Attribute.Component<
       'call-to-action.call-to-action',
       true
@@ -656,6 +649,13 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    resources: Schema.Attribute.Relation<'oneToMany', 'api::resource.resource'>;
+    resources_section_title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     results: Schema.Attribute.Component<'kpi.kpi', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1058,6 +1058,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
 export interface ApiResourceResource extends Struct.CollectionTypeSchema {
   collectionName: 'resources';
   info: {
+    description: '';
     displayName: 'Resource';
     pluralName: 'resources';
     singularName: 'resource';
@@ -1075,11 +1076,14 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::resource.resource'
     >;
+    press_release: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::press-release.press-release'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url: Schema.Attribute.String;
   };
 }
 
