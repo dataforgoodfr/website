@@ -43,3 +43,6 @@ export type { ProjectPresentationProps } from './ProjectPresentation/ProjectPres
 export { default as ProjectProcesses } from './ProjectProcesses/ProjectProcesses';
 export type { ProjectProcessesProps } from './ProjectProcesses/ProjectProcesses';
 
+export { default as ProjectImpactBlock } from './ProjectImpactBlock/ProjectImpactBlock';
+export type { ProjectImpactBlockProps } from './ProjectImpactBlock/ProjectImpactBlock';
+

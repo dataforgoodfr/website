@@ -1,7 +1,7 @@
 'use client';
 
-import { Banner, MembersBlock, NewsSmallBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
-import { IMembers } from '@/lib/types';
+import { Banner, MembersBlock, NewsSmallBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
+import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 
@@ -51,6 +51,21 @@ export default function ProjectDetailPage() {
     "Les images sont implacables : elles montrent qu’aucune contrainte ne pèse sur les engins destructeurs dans des zones sensibles. Pourtant, un seul de ces navires pêche jusqu’à 400 000 kilos de poissons en une journée1, soit l’équivalent des captures journalières de 1000 navires de pêche artisanale.",
     "La prise de conscience accrue et la collaboration entre les différentes parties prenantes pourront permettre d’accélérer la transition vers des pratiques de pêche plus durables. Trawl Watch est un exemple concret de la manière dont la technologie et l’innovation peuvent être utilisées pour lutter contre les problèmes environnementaux et sociaux qui touchent notre monde. "
   ]
+
+  const impacts: IProjectImpacts[] = [
+      {
+        value: '1700',
+        text: 'Une base de données en temps réel qui permet de suivre +1700 bateaux de pêche industriels',
+      },
+      {
+        value: '1er',
+        text: 'Premier contentieux mené en utilisant les données TrawlWatch.',
+      },
+      {
+        value: '20+',
+        text: 'Plus de 20 alertes journalières sur des bateaux et leur franchissement d\'AMP.',
+      }
+    ]
 
   const processes = {
   summary: "Depuis plus d'un an et demie une vingtaine de bénévoles ont travaillé d'arrache pied sur 2 workstream",
@@ -149,6 +164,12 @@ export default function ProjectDetailPage() {
         altImage='Project banner'
         content={presentationContent}
         className="my-lg "
+      />
+
+      <ProjectImpactBlock
+        title={t('impact.title')}
+        impacts={impacts}
+        className='my-lg'
       />
 
       <ProjectProcesses
