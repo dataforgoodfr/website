@@ -31,3 +31,9 @@ export interface IMembers {
     title: string;
     members: IMember[];
 }
+
+export interface IProjectImpacts {
+    value: string;
+    text: string;
+}
+

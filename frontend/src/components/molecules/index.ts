@@ -32,3 +32,6 @@ export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';
 
 export { default as Banner } from './Banner/Banner';
 export type { BannerProps } from './Banner/Banner';
+
+export { default as ProjectImpactCard } from './ProjectImpactCard/ProjectImpactCard';
+export type { ProjectImpactCardProps } from './ProjectImpactCard/ProjectImpactCard';

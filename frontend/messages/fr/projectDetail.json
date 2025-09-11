@@ -4,6 +4,9 @@
             "title": "Détail du projet",
             "description": ""
         },
+        "impact": {
+          "title": "Impacts"
+        },
         "processes": {
           "title": "Processes",
           "repoLink": "lien vers le repository"
