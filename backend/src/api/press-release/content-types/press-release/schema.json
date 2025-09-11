@@ -77,6 +77,21 @@
       "relation": "manyToMany",
       "target": "api::partner.partner",
       "inversedBy": "related_press_releases"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
