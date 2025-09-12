@@ -6,7 +6,7 @@ const locales = ['fr'] as const;
 const pathnames = {
   "/": "/",
   "/donations": {
-    fr: "/donner",
+    fr: "/faire-un-don",
   },
   "/about": {
     fr: "/nous-connaitre",
@@ -14,11 +14,17 @@ const pathnames = {
   "/blog": {
     fr: "/nos-articles",
   },
+  "/blog/[id]": {
+    fr: "/nos-articles/[id]",
+  },
   "/democracy": {
     fr: "/democratie",
   },
   "/events": {
     fr: "/nos-evenements",
+  },
+  "/events/[id]": {
+    fr: "/nos-evenements/[id]",
   },
   "/positions": {
     fr: "/nos-positions",
