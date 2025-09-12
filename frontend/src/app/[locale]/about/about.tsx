@@ -66,7 +66,7 @@ function transformFunders(funders: NonNullable<AboutPageData["funders"]>) {
     id: partner.id,
     name: partner.name,
     image: partner.logo?.url,
-    link: partner.link ?? "",
+    link: partner.link ?? "https://www.dataforgood.fr",
   }));
 }
 

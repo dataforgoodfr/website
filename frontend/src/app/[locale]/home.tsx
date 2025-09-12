@@ -31,6 +31,9 @@ async function fetchHomepageData() {
                 populate: {
                   author: {
                     fields: ["name"]
+                  },
+                  thumbnail: {
+                    fields: ["url"]
                   }
                 }
               },
