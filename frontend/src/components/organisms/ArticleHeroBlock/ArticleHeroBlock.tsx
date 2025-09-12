@@ -47,7 +47,7 @@ const ArticleHeroBlock: React.FC<ArticleHeroBlockProps> = ({
         </div>}
         <div className="col-start-1 row-start-1 self-center p-4 md:p-12">
           <TiltedTitle variant="big" level={1} colors="text-black bg-white" className="drop-shadow-3 drop-shadow-black max-w-[55rem] before:-z-1" rotation={-2}>{title}</TiltedTitle>
-          {introduction && <p className="relative sm:left-8 lg:left-[5.5rem] p-2 bg-white text-black shadow-lg max-w-2xl font-secondary font-medium">{introduction}</p>}
+          {introduction && <p className="relative sm:left-8 lg:left-[5.5rem] p-2 bg-white text-black shadow-lg max-w-2xl lead">{introduction}</p>}
         </div>
       </div>
       <div className="container py-2 flex flex-wrap items-center justify-between gap-4 text-black/50 text-xs">

@@ -34,7 +34,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
         <Title className="mb-xs text-left font-tertiary font-normal" level={titleLevel} variant="medium">
           {title}
         </Title>
-        {subtitle && <p className="mb-sm text-left font-secondary font-medium">
+        {subtitle && <p className="mb-sm text-left lead">
           {subtitle}
         </p>}
 
