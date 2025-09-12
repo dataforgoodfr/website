@@ -156,6 +156,7 @@ export default function ProjectDetailPage() {
 
       <ProjectPresentation
         {...project}
+        titleLevel={1}
         className='my-lg'
       />
 
@@ -168,24 +169,27 @@ export default function ProjectDetailPage() {
 
       <ProjectImpactBlock
         title={t('impact.title')}
+        titleLevel={1}
         impacts={impacts}
         className='my-lg'
       />
 
       <ProjectProcesses
         {...processes}
-        title={t('processes.title')
-      }
+        title={t('processes.title')}
+        titleLevel={1}
       />
 
       <NewsSmallBlock
         title={t('news.title')}
+        titleLevel={1}
         blocks={news}
         className='my-lg'
       />
 
       <MembersBlock
         title={t('members.title')}
+        titleLevel={1}
         categories={members}
         className="my-lg"
       />

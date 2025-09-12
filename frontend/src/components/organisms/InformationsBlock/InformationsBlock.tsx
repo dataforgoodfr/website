@@ -42,7 +42,7 @@ const InformationsBlock: React.FC<InformationsBlockProps> = ({
             <div className="flex flex-col items-start">
                 {informations.map((information, index) => (
                     <div key={index}>
-                        <Title variant='small' className='mb-xs' level={information.titleLevel ?? 3}>
+                        <Title variant='small' className='mb-xs' level={information.titleLevel ?? 2}>
                             {information.title}
                         </Title>
                         <p className='font-normal text-md font-medium font-tertiary relative'>
