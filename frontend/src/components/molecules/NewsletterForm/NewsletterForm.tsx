@@ -146,178 +146,14 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   return (
     <div className={className} {...props}>
-      {/* Brevo Form Styles */}
-      <style jsx>{`
-        @font-face {
-          font-display: block;
-          font-family: Roboto;
-          src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
-        }
-
-        @font-face {
-          font-display: fallback;
-          font-family: Roboto;
-          font-weight: 600;
-          src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff");
-        }
-
-        @font-face {
-          font-display: fallback;
-          font-family: Roboto;
-          font-weight: 700;
-          src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff");
-        }
-
-        #sib-container input:-ms-input-placeholder {
-          text-align: left;
-          font-family: Helvetica, sans-serif;
-          color: #c0ccda;
-        }
-
-        #sib-container input::placeholder {
-          text-align: left;
-          font-family: Helvetica, sans-serif;
-          color: #c0ccda;
-        }
-
-        #sib-container textarea::placeholder {
-          text-align: left;
-          font-family: Helvetica, sans-serif;
-          color: #c0ccda;
-        }
-
-        #sib-container a {
-          text-decoration: underline;
-          color: #2BB2FC;
-        }
-
-        .sib-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: white;
-          border: 1px solid #ccc;
-          border-radius: 3px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          z-index: 1000;
-          max-height: 200px;
-          overflow-y: auto;
-        }
-
-        .sib-menu__item-list {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .sib-menu__item {
-          padding: 8px 12px;
-          border-bottom: 1px solid #f0f0f0;
-        }
-
-        .sib-menu__item:last-child {
-          border-bottom: none;
-        }
-
-        .sib-multiselect__label {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          font-size: 14px;
-        }
-
-        .checkbox {
-          width: 16px;
-          height: 16px;
-          border: 1px solid #ccc;
-          border-radius: 2px;
-          margin-right: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .checkbox_tick_positive::after {
-          content: '✓';
-          color: #000;
-          font-size: 12px;
-          font-weight: bold;
-        }
-
-        .sib-menu__select {
-          padding: 8px 12px;
-          border-bottom: 1px solid #f0f0f0;
-          display: flex;
-          gap: 8px;
-        }
-
-        .clickable_link {
-          background: none;
-          border: none;
-          color: #2BB2FC;
-          cursor: pointer;
-          text-decoration: underline;
-          font-size: 12px;
-        }
-
-        .sib-menu__apply {
-          padding: 8px 12px;
-          display: flex;
-          justify-content: space-between;
-          border-top: 1px solid #f0f0f0;
-        }
-
-        .clickable_button {
-          background: #000;
-          color: white;
-          border: none;
-          padding: 4px 12px;
-          border-radius: 3px;
-          cursor: pointer;
-          font-size: 12px;
-        }
-
-        .input_display {
-          cursor: pointer;
-          position: relative;
-        }
-
-        .input_display::after {
-          content: '▼';
-          position: absolute;
-          right: 8px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 10px;
-          color: #666;
-        }
-      `}</style>
-
       {/* Newsletter Form */}
-      <div 
-        className="sib-form" 
-        style={{ 
-          textAlign: 'center',
-          backgroundColor: 'transparent'
-        }}
-      >
+      <div className="sib-form text-center bg-transparent">
         <div id="sib-form-container" className="sib-form-container">
           {/* Error Message */}
           {message.type === 'error' && (
             <div 
               id="error-message" 
-              className="sib-form-message-panel" 
-              style={{
-                fontSize: '16px',
-                textAlign: 'left',
-                fontFamily: 'Helvetica, sans-serif',
-                color: '#661d1d',
-                backgroundColor: '#ffeded',
-                borderRadius: '3px',
-                borderColor: '#ff4949',
-                maxWidth: '540px'
-              }}
+              className="sib-form-message-panel text-base text-left font-primary text-[#661d1d] bg-[#ffeded] rounded border-[#ff4949] max-w-[540px]"
             >
               <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
                 <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon">
@@ -334,17 +170,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           {message.type === 'success' && (
             <div 
               id="success-message" 
-              className="sib-form-message-panel" 
-              style={{
-                fontSize: '16px',
-                textAlign: 'left',
-                fontFamily: 'Helvetica, sans-serif',
-                color: '#085229',
-                backgroundColor: '#e7faf0',
-                borderRadius: '3px',
-                borderColor: '#13ce66',
-                maxWidth: '540px'
-              }}
+              className="sib-form-message-panel text-base text-left font-primary text-[#085229] bg-[#e7faf0] rounded border-[#13ce66] max-w-[540px]"
             >
               <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
                 <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon">
@@ -360,17 +186,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           {/* Form Container */}
           <div 
             id="sib-container" 
-            className="sib-container--large sib-container--horizontal" 
-            style={{
-              textAlign: 'center',
-              backgroundColor: 'transparent',
-              maxWidth: '540px',
-              borderRadius: '3px',
-              borderWidth: '0px',
-              borderColor: '#C0CCD9',
-              borderStyle: 'solid',
-              direction: 'ltr'
-            }}
+            className="sib-container--large sib-container--horizontal text-center bg-transparent max-w-[540px] rounded border-0 border-[#C0CCD9] border-solid ltr"
           >
             <form 
               id="sib-form" 
@@ -380,14 +196,13 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
               onSubmit={handleSubmit}
             >
               {/* Lists Selection */}
-              <div style={{ padding: '8px 0' }}>
-                <div className="sib-multiselect sib-form--blockPosition sib-form-block" data-required="true" style={{ position: 'relative' }}>
+              <div className="py-2">
+                <div className="sib-multiselect sib-form--blockPosition sib-form-block relative" data-required="true">
                   <div className="form__entry">
                     <div className="form__label-row form__label-row--horizontal">
                       <div className="entry__field">
                         <div 
-                          className="input input_display input--multiselect input--centerText" 
-                          style={{ paddingRight: '20px' }}
+                          className="input input_display input--multiselect input--centerText pr-5 cursor-pointer relative"
                           onClick={() => setIsListMenuOpen(!isListMenuOpen)}
                         >
                           {getDisplayText()}
@@ -402,25 +217,16 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                       </div>
                     </div>
                     <label 
-                      className="entry__error entry__error--primary" 
-                      style={{
-                        fontSize: '16px',
-                        textAlign: 'left',
-                        fontFamily: 'Helvetica, sans-serif',
-                        color: '#661d1d',
-                        backgroundColor: '#ffeded',
-                        borderRadius: '3px',
-                        borderColor: '#ff4949'
-                      }}
+                      className="entry__error entry__error--primary text-base text-left font-primary text-[#661d1d] bg-[#ffeded] rounded border-[#ff4949]"
                     />
                   </div>
                   
                   {isListMenuOpen && (
-                    <div className="sib-menu" style={{ textAlign: 'left', display: 'block' }}>
-                      <div className="sib-menu__select sib-menu__selectTextAlign">
+                    <div className="sib-menu absolute top-full left-0 right-0 bg-white border border-gray-300 rounded shadow-lg z-[1000] max-h-[200px] overflow-y-auto text-left !block">
+                      <div className="sib-menu__select sib-menu__selectTextAlign py-2 px-3 border-b border-gray-200 flex gap-2">
                         <button 
                           type="button" 
-                          className="clickable_link sib-menu__select-all-button"
+                          className="clickable_link sib-menu__select-all-button bg-none border-none text-[#2BB2FC] cursor-pointer underline text-xs"
                           onClick={handleSelectAll}
                         >
                           {t('selectAll')}
@@ -428,17 +234,17 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                         <span className="sib-menu__separator">/</span>
                         <button 
                           type="button" 
-                          className="clickable_link sib-menu__clear-button"
+                          className="clickable_link sib-menu__clear-button bg-none border-none text-[#2BB2FC] cursor-pointer underline text-xs"
                           onClick={handleClearAll}
                         >
                           {t('clear')}
                         </button>
                       </div>
-                      <ul className="sib-menu__item-list">
+                      <ul className="sib-menu__item-list list-none m-0 p-0">
                         {availableLists.map((list) => (
-                          <li key={list.id} className="sib-menu__item">
+                          <li key={list.id} className="sib-menu__item py-2 px-3 border-b border-gray-100 last:border-b-0">
                             <div className="entry__choice" style={{ textIndent: 0 }}>
-                              <label className="sib-multiselect__label">
+                              <label className="sib-multiselect__label flex items-center cursor-pointer text-sm">
                                 <input 
                                   type="checkbox" 
                                   className="input_replaced" 
@@ -446,24 +252,24 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                                   checked={selectedLists.includes(list.id)}
                                   onChange={() => handleListToggle(list.id)}
                                 />
-                                <span className={`checkbox ${selectedLists.includes(list.id) ? 'checkbox_tick_positive' : ''}`}></span>
+                                <span className={`w-4 h-4 border border-gray-300 rounded mr-2 flex items-center justify-center ${selectedLists.includes(list.id) ? 'after:content-["✓"] after:text-black after:text-xs after:font-bold' : ''}`}></span>
                                 <span className="sib-multiselect__label-text">{list.name}</span>
                               </label>
                             </div>
                           </li>
                         ))}
                       </ul>
-                      <div className="sib-menu__apply">
+                      <div className="sib-menu__apply py-2 px-3 flex justify-between border-t border-gray-200">
                         <button 
                           type="button" 
-                          className="sib-menu__cancel-button clickable_link"
+                          className="sib-menu__cancel-button clickable_link bg-none border-none text-[#2BB2FC] cursor-pointer underline text-xs"
                           onClick={() => setIsListMenuOpen(false)}
                         >
                           {t('cancel')}
                         </button>
                         <button 
                           type="button" 
-                          className="sib-menu__apply-button clickable_button"
+                          className="sib-menu__apply-button clickable_button bg-black text-white border-none py-1 px-3 rounded cursor-pointer text-xs"
                           onClick={handleApplySelection}
                         >
                           {t('apply')}
@@ -475,7 +281,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
               </div>
 
               {/* Email Input */}
-              <div style={{ padding: '8px 0' }}>
+              <div className="py-2">
                 <div className="sib-input sib-form-block">
                   <div className="form__entry entry_block">
                     <div className="form__label-row form__label-row--horizontal">
@@ -495,35 +301,17 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                       </div>
                     </div>
                     <label 
-                      className="entry__error entry__error--primary" 
-                      style={{
-                        fontSize: '16px',
-                        textAlign: 'left',
-                        fontFamily: 'Helvetica, sans-serif',
-                        color: '#661d1d',
-                        backgroundColor: '#ffeded',
-                        borderRadius: '3px',
-                        borderColor: '#ff4949'
-                      }}
+                      className="entry__error entry__error--primary text-base text-left font-primary text-[#661d1d] bg-[#ffeded] rounded border-[#ff4949]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Submit Button */}
-              <div style={{ padding: '8px 0' }}>
-                <div className="sib-form-block" style={{ textAlign: 'left' }}>
+              <div className="py-2">
+                <div className="sib-form-block text-left">
                   <button 
-                    className="sib-form-block__button sib-form-block__button-with-loader" 
-                    style={{
-                      fontSize: '16px',
-                      textAlign: 'left',
-                      fontWeight: '700',
-                      fontFamily: 'Helvetica, sans-serif',
-                      color: '#FFFFFF',
-                      backgroundColor: '#000000',
-                      borderWidth: '0px'
-                    }}
+                    className="sib-form-block__button sib-form-block__button-with-loader text-base text-left font-bold font-primary text-white bg-black border-0"
                     form="sib-form" 
                     type="submit"
                     disabled={isSubmitting}
@@ -531,7 +319,6 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                     <svg 
                       className="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" 
                       viewBox="0 0 512 512" 
-                      style={{}}
                     >
                       <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
                     </svg>
@@ -544,8 +331,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                 type="text" 
                 name="email_address_check" 
                 value="" 
-                className="input--hidden" 
-                style={{ display: 'none' }}
+                className="input--hidden hidden"
               />
               <input 
                 type="hidden" 
