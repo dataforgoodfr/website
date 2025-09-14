@@ -5,9 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaBluesky, FaLinkedin } from 'react-icons/fa6';
 import { Button, SocialLink } from '@/components/atoms';
+import { usePathLocale } from '@/hooks/usePathLocale';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
+  
 
   const socialLinks: Record<string, { href: string; icon: React.ReactNode }> = {
     bluesky: {
@@ -27,9 +29,9 @@ const Footer = () => {
   };
 
   const informationsNav: Record<string, string> = {
-    faq: '/todo',
-    cgu: '/todo',
-    charte: '/todo',
+    faq: usePathLocale('/faq'),
+    cgu: usePathLocale('/cgu'),
+    charte: usePathLocale('/charte'),
   };
 
   const contactFormIframe = (
