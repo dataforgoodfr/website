@@ -3,7 +3,7 @@ import { Pathnames } from 'next-intl/routing';
 
 const locales = ['fr'] as const;
 
-const pathnames = {
+export const pathnames = {
   "/": "/",
   "/donations": {
     fr: "/faire-un-don",
@@ -37,6 +37,15 @@ const pathnames = {
   },
   "/social-justice": {
     fr: "/justice-sociale",
+  },
+  "/faq": {
+    fr: "/foire-aux-questions",
+  },
+  "/cgu": {
+    fr: "/conditions-generales-d-utilisation",
+  },
+  "/charte": {
+    fr: "/charte-diversite",
   },
 } satisfies Pathnames<typeof locales>;
 
