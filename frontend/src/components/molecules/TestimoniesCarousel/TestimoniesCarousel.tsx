@@ -58,7 +58,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
             key={testimony.id} 
             className={clsx(
               "max-w-3xl py-6 px-8",
-              index !== current && "bg-violet-shadow"
+              index !== current && "bg-opacity-20"
             )}
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
