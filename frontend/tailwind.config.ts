@@ -27,7 +27,7 @@ const config: Config = {
         building: 'hsl(var(--c-building))',
       },
       content: {
-        'checkmark': 'url("/images/checkmark.png")',
+        'checkmark': 'url("/images/checkmark.svg")',
       }
     },
     container: {
