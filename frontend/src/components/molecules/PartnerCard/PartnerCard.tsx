@@ -37,7 +37,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
       {...props}
     >
       <div className="flex flex-col sm:flex-row items-center bg-white h-full">
-        <Image loading="lazy" src={image} alt="" width={157} height={157} className="w-[157px] h-[157px] object-contain p-5" />
+        <Image loading="lazy" src={image} alt="" width={130} height={130} className="w-[130px] h-[130px] object-contain p-5" />
         <div className="flex-1 flex flex-col justify-center gap-xs py-10 px-5">
           <Title level={titleLevel} variant="x-small">{name}</Title>
           {description && <p>{description}</p>}
