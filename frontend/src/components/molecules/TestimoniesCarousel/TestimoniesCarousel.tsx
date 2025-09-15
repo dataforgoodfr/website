@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, TiltedTitle, Title, TitleProps } from '@/components';
+import { TiltedTitle } from '@/components';
 
 export type TestimoniesCarouselProps = {
   testimonies: Array<{
@@ -58,7 +58,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
             key={testimony.id} 
             className={clsx(
               "max-w-3xl py-6 px-8",
-              index !== current && "opacity-20"
+              index !== current && "bg-violet-shadow"
             )}
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
