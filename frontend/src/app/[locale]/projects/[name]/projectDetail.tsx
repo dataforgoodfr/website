@@ -1,6 +1,6 @@
 'use client';
 
-import { Banner, MembersBlock, NewsSmallBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
+import { Banner, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -53,43 +53,70 @@ export default function ProjectDetailPage() {
   ]
 
   const impacts: IProjectImpacts[] = [
-      {
-        value: '1700',
-        text: 'Une base de données en temps réel qui permet de suivre +1700 bateaux de pêche industriels',
-      },
-      {
-        value: '1er',
-        text: 'Premier contentieux mené en utilisant les données TrawlWatch.',
-      },
-      {
-        value: '20+',
-        text: 'Plus de 20 alertes journalières sur des bateaux et leur franchissement d\'AMP.',
-      }
-    ]
+    {
+      value: '1700',
+      text: 'Une base de données en temps réel qui permet de suivre +1700 bateaux de pêche industriels',
+    },
+    {
+      value: '1er',
+      text: 'Premier contentieux mené en utilisant les données TrawlWatch.',
+    },
+    {
+      value: '20+',
+      text: 'Plus de 20 alertes journalières sur des bateaux et leur franchissement d\'AMP.',
+    }
+  ]
+
+  const slides = [
+    {
+      id: 1,
+      description: 'Data for Good m\'a permis de mettre mes compétences techniques au service de causes qui me tiennent à cœur. C\'est une expérience enrichissante et humaine.',
+      image: '/images/thematics/thematics-social.png',
+      altImage: "Random image"
+    },
+    {
+      id: 2,
+      description: 'Grâce à cette communauté, j\'ai pu contribuer à des projets d\'impact social tout en développant mes compétences en data science.',
+      image: '/images/thematics/thematics-social.png',
+      altImage: "Random image"
+    },
+    {
+      id: 3,
+      description: 'Une belle aventure humaine et technique. Les projets sont variés et les équipes sont bienveillantes. Je recommande vivement !',
+      image: '/images/thematics/thematics-social.png',
+      altImage: "Random image"
+    },
+    {
+      id: 4,
+      description: 'Data for Good représente exactement ce que je cherchais : utiliser la technologie pour un monde meilleur. Une expérience unique !',
+      image: '/images/thematics/thematics-social.png',
+      altImage: "Random image"
+    },
+  ];
 
   const processes = {
-  summary: "Depuis plus d'un an et demie une vingtaine de bénévoles ont travaillé d'arrache pied sur 2 workstream",
-  processes: [
-    {
-      name: "Création de l'architecture de données",
-      description: [
-        "Création de l'application depuis zéro.",
-        "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
-        "Développement d'une  interface utilisateur intuitive et performante.",
-      ],
-    },
-    {
-      name: "Création de l'architecture de données",
-      description: [
-        "Création de l'application depuis zéro.",
-        "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
-        "Développement d'une  interface utilisateur intuitive et performante.",
-        "Développement d'un système de filtres et de calques pour les aires marines protégées.",
-      ],
-    },
-  ],
-  link: 'https://github.com/associationbloom/trawlwatch'
-}
+    summary: "Depuis plus d'un an et demie une vingtaine de bénévoles ont travaillé d'arrache pied sur 2 workstream",
+    processes: [
+      {
+        name: "Création de l'architecture de données",
+        description: [
+          "Création de l'application depuis zéro.",
+          "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
+          "Développement d'une  interface utilisateur intuitive et performante.",
+        ],
+      },
+      {
+        name: "Création de l'architecture de données",
+        description: [
+          "Création de l'application depuis zéro.",
+          "Optimisation de l'architecture des données pour gérer efficacement les informations de 1700 navires",
+          "Développement d'une  interface utilisateur intuitive et performante.",
+          "Développement d'un système de filtres et de calques pour les aires marines protégées.",
+        ],
+      },
+    ],
+    link: 'https://github.com/associationbloom/trawlwatch'
+  }
 
   const news = [
     {
@@ -148,7 +175,7 @@ export default function ProjectDetailPage() {
 
   return (
     <>
-      <Banner 
+      <Banner
         image='/images/pages/carte-benevoles.png'
         altImage='Project banner'
         className="mb-lg "
@@ -160,7 +187,7 @@ export default function ProjectDetailPage() {
         className='my-lg'
       />
 
-      <Banner 
+      <Banner
         image='/images/pages/carte-benevoles.png'
         altImage='Project banner'
         content={presentationContent}
@@ -172,6 +199,11 @@ export default function ProjectDetailPage() {
         titleLevel={1}
         impacts={impacts}
         className='my-lg'
+      />
+
+      <ProjectCarousel
+        title={t('carousel.title')}
+        slides={slides}
       />
 
       <ProjectProcesses

@@ -82,7 +82,7 @@
     --c-blue: 187 67% 53%; /* blue */
     --c-alive: 67 72% 56%; /* green */
     --c-resistance: 37 98% 53%; /* orange */
-    --c-violet-light: 270, 77%, 91%; /* light purple */
+    --c-violet-light: 270 77% 91%; /* light purple */
     --c-building: 266 84% 61%; /* purple */
     --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
@@ -122,15 +122,16 @@
     @apply text-sm font-black uppercase tracking-widest;
   }
 
+  .lead {
+    @apply font-secondary font-medium;
+  }
+
   .prose p {
     @apply mb-xs;
   }
 
   .prose a {
-    @apply underline text-building;
-  }
-  .prose a:hover {
-    @apply no-underline;
+    @apply underline hover:no-underline;
   }
   .prose em {
     @apply italic;
@@ -139,25 +140,34 @@
     @apply font-bold;
   }
   .prose h2 {
+    @apply mt-lg mb-md;
+  }
+  .prose h3 {
     @apply mt-md mb-sm;
   }
-  .prose :has(h2, h3, h4, h5, h6):first-child {
-    @apply mt-0;
-  }
-  .prose :has(h3, h4, h5, h6) {
+  .prose :where(h4, h5, h6) {
     @apply mt-sm mb-xs;
   }
+  .prose :where(h2, h3, h4, h5, h6):first-child {
+    @apply mt-0;
+  }
   .prose ul {
-    @apply list-disc mt-sm;
+    @apply list-disc mt-sm pl-5;
   }
   .prose ol {
-    @apply list-decimal mt-sm;
+    @apply list-decimal mt-sm pl-5;
   }
   .prose li {
     @apply mb-xs list-outside;
   }
   .prose li li {
     @apply ml-4;
+  }
+  .prose img {
+    @apply my-md;
+  }
+  .prose :where(p, ul, ol) {
+    @apply mx-auto max-w-[650px];
   }
 
 
@@ -185,5 +195,17 @@
   }
   .shadow-block--black {
     @apply before:bg-black;
+  }
+
+
+  /* Container */
+  .container-sm {
+    @apply px-5 mx-auto max-w-[690px];
+  }
+  .container-md {
+    @apply px-5 mx-auto max-w-[920px];
+  }
+  [class*="container-"] [class*="container-"] {
+    @apply px-0;
   }
 }

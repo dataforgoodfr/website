@@ -7,6 +7,9 @@
         "impact": {
           "title": "Impacts"
         },
+        "carousel": {
+          "title": "La solution"
+        },
         "processes": {
           "title": "Processes",
           "repoLink": "lien vers le repository"

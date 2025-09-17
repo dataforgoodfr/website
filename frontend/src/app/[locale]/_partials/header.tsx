@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
+import { usePathLocale } from '@/hooks/usePathLocale';
 
 const Header = () => {
   const pathname = usePathname();
@@ -15,17 +16,17 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
   const topNav: Record<string, string> = {
-    project: '/todo',
-    volunteer: '/todo',
-    financier: '/todo',
+    project: '/projects',
+    volunteer: '/volunteer',
+    financier: '/financier',
   };
 
   const mainNav: Record<string, string> = {
-    know: '/about',
+    know: usePathLocale('/about'),
     projects: '/projects',
-    positions: '/positions',
-    news: '/blog',
-    events: '/events',
+    positions: usePathLocale('/positions'),
+    news: usePathLocale('/blog'),
+    events: usePathLocale('/events'),
   };
 
   const authorizeKeys = [
