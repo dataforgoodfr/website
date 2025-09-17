@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import MembersBlock from './MembersBlock';
-import { IMembers } from '@/lib/types';
+import type { IMembers } from '@/lib/types';
 
 const meta: Meta<typeof MembersBlock> = {
   title: 'Organisms/MembersBlock',

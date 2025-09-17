@@ -25,10 +25,9 @@ export const pathnames = {
   },
   '/positions': {
     fr: '/nos-positions',
-  }
+  },
   '/events/[id]': {
     fr: '/nos-evenements/[id]',
-  },
   },
   '/climate-and-biodiversity': {
     fr: '/climat-et-biodiversite',

@@ -22,17 +22,17 @@ export type IInformation = {
   text: { info: string; ctaLink?: string }[];
 };
 
-export type IMember = {
+type IMember = {
     name: string;
     role: string;
     image: string;
 }
-export interface IMembers {
+export type IMembers = {
     title: string;
     members: IMember[];
 }
 
-export interface IProjectImpacts {
+export type IProjectImpacts = {
     value: string;
     text: string;
 }

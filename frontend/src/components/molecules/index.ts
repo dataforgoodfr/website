@@ -15,8 +15,6 @@ export { default as NewsSmallCard } from './NewsSmallCard/NewsSmallCard';
 export type { NewsSmallCardProps } from './NewsSmallCard/NewsSmallCard';
 export { default as PartnerCard } from './PartnerCard/PartnerCard';
 export type { PartnerCardProps } from './PartnerCard/PartnerCard';
-export { default as ProjectListCard } from './ProjectListCard/ProjectListCard';
-export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';
 export { default as SearchInput } from './SearchInput/SearchInput';
 export type { SearchInputProps } from './SearchInput/SearchInput';
 export { default as TalkCard } from './TalkCard/TalkCard';

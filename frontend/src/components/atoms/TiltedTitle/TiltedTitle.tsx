@@ -21,8 +21,7 @@ const TiltedTitle: React.FC<TiltedTitleProps> = ({
 }) => {
   return (
     <Title
-      className={clsx('relative inline-flex', className)}
-    )} 
+      className={clsx('relative inline-flex', className)} 
       style={{ transform: `rotate(${rotation}deg` }}
       variant={variant}
       level={level}

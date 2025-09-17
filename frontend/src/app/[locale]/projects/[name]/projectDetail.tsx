@@ -1,7 +1,7 @@
 'use client';
 
 import { Banner, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
-import { IMembers, IProjectImpacts } from '@/lib/types';
+import type { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 

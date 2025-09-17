@@ -13,7 +13,7 @@ export default function DonationsPage() {
       </Title>
       <iframe
         id="haWidget"
-        allowTransparency={true}
+        allowTransparency
         scrolling="auto"
         src="https://www.helloasso.com/associations/data-for-good/formulaires/2/widget"
         style={{ width: '100%', height: '750px', border: 'none' }}
