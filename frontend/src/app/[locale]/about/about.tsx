@@ -179,12 +179,6 @@ export default function AboutPage() {
 
       <EditoCard
         title={t('edito.title')}
-        content={(
-          <>
-            <p>{t('edito.content.0')}</p>
-            <p>{t('edito.content.1')}</p>
-          </>
-        )}
         image="/images/pages/carte-benevoles.png"
         ctaText={t('edito.ctaText')}
         ctaLink="/volunteer"
