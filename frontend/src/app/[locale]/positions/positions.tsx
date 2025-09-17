@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BaseCardsBlock, LargeTextImage, NewsletterBlock, Title } from '@/components';
+import { BaseCardsBlock, LargeTextImage, NewsletterBlock } from '@/components';
+import Animation from './_partials/Animations';
 
 export default function AboutPage() {
   const t = useTranslations('positions');
@@ -55,16 +56,7 @@ export default function AboutPage() {
 
   return (
     <>
-    <div className="flex justify-center items-center h-screen">1</div>
-    <div className="flex justify-center items-center h-screen">2</div>
-    <div className="flex justify-center items-center h-screen">3</div>
-    <div className="flex justify-center items-center h-screen">4</div>
-    <div className="flex justify-center items-center h-screen">5</div>
-      <div className="container my-lg">
-        <Title className="mb-md max-w-5xl" variant="medium">
-          {t('title')}
-        </Title>
-      </div>
+      <Animation />
 
       <LargeTextImage
         image="/images/pages/carte-benevoles.png"
@@ -73,6 +65,7 @@ export default function AboutPage() {
         citationAuthorImage={citation.authorImage}
         background="purple"
         className="my-lg"
+        id="lastContent"
       />
 
       <BaseCardsBlock

@@ -23,6 +23,7 @@ const config: Config = {
         "back-green": 'hsl(var(--c-back-green))',
         "violet-light": 'hsl(var(--c-violet-light))',
         "building-light": 'hsl(var(--c-building-light))',
+        "grey-text": 'hsl(var(--c-grey-text))',
         resistance: 'hsl(var(--c-resistance))',
         building: 'hsl(var(--c-building))',
       },

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Button, Title, TitleProps } from '@/components';
 
-export type LargeTextImageProps = {
+export type LargeTextImageProps = React.HTMLAttributes<HTMLDivElement> & {
   title?: string;
   titleLevel?: TitleProps['level'];
   content?: React.ReactNode;
