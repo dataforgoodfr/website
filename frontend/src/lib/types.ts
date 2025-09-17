@@ -22,7 +22,7 @@ export type IInformation = {
   text: { info: string; ctaLink?: string }[];
 };
 
-export interface IMember {
+export type IMember = {
     name: string;
     role: string;
     image: string;
