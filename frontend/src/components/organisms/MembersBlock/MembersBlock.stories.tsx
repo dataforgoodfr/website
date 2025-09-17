@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import MembersBlock from './MembersBlock';
+import { IMembers } from '@/lib/types';
 
 const meta: Meta<typeof MembersBlock> = {
   title: 'Organisms/MembersBlock',
@@ -33,7 +34,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Données d'exemple pour les catégories de membres
-const sampleCategories = [
+const sampleCategories: IMembers[] = [
   {
     title: 'Équipe de direction',
     members: [

@@ -1,3 +1,6 @@
+export { default as ArticleHeroBlock } from './ArticleHeroBlock/ArticleHeroBlock';
+export type { ArticleHeroBlockProps } from './ArticleHeroBlock/ArticleHeroBlock';
+
 export { default as BaseCardsBlock } from './BaseCardsBlock/BaseCardsBlock';
 export type { BaseCardsBlockProps } from './BaseCardsBlock/BaseCardsBlock';
 
@@ -33,3 +36,18 @@ export type { ThematicsProps } from './ThematicsBlock/ThematicsBlock';
 
 export { default as ThumbnailProjectsBlock } from './ThumbnailProjectsBlock/ThumbnailProjectsBlock';
 export type { ThumbnailProjectsBlockProps } from './ThumbnailProjectsBlock/ThumbnailProjectsBlock';
+
+export { default as HeroBlock } from './HeroBlock/HeroBlock';
+export type { HeroBlockProps } from './HeroBlock/HeroBlock';
+
+export { default as InformationsBlock } from './InformationsBlock/InformationsBlock';
+export type { InformationsBlockProps } from './InformationsBlock/InformationsBlock';
+
+export { default as ProjectPresentation } from './ProjectPresentation/ProjectPresentation';
+export type { ProjectPresentationProps } from './ProjectPresentation/ProjectPresentation';
+
+export { default as ProjectProcesses } from './ProjectProcesses/ProjectProcesses';
+export type { ProjectProcessesProps } from './ProjectProcesses/ProjectProcesses';
+
+export { default as ProjectImpactBlock } from './ProjectImpactBlock/ProjectImpactBlock';
+export type { ProjectImpactBlockProps } from './ProjectImpactBlock/ProjectImpactBlock';

@@ -21,6 +21,7 @@ const config: Config = {
         'alive': 'hsl(var(--c-alive))',
         'alive-light': 'hsl(var(--c-alive-light))',
         'violet-light': 'hsl(var(--c-violet-light))',
+        'back-green': 'hsl(var(--c-back-green))',
         'building-light': 'hsl(var(--c-building-light))',
         'resistance': 'hsl(var(--c-resistance))',
         'building': 'hsl(var(--c-building))',
@@ -35,6 +36,7 @@ const config: Config = {
     },
     boxShadow: {
       base: '2px 2px 0 0 rgba(0, 0, 0)',
+      lg: '8px 8px 0 0 rgba(0, 0, 0)',
     },
     zIndex: {
       1: '1',
@@ -164,6 +166,10 @@ const config: Config = {
         },
         '.not-rotate-arrow': {
           '@apply [&_svg]:rotate-0 [&_svg]:transition [&_svg]:duration-200 [&_svg]:ease-linear': {},
+        },
+        /* Background shadow */
+        '.bg-shadow': {
+          '@apply bg-black bg-opacity-75': {},
         },
       };
       addUtilities(newUtilities);

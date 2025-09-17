@@ -29,3 +29,15 @@ export type { ThematicsCardProps } from './ThematicsCard/ThematicsCard';
 
 export { default as ThumbnailProject } from './ThumbnailProject/ThumbnailProject';
 export type { ThumbnailProjectProps } from './ThumbnailProject/ThumbnailProject';
+
+export { default as ProjectListCard } from './ProjectListCard/ProjectListCard';
+export type { ProjectListCardProps } from './ProjectListCard/ProjectListCard';
+
+export { default as Banner } from './Banner/Banner';
+export type { BannerProps } from './Banner/Banner';
+
+export { default as ProjectImpactCard } from './ProjectImpactCard/ProjectImpactCard';
+export type { ProjectImpactCardProps } from './ProjectImpactCard/ProjectImpactCard';
+
+export { default as ProjectCarousel } from './ProjectCarousel/ProjectCarousel';
+export type { ProjectCarouselProps } from './ProjectCarousel/ProjectCarousel';

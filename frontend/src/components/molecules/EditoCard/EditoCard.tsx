@@ -1,16 +1,16 @@
 import type { TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Button, Title } from '@/components';
+import { Button, Title, TitleProps } from '@/components';
+import { PropsWithChildren } from 'react';
 
-export type EditoCardProps = {
+export type EditoCardProps = PropsWithChildren<{
   title?: string;
   titleLevel?: TitleProps['level'];
   titleVariant?: TitleProps['variant'];
   titleClassName?: string;
-  content: React.ReactNode;
   contentClassName?: string;
-  image: string;
+  image?: string;
   imageClassName?: string;
   imagePosition?: 'left' | 'right';
   imageAlt?: string;
@@ -21,14 +21,13 @@ export type EditoCardProps = {
   ctaLink?: string;
   ctaClassName?: string;
   className?: string;
-};
+}>;
 
 const EditoCard: React.FC<EditoCardProps> = ({
   title,
   titleLevel = 2,
   titleVariant = 'medium',
   titleClassName,
-  content,
   contentClassName = 'prose my-xs',
   image,
   imageClassName = '',
@@ -41,9 +40,10 @@ const EditoCard: React.FC<EditoCardProps> = ({
   ctaLink,
   ctaClassName = 'mt-sm',
   className,
+  children,
   ...props
 }) => {
-  if (!content) {
+  if (!children) {
     return null;
   }
 
@@ -63,7 +63,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
         )}
 
         <div className={contentClassName}>
-          {content}
+          {children}
         </div>
 
         {ctaText && ctaLink && (

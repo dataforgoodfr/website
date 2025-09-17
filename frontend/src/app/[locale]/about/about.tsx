@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CtaWithImage, EditoCard, LargeTextImage, MembersBlock, NewsletterBlock, PartnersBlock, TestimoniesCarousel, Title } from '@/components';
+import { CtaWithImage, EditoCard, LargeTextImage, MembersBlock, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
+import { IMembers } from '@/lib/types';
 
 export default function AboutPage() {
   const t = useTranslations('about');
@@ -50,7 +51,7 @@ export default function AboutPage() {
     },
   ];
 
-  const members = [
+  const members: IMembers[] = [
     {
       title: 'Équipe de direction',
       members: [
@@ -188,7 +189,12 @@ export default function AboutPage() {
         ctaText={t('edito.ctaText')}
         ctaLink="/volunteer"
         className="my-lg"
-      />
+      >
+        <>
+          <p>{t('edito.content.0')}</p>
+          <p>{t('edito.content.1')}</p>
+        </>
+      </EditoCard>
 
       <LargeTextImage
         title={t('joinus.title')}

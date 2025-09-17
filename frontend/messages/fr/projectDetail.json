@@ -1,0 +1,25 @@
+{
+    "projectDetail": {
+        "meta": {
+            "title": "Détail du projet",
+            "description": ""
+        },
+        "impact": {
+          "title": "Impacts"
+        },
+        "carousel": {
+          "title": "La solution"
+        },
+        "processes": {
+          "title": "Processes",
+          "repoLink": "lien vers le repository"
+        },
+        "news": {
+          "title": "Dans la presse"
+        },
+        "members": {
+          "title": "L'équipe du projet"
+        }
+    }
+    
+}

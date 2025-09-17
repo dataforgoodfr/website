@@ -121,20 +121,18 @@ export default function ClimatePage() {
       <Kpis kpis={kpis} className="my-lg" />
 
       <EditoCard
-        content={edito1.content}
         imageText={edito1.imageText}
         image={edito1.image}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
-      />
+      >{edito1.content}</EditoCard>
 
       <EditoCard
-        content={edito2.content}
         imageText={edito2.imageText}
         image={edito2.image}
         className="my-lg container"
-      />
+      >{edito2.content}</EditoCard>
 
       <ThumbnailProjectsBlock
         title={t('projectsTitle')}
