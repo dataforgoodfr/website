@@ -5,6 +5,30 @@
       "description": ""
     },
     "title": "Nos positions",
+    "skipLink": "Skip",
+    "intro": [
+      {
+        "text1": "Alors que le populisme gronde à travers le monde, le printemps est devenu silencieux, les changements climatiques s’accélèrent, la guerre reprend du terrain sous des formes nouvelles et diffuses, et les droits sociaux régressent à travers le globe.",
+        "text2": "Face à l'hégémonie techno-industrielle qui façonne nos sociétés, nous voulons incarner la preuve vivante qu'un autre numérique est possible. "
+      },
+      {
+        "text1": "Notre communauté rassemble des milliers de techniciennes et techniciens"
+      },
+      {
+        "text1": "citoyennes et citoyens engagés dans la construction patiente d'un contre-pouvoir numérique au service de l’intérêt général."
+      },
+      {
+        "text1": "Dans ces laboratoires de résistance joyeuse, nous développons des outils libres et transparents au service de la démocratie, de la justice sociale, de la protection de l’environnement,"
+      },
+      {
+        "text1": "Cette voie alternative, nous la traçons collectivement, en opposition frontale aux logiques destructrices qui dominent aujourd'hui."
+      },
+      {
+        "title": "Bâtir",
+        "description": "Un contre-pouvoir tech citoyen",
+        "cta": "Lire le manifeste"
+      }
+    ],
     "press": "Nos positions dans la presse",
     "resources": "Nos ressources"
   }

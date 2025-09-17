@@ -67,7 +67,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="scroll-smooth">
       <body
         className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
         style={{ backgroundSize: '100vw 100vh' }}

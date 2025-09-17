@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, TiltedTitle, Title, TitleProps } from '@/components';
+import { TiltedTitle } from '@/components';
 
 export type TestimoniesCarouselProps = {
   testimonies: Array<{

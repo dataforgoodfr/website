@@ -37,3 +37,6 @@ export type { BannerProps } from './Banner/Banner';
 
 export { default as ProjectImpactCard } from './ProjectImpactCard/ProjectImpactCard';
 export type { ProjectImpactCardProps } from './ProjectImpactCard/ProjectImpactCard';
+
+export { default as ProjectCarousel } from './ProjectCarousel/ProjectCarousel';
+export type { ProjectCarouselProps } from './ProjectCarousel/ProjectCarousel';

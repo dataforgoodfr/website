@@ -82,11 +82,12 @@
     --c-blue: 187 67% 53%; /* blue */
     --c-alive: 67 72% 56%; /* green */
     --c-resistance: 37 98% 53%; /* orange */
-    --c-violet-light: 270, 77%, 91%; /* light purple */
+    --c-violet-light: 270 77% 91%; /* light purple */
     --c-building: 266 84% 61%; /* purple */
     --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
     --c-back-green: 92 14% 81%; /* light green */
+    --c-grey-text: 0 0 40%; /* grey text */
 
     /* Font variables */
     --font-primary: 'DMSans', system-ui, sans-serif;
