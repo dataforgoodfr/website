@@ -6,7 +6,7 @@ tags: [Saison 12,Saison 10,Saison 8,Saison 6,Environnement,Deep Learning,API,Com
 description: "Pyronear a créé au cours des différentes saisons de Data For Good un prototype pour détecter les départs d'incendie dans les forêts"
 keywords:
     - Data For Good
-sdgs: [sdg13]
+sdgs: [sdg13, sdg15, sdg11, sdg17, sdg03]
 github: https://github.com/pyronear
 website: https://pyronear.org/
 slack: 
