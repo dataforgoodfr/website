@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "blog_lists",
+  "info": {
+    "singularName": "blog-list",
+    "pluralName": "blog-lists",
+    "displayName": "BlogList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    }
+  }
+}

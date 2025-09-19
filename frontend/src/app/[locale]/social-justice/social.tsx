@@ -1,139 +1,97 @@
 'use client';
- 
-import { EditoCard, Kpis, NewsletterBlock, PartnersBlock, ThematicHeroBlock, ThumbnailProjectsBlock } from '@/components';
+
+import {
+  EditoCard,
+  Kpis,
+  NewsletterBlock,
+  PartnersBlock,
+  ThematicHeroBlock,
+  ThumbnailProjectsBlock,
+} from '@/components';
+import {
+  transformProjects,
+  transformKpis,
+  transformPartners,
+} from '@/lib/formatters/thematics';
+import client from '@/lib/strapi-client';
 import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 
 export default function SocialPage() {
   const t = useTranslations('social');
+  const [partners, setPartners] = useState([]);
+  const [kpis, setKpis] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [params, setParams] = useState<any>({});
 
-
-  const kpis = [
-    {
-      id: '1',
-      title: '100',
-      description: 'Projets réalisés avec succès',
-    },
-    {
-      id: '2',
-      title: '200',
-      description: 'Projets réalisés avec succès',
-    },
-    {
-      id: '3',
-      title: '300',
-      description: 'Projets réalisés avec succès',
-    },
-  ];
-
-  const edito1 = {
-    content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>,
-    imageText: 'Texte sur image',
-    image: '/images/pages/image-climat-biodiversite.png',
-  };
-
-  const edito2 = {
-    content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>,
-    imageText: 'Texte sur image',
-    image: '/images/pages/image-climat-biodiversite.png',
-  };
-
-  const projects = [
-    {
-      id: '1',
-      name: {
-        children: 'Projet 1',
-      },
-      link: '/projet-1',
-      description: 'Description du projet 1',
-      baseline: 'Baseline du projet 1',
-      images: ['/images/pages/image-climat-biodiversite.png', '/images/pages/image-climat-biodiversite.png'],
-      company: 'Entreprise 1',
-      kpis: [
-        {
-          name: 'KP 1',
-          description: 'Description du KP 1',
+  useEffect(() => {
+    const fetchThematicPageData = async () => {
+      const thematicsPageData = await client.GET('/social-justice', {
+        params: {
+          query: {
+            populate: {
+              banner_image: {
+                populate: '*'
+              },
+              funders: {
+                populate: '*',
+              },
+              projects: {
+                populate: '*',
+              },
+              kpis: {
+                populate: '*',
+              },
+              edito_1: {
+                populate: '*',
+              },
+              edito_2: {
+                populate: '*',
+              },
+            },
+          },
         },
-      ],
-    },
-    {
-      id: '2',
-      name: {
-        children: 'Projet 2',
-      },
-      link: '/projet-2',
-      description: 'Description du projet 2',
-      baseline: 'Baseline du projet 2',
-      images: ['/images/pages/image-climat-biodiversite.png', '/images/pages/image-climat-biodiversite.png'],
-      company: 'Entreprise 2',
-      kpis: [
-        {
-          name: 'KP 1',
-          description: 'Description du KP 1',
-        },
-      ],
-    },
-    
-    {
-      id: '3',
-      name: {
-        children: 'Projet 3',
-      },
-      link: '/projet-3',
-      description: 'Description du projet 3',
-      baseline: 'Baseline du projet 3',
-      images: ['/images/pages/image-climat-biodiversite.png', '/images/pages/image-climat-biodiversite.png'],
-      company: 'Entreprise 3',
-      kpis: [
-        {
-          name: 'KP 1',
-          description: 'Description du KP 1',
-        },
-      ],
-    },
-  ];
-
-  const partners = [
-
-    {
-      name: 'Partenaire 1',
-      image: '/images/partners/partenaire-1.png',
-      link: '/partenaire-1',
-    },
-    {
-      name: 'Partenaire 2',
-      image: '/images/partners/partenaire-2.png',
-      link: '/partenaire-2',
-    },
-    {
-      name: 'Partenaire 3',
-      image: '/images/partners/partenaire-3.png',
-      link: '/partenaire-3',
-    },
-  ];
+      });
+      const data = thematicsPageData.data!.data!;
+      setProjects(transformProjects(data.projects));
+      setKpis(transformKpis(data.kpis));
+      setPartners(transformPartners(data.funders));
+      setParams({
+        bannerImage: data.banner_image,
+        edito1: { ...data.edito_1 },
+        edito2: { ...data.edito_2 },
+      });
+    };
+    fetchThematicPageData();
+  });
 
   return (
     <>
       <ThematicHeroBlock
         title={t('title')}
-        image={'/images/pages/image-climat-biodiversite.png'}
+        image={params.banner_image?.url || ''}
         className="my-lg"
       />
 
       <Kpis kpis={kpis} className="my-lg" />
 
       <EditoCard
-        imageText={edito1.imageText}
-        image={edito1.image}
+        imageText={params.edito1?.imageText || ''}
+        image={params.edito1?.image || ''}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
-      >{edito1.content}</EditoCard>
+      >
+        {params.edito1?.content || ''}
+      </EditoCard>
 
       <EditoCard
-        imageText={edito2.imageText}
-        image={edito2.image}
+        imageText={params.edito2?.imageText || ''}
+        image={params.edito2?.image || ''}
         className="my-lg container"
-      >{edito2.content}</EditoCard>
+      >
+        {params.edito2?.content}
+      </EditoCard>
 
       <ThumbnailProjectsBlock
         title={t('projectsTitle')}
@@ -141,9 +99,9 @@ export default function SocialPage() {
         className="my-lg"
       />
 
-      <PartnersBlock 
-        title={t('partners')} 
-        partners={partners} 
+      <PartnersBlock
+        title={t('partners')}
+        partners={partners}
         className="my-lg"
       />
 

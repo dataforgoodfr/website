@@ -3,7 +3,7 @@ import createClient from 'openapi-fetch';
 import qs from 'qs';
 
 const client = createClient<paths>({
-  baseUrl: "https://strapi.services.dataforgood.fr/api",
+  baseUrl: "http://localhost:1337/api",
   headers: {
     Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
   },

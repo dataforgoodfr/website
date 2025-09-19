@@ -13,6 +13,33 @@ export interface CallToActionCallToAction extends Struct.ComponentSchema {
   };
 }
 
+export interface CallToActionCallToActionWithImage
+  extends Struct.ComponentSchema {
+  collectionName: 'components_call_to_action_call_to_action_with_images';
+  info: {
+    displayName: 'Call_to_action_with_image';
+    icon: 'cursor';
+  };
+  attributes: {
+    content: Schema.Attribute.Text;
+    cta: Schema.Attribute.Component<'call-to-action.call-to-action', false>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface EditoEdito extends Struct.ComponentSchema {
+  collectionName: 'components_edito_editos';
+  info: {
+    displayName: 'edito';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image_text: Schema.Attribute.String;
+  };
+}
+
 export interface HeroHero extends Struct.ComponentSchema {
   collectionName: 'components_hero_heroes';
   info: {
@@ -24,6 +51,28 @@ export interface HeroHero extends Struct.ComponentSchema {
     subtitle: Schema.Attribute.String;
     talk: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface InformationInformationBlock extends Struct.ComponentSchema {
+  collectionName: 'components_information_information_blocks';
+  info: {
+    displayName: 'information_block';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'information.information-text', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface InformationInformationText extends Struct.ComponentSchema {
+  collectionName: 'components_information_information_texts';
+  info: {
+    displayName: 'information_text';
+  };
+  attributes: {
+    link: Schema.Attribute.Text;
+    text: Schema.Attribute.Text;
   };
 }
 
@@ -39,12 +88,30 @@ export interface KpiKpi extends Struct.ComponentSchema {
   };
 }
 
+export interface TestimonialTestimonial extends Struct.ComponentSchema {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'Testimonial';
+    icon: 'emotionHappy';
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    quote: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'call-to-action.call-to-action': CallToActionCallToAction;
+      'call-to-action.call-to-action-with-image': CallToActionCallToActionWithImage;
+      'edito.edito': EditoEdito;
       'hero.hero': HeroHero;
+      'information.information-block': InformationInformationBlock;
+      'information.information-text': InformationInformationText;
       'kpi.kpi': KpiKpi;
+      'testimonial.testimonial': TestimonialTestimonial;
     }
   }
 }
