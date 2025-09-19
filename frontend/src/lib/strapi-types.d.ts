@@ -2320,6 +2320,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -2584,6 +2585,93 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    thematics?: {
+                        id?: number;
+                        documentId?: string;
+                        description?: string;
+                        projects?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        partners?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        name?: string;
+                        description_2?: string;
+                        quote?: string;
+                        quote2?: string;
+                        kpis?: components["schemas"]["KpiKpiComponent"][];
+                        thumbnail?: {
+                            id?: number;
+                            documentId?: string;
+                            name?: string;
+                            alternativeText?: string;
+                            caption?: string;
+                            width?: number;
+                            height?: number;
+                            formats?: unknown;
+                            hash?: string;
+                            ext?: string;
+                            mime?: string;
+                            /** Format: float */
+                            size?: number;
+                            url?: string;
+                            previewUrl?: string;
+                            provider?: string;
+                            provider_metadata?: unknown;
+                            related?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            folder?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            folderPath?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        };
+                        short_description?: string;
+                        short_id?: string;
+                        color?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -2822,6 +2910,11 @@ export interface components {
                     documentId?: string;
                 }[];
             };
+        };
+        KpiKpiComponent: {
+            id?: number;
+            stat?: string;
+            description?: string;
         };
         ActualiteRequest: {
             data: {
@@ -3282,6 +3375,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -3597,6 +3691,93 @@ export interface components {
                             scope?: "global" | "saison" | "thématique";
                             description?: string;
                             website_link?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
+                        thematics?: {
+                            id?: number;
+                            documentId?: string;
+                            description?: string;
+                            projects?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            partners?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            name?: string;
+                            description_2?: string;
+                            quote?: string;
+                            quote2?: string;
+                            kpis?: components["schemas"]["KpiKpiComponent"][];
+                            thumbnail?: {
+                                id?: number;
+                                documentId?: string;
+                                name?: string;
+                                alternativeText?: string;
+                                caption?: string;
+                                width?: number;
+                                height?: number;
+                                formats?: unknown;
+                                hash?: string;
+                                ext?: string;
+                                mime?: string;
+                                /** Format: float */
+                                size?: number;
+                                url?: string;
+                                previewUrl?: string;
+                                provider?: string;
+                                provider_metadata?: unknown;
+                                related?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                                folder?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                folderPath?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            };
+                            short_description?: string;
+                            short_id?: string;
+                            color?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -4183,6 +4364,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -4498,6 +4680,93 @@ export interface components {
                         scope?: "global" | "saison" | "thématique";
                         description?: string;
                         website_link?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
+                    thematics?: {
+                        id?: number;
+                        documentId?: string;
+                        description?: string;
+                        projects?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        partners?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        name?: string;
+                        description_2?: string;
+                        quote?: string;
+                        quote2?: string;
+                        kpis?: components["schemas"]["KpiKpiComponent"][];
+                        thumbnail?: {
+                            id?: number;
+                            documentId?: string;
+                            name?: string;
+                            alternativeText?: string;
+                            caption?: string;
+                            width?: number;
+                            height?: number;
+                            formats?: unknown;
+                            hash?: string;
+                            ext?: string;
+                            mime?: string;
+                            /** Format: float */
+                            size?: number;
+                            url?: string;
+                            previewUrl?: string;
+                            provider?: string;
+                            provider_metadata?: unknown;
+                            related?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            folder?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            folderPath?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        };
+                        short_description?: string;
+                        short_id?: string;
+                        color?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -5118,6 +5387,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -5433,6 +5703,93 @@ export interface components {
                             scope?: "global" | "saison" | "thématique";
                             description?: string;
                             website_link?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
+                        thematics?: {
+                            id?: number;
+                            documentId?: string;
+                            description?: string;
+                            projects?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            partners?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            name?: string;
+                            description_2?: string;
+                            quote?: string;
+                            quote2?: string;
+                            kpis?: components["schemas"]["KpiKpiComponent"][];
+                            thumbnail?: {
+                                id?: number;
+                                documentId?: string;
+                                name?: string;
+                                alternativeText?: string;
+                                caption?: string;
+                                width?: number;
+                                height?: number;
+                                formats?: unknown;
+                                hash?: string;
+                                ext?: string;
+                                mime?: string;
+                                /** Format: float */
+                                size?: number;
+                                url?: string;
+                                previewUrl?: string;
+                                provider?: string;
+                                provider_metadata?: unknown;
+                                related?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                                folder?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                folderPath?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            };
+                            short_description?: string;
+                            short_id?: string;
+                            color?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -6034,6 +6391,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6370,6 +6728,93 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -6493,11 +6938,6 @@ export interface components {
         ClimateAndBiodiversityResponse: {
             data?: components["schemas"]["ClimateAndBiodiversity"];
             meta?: Record<string, never>;
-        };
-        KpiKpiComponent: {
-            id?: number;
-            stat?: string;
-            description?: string;
         };
         EditoEditoComponent: {
             id?: number;
@@ -7029,6 +7469,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -7364,6 +7805,93 @@ export interface components {
                 related_funders?: {
                     id?: number;
                     documentId?: string;
+                }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
                 }[];
                 /** Format: date-time */
                 createdAt?: string;
@@ -8893,6 +9421,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9300,6 +9829,93 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -9324,87 +9940,6 @@ export interface components {
             thematics?: {
                 id?: number;
                 documentId?: string;
-                description?: string;
-                projects?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                partners?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                name?: string;
-                description_2?: string;
-                quote?: string;
-                quote2?: string;
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                thumbnail?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
-                short_description?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
             }[];
             resources_section_title?: string;
             results_section_title?: string;
@@ -10484,6 +11019,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -10871,6 +11407,93 @@ export interface components {
                     scope?: "global" | "saison" | "thématique";
                     description?: string;
                     website_link?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -11357,6 +11980,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -11586,6 +12210,93 @@ export interface components {
                             scope?: "global" | "saison" | "thématique";
                             description?: string;
                             website_link?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
+                        thematics?: {
+                            id?: number;
+                            documentId?: string;
+                            description?: string;
+                            projects?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            partners?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            name?: string;
+                            description_2?: string;
+                            quote?: string;
+                            quote2?: string;
+                            kpis?: components["schemas"]["KpiKpiComponent"][];
+                            thumbnail?: {
+                                id?: number;
+                                documentId?: string;
+                                name?: string;
+                                alternativeText?: string;
+                                caption?: string;
+                                width?: number;
+                                height?: number;
+                                formats?: unknown;
+                                hash?: string;
+                                ext?: string;
+                                mime?: string;
+                                /** Format: float */
+                                size?: number;
+                                url?: string;
+                                previewUrl?: string;
+                                provider?: string;
+                                provider_metadata?: unknown;
+                                related?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                                folder?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                folderPath?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            };
+                            short_description?: string;
+                            short_id?: string;
+                            color?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -12300,6 +13011,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -12627,6 +13339,93 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    thematics?: {
+                        id?: number;
+                        documentId?: string;
+                        description?: string;
+                        projects?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        partners?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        name?: string;
+                        description_2?: string;
+                        quote?: string;
+                        quote2?: string;
+                        kpis?: components["schemas"]["KpiKpiComponent"][];
+                        thumbnail?: {
+                            id?: number;
+                            documentId?: string;
+                            name?: string;
+                            alternativeText?: string;
+                            caption?: string;
+                            width?: number;
+                            height?: number;
+                            formats?: unknown;
+                            hash?: string;
+                            ext?: string;
+                            mime?: string;
+                            /** Format: float */
+                            size?: number;
+                            url?: string;
+                            previewUrl?: string;
+                            provider?: string;
+                            provider_metadata?: unknown;
+                            related?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            folder?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            folderPath?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        };
+                        short_description?: string;
+                        short_id?: string;
+                        color?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -12778,6 +13577,7 @@ export interface components {
                 website_link?: string;
                 related_partners?: (number | string)[];
                 related_funders?: (number | string)[];
+                thematics?: (number | string)[];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -13609,6 +14409,93 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    thematics?: {
+                        id?: number;
+                        documentId?: string;
+                        description?: string;
+                        projects?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        partners?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        name?: string;
+                        description_2?: string;
+                        quote?: string;
+                        quote2?: string;
+                        kpis?: components["schemas"]["KpiKpiComponent"][];
+                        thumbnail?: {
+                            id?: number;
+                            documentId?: string;
+                            name?: string;
+                            alternativeText?: string;
+                            caption?: string;
+                            width?: number;
+                            height?: number;
+                            formats?: unknown;
+                            hash?: string;
+                            ext?: string;
+                            mime?: string;
+                            /** Format: float */
+                            size?: number;
+                            url?: string;
+                            previewUrl?: string;
+                            provider?: string;
+                            provider_metadata?: unknown;
+                            related?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            folder?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            folderPath?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        };
+                        short_description?: string;
+                        short_id?: string;
+                        color?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -13629,6 +14516,7 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
+                short_id?: string;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -13732,6 +14620,10 @@ export interface components {
                 documentId?: string;
             }[];
             related_funders?: {
+                id?: number;
+                documentId?: string;
+            }[];
+            thematics?: {
                 id?: number;
                 documentId?: string;
             }[];
@@ -14164,6 +15056,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -14551,6 +15444,93 @@ export interface components {
                     scope?: "global" | "saison" | "thématique";
                     description?: string;
                     website_link?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -14975,6 +15955,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -15382,6 +16363,10 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    thematics?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -15459,6 +16444,8 @@ export interface components {
                     }[];
                 };
                 short_description?: string;
+                short_id?: string;
+                color?: string;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -16018,6 +17005,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -16353,6 +17341,93 @@ export interface components {
                                 documentId?: string;
                             }[];
                         }[];
+                        thematics?: {
+                            id?: number;
+                            documentId?: string;
+                            description?: string;
+                            projects?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            partners?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                            name?: string;
+                            description_2?: string;
+                            quote?: string;
+                            quote2?: string;
+                            kpis?: components["schemas"]["KpiKpiComponent"][];
+                            thumbnail?: {
+                                id?: number;
+                                documentId?: string;
+                                name?: string;
+                                alternativeText?: string;
+                                caption?: string;
+                                width?: number;
+                                height?: number;
+                                formats?: unknown;
+                                hash?: string;
+                                ext?: string;
+                                mime?: string;
+                                /** Format: float */
+                                size?: number;
+                                url?: string;
+                                previewUrl?: string;
+                                provider?: string;
+                                provider_metadata?: unknown;
+                                related?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                                folder?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                folderPath?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            };
+                            short_description?: string;
+                            short_id?: string;
+                            color?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -16480,6 +17555,7 @@ export interface components {
                 /** @example string or id */
                 thumbnail?: number | string;
                 projects?: (number | string)[];
+                short_id?: string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -16881,6 +17957,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -17288,6 +18365,93 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -17308,6 +18472,7 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
+            short_id?: string;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -17810,6 +18975,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -18146,6 +19312,93 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -18440,6 +19693,8 @@ export interface components {
                 /** @example string or id */
                 thumbnail?: number | string;
                 short_description?: string;
+                short_id?: string;
+                color?: string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -18788,6 +20043,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -19195,6 +20451,93 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -19272,6 +20615,8 @@ export interface components {
                 }[];
             };
             short_description?: string;
+            short_id?: string;
+            color?: string;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -19290,87 +20635,6 @@ export interface components {
             localizations?: {
                 id?: number;
                 documentId?: string;
-                description?: string;
-                projects?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                partners?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                name?: string;
-                description_2?: string;
-                quote?: string;
-                quote2?: string;
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                thumbnail?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
-                short_description?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
             }[];
         };
         ThematicResponse: {
@@ -19780,6 +21044,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -20167,6 +21432,93 @@ export interface components {
                     scope?: "global" | "saison" | "thématique";
                     description?: string;
                     website_link?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
+                thematics?: {
+                    id?: number;
+                    documentId?: string;
+                    description?: string;
+                    projects?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    partners?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    name?: string;
+                    description_2?: string;
+                    quote?: string;
+                    quote2?: string;
+                    kpis?: components["schemas"]["KpiKpiComponent"][];
+                    thumbnail?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    };
+                    short_description?: string;
+                    short_id?: string;
+                    color?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */

@@ -1337,6 +1337,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    thematics: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::thematic.thematic'
+    >;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
@@ -1487,6 +1491,12 @@ export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::season.season'>;
     projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    short_id: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     start_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1596,6 +1606,12 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    color: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1629,7 +1645,7 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
         };
       }>;
     partners: Schema.Attribute.Relation<'oneToMany', 'api::partner.partner'>;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     quote: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
@@ -1644,6 +1660,12 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
         };
       }>;
     short_description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    short_id: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

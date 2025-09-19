@@ -17,20 +17,20 @@
   },
   "attributes": {
     "title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "state": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
       "enum": [
         "bientôt",
         "en cours",
@@ -39,6 +39,11 @@
     },
     "thumbnail": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": false,
       "required": false,
       "allowedTypes": [
@@ -46,15 +51,15 @@
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "logo": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": false,
       "required": false,
       "allowedTypes": [
@@ -62,12 +67,7 @@
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "seasons": {
       "type": "relation",
@@ -76,37 +76,37 @@
       "mappedBy": "projects"
     },
     "slug": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
       "targetField": "title"
     },
     "short_description": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "github_link": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "demo_video": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "related_projects": {
       "type": "relation",
@@ -120,86 +120,91 @@
       "inversedBy": "projects"
     },
     "value_1": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "explanation_1": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "value_2": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "explanation_2": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "value_3": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "explanation_3": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "category": {
+      "type": "customField",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
       "default": "[]",
       "options": [
         "Plaidoyer",
         "Outil Interne",
         "Outil pour les citoyens"
-      ],
-      "customField": "plugin::multi-select.multi-select"
+      ]
     },
     "start_date": {
+      "type": "date",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "date"
+      }
     },
     "end_date": {
+      "type": "date",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "date"
+      }
     },
     "illustration_images": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": true,
       "required": false,
       "allowedTypes": [
@@ -207,36 +212,31 @@
         "files",
         "videos",
         "audios"
-      ],
+      ]
+    },
+    "delivrable": {
+      "type": "richtext",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "delivrable": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
     "context": {
+      "type": "richtext",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "richtext"
+      }
     },
     "long_description": {
+      "type": "richtext",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "richtext"
+      }
     },
     "press_releases": {
       "type": "relation",
@@ -244,12 +244,12 @@
       "target": "api::press-release.press-release"
     },
     "website_link": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "related_partners": {
       "type": "relation",
@@ -261,6 +261,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::funder.funder"
+    },
+    "thematics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::thematic.thematic",
+      "inversedBy": "projects"
     }
   }
 }
