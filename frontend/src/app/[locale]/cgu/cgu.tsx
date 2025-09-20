@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { NewsletterBlock, Title } from '@/components';
+import { EditoCard, NewsletterBlock, Title } from '@/components';
 
 export default function CguPage() {
   const t = useTranslations('cgu');
@@ -13,6 +13,34 @@ export default function CguPage() {
           {t('title')}
         </Title>
       </div>
+
+      <EditoCard className="my-lg" title={t('article1.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article1.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article2.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article2.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article3.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article3.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article4.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article4.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article5.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article5.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article6.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article6.content') }} />
+      </EditoCard>
+
+      <EditoCard className="my-lg" title={t('article7.title')}>
+        <div dangerouslySetInnerHTML={{ __html: t.raw('article7.content') }} />
+      </EditoCard>
 
       <NewsletterBlock />
     </>
