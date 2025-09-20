@@ -2,62 +2,22 @@
 
 import { useTranslations } from 'next-intl';
 import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
-import client from '@/lib/strapi-client';
+import { HomepageData } from './page';
 
-async function fetchHomepageData() {
-  return await client.GET('/home-page', {
-    params: {
-      query: {
-        populate: {
-          hero: {
-            populate: "*"
-          },
-          results: {
-            populate: "*"
-          },
-          featured_projects: {
-            fields: ["title", "short_description"],
-            populate: "thumbnail"
-          },
-          thematics: {
-            populate: "*"
-          },
-          events: {
-            populate: "*"
-          },
-          resources: {
-            populate: {
-              blog: {
-                populate: {
-                  author: {
-                    fields: ["name"]
-                  },
-                  thumbnail: {
-                    fields: ["url"]
-                  }
-                }
-              },
-              press_release: {
-                populate: "*"
-              }
-            }
-          }
-        }
-      }
-    }
-  });
+
+type HomepageProps = {
+  data: HomepageData;
 }
 
-type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchHomepageData>>["data"]>["data"]>;
+export default function Homepage({ data }: HomepageProps) {
+  const t = useTranslations('home');
 
-// Data transformation functions
-function transformHeroData(heroData: NonNullable<HomepageData["hero"]>) {
-  return {
-    image: heroData.image.url,
+  const heroData = {
+    image: data.hero?.image?.url,
     title: {
       level: 1 as TitleProps['level'],
       variant: "big" as TitleProps['variant'],
-      children: heroData.title,
+      children: data.hero?.title || '',
       colors: 'text-white bg-building',
       className: "drop-shadow-3 drop-shadow-black before:-z-1",
       rotation: -3.47,
@@ -65,125 +25,100 @@ function transformHeroData(heroData: NonNullable<HomepageData["hero"]>) {
     subtitle: {
       level: 2 as TitleProps['level'],
       variant: "medium" as TitleProps['variant'],
-      children: heroData.subtitle || '',
+      children: data.hero?.subtitle || '',
       colors: 'text-black bg-white',
       className: "drop-shadow-1 drop-shadow-black before:-z-1",
       rotation: -3.47,
     },
-    talk: heroData.talk,
+    talk: data.hero?.talk || '',
   };
-}
 
-function transformProjectsData(projects: NonNullable<HomepageData["featured_projects"]>) {
-  return projects.map(project => ({
-    id: project.id,
+  const projects = data.featured_projects?.map(project => ({
+    id: (project.id ?? "" ).toString(),
     src: project.thumbnail?.url || '',
     title: project.title || '',
     alt: project.title || '',
     description: project.short_description || '',
-    ctaText: 'Voir le projet',
-  }))
-}
+    ctaText: t('projects.ctaText'),
+  })).filter(project => project.src && project.title) ?? [];
 
-function transformResultsData(results: NonNullable<HomepageData["results"]>) {
-  return results.map((result) => ({
-    id: result.id.toString(),
-    number: parseInt(result.stat),
+  const results = data.results?.map((result) => ({
+    id: result.id?.toString() || '',
+    number: parseInt(result.stat || '0'),
     text: result.description,
     linkTarget: `/projects/${result.id}`,
-    linkLabel: 'Voir le projet',
-  }));
-}
+    linkLabel: t('results.linkLabel'),
+  })) ?? [];
 
-function transformEventsData(events: NonNullable<HomepageData["events"]>) {
-  return events.map((event) => ({
+  const events = data.events?.map((event) => ({
     id: event.id,
-    title: event.name,
-    date: new Date(event.date).toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
-    image: event.image.url,
-    tag: "Evenement",
-    link: event.link,
-  }));
-}
+    title: event.name || '',
+    date: new Date(event.date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+    image: event.image?.url || '',
+    tag: t('events.tag'),
+    link: event.link || '',
+  })).filter(event => event.title && event.link) ?? [];
 
-
-function transformResourcesData(resources: NonNullable<HomepageData["resources"]>) {
-  return resources.map((resource) => {
+  const resources = data.resources?.map((resource) => {
     const isBlog = !!resource.blog;
 
     return {
       id: resource.id,
       type: isBlog ? 'article' : 'press_release',
-      author: isBlog ? ( resource.blog?.author?.name || 'Data For Good') : resource.press_release.media_name,
-      talk: isBlog ? resource.blog.title : resource.press_release.title,
-      image: isBlog ? resource.blog.thumbnail.url : "/images/dataforgood.svg",
-      ctaText: isBlog ? 'Lire l\'article' : 'Lire la presse',
-      ctaLink: isBlog ? `/articles/${resource.blog.slug}` : resource.press_release.article_link,
+      author: isBlog ? ( (resource.blog?.author as { name: string })?.name || t('resources.defaultAuthor')) : (resource.press_release as { media_name: string })?.media_name || '',
+      talk: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
+      image: isBlog ? resource.blog?.thumbnail?.url || '' : "/images/dataforgood.svg",
+      ctaText: isBlog ? t('resources.articleCtaText') : t('resources.pressCtaText'),
+      ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
     }
-  });
-}
+  }) ?? [];
 
-function transformThematicsData(thematics: NonNullable<HomepageData['thematics']>) {
-  return thematics.map(thematic => ({
+  const thematics = data.thematics?.map(thematic => ({
     title: {
-      children: thematic.name,
+      children: thematic.name || '',
       props: {
         colors: 'text-black bg-alive',
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
       }
     },
-    id: thematic.id.toString(),
-    talk: thematic.description,
+    id: thematic.id?.toString() || '',
+    talk: thematic.description || '',
     talkOffset: 10,
-    image: thematic.thumbnail.url,
+    image: thematic.thumbnail?.url || '',
     imageWidth: 251,
     imageHeight: 318,
-    ctaText: "Voir les projets",
-    ctaLink: "/projets",
-  }));
-}
-
-export default async function Homepage() {
-  const t = useTranslations('home');
-
-  const { data } = await fetchHomepageData()
-
-  const homePageData = data!.data!;
-  const hero = transformHeroData(homePageData.hero);
-  const projects = transformProjectsData(homePageData.featured_projects || []);
-  const results = transformResultsData(homePageData.results || []);
-  const events = transformEventsData(homePageData.events || []);
-  const resources = transformResourcesData(homePageData.resources || []);
-  const thematics = transformThematicsData(homePageData.thematics || []);
+    ctaText: t('thematics.ctaText'),
+    ctaLink: t('thematics.ctaLink'),
+  })).filter(thematic => thematic.talk) ?? [];
 
   return (
     <>
       <HeroBlock className='mt-lg'
-        {...hero}
-        title={{ ...hero.title, children: t('hero.title') }}
-        subtitle={{ ...hero.subtitle, children: t('hero.subtitle') }}
+        {...heroData}
+        title={{ ...heroData.title, children: t('hero.title') }}
+        subtitle={{ ...heroData.subtitle, children: t('hero.subtitle') }}
       />
       <div className="container mt-lg mb-sm">
         <Title level={2} variant="medium">
-          {homePageData.project_carousel_title!}
+          {data.project_carousel_title!}
         </Title>
       </div>
-      <ImagesCarousel className="mb-lg" images={projects} />
+      {projects.length > 0 && <ImagesCarousel className="mb-lg" images={projects} />}
 
       <TalksBlock
-        title={homePageData.resources_section_title!}
+        title={data.resources_section_title!}
         talks={resources}
       />
       <ThematicsBlock
-        title={homePageData.thematics_section_title!}
-        thematics={thematics.map(t => ({ ...t, id: t.id.toString() }))}
+        title={data.thematics_section_title!}
+        thematics={thematics.map(t => ({ ...t, id: t.id?.toString() || '' }))}
         className="my-lg"
       />
       <ResultsCard
-        title={homePageData.results_section_title!}
+        title={data.results_section_title!}
         className="my-lg"
-        results={results.map(r => ({ ...r, linkLabel: 'Voir le projet' }))}
+        results={results.map(r => ({ ...r, linkLabel: t('results.linkLabel') }))}
       />
 
       <NewsSmallBlock

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 
 export type NewsSmallCardProps = {
-  title: string;
+  title?: string;
   tag: string;
   image: string;
   link: string;
