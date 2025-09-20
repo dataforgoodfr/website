@@ -24,27 +24,21 @@
       "author": "Écrit par"
     },
     "newsletterForm": {
-      "emailPlaceholder": "EMAIL",
+      "title": "Inscription à la newsletter",
+      "newsletterChoice": "Choix des newsletter",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "votre@email.com",
       "submitButton": "S'INSCRIRE",
       "submitButtonLoading": "INSCRIPTION...",
-      "noListSelected": "Aucune liste sélectionnée",
-      "oneListSelected": "1 liste sélectionnée",
-      "multipleListsSelected": "{count} listes sélectionnées",
-      "selectAll": "Sélectionner tout",
-      "clear": "Effacer",
-      "cancel": "Annuler",
-      "apply": "Appliquer",
       "successMessage": "Votre inscription est confirmée.",
       "errorMessage": "Nous n'avons pas pu confirmer votre inscription.",
-      "requiredCodeErrorMessage": "Veuillez choisir un code pays",
-      "emailInvalidMessage": "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.",
-      "requiredErrorMessage": "Vous devez renseigner ce champ.",
-      "genericInvalidMessage": "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.",
-      "translation": {
-        "selectedList": "{quantity} liste sélectionnée",
-        "selectedLists": "{quantity} listes sélectionnées",
-        "selectedOption": "{quantity} sélectionné",
-        "selectedOptions": "{quantity} sélectionnés"
+      "emailRequiredError": "L'adresse email est obligatoire.",
+      "emailInvalidError": "Veuillez saisir une adresse email valide.",
+      "newsletterRequiredError": "Vous devez sélectionner au moins une newsletter.",
+      "newsletterLists": {
+        "iaGenerative": "IA Générative",
+        "pinkBombs": "PinkBombs",
+        "dataForGood": "Data For Good"
       }
     }
   }

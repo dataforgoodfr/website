@@ -18,3 +18,9 @@ export type { FilterProps } from './Filter/Filter';
 
 export { default as Pagination } from './Pagination/Pagination';
 export type { PaginationProps } from './Pagination/Pagination';
+
+export { default as Input } from './Input/Input';
+export type { InputProps } from './Input/Input';
+
+export { default as Checkbox } from './Checkbox/Checkbox';
+export type { CheckboxProps } from './Checkbox/Checkbox';
