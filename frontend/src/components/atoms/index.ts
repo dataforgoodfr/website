@@ -18,3 +18,6 @@ export type { FilterProps } from './Filter/Filter';
 
 export { default as Pagination } from './Pagination/Pagination';
 export type { PaginationProps } from './Pagination/Pagination';
+
+export { default as ArrowIcon } from './ArrowIcon/ArrowIcon';
+export type { ArrowIconProps } from './ArrowIcon/ArrowIcon';

@@ -8,41 +8,72 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        primary: ['var(--font-primary)', ...defaultTheme.fontFamily.sans],
-        secondary: ['var(--font-secondary)', ...defaultTheme.fontFamily.sans],
-        tertiary: ['var(--font-tertiary)', ...defaultTheme.fontFamily.sans],
-      },
-      colors: {
-        dark: 'hsl(var(--c-dark))',
-        light: 'hsl(var(--c-light))',
-        blue: 'hsl(var(--c-blue))',
-        alive: 'hsl(var(--c-alive))',
-        "alive-light": 'hsl(var(--c-alive-light))',
-        "back-green": 'hsl(var(--c-back-green))',
-        "violet-light": 'hsl(var(--c-violet-light))',
-        "building-light": 'hsl(var(--c-building-light))',
-        "grey-text": 'hsl(var(--c-grey-text))',
-        resistance: 'hsl(var(--c-resistance))',
-        building: 'hsl(var(--c-building))',
-      },
-      content: {
-        'checkmark': 'url("/images/checkmark.svg")',
-      }
-    },
-    container: {
-      center: true,
-      padding: '1rem',
-    },
-    boxShadow: {
-      'base': '2px 2px 0 0 rgba(0, 0, 0)',
-      'lg': '8px 8px 0 0 rgba(0, 0, 0)',
-    },
-    zIndex: {
-      '1': '1',
-      '2': '2',
-    },
+  	extend: {
+  		fontFamily: {
+  			primary: [
+  				'var(--font-primary)',
+                    ...defaultTheme.fontFamily.sans
+                ],
+  			secondary: [
+  				'var(--font-secondary)',
+                    ...defaultTheme.fontFamily.sans
+                ],
+  			tertiary: [
+  				'var(--font-tertiary)',
+                    ...defaultTheme.fontFamily.sans
+                ]
+  		},
+  		colors: {
+  			dark: 'hsl(var(--c-dark))',
+  			light: 'hsl(var(--c-light))',
+  			blue: 'hsl(var(--c-blue))',
+  			alive: 'hsl(var(--c-alive))',
+  			'alive-light': 'hsl(var(--c-alive-light))',
+  			'back-green': 'hsl(var(--c-back-green))',
+  			'violet-light': 'hsl(var(--c-violet-light))',
+  			'building-light': 'hsl(var(--c-building-light))',
+  			'grey-text': 'hsl(var(--c-grey-text))',
+  			resistance: 'hsl(var(--c-resistance))',
+  			building: 'hsl(var(--c-building))'
+  		},
+  		content: {
+  			checkmark: 'url("/images/checkmark.svg")'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
+  	},
+  	container: {
+  		center: true,
+  		padding: '1rem'
+  	},
+  	boxShadow: {
+  		base: '2px 2px 0 0 rgba(0, 0, 0)',
+  		lg: '8px 8px 0 0 rgba(0, 0, 0)'
+  	},
+  	zIndex: {
+  		'1': '1',
+  		'2': '2'
+  	}
   },
   plugins: [
     function ({ addUtilities }: any) {
