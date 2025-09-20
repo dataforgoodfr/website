@@ -10,9 +10,10 @@
     },
     "results": {
       "title": "Rejoignez le mouvement !",
+      "linkLabel": "Voir le projet",
       "realizedProjects": {
         "title": "projets réussis",
-        "linkLabel": "Soutenir l’association"
+        "linkLabel": "Soutenir l'association"
       },
       "activeVolunteers": {
         "title": "bénévoles heureux",
@@ -30,7 +31,20 @@
       "title": "et en interrogeant sur nos usages"
     },
     "thematics": {
-      "title": "Sur trois grandes thématiques"
+      "title": "Sur trois grandes thématiques",
+      "ctaText": "Voir les projets",
+      "ctaLink": "/projets"
+    },
+    "projects": {
+      "ctaText": "Voir le projet"
+    },
+    "events": {
+      "tag": "Evenement"
+    },
+    "resources": {
+      "defaultAuthor": "Data For Good",
+      "articleCtaText": "Lire l'article",
+      "pressCtaText": "Lire la presse"
     }
   }
 }
