@@ -1,28 +1,27 @@
-export function transformPartners(partners: any) {
-  return partners.map(
-    (partner: {
-      name: any;
-      description: any;
-      logo: any;
-      website_link: any;
-    }) => ({
-      name: partner.name,
-      description: partner.description,
-      image: partner.logo,
-      link: partner.website_link,
-    })
-  );
+import { ThematicPageData } from '@/app/[locale]/climate-and-biodiversity/page';
+
+export function transformPartners(
+  partners: NonNullable<ThematicPageData['funders']>
+) {
+  return partners.map(partner => ({
+    name: partner.name,
+    description: partner.description,
+    image: partner.logo,
+    link: partner.website_link,
+  }));
 }
 
-export function transformKpis(kpis: any) {
-  return kpis.map((kpi: { id: any; stat: string; description: string }) => ({
+export function transformKpis(kpis: NonNullable<ThematicPageData['kpis']>) {
+  return kpis.map(kpi => ({
     id: kpi.id,
     title: kpi.stat,
     description: kpi.description,
   }));
 }
 
-export function transformProjects(projects: any) {
+export function transformProjects(
+  projects: NonNullable<ThematicPageData['projects']>
+) {
   return projects.map(project => ({
     id: project.id,
     name: {
@@ -32,7 +31,7 @@ export function transformProjects(projects: any) {
     description: project.short_description || '',
     images: [project.thumbnail?.url || ''],
     baseline: 'Baseline du projet 1',
-    company: project.related_partners[0].name || '',
+    company: project.related_partners && project.related_partners.length > 0 && project.related_partners[0].name || '',
     kpis: [
       {
         name: project.value_1,
@@ -49,4 +48,3 @@ export function transformProjects(projects: any) {
     ],
   }));
 }
-

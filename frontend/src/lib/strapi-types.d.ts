@@ -2320,7 +2320,6 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
-                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -2556,6 +2555,30 @@ export interface components {
                                 documentId?: string;
                             }[];
                         };
+                        tags?: {
+                            id?: number;
+                            documentId?: string;
+                            tag?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -2652,6 +2675,8 @@ export interface components {
                         short_description?: string;
                         short_id?: string;
                         color?: string;
+                        cta_text?: string;
+                        cta_link?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -3375,7 +3400,6 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
-                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -3611,6 +3635,30 @@ export interface components {
                                     documentId?: string;
                                 }[];
                             };
+                            tags?: {
+                                id?: number;
+                                documentId?: string;
+                                tag?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            }[];
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -3778,6 +3826,8 @@ export interface components {
                             short_description?: string;
                             short_id?: string;
                             color?: string;
+                            cta_text?: string;
+                            cta_link?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -4364,7 +4414,6 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
-                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -4600,6 +4649,30 @@ export interface components {
                                 documentId?: string;
                             }[];
                         };
+                        tags?: {
+                            id?: number;
+                            documentId?: string;
+                            tag?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -4767,6 +4840,8 @@ export interface components {
                         short_description?: string;
                         short_id?: string;
                         color?: string;
+                        cta_text?: string;
+                        cta_link?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -5387,7 +5462,6 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
-                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -5623,6 +5697,30 @@ export interface components {
                                     documentId?: string;
                                 }[];
                             };
+                            tags?: {
+                                id?: number;
+                                documentId?: string;
+                                tag?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            }[];
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -5790,6 +5888,8 @@ export interface components {
                             short_description?: string;
                             short_id?: string;
                             color?: string;
+                            cta_text?: string;
+                            cta_link?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -6391,7 +6491,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6699,6 +6798,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6795,6 +6918,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -7469,7 +7594,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -7777,6 +7901,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -7873,6 +8021,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9421,7 +9571,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9729,6 +9878,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9896,6 +10069,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -10004,26 +10179,6 @@ export interface components {
                 tags?: {
                     id?: number;
                     documentId?: string;
-                    tag?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
                 }[];
                 /** Format: date-time */
                 createdAt?: string;
@@ -11019,7 +11174,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -11327,6 +11481,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -11494,6 +11672,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -11567,6 +11747,9 @@ export interface components {
             data: {
                 press_releases?: (number | string)[];
                 resources?: (number | string)[];
+                testimonial?: components["schemas"]["TestimonialTestimonialComponent"];
+                /** @example string or id */
+                testimonial_background?: number | string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -11980,7 +12163,6 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
-                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -12297,6 +12479,8 @@ export interface components {
                             short_description?: string;
                             short_id?: string;
                             color?: string;
+                            cta_text?: string;
+                            cta_link?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -12409,6 +12593,30 @@ export interface components {
                         documentId?: string;
                     }[];
                 };
+                tags?: {
+                    id?: number;
+                    documentId?: string;
+                    tag?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                }[];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -12537,6 +12745,54 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
+            testimonial?: components["schemas"]["TestimonialTestimonialComponent"];
+            testimonial_background?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: unknown;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                /** Format: float */
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: unknown;
+                related?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                folder?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                folderPath?: string;
+                /** Format: date-time */
+                createdAt?: string;
+                /** Format: date-time */
+                updatedAt?: string;
+                /** Format: date-time */
+                publishedAt?: string;
+                createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+            };
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -12563,6 +12819,54 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 }[];
+                testimonial?: components["schemas"]["TestimonialTestimonialComponent"];
+                testimonial_background?: {
+                    id?: number;
+                    documentId?: string;
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: unknown;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** Format: float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: unknown;
+                    related?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    folder?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    folderPath?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                };
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -12601,6 +12905,7 @@ export interface components {
                 related_partners?: (number | string)[];
                 /** @example string or id */
                 thumbnail?: number | string;
+                tags?: (number | string)[];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -13011,7 +13316,6 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
-                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -13239,6 +13543,30 @@ export interface components {
                                 documentId?: string;
                             }[];
                         };
+                        tags?: {
+                            id?: number;
+                            documentId?: string;
+                            tag?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -13406,6 +13734,8 @@ export interface components {
                         short_description?: string;
                         short_id?: string;
                         color?: string;
+                        cta_text?: string;
+                        cta_link?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -13518,6 +13848,10 @@ export interface components {
                     documentId?: string;
                 }[];
             };
+            tags?: {
+                id?: number;
+                documentId?: string;
+            }[];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -14309,6 +14643,30 @@ export interface components {
                                 documentId?: string;
                             }[];
                         };
+                        tags?: {
+                            id?: number;
+                            documentId?: string;
+                            tag?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -14476,6 +14834,8 @@ export interface components {
                         short_description?: string;
                         short_id?: string;
                         color?: string;
+                        cta_text?: string;
+                        cta_link?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -14516,7 +14876,6 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
-                short_id?: string;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -15056,7 +15415,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -15364,6 +15722,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -15531,6 +15913,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -15955,7 +16339,6 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
-                        short_id?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -16263,6 +16646,30 @@ export interface components {
                                 documentId?: string;
                             }[];
                         };
+                        tags?: {
+                            id?: number;
+                            documentId?: string;
+                            tag?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        }[];
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -16446,6 +16853,8 @@ export interface components {
                 short_description?: string;
                 short_id?: string;
                 color?: string;
+                cta_text?: string;
+                cta_link?: string;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -17005,7 +17414,6 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
-                            short_id?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -17241,6 +17649,30 @@ export interface components {
                                     documentId?: string;
                                 }[];
                             };
+                            tags?: {
+                                id?: number;
+                                documentId?: string;
+                                tag?: string;
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            }[];
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -17408,6 +17840,8 @@ export interface components {
                             short_description?: string;
                             short_id?: string;
                             color?: string;
+                            cta_text?: string;
+                            cta_link?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -17555,7 +17989,6 @@ export interface components {
                 /** @example string or id */
                 thumbnail?: number | string;
                 projects?: (number | string)[];
-                short_id?: string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -17957,7 +18390,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -18265,6 +18697,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -18432,6 +18888,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -18472,7 +18930,6 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
-            short_id?: string;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -18975,7 +19432,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -19283,6 +19739,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -19379,6 +19859,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -19695,6 +20177,8 @@ export interface components {
                 short_description?: string;
                 short_id?: string;
                 color?: string;
+                cta_text?: string;
+                cta_link?: string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -20043,7 +20527,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -20351,6 +20834,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -20518,6 +21025,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -20617,6 +21126,8 @@ export interface components {
             short_description?: string;
             short_id?: string;
             color?: string;
+            cta_text?: string;
+            cta_link?: string;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -21044,7 +21555,6 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
-                    short_id?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -21352,6 +21862,30 @@ export interface components {
                             documentId?: string;
                         }[];
                     };
+                    tags?: {
+                        id?: number;
+                        documentId?: string;
+                        tag?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -21519,6 +22053,8 @@ export interface components {
                     short_description?: string;
                     short_id?: string;
                     color?: string;
+                    cta_text?: string;
+                    cta_link?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */

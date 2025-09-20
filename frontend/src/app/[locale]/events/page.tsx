@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import EventsPage from './events';
+import client from '@/lib/strapi-client';
 
 export async function generateMetadata({
   params: { locale },
@@ -15,8 +16,28 @@ export async function generateMetadata({
   };
 }
 
-const Page = () => {
-  return <EventsPage />;
-};
+async function fetchEventPageData() {
+  return await client.GET('/evenement', {
+    params: {
+      query: {
+        populate: {
+          events: {
+            populate: '*',
+          },
+        },
+      },
+    },
+  });
+}
 
-export default Page;
+export type EventsPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchEventPageData>>["data"]>["data"]>;
+
+export default async function Page() {
+  const { data } = await fetchEventPageData();
+
+    if (!data?.data) {
+    return null;
+  }
+
+  return <EventsPage data={data.data} />;
+};

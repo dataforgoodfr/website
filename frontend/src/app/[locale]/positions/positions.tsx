@@ -3,66 +3,51 @@
 import { useTranslations } from 'next-intl';
 import { BaseCardsBlock, LargeTextImage, NewsletterBlock } from '@/components';
 import Animation from './_partials/Animations';
+import { PositionsPageData } from './page';
 
-export default function AboutPage() {
+type PositionPageProps = {
+  data: PositionsPageData
+}
+
+function transformPressReleases(press_releases: NonNullable<PositionsPageData['press_releases']>) {
+  return press_releases.map((release) => ({
+    title: release.title,
+    tags: ['Presse'],
+    image: release.thumbnail?.url,
+    link: release.article_link,
+    subInfos: release.tags,
+  }))
+}
+
+function transformResources(resources: NonNullable<PositionsPageData['resources']>) {
+  return resources.map((resource) => {
+    const isBlog = !!resource.blog;
+
+    return {
+      id: resource.id,
+      title: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
+      tags: ['Ressources'],
+      image: isBlog ? resource.blog?.thumbnail?.url || '' : "/images/dataforgood.svg",
+      link: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
+      subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags || [] : (resource.press_release as { tags: string[] })?.tags || [],
+    }
+  })
+}
+
+export default function PositionsPage({ data }: PositionPageProps) {
   const t = useTranslations('positions');
-
-  const press = [
-    {
-      title: 'Le Parisien',
-      tags: ['Presse'],
-      image: '/images/press/le-parisien.jpg',
-      link: '/press/le-parisien',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Le Monde',
-      tags: ['Presse'],
-      image: '/images/press/le-monde.jpg',
-      link: '/press/le-monde',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Le Figaro',
-      tags: ['Presse'],
-      image: '/images/press/le-figaro.jpg',
-      link: '/press/le-figaro',
-      subInfos: ['2024', 'En cours'],
-    },
-  ];
-  const resources = [
-    {
-      title: 'Médiacoop',
-      tags: ['Ressources'],
-      image: '/images/ressources/nos-ressources.jpg',
-      link: '/ressources/nos-ressources',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Climinfo',
-      tags: ['Ressources'],
-      image: '/images/ressources/nos-ressources.jpg',
-      link: '/ressources/nos-ressources',
-      subInfos: ['2024', 'En cours'],
-    },
-  ];
-
-  const citation = {
-    text: '“En intégrant la saison 12 de D4G, j’ai pu aider Marthe et Bloom à analyser les trajectoires des bateaux de pêche. J’ai découvert les enjeux de la pêche industrielle mais surtout une communauté de bénévoles motivés et une équipe D4G passionnée et toujours disponible.”',
-    author: 'Cedric Villani',
-    authorImage: '/images/pages/carte-benevoles.png',
-  };
-
+  const press = transformPressReleases(data.press_releases);
+  const resources = transformResources(data.resources);
 
   return (
     <>
       <Animation />
 
       <LargeTextImage
-        image="/images/pages/carte-benevoles.png"
-        citation={citation.text}
-        citationAuthor={citation.author}
-        citationAuthorImage={citation.authorImage}
+        image={data.testimonial_background.url}
+        citation={data.testimonial.quote}
+        citationAuthor={data.testimonial.author}
+        citationAuthorImage={data.testimonial.avatar.url}
         background="purple"
         className="my-lg"
         id="lastContent"
@@ -72,7 +57,7 @@ export default function AboutPage() {
         title={t('press')}
         blocks={press}
         className="my-lg"
-        />
+      />
       <BaseCardsBlock
         title={t('resources')}
         blocks={resources}

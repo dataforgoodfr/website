@@ -13,84 +13,46 @@ import {
   transformKpis,
   transformPartners,
 } from '@/lib/formatters/thematics';
-import client from '@/lib/strapi-client';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { ThematicPageData } from './page';
 
-export default function SocialPage() {
+type ThematicsProps = {
+  data: ThematicPageData;
+}
+
+
+export default function SocialPage({ data }: ThematicsProps) {
   const t = useTranslations('social');
-  const [partners, setPartners] = useState([]);
-  const [kpis, setKpis] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [params, setParams] = useState<any>({});
-
-  useEffect(() => {
-    const fetchThematicPageData = async () => {
-      const thematicsPageData = await client.GET('/social-justice', {
-        params: {
-          query: {
-            populate: {
-              banner_image: {
-                populate: '*'
-              },
-              funders: {
-                populate: '*',
-              },
-              projects: {
-                populate: '*',
-              },
-              kpis: {
-                populate: '*',
-              },
-              edito_1: {
-                populate: '*',
-              },
-              edito_2: {
-                populate: '*',
-              },
-            },
-          },
-        },
-      });
-      const data = thematicsPageData.data!.data!;
-      setProjects(transformProjects(data.projects));
-      setKpis(transformKpis(data.kpis));
-      setPartners(transformPartners(data.funders));
-      setParams({
-        bannerImage: data.banner_image,
-        edito1: { ...data.edito_1 },
-        edito2: { ...data.edito_2 },
-      });
-    };
-    fetchThematicPageData();
-  });
+  const partners = transformPartners(data.funders);
+  const kpis = transformKpis(data.kpis);
+  const projects = transformProjects(data.projects);
 
   return (
     <>
       <ThematicHeroBlock
         title={t('title')}
-        image={params.banner_image?.url || ''}
+        image={data.banner_image?.url || ''}
         className="my-lg"
       />
 
       <Kpis kpis={kpis} className="my-lg" />
 
       <EditoCard
-        imageText={params.edito1?.imageText || ''}
-        image={params.edito1?.image || ''}
+        imageText={data.edito_1?.image_text || ''}
+        image={data.edito_1?.image?.url || ''}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
       >
-        {params.edito1?.content || ''}
+        {data.edito_1?.content || ''}
       </EditoCard>
 
       <EditoCard
-        imageText={params.edito2?.imageText || ''}
-        image={params.edito2?.image || ''}
+        imageText={data.edito_2?.image_text || ''}
+        image={data.edito_2?.image?.url || ''}
         className="my-lg container"
       >
-        {params.edito2?.content}
+        {data.edito_2?.content}
       </EditoCard>
 
       <ThumbnailProjectsBlock

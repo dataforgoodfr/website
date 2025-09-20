@@ -3,10 +3,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
-import { useEffect, useState } from 'react';
-import client from '@/lib/strapi-client';
+import { BlogsPageData } from './page';
 
-function transformBlogsData(blogs: any) {
+function transformBlogsData(blogs: NonNullable<BlogsPageData['blogs']>) {
   return blogs.map(blog => ({
     id: blog.id,
     title: blog.title,
@@ -22,28 +21,13 @@ function transformBlogsData(blogs: any) {
   }));
 }
 
-export default function BlogPage() {
+type BlogsPageProps = {
+  data: BlogsPageData
+}
+
+export default function BlogPage({data}: BlogsPageProps) {
   const t = useTranslations('blog');
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    const fetchEventPageData = async () => {
-      const eventsData = await client.GET('/blog-list', {
-        params: {
-          query: {
-            populate: {
-              blogs: {
-                populate: '*',
-              },
-            },
-          },
-        },
-      });
-
-      setBlogs(transformBlogsData(eventsData.data!.data!.blogs))
-    };
-    fetchEventPageData()
-  });
+  const blogs = transformBlogsData(data.blogs)
 
   return (
       <div className="container my-lg">

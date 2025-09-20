@@ -1,59 +1,23 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CtaWithImage, EditoCard, LargeTextImage, MembersBlock, NewsletterBlock, PartnersBlock, Title, TestimoniesCarousel } from '@/components';
+import {
+  CtaWithImage,
+  EditoCard,
+  LargeTextImage,
+  MembersBlock,
+  NewsletterBlock,
+  PartnersBlock,
+  Title,
+  TestimoniesCarousel,
+} from '@/components';
 import { IMembers } from '@/lib/types';
-import client from '@/lib/strapi-client';
+import { AboutPageData } from './page';
 
-
-async function fetchAboutPageData() {
-  return await client.GET('/about', {
-    params: {
-      query: {
-        populate: {
-          cta_left: {
-            populate: "*"
-          },
-          cta_right: {
-            populate: "*"
-          },
-          testimonials: {
-            populate: "*"
-          },
-          map_cta: {
-            populate: "*"
-          },
-          volunteer_cta: {
-            populate: "*"
-          },
-          funders: {
-            populate: "*"
-          },
-          board_of_directors: {
-            populate: "*"
-          },
-          employees: {
-            populate: "*"
-          },
-          scientific_committee: {
-            populate: "*"
-          },
-          strategic_committee: {
-            populate: "*"
-          },
-          division_managers: {
-            populate: "*"
-          }
-        }
-      }
-    }
-  });
-}
-
-type AboutPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchAboutPageData>>["data"]>["data"]>;
-
-function transformTestimonials(testimonials: NonNullable<AboutPageData["testimonials"]>) {
-  return testimonials.map((testimonial) => ({
+function transformTestimonials(
+  testimonials: NonNullable<AboutPageData['testimonials']>
+) {
+  return testimonials.map(testimonial => ({
     id: testimonial.id,
     author: testimonial.author,
     content: testimonial.quote,
@@ -61,16 +25,18 @@ function transformTestimonials(testimonials: NonNullable<AboutPageData["testimon
   }));
 }
 
-function transformFunders(funders: NonNullable<AboutPageData["funders"]>) {
-  return funders.map((partner) => ({
+function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
+  return funders.map(partner => ({
     id: partner.id,
     name: partner.name,
     image: partner.logo?.url,
-    link: partner.link ?? "https://www.dataforgood.fr",
+    link: partner.link ?? 'https://www.dataforgood.fr',
   }));
 }
 
-function transformMember(member: NonNullable<AboutPageData["board_of_directors"]>) {
+function transformMember(
+  member: NonNullable<AboutPageData['board_of_directors']>
+) {
   return {
     id: member.id,
     name: member.name,
@@ -79,16 +45,24 @@ function transformMember(member: NonNullable<AboutPageData["board_of_directors"]
   };
 }
 
-function transformMembers({board_of_directors, employees, scientific_committee, strategic_committee, division_managers} : {
-  board_of_directors: Array<NonNullable<AboutPageData["board_of_directors"]>>;
-  employees: Array<NonNullable<AboutPageData["employees"]>>;
-  scientific_committee: Array<NonNullable<AboutPageData["scientific_committee"]>>;
-  strategic_committee: Array<NonNullable<AboutPageData["strategic_committee"]>>;
-  division_managers: Array<NonNullable<AboutPageData["division_managers"]>>;
+function transformMembers({
+  board_of_directors,
+  employees,
+  scientific_committee,
+  strategic_committee,
+  division_managers,
+}: {
+  board_of_directors: Array<NonNullable<AboutPageData['board_of_directors']>>;
+  employees: Array<NonNullable<AboutPageData['employees']>>;
+  scientific_committee: Array<
+    NonNullable<AboutPageData['scientific_committee']>
+  >;
+  strategic_committee: Array<NonNullable<AboutPageData['strategic_committee']>>;
+  division_managers: Array<NonNullable<AboutPageData['division_managers']>>;
 }) {
   return [
     {
-      title: 'Le conseil d\'administration',
+      title: "Le conseil d'administration",
       members: board_of_directors.map(transformMember),
     },
     {
@@ -110,70 +84,75 @@ function transformMembers({board_of_directors, employees, scientific_committee, 
   ];
 }
 
-export default async function AboutPage() {
+type AboutProps = {
+  data: AboutPageData;
+};
+
+export default async function AboutPage({ data }: AboutProps) {
   const t = useTranslations('about');
 
-  const { data } = await fetchAboutPageData();
-
-  const aboutPageData = data!.data!
-
-  const testimonies = transformTestimonials(aboutPageData.testimonials);
-  const funders = transformFunders(aboutPageData.funders);
+  const testimonies = transformTestimonials(data.testimonials!);
+  const funders = transformFunders(data.funders!);
   const members: IMembers[] = transformMembers({
-    board_of_directors: aboutPageData.board_of_directors,
-    employees: aboutPageData.employees,
-    scientific_committee: aboutPageData.scientific_committee,
-    strategic_committee: aboutPageData.strategic_committee,
-    division_managers: aboutPageData.division_managers,
+    board_of_directors: data.board_of_directors,
+    employees: data.employees,
+    scientific_committee: data.scientific_committee,
+    strategic_committee: data.strategic_committee,
+    division_managers: data.division_managers,
   });
-
 
   return (
     <>
       <div className="container my-lg">
         <Title className="mb-md max-w-5xl" variant="medium">
-          {aboutPageData.introduction}
+          {data.introduction}
         </Title>
       </div>
 
       <div className="my-lg container flex flex-col md:flex-row gap-8">
         <div className="md:flex-1 flex justify-end">
           <CtaWithImage
-              title={{
-              children: aboutPageData.cta_left?.title,
+            title={{
+              children: data.cta_left?.title,
               rotation: -18,
-              className: "relative top-8",
+              className: 'relative top-8',
             }}
             content={{
-              text: aboutPageData.cta_left?.content,
+              text: data.cta_left?.content,
               rotation: -7,
-              className: "sm:left-8",
+              className: 'sm:left-8',
             }}
-            image={aboutPageData.cta_left?.image.url}
+            image={data.cta_left?.image.url}
             imagePosition="left"
             contentClassName="relative md:-top-24 md:-left-12"
-            cta={
-              { text: aboutPageData.cta_left?.cta.text, link: aboutPageData.cta_left?.cta.link, rotation: -3.7, className: "relative sm:left-[182px] -top-4" }
-            }
+            cta={{
+              text: data.cta_left?.cta.text,
+              link: data.cta_left?.cta.link,
+              rotation: -3.7,
+              className: 'relative sm:left-[182px] -top-4',
+            }}
           />
         </div>
 
         <CtaWithImage
-            title={{
-            children: aboutPageData.cta_right?.title,
+          title={{
+            children: data.cta_right?.title,
             rotation: -4,
           }}
           content={{
-            text: aboutPageData.cta_right?.content,
+            text: data.cta_right?.content,
             rotation: 1.5,
-            className: "sm:left-6",
+            className: 'sm:left-6',
           }}
-          image={aboutPageData.cta_right?.image.url}
+          image={data.cta_right?.image.url}
           className="md:flex-1"
           contentClassName="relative md:top-24"
-          cta={
-            { text: aboutPageData.cta_right?.cta.text, link: aboutPageData.cta_right?.cta.link, rotation: 0.5, className: "relative sm:left-48 -top-2" }
-          }
+          cta={{
+            text: data.cta_right?.cta.text,
+            link: data.cta_right?.cta.link,
+            rotation: 0.5,
+            className: 'relative sm:left-48 -top-2',
+          }}
         />
       </div>
 
@@ -181,31 +160,29 @@ export default async function AboutPage() {
         <Title className="mb-md" level={2} hasSeparator variant="medium">
           {t('testimonies.title')}
         </Title>
-        <TestimoniesCarousel
-          testimonies={testimonies}
-        />
+        <TestimoniesCarousel testimonies={testimonies} />
       </div>
 
       <EditoCard
-        title={aboutPageData.map_cta?.title}
-        image={aboutPageData.map_cta?.image.url}
-        ctaText={aboutPageData.map_cta?.cta.text}
-        ctaLink={aboutPageData.map_cta?.cta.link}
+        title={data.map_cta?.title}
+        image={data.map_cta?.image.url}
+        ctaText={data.map_cta?.cta.text}
+        ctaLink={data.map_cta?.cta.link}
         className="my-lg"
       >
         <>
-          {aboutPageData.map_cta?.content?.split('\n').map((paragraph, index) => (
+          {data.map_cta?.content?.split('\n').map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </>
       </EditoCard>
 
       <LargeTextImage
-        title={aboutPageData.volunteer_cta?.title}
-        content={aboutPageData.volunteer_cta?.content}
-        image={aboutPageData.volunteer_cta?.image.url}
-        ctaText={aboutPageData.volunteer_cta.cta.text}
-        ctaLink={aboutPageData.volunteer_cta.cta.link}
+        title={data.volunteer_cta?.title}
+        content={data.volunteer_cta?.content}
+        image={data.volunteer_cta?.image.url}
+        ctaText={data.volunteer_cta.cta.text}
+        ctaLink={data.volunteer_cta.cta.link}
         className="my-lg"
       />
 

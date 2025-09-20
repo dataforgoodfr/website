@@ -2,8 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Title, BaseCardsBlock, Pagination } from '@/components';
-import client from '@/lib/strapi-client';
-import { useEffect, useState } from 'react';
+import { EventsPageData } from './page';
 
 type EventsData = NonNullable<
   NonNullable<Awaited<ReturnType<any>>['data']>['data']
@@ -26,35 +25,15 @@ function transformEventsData(events: NonNullable<EventsData['events']>) {
   }));
 }
 
-export default function EventsPage() {
+type EventsProps = {
+  data: EventsPageData;
+};
+
+export default function EventsPage({ data }: EventsProps) {
   const t = useTranslations('events');
-  const [events, setEvents] = useState([]);
-  const [blocksNext, setBlocksNext] = useState([]);
-  const [blocksPast, setBlocksPast] = useState([]);
-
-  useEffect(() => {
-    const fetchEventPageData = async () => {
-      const eventsData = await client.GET('/evenement', {
-        params: {
-          query: {
-            populate: {
-              events: {
-                populate: '*',
-              },
-            },
-          },
-        },
-      });
-      setEvents(transformEventsData(eventsData.data!.data!.events))
-    };
-    fetchEventPageData()
-  });
-
-  useEffect(() => {
-    setBlocksNext(events.filter(event => new Date(event.date) > new Date()));
-    setBlocksPast(events.filter(event => new Date(event.date) <= new Date()));
-  }, [events])
-
+  const events = transformEventsData(data.events);
+  const blocksNext = events.filter(event => new Date(event.date) > new Date());
+  const blocksPast = events.filter(event => new Date(event.date) <= new Date());
 
   return (
     <div className="container my-lg">

@@ -77,7 +77,7 @@ export default function Homepage({ data }: HomepageProps) {
     title: {
       children: thematic.name || '',
       props: {
-        colors: 'text-black bg-alive',
+        colors: `text-black bg-${thematic.color}`,
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
       }
@@ -88,8 +88,8 @@ export default function Homepage({ data }: HomepageProps) {
     image: thematic.thumbnail?.url || '',
     imageWidth: 251,
     imageHeight: 318,
-    ctaText: t('thematics.ctaText'),
-    ctaLink: t('thematics.ctaLink'),
+    ctaText: thematic.cta_text,
+    ctaLink: thematic.cta_link,
   })).filter(thematic => thematic.talk) ?? [];
 
   return (
