@@ -72,14 +72,6 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "seasons"
-    },
-    "short_id": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     }
   }
 }

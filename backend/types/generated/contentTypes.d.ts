@@ -1059,6 +1059,10 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     resources: Schema.Attribute.Relation<'oneToMany', 'api::resource.resource'>;
+    testimonial: Schema.Attribute.Component<'testimonial.testimonial', false>;
+    testimonial_background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1132,6 +1136,7 @@ export interface ApiPressReleasePressRelease
       'manyToMany',
       'api::partner.partner'
     >;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
@@ -1491,12 +1496,6 @@ export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::season.season'>;
     projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
-    short_id: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     start_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1615,6 +1614,18 @@ export interface ApiThematicThematic extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cta_link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta_text: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     description: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

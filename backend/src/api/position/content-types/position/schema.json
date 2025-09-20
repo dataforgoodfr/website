@@ -20,6 +20,21 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::resource.resource"
+    },
+    "testimonial": {
+      "type": "component",
+      "component": "testimonial.testimonial",
+      "repeatable": false
+    },
+    "testimonial_background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
