@@ -72,29 +72,30 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     setMessage({ type: null, text: '' });
 
     try {
-      const formData = new FormData();
-      formData.append('EMAIL', email);
-      formData.append('email_address_check', '');
-      formData.append('locale', 'fr');
-      
-      // Add selected newsletters
-      selectedNewsletters.forEach(newsletterId => {
-        formData.append('lists_25[]', newsletterId);
-      });
-
       // Use environment variable for Brevo API key
       const brevoApiKey = process.env.NEXT_PUBLIC_BREVO_API_KEY;
       if (!brevoApiKey) {
         throw new Error('Brevo API key not configured');
       }
 
-      const response = await fetch(
-        'https://ffb35838.sibforms.com/serve/MUIFAANCWWvajTNYJCaDvtCrXOv3CsJwR_2ytznvYD15vPAnwawJiT1Dm2gS1aEMEsSMlh6Yr1nC0MU0TLLLUcH21RoxVkGmHRQdKrW0gEuIP1HBeSD7YEaitnoh6mvTQI-DBFqhSkF_p730XmHP7L0AnsDAJ80JNNUGy6x9IF0YuDxsM_fe_kg9cQDujhxZ6dFP96yw36T4AsX6',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      console.log("selectedNewsletters", selectedNewsletters);
+
+      // Prepare data for Brevo API
+      const contactData = {
+        email: email,
+        listIds: selectedNewsletters.map(id => parseInt(id)), // Convert to numbers
+        updateEnabled: true
+      };
+
+      // Use Brevo API REST endpoint
+      const response = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': brevoApiKey,
+        },
+        body: JSON.stringify(contactData),
+      });
 
       if (response.ok) {
         setMessage({ type: 'success', text: t('successMessage') });
@@ -102,9 +103,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         setSelectedNewsletters([]);
         setErrors({});
       } else {
+        const errorData = await response.json();
+        console.error("Brevo API error:", errorData);
         setMessage({ type: 'error', text: t('errorMessage') });
       }
     } catch (error) {
+      console.error("Newsletter subscription error:", error);
       setMessage({ type: 'error', text: t('errorMessage') });
     } finally {
       setIsSubmitting(false);
@@ -132,10 +136,6 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   return (
     <div className={className} {...props}>
       <div className="max-w-md mx-auto">
-        <h2 id={`newsletter-title-${uniqueId}`} className="text-xl font-bold mb-6 text-center">
-          {t('title')}
-        </h2>
-
         {/* Error Message */}
         {message.type === 'error' && (
           <div 
@@ -226,20 +226,6 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
             </Button>
           </div>
 
-          {/* Hidden fields for Brevo */}
-          <input 
-            type="text" 
-            name="email_address_check" 
-            value="" 
-            className="hidden"
-            tabIndex={-1}
-            autoComplete="off"
-          />
-          <input 
-            type="hidden" 
-            name="locale" 
-            value="fr" 
-          />
         </form>
       </div>
     </div>
