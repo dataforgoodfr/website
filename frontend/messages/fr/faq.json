@@ -2,8 +2,21 @@
   "faq": {
     "meta": {
       "title": "Foire aux questions",
-      "description": ""
+      "description": "Trouvez les réponses aux questions les plus fréquentes sur Data For Good"
     },
-    "title": "Foire aux questions"
+    "title": "Foire aux questions",
+    "themes": [
+      {
+        "title": "Divers",
+        "items": [
+          {
+            "id": "divers-1",
+            "title": "Comment contacter l'équipe Data For Good ?",
+            "content": "<p>Pour contacter l'équipe de Data For Good, veuillez envoyer un e-mail à hellodataforgood@gmail.com</p>"
+          }
+        ]
+      }
+      
+    ]
   }
 }

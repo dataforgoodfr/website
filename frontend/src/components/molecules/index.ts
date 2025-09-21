@@ -40,3 +40,6 @@ export type { ProjectImpactCardProps } from './ProjectImpactCard/ProjectImpactCa
 
 export { default as ProjectCarousel } from './ProjectCarousel/ProjectCarousel';
 export type { ProjectCarouselProps } from './ProjectCarousel/ProjectCarousel';
+
+export { default as Accordion } from './Accordion/Accordion';
+export type { AccordionProps, AccordionItemData } from './Accordion/Accordion';

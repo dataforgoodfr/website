@@ -24,3 +24,6 @@ export type { InputProps } from './Input/Input';
 
 export { default as Checkbox } from './Checkbox/Checkbox';
 export type { CheckboxProps } from './Checkbox/Checkbox';
+
+export { default as ArrowIcon } from './ArrowIcon/ArrowIcon';
+export type { ArrowIconProps } from './ArrowIcon/ArrowIcon';
