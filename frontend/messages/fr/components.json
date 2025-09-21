@@ -9,7 +9,7 @@
     },
     "newsletterBlock": {
       "title": "Pourquoi rejoindre la Newsletter ?",
-      "content": "Lis notre charte du bénévole, notre manifeste et notre charte diversité.  Si tu te reconnais dans ces valeurs, bienvenue : clique sur ce lien pour être ajouté à notre outil de discussion interne. Tu n’auras qu’à remplir un petit questionnaire et te présenter à la communauté."
+      "content": "Lis notre charte du bénévole, notre manifeste et notre charte diversité.  Si tu te reconnais dans ces valeurs, bienvenue : clique sur ce lien pour être ajouté à notre outil de discussion interne. Tu n'auras qu'à remplir un petit questionnaire et te présenter à la communauté."
     },
     "pagination": {
       "left": "Flèche gauche",
@@ -22,6 +22,24 @@
     "articleHeroBlock": {
       "readTime": "Temps de lecture :",
       "author": "Écrit par"
+    },
+    "newsletterForm": {
+      "title": "Inscription à la newsletter",
+      "newsletterChoice": "Choix des newsletter",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "votre@email.com",
+      "submitButton": "S'INSCRIRE",
+      "submitButtonLoading": "INSCRIPTION...",
+      "successMessage": "Votre inscription est confirmée.",
+      "errorMessage": "Nous n'avons pas pu confirmer votre inscription.",
+      "emailRequiredError": "L'adresse email est obligatoire.",
+      "emailInvalidError": "Veuillez saisir une adresse email valide.",
+      "newsletterRequiredError": "Vous devez sélectionner au moins une newsletter.",
+      "newsletterLists": {
+        "iaGenerative": "IA Générative",
+        "pinkBombs": "PinkBombs",
+        "dataForGood": "Data For Good"
+      }
     }
   }
 }

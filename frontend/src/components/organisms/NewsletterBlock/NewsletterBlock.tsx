@@ -1,4 +1,4 @@
-import { Title, TitleProps } from '@/components';
+import { NewsletterForm, Title, TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -26,7 +26,7 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
   return (
     <div
       className={clsx(
-        'py-lg bg-alive-light',
+        'relative py-lg bg-alive-light',
         className,
       )}
       {...props}
@@ -39,17 +39,7 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
 
         <div className="pt-xs flex-1">
           <p className="mb-md font-secondary font-bold">{componentContent}</p>
-          <iframe
-            width="540"
-            height="305"
-            src="https://ffb35838.sibforms.com/serve/MUIFAClZei-0KJ4S5oAeeoW1_t4ZqHi48tZTWiISEt_s8kJsd-WpJ9Gprg21TiwBT7zskApNu-ifbq4C8PnCBG3dUeJphIPVtJ_2V1IB_fan1WRguNFGrW1TayNKJi1jSQ6_gfgmOlQDGdZSwOpi6VU3R-iX2CN7XyIDDQBo7A9xbiN0fwvRM0kvcKRCzG29MRJ00mGzZzzyaNOO"
-            frameBorder="0"
-            scrolling="auto"
-            allowFullScreen
-            title="Formulaire de contact Data For Good"
-            sandbox="allow-scripts allow-forms"
-            style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
-          />
+          <NewsletterForm />
         </div>
       </div>
     </div>

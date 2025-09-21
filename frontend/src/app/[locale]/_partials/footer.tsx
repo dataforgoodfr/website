@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaBluesky, FaLinkedin } from 'react-icons/fa6';
 import { Button, SocialLink } from '@/components/atoms';
 import { usePathLocale } from '@/hooks/usePathLocale';
+import { NewsletterForm } from '@/components';
 
 const Footer = () => {
   const t = useTranslations('layout.footer');
@@ -33,20 +34,6 @@ const Footer = () => {
     cgu: usePathLocale('/cgu'),
     charte: usePathLocale('/charte'),
   };
-
-  const contactFormIframe = (
-    <iframe
-      width="540"
-      height="305"
-      src="https://ffb35838.sibforms.com/serve/MUIFAClZei-0KJ4S5oAeeoW1_t4ZqHi48tZTWiISEt_s8kJsd-WpJ9Gprg21TiwBT7zskApNu-ifbq4C8PnCBG3dUeJphIPVtJ_2V1IB_fan1WRguNFGrW1TayNKJi1jSQ6_gfgmOlQDGdZSwOpi6VU3R-iX2CN7XyIDDQBo7A9xbiN0fwvRM0kvcKRCzG29MRJ00mGzZzzyaNOO"
-      frameBorder="0"
-      scrolling="auto"
-      allowFullScreen
-      title="Formulaire de contact Data For Good"
-      sandbox="allow-scripts allow-forms"
-      style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
-    />
-  );
 
   return (
     <footer className="relative">
@@ -98,7 +85,7 @@ const Footer = () => {
           <div className="flex flex-col gap-5 text-sm">
             <p className="uppercase font-black font-secondary">{t('contact.title')}</p>
             <p><Button variant="secondary" href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
-            {contactFormIframe}
+            <NewsletterForm />
             <ul className="flex gap-2">
               {Object.keys(socialLinks).map(social => (
                 <li key={social}>

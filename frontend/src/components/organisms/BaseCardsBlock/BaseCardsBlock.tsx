@@ -3,7 +3,7 @@ import { Title, TitleProps } from '@/components';
 import clsx from 'clsx';
 
 
-export type BaseCardsBlockProps = {
+export type BaseCardsBlockProps = React.HTMLAttributes<HTMLDivElement> & {
   title?: string;
   titleLevel?: TitleProps['level'];
   blocks: BaseCardProps[];

@@ -9,6 +9,8 @@ export { default as LargeTextImage } from './LargeTextImage/LargeTextImage';
 export type { LargeTextImageProps } from './LargeTextImage/LargeTextImage';
 export { default as MemberCard } from './MemberCard/MemberCard';
 export type { MemberCardProps } from './MemberCard/MemberCard';
+export { default as NewsletterForm } from './NewsletterForm/NewsletterForm';
+export type { NewsletterFormProps } from './NewsletterForm/NewsletterForm';
 export { default as NewsSmallCard } from './NewsSmallCard/NewsSmallCard';
 export type { NewsSmallCardProps } from './NewsSmallCard/NewsSmallCard';
 export { default as PartnerCard } from './PartnerCard/PartnerCard';
@@ -38,3 +40,6 @@ export type { ProjectImpactCardProps } from './ProjectImpactCard/ProjectImpactCa
 
 export { default as ProjectCarousel } from './ProjectCarousel/ProjectCarousel';
 export type { ProjectCarouselProps } from './ProjectCarousel/ProjectCarousel';
+
+export { default as Accordion } from './Accordion/Accordion';
+export type { AccordionProps, AccordionItemData } from './Accordion/Accordion';
