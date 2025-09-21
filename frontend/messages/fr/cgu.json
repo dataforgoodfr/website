@@ -1,9 +1,37 @@
 {
   "cgu": {
     "meta": {
-      "title": "Conditions générales d'utilisation",
-      "description": ""
+      "title": "Politique de confidentialité",
+      "description": "Politique de confidentialité de Data For Good"
     },
-    "title": "Conditions générales d'utilisation"
+    "title": "Politique de confidentialité",
+    "article1": {
+      "title": "Article 1 : Objet",
+      "content": "<p>Le présent document a pour objet de définir d&apos;une part les modalités et conditions dans lesquelles l&apos;association Data For Good collecte, utilise, transfère et protège les données de ses utilisateurs, et d&apos;autre part les modalités et conditions par lesquelles l&apos;utilisateur peut exercer son droit d&apos;accès, de modification, de rectification et de suppression des données le concernant.</p>"
+    },
+    "article2": {
+      "title": "Article 2 : Collecte de l'information",
+      "content": "<p>Nous recueillons des informations personnelles dans 4 cadres différents :</p><ul><li><strong>A.</strong> Lorsque vous vous inscrivez à notre newsletter, nous enregistrons alors votre adresse e-mail</li><li><strong>B.</strong> Lorsque vous demandez à rejoindre la communauté Data For Good, sur le formulaire &quot;Rejoindre la communauté&quot;. Nous enregistrons alors votre nom complet, votre adresse e-mail, vos compétences et vos préférences. Il est obligatoire de fournir ces informations si vous souhaitez rejoindre la communauté. Ces informations ne sont pas publiques.</li><li><strong>C.</strong> Lorsque vous proposez un projet. Nous enregistrons alors votre e-mail et le descriptif de votre projet, ainsi que des données concernant la structure pour laquelle vous postulez. Il est obligatoire de fournir ces informations pour postuler. Ces informations ne sont pas publiques.</li></ul><p>Nous ne collectons pas d'informations avec le site internet, nous n'avons installé aucun tracker de type Google Analytics. Le code source du site est développé avec le framework Docusaurus et est auditable sur <a href=&quot;https://github.com/dataforgoodfr&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>https://github.com/dataforgoodfr</a>.</p>"
+    },
+    "article3": {
+      "title": "Article 3 : Utilisation des informations",
+      "content": "<p>Toutes les informations que nous recueillons auprès de vous peuvent être utilisées pour administrer un appel à projets, pour administrer la vie de la communauté, ou pour vous contacter par e-mail ou par téléphone pour vous proposer de participer à un projet ou un évènement. Elles ne sont pas utilisées dans d&apos;autres buts, et en aucun cas pour prendre des décisions automatisées.</p>"
+    },
+    "article4": {
+      "title": "Article 4 : Divulgation des informations",
+      "content": "<p>Nous sommes les seuls propriétaires des informations recueillies sur ce site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n&apos;importe quelle raison, sans votre consentement.</p><p>Il est fait exception pour les tierces parties de confiance qui nous aident à exploiter notre site web et à opérer nos activités, tant que ces parties conviennent de garder ces informations confidentielles. Nous utilisons les services en ligne suivants pour gérer nos données, avec leurs politiques de confidentialité associées :</p><ul><li><strong>Airtable :</strong> <a href=&quot;https://airtable.com/privacy&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>https://airtable.com/privacy</a></li><li><strong>Mailchimp :</strong> <a href=&quot;https://mailchimp.com/legal/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>https://mailchimp.com/legal/privacy/</a></li><li><strong>Zapier :</strong> <a href=&quot;https://zapier.com/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>https://zapier.com/privacy/</a></li><li><strong>Slack :</strong> <a href=&quot;https://slack.com/trust/privacy/privacy-policy&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>https://slack.com/trust/privacy/privacy-policy</a></li></ul>"
+    },
+    "article5": {
+      "title": "Article 5 : Protection des informations",
+      "content": "<p>Nous mettons en œuvre des mesures de sécurité pour préserver la sécurité de vos informations personnelles. Seuls les membres organisateurs de l&apos;association qui ont besoin d&apos;effectuer un travail spécifique ont accès, dans le cadre de leur mission, aux informations personnelles identifiables.</p>"
+    },
+    "article6": {
+      "title": "Article 6 : Accès aux informations",
+      "content": "<p>Vous disposez d&apos;un droit d&apos;accès, de modification, de rectification et de suppression des données qui vous concernent. Vous pouvez l&apos;exercer à tout moment en nous contactant à l&apos;adresse <a href=&quot;mailto:contact@dataforgood.fr&quot;>contact@dataforgood.fr</a>.</p><p>Par ailleurs, si à n&apos;importe quel moment vous souhaitez vous désinscrire de l&apos;une de nos newsletters et ne plus recevoir d&apos;e-mails de notre part, des instructions de désabonnement détaillées sont incluses en bas de chaque e-mail.</p>"
+    },
+    "article7": {
+      "title": "Article 7 : Consentement",
+      "content": "<p>En utilisant notre site, vous consentez à notre politique de confidentialité.</p>"
+    }
   }
 }
