@@ -10,7 +10,7 @@ import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectLis
 import { useTranslations } from 'next-intl';
 import { ProjectListPageData } from './page';
 
-function transformThematicsData(thematics: any) {
+function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
   return thematics.map(thematic => ({
     title: {
       children: thematic.name,
@@ -31,7 +31,7 @@ function transformThematicsData(thematics: any) {
   }));
 }
 
-function transformInformations(informations: any) {
+function transformInformations(informations: ProjectListPageData["informations"]) {
   return informations.map(information => ({
     title: information.title,
     text: information.content.map(content => ({
@@ -41,7 +41,7 @@ function transformInformations(informations: any) {
   }));
 }
 
-function transformFilters(thematics: any, seasons: any) {
+function transformFilters(thematics: ProjectListPageData["thematics"], seasons: ProjectListPageData["seasons"]) {
   return [
     ...thematics.map(thematic => ({
       filterName: thematic.name,
@@ -55,8 +55,8 @@ function transformFilters(thematics: any, seasons: any) {
   ];
 }
 
-function transformProjects(projects: any) {
-  return projects.map((project: any) => ({
+function transformProjects(projects: ProjectListPageData["projects"]) {
+  return projects?.map((project: ProjectListPageData["projects"][0]) => ({
     project: project.title,
     association:
       (project.related_partners &&

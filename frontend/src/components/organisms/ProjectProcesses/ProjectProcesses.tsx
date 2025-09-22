@@ -54,7 +54,7 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
                             </div>
                         ))}
                     </div>
-                    {link && <p className='mt-md text-xs'> {t('repoLink')} : {link} </p>}
+                    {link && <a className='mt-md text-xs' href={link} target="_blank" rel="noopener noreferrer"> {t('repoLink')} : {link} </a>}
                 </div>
             </div>
     );
