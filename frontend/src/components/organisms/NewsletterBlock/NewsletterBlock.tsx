@@ -26,7 +26,7 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
   return (
     <div
       className={clsx(
-        'relative py-lg bg-alive-light',
+        'relative py-lg bg-violet-light',
         className,
       )}
       {...props}
