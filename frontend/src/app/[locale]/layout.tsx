@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { DM_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { routing } from '@/i18n/routing';
 import Footer from './_partials/footer';
 import Header from './_partials/header';
@@ -68,6 +69,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
+      <head>
+        <Script
+          src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body
         className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
         style={{ backgroundSize: '100vw 100vh' }}
