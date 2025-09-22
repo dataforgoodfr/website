@@ -10,8 +10,8 @@
         "carousel": {
           "title": "La solution"
         },
-        "processes": {
-          "title": "Processes",
+        "deliverables": {
+          "title": "Livrables",
           "repoLink": "lien vers le repository"
         },
         "news": {
@@ -21,5 +21,4 @@
           "title": "L'équipe du projet"
         }
     }
-    
 }

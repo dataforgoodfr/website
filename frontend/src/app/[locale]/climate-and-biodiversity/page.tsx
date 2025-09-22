@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import ClimatePage from './climate';
+import client from '@/lib/strapi-client';
 
 export async function generateMetadata({
   params: { locale },
@@ -15,8 +16,43 @@ export async function generateMetadata({
   };
 }
 
-const Page = () => {
-  return <ClimatePage />;
-};
+async function fetchThematicPageData() {
+  return await client.GET('/climate-and-biodiversity', {
+        params: {
+          query: {
+            populate: {
+              banner_image: {
+                populate: '*'
+              },
+              funders: {
+                populate: '*',
+              },
+              projects: {
+                populate: '*',
+              },
+              kpis: {
+                populate: '*',
+              },
+              edito_1: {
+                populate: '*',
+              },
+              edito_2: {
+                populate: '*',
+              },
+            },
+          },
+        },
+      });
+}
 
-export default Page;
+export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematicPageData>>["data"]>["data"]>;
+
+export default async function Page() {
+  const { data } = await fetchThematicPageData();
+
+    if (!data?.data) {
+    return null;
+  }
+
+  return <ClimatePage data={data.data} />;
+};

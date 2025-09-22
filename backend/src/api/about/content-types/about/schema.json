@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "introduction": {
+      "type": "text"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "testimonial.testimonial"
+    },
+    "map_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "call-to-action.call-to-action-with-image"
+    },
+    "volunteer_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "call-to-action.call-to-action-with-image"
+    },
+    "cta_left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "call-to-action.call-to-action-with-image"
+    },
+    "cta_right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "call-to-action.call-to-action-with-image"
+    },
+    "funders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::funder.funder"
+    },
+    "board_of_directors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "employees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "scientific_committee": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "strategic_committee": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    },
+    "division_managers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer.volunteer"
+    }
+  }
+}

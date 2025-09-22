@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "social_justices",
+  "info": {
+    "singularName": "social-justice",
+    "pluralName": "social-justices",
+    "displayName": "SocialJustice"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "funders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::funder.funder"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    },
+    "kpis": {
+      "type": "component",
+      "component": "kpi.kpi",
+      "repeatable": true
+    },
+    "edito_1": {
+      "type": "component",
+      "component": "edito.edito",
+      "repeatable": false
+    },
+    "edito_2": {
+      "type": "component",
+      "component": "edito.edito",
+      "repeatable": false
+    }
+  }
+}

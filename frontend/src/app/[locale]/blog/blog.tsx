@@ -3,41 +3,31 @@
 
 import { useTranslations } from 'next-intl';
 import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
+import { BlogsPageData } from './page';
 
-export default function BlogPage() {
+function transformBlogsData(blogs: NonNullable<BlogsPageData['blogs']>) {
+  return blogs.map(blog => ({
+    id: blog.id,
+    title: blog.title,
+    date: new Date(blog.published_date).toLocaleString(undefined, {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+    }),
+    image: blog.thumbnail.url,
+    link: `/blog/${blog.slug}`,
+    subInfos: blog.tags,
+  }));
+}
+
+type BlogsPageProps = {
+  data: BlogsPageData
+}
+
+export default function BlogPage({data}: BlogsPageProps) {
   const t = useTranslations('blog');
-
-
-  const blocksNext = [
-    {
-      title: 'Article 1',
-      description: 'Description de l\'article 1',
-      image: '/images/events/event-1.jpg',
-      link: '/blog/article-1',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Article 2',
-      description: 'Description de l\'article 2',
-      image: '/images/events/event-2.jpg',
-      link: '/blog/article-2',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Article 3',
-      description: 'Description de l\'article 3',
-      image: '/images/events/event-3.jpg',
-      link: '/blog/article-3',
-      subInfos: ['2024', 'En cours'],
-    },
-    {
-      title: 'Article 4',
-      description: 'Description de l\'article 4',
-      image: '/images/events/event-4.jpg',
-      link: '/blog/article-4',
-      subInfos: ['2024', 'En cours'],
-    }
-  ];
+  const blogs = transformBlogsData(data.blogs)
 
   return (
       <div className="container my-lg">
@@ -50,7 +40,7 @@ export default function BlogPage() {
         />
 
         <BaseCardsBlock
-          blocks={blocksNext}
+          blocks={blogs}
           className="my-lg"
         />
 
