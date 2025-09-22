@@ -6,7 +6,8 @@ export interface IProject {
   association: string;
   description: string;
   thematics: ThematicValues[];
-  tags?: string[];
+  seasons?: string[];
+  category?: string[];
   date: string;
   image: string;
 }

@@ -36,6 +36,9 @@ async function fetchProjectListPageData() {
           projects: {
             populate: '*',
           },
+          categories: {
+            populate: '*',
+          }
         },
       },
     },

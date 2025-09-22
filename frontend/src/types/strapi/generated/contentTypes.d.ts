@@ -639,6 +639,49 @@ export interface ApiDemocracyDemocracy extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiDonationDonation extends Struct.SingleTypeSchema {
+  collectionName: 'donations';
+  info: {
+    displayName: 'Donation';
+    pluralName: 'donations';
+    singularName: 'donation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    actions: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      true
+    >;
+    banner_title: Schema.Attribute.String;
+    banner_video: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    donation_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action',
+      false
+    >;
+    goal_title: Schema.Attribute.String;
+    goals: Schema.Attribute.Component<'goal.goal', true>;
+    introduction_text: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::donation.donation'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    resources_title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEvenementEvenement extends Struct.SingleTypeSchema {
   collectionName: 'evenements';
   info: {
@@ -1405,6 +1448,12 @@ export interface ApiProjectsListProjectsList extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    categories: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Plaidoyer', 'Outil Interne', 'Outil pour les citoyens']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2261,6 +2310,7 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::climate-and-biodiversity.climate-and-biodiversity': ApiClimateAndBiodiversityClimateAndBiodiversity;
       'api::democracy.democracy': ApiDemocracyDemocracy;
+      'api::donation.donation': ApiDonationDonation;
       'api::evenement.evenement': ApiEvenementEvenement;
       'api::event.event': ApiEventEvent;
       'api::funder.funder': ApiFunderFunder;

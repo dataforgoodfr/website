@@ -2,113 +2,74 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, EditoCard, LargeTextImage, NewsletterBlock, TalksBlock, ThematicsBlock, Title } from '@/components';
+import { DonationsData } from './page';
 
-export default function DonationsPage() {
+type DonationProps = {
+  data: DonationsData
+}
+
+export default function DonationsPage({ data }: DonationProps) {
   const t = useTranslations('donations');
 
-  const talks = [
-    {
-      author: 'Sophie Bernard',
-      talk: 'Méthodes de collecte de données éthiques',
-      image: '/images/marty-1.svg',
-      ctaText: 'En savoir plus',
-      ctaLink: '/methodes-collecte',
-    },
-    {
-      author: 'Pierre Dubois',
-      talk: 'Comment optimiser la gestion des bénévoles grâce à l\'analyse prédictive et l\'intelligence artificielle',
-      image: '/images/marty-2.svg',
-      ctaText: 'Découvrir',
-      ctaLink: '/optimisation-benevoles',
-    },
-  ];
+  const talks = data.actions?.map((action) => {
+    return {
+      id: action.id,
+      type: 'article',
+      author: action.title,
+      talk: action.content,
+      image: action.image?.url || "/images/dataforgood.svg",
+      ctaText: action.cta?.text,
+      ctaLink: action.cta?.link,
+    }
+  }) ?? [];
 
-  const thematics = [
-    {
-      title: {
-        children: "Climat et biodiversité",
-        props: {
-          colors: 'text-black bg-alive',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'climate',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      image: '/images/thematics/thematics-climate.svg',
-      imageWidth: 301,
-      imageHeight: 401,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
+  const goals = data.goals?.map((goal) => ({
+    title: {
+      children: goal.goal_cta?.title,
+      props: {
+        colors: `text-black bg-${goal.color}`,
+        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        rotation: -2.58,
+      }
     },
-    {
-      title: {
-        children: "justice sociale",
-        props: {
-          colors: 'text-black bg-resistance',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'social',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-social.png',
-      imageWidth: 264,
-      imageHeight: 332,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-    {
-      title: {
-        children: "Démocratie",
-        props: {
-          colors: 'text-black bg-blue',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'democracy',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-democracy.svg',
-      imageWidth: 251,
-      imageHeight: 318,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-  ]
+    id: goal.id,
+    talk: goal.goal_cta?.content,
+    image: goal.goal_cta?.image?.url,
+    imageWidth: 301,
+    imageHeight: 401,
+    ctaText: goal.goal_cta?.cta?.text,
+    ctaLink: goal.goal_cta?.cta?.link,
+  })) ?? []
 
   return (
     <>
       <LargeTextImage
-        title={t('title')}
+        title={data.banner_title ?? t('title')}
         titleLevel={1}
         content="iFrame here"
-        image="/images/pages/donations/donations.jpg"
+        image={data.banner_video?.url}
         background="purple"
       />
 
       <EditoCard className="mt-lg">
-        <p>Nous sommes 7000 citoyennes et citoyens et nous voulons construire un contre pouvoir tech citoyen.</p> 
-        <p>...</p> 
+        {data.introduction_text}
       </EditoCard>
 
       <div className="bg-violet-light py-lg">
         <TalksBlock
-          title={t('talksTitle')}
+          title={data.resources_title ?? t('talksTitle')}
           talks={talks}
         />
       </div>
 
       <div className="my-lg">
         <ThematicsBlock
-          title={t('thematicsTitle')}
-          thematics={thematics}
+          title={data.goal_title ?? t('thematicsTitle')}
+          thematics={goals}
         />
 
         <div className="flex justify-center mt-sm">
-          <Button href="https://soutenir.dataforgood.fr/b/mon-don?_cv=1" color="violet" hasArrow>{t('cta')}</Button>
+          <Button href={data.donation_cta} color="violet" hasArrow>{t('cta')}</Button>
         </div>
       </div>
 

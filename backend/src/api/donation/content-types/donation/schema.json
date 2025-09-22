@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "donations",
+  "info": {
+    "singularName": "donation",
+    "pluralName": "donations",
+    "displayName": "Donation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner_title": {
+      "type": "string"
+    },
+    "banner_video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "introduction_text": {
+      "type": "richtext"
+    },
+    "resources_title": {
+      "type": "string"
+    },
+    "actions": {
+      "type": "component",
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": true
+    },
+    "goal_title": {
+      "type": "string"
+    },
+    "goals": {
+      "type": "component",
+      "component": "goal.goal",
+      "repeatable": true
+    },
+    "donation_cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action",
+      "repeatable": false
+    }
+  }
+}

@@ -41,17 +41,21 @@ function transformInformations(informations: ProjectListPageData["informations"]
   }));
 }
 
-function transformFilters(thematics: ProjectListPageData["thematics"], seasons: ProjectListPageData["seasons"]) {
+function transformFilters(thematics: ProjectListPageData["thematics"], seasons: ProjectListPageData["seasons"], categories: ProjectListPageData["categories"]) {
   return [
-    ...thematics.map(thematic => ({
+    ...thematics?.map(thematic => ({
       filterName: thematic.name,
       filterValue: thematic.short_id,
       thematic: thematic.short_id,
-    })),
-    ...seasons.map(season => ({
+    })) ?? [],
+    ...seasons?.map(season => ({
       filterName: season.title,
       filterValue: season.title,
-    })),
+    })) ?? [],
+    ...categories?.map(category => ({
+      filterName: category,
+      filterValue: category,
+    })) ?? [],
   ];
 }
 
@@ -67,7 +71,8 @@ function transformProjects(projects: ProjectListPageData["projects"]) {
     thematics: project.thematics.map(thematic => thematic.short_id),
     image: project.thumbnail?.url || '',
     date: new Date(project.start_date),
-    tags: project.seasons.map(season => season.title),
+    seasons: project.seasons.map(season => season.title),
+    categories: project.category,
     link: `projects/${project.slug}`,
   }));
 }
@@ -80,7 +85,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
   const t = useTranslations('projects');
   const thematics = transformThematicsData(data.thematics);
   const informations = transformInformations(data.informations);
-  const filters = transformFilters(data.thematics, data.seasons);
+  const filters = transformFilters(data.thematics, data.seasons, data.categories);
   const projects = transformProjects(data.projects);
 
   return (

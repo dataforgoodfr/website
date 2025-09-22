@@ -30,8 +30,9 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   const [hideFilters, setHideFilters] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState<number>(1)
 
-  const [activeFilters, setActiveFilters] = useState<{ tags: string[]; thematics: string[]; project: string }>({
-    tags: [],
+  const [activeFilters, setActiveFilters] = useState<{ seasons: string[]; categories: [], thematics: string[]; project: string }>({
+    seasons: [],
+    categories: [],
     thematics: [],
     project: "",
   })
@@ -42,8 +43,9 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
   useEffect(() => {
     setFilteredProjects(projects.filter((project) => project.project.toLowerCase().includes(activeFilters.project?.toLowerCase() ?? "")
-      && (activeFilters.tags.length === 0 || project.tags?.some((tag) => (activeFilters.tags.includes(tag.toLowerCase()))))
-      && (activeFilters.thematics.length === 0 || project.thematics?.some((thematic) => (activeFilters.thematics.includes(thematic.toLowerCase()))))
+      && (activeFilters.seasons.length === 0 || project.seasons?.some((tag) => (activeFilters.seasons.includes(tag))))
+      && (activeFilters.categories.length === 0 || project.category?.some((cat) => (activeFilters.categories.includes(cat))))
+      && (activeFilters.thematics.length === 0 || project.thematics?.some((thematic) => (activeFilters.thematics.includes(thematic))))
     ))
     setCurrentPage(1)
   }, [activeFilters])
@@ -67,9 +69,9 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
         ? setActiveFilters({ ...activeFilters, thematics: activeFilters.thematics.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, thematics: [...activeFilters.thematics, filterValue] })
     } else {
-      activeFilters.tags.includes(filterValue)
-        ? setActiveFilters({ ...activeFilters, tags: activeFilters.tags.filter((filter) => filter !== filterValue) })
-        : setActiveFilters({ ...activeFilters, tags: [...activeFilters.tags, filterValue] })
+      activeFilters.seasons.includes(filterValue)
+        ? setActiveFilters({ ...activeFilters, seasons: activeFilters.seasons.filter((filter) => filter !== filterValue) })
+        : setActiveFilters({ ...activeFilters, seasons: [...activeFilters.seasons, filterValue] })
     }
   }
 
@@ -89,7 +91,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
             <Button variant="secondary" color='violet' className={clsx('w-max hover:bg-building', hideFilters ? 'not-rotate-arrow' : 'rotate-arrow')} onClick={() => setHideFilters(!hideFilters)}> Filtres </Button>
             <div className='flex w-full gap-xs flex-col md:flex-row flex-wrap transition-base' style={{ "visibility": hideFilters ? 'hidden' : "visible", "opacity": hideFilters ? '0' : '1', "height": hideFilters ? '0' : 'auto' }}>
               {filters?.map((filter, index) => (
-                <Filter key={index} {...filter} checked={activeFilters.tags.concat(activeFilters.thematics).includes(filter.filterValue)} onClick={handleClick} />
+                <Filter key={index} {...filter} checked={activeFilters.seasons.concat(activeFilters.thematics).concat(activeFilters.categories).includes(filter.filterValue)} onClick={handleClick} />
               ))}
             </div>
           </div>
