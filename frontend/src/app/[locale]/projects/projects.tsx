@@ -42,7 +42,7 @@ function transformInformations(informations: any) {
 }
 
 function transformFilters(thematics: any, seasons: any) {
-  return {
+  return [
     ...thematics.map(thematic => ({
       filterName: thematic.name,
       filterValue: thematic.short_id,
@@ -52,7 +52,7 @@ function transformFilters(thematics: any, seasons: any) {
       filterName: season.title,
       filterValue: season.title,
     })),
-  };
+  ];
 }
 
 function transformProjects(projects: any) {
@@ -65,7 +65,7 @@ function transformProjects(projects: any) {
       '',
     description: project.short_description,
     thematics: project.thematics.map(thematic => thematic.short_id),
-    image: project.thumbnail.url,
+    image: project.thumbnail?.url || '',
     date: new Date(project.start_date),
     tags: project.seasons.map(season => season.title),
     link: `projects/${project.slug}`,
