@@ -204,6 +204,7 @@ export default function ProjectDetailPage() {
       <ProjectCarousel
         title={t('carousel.title')}
         slides={slides}
+        className='my-lg'
       />
 
       <ProjectProcesses

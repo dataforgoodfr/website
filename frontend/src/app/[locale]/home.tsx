@@ -163,7 +163,7 @@ export default function Homepage() {
 
   return (
     <>
-      <HeroBlock className='mt-lg'
+      <HeroBlock
         {...hero}
         title={{ ...hero.title, children: t('hero.title') }}
         subtitle={{ ...hero.subtitle, children: t('hero.subtitle') }}

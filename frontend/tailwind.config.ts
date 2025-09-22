@@ -72,7 +72,8 @@ const config: Config = {
   	},
   	zIndex: {
   		'1': '1',
-  		'2': '2'
+  		'2': '2',
+  		'50': '50',
   	}
   },
   plugins: [

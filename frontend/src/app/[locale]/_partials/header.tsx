@@ -127,7 +127,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative z-1">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/90">
       <nav
         aria-label={t('header.nav.toggle.alt')}
         ref={navRef}
