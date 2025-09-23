@@ -51,6 +51,9 @@ export type ProjectListPageData = NonNullable<NonNullable<Awaited<ReturnType<typ
 export default async function Page() {
   const { data } = await fetchProjectListPageData();
 
+  console.log("test")
+  console.log(data)
+
     if (!data?.data) {
     return null;
   }

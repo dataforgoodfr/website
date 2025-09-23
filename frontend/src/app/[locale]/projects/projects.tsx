@@ -32,7 +32,7 @@ function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
 }
 
 function transformInformations(informations: ProjectListPageData["informations"]) {
-  return informations.map(information => ({
+  return informations?.map(information => ({
     title: information.title,
     text: information.content.map(content => ({
       info: content.text,

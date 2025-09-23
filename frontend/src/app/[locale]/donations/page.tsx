@@ -22,17 +22,21 @@ async function fetchDonationData() {
       query: {
         populate: {
           banner_video: {
-            populate: "*"
+            populate: "*",
           },
           actions: {
             populate: "*"
           },
           goals: {
-            populate: "*`"
+            populate: {
+              goal_cta: {
+                populate: '*'
+              },
+            }
           },
           donation_cta: {
             populate: "*"
-          }
+          },
         }
       }
     }
@@ -41,11 +45,10 @@ async function fetchDonationData() {
 
 export type DonationsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchDonationData>>["data"]>["data"]>;
 
-
-
 export default async function Page() {
   const { data } = await fetchDonationData();
 
+  console.log(data?.data?.donation_cta)
     if (!data?.data) {
     return null;
   }

@@ -111,7 +111,7 @@ export interface TestimonialTestimonial extends Struct.ComponentSchema {
   attributes: {
     author: Schema.Attribute.String;
     avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    quote: Schema.Attribute.String;
+    quote: Schema.Attribute.Text;
   };
 }
 

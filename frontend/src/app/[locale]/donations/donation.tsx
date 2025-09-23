@@ -51,7 +51,7 @@ export default function DonationsPage({ data }: DonationProps) {
         background="purple"
       />
 
-      <EditoCard className="mt-lg">
+      <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">
         {data.introduction_text}
       </EditoCard>
 
@@ -69,7 +69,7 @@ export default function DonationsPage({ data }: DonationProps) {
         />
 
         <div className="flex justify-center mt-sm">
-          <Button href={data.donation_cta} color="violet" hasArrow>{t('cta')}</Button>
+          <Button href={data.donation_cta?.link} color="violet" hasArrow>{data.donation_cta?.text ?? ('cta')}</Button>
         </div>
       </div>
 
