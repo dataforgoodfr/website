@@ -1,287 +1,133 @@
 'use client';
 
-import { CtaWithImage, InformationsBlock, ThematicsBlock, ThematicsCardProps, Title } from '@/components';
+import {
+  CtaWithImage,
+  InformationsBlock,
+  ThematicsBlock,
+  Title,
+} from '@/components';
 import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectListBlock';
-import { IFilter, IInformation, IProject } from '@/lib/types';
-import { ThematicValues } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
+import { ProjectListPageData } from './page';
 
-export default function ProjectsPage() {
+function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
+  return thematics.map(thematic => ({
+    title: {
+      children: thematic.name,
+      props: {
+        colors: `text-black bg-${thematic.color}`,
+        className: 'drop-shadow-3 drop-shadow-black before:-z-1',
+        rotation: -2.58,
+      },
+    },
+    id: thematic.id.toString(),
+    talk: thematic.description,
+    talkOffset: 10,
+    image: thematic.thumbnail.url,
+    imageWidth: 251,
+    imageHeight: 318,
+    ctaText: thematic.cta_text,
+    ctaLink: thematic.cta_link,
+  }));
+}
+
+function transformInformations(informations: ProjectListPageData["informations"]) {
+  return informations.map(information => ({
+    title: information.title,
+    text: information.content.map(content => ({
+      info: content.text,
+      ...(content.link ? { ctaLink: content.link } : {}),
+    })),
+  }));
+}
+
+function transformFilters(thematics: ProjectListPageData["thematics"], seasons: ProjectListPageData["seasons"]) {
+  return [
+    ...thematics.map(thematic => ({
+      filterName: thematic.name,
+      filterValue: thematic.short_id,
+      thematic: thematic.short_id,
+    })),
+    ...seasons.map(season => ({
+      filterName: season.title,
+      filterValue: season.title,
+    })),
+  ];
+}
+
+function transformProjects(projects: ProjectListPageData["projects"]) {
+  return projects?.map((project: ProjectListPageData["projects"][0]) => ({
+    project: project.title,
+    association:
+      (project.related_partners &&
+        project.related_partners.length > 0 &&
+        project.related_partners[0].name) ||
+      '',
+    description: project.short_description,
+    thematics: project.thematics.map(thematic => thematic.short_id),
+    image: project.thumbnail?.url || '',
+    date: new Date(project.start_date),
+    tags: project.seasons.map(season => season.title),
+    link: `projects/${project.slug}`,
+  }));
+}
+
+type ProjectListProps = {
+  data: ProjectListPageData;
+};
+
+export default function ProjectsPage({ data }: ProjectListProps) {
   const t = useTranslations('projects');
-  const thematics: ThematicsCardProps[] = [
-    {
-      title: {
-        children: "Climat et biodiversité",
-        props: {
-          colors: 'text-black bg-alive',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'climate',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      image: '/images/thematics/thematics-climate.svg',
-      imageWidth: 301,
-      imageHeight: 401,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-    {
-      title: {
-        children: "justice sociale",
-        props: {
-          colors: 'text-black bg-resistance',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'social',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-social.png',
-      imageWidth: 264,
-      imageHeight: 332,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-    {
-      title: {
-        children: "Démocratie",
-        props: {
-          colors: 'text-black bg-blue',
-          className: "drop-shadow-3 drop-shadow-black before:-z-1",
-          rotation: -2.58,
-        }
-      },
-      id: 'democracy',
-      talk: 'Lutter contre la surpêche et l\'expansion des énergies fossiles, protéger les forêts des coupes rases et des incendies, rendre transparent l\'impact environnemental de l\'alimentation ou de la souffrance animale.',
-      talkOffset: 10,
-      image: '/images/thematics/thematics-democracy.svg',
-      imageWidth: 251,
-      imageHeight: 318,
-      ctaText: "Voir les projets",
-      ctaLink: "/projets",
-    },
-  ]
-
-  const informations: IInformation[] = [
-    {
-      title: 'Collecter des données au service du plaidoyer',
-      text: [
-        {
-          'info': 'objectiver des faits, mettre en lumière des chiffres pour poser un diagnostiques rigoureux au service du plaidoyer. Par exemple,'
-        },
-        { 'info': 'en quantifiant la désinformation climatique', 'ctaLink': '/home' },
-        { 'info': "dans les médias avec Quota Climat." }
-      ]
-    },
-    {
-      title: 'Construire des outils internes',
-      text: [
-        {
-          'info': 'pour permettre aux associations d’être encore plus pertinentes dans leurs actions. Par exemple, en créant un'
-        },
-        { 'info': 'outil de suivi des plus gros bateaux de pêche', 'ctaLink': '/test' },
-        { 'info': "industrielle avec Bloom." }
-      ]
-    },
-    {
-      title: 'Concevoir des plateformes de mobilisation citoyenne',
-      text: [
-        {
-          'info': 'des plateformes qui racontent des histoires et qui embarquent la société civile pour bâtir un monde plus juste. Par exemple, en imaginant une plateforme pour'
-        },
-        { 'info': 'raconter l\'histoire de la surpêche du saumon', 'ctaLink': '/seastemik' },
-        { 'info': "avec Seastemik." }
-      ]
-    },
-  ];
-
-  const filters: IFilter[] = [
-    {
-      filterName: "Climat et biodiversité",
-      filterValue: "climate",
-      thematic: "climate" as ThematicValues,
-    },
-    {
-      filterName: "Justice sociale",
-      filterValue: "social",
-      thematic: "social" as ThematicValues,
-    },
-    {
-      filterName: "Démocratie",
-      filterValue: "democracy",
-      thematic: "democracy" as ThematicValues,
-    },
-    {
-      filterName: "Saison 2025",
-      filterValue: "saison2025",
-    },
-    {
-      filterName: "Saison 2024",
-      filterValue: "saison2024",
-    },
-  ]
-
-  const projects: IProject[] = [
-    {
-      project: 'Bloom',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
-      link: "projects/bloom"
-    },
-    {
-      project: 'Bloom',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
-      link: "projects/bloomies"
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
-    },
-    {
-      project: 'Trawlwatch',
-      association: 'Bloom association',
-      description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
-      thematics: ['climate', 'democracy'] as ThematicValues[],
-      image: '/images/thematics/thematics-social.png',
-      date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
-    },
-  ];
-
+  const thematics = transformThematicsData(data.thematics);
+  const informations = transformInformations(data.informations);
+  const filters = transformFilters(data.thematics, data.seasons);
+  const projects = transformProjects(data.projects);
 
   return (
     <>
-
       <div className="my-lg container flex flex-col md:flex-row">
         <div className="md:flex-1 md:flex justify-end">
           <Title className="mb-md max-w-4xl content-center" variant="medium">
-            {t('title')}
+            {data.introduction}
           </Title>
 
           <CtaWithImage
             title={{
-              children: t('presentation.title'),
+              children: data.introduction_cta?.title,
               rotation: -4,
             }}
             content={{
-              text: t('presentation.content'),
+              text: data.introduction_cta?.content,
               rotation: 1.5,
-              className: "sm:left-6",
+              className: 'sm:left-6',
             }}
-            image="/images/pages/image-projets.png"
-            imageClassName='object-fill'
+            image={data.introduction_cta?.image.url}
+            imageClassName="object-fill"
             className="md:flex-1"
             contentClassName="relative md:top-24"
-            cta={
-              { text: t('presentation.cta'), link: '/projects', rotation: 0.7, className: "relative sm:left-48 -top-2" }
-            }
+            cta={{
+              text: data.introduction_cta?.cta.text,
+              link: data.introduction_cta?.cta.link,
+              rotation: 0.7,
+              className: 'relative sm:left-48 -top-2',
+            }}
           />
         </div>
       </div>
-
-
 
       <ThematicsBlock
         title={t('thematics.title')}
         titleLevel={1}
         subtitle={t('thematics.subtitle')}
         thematics={thematics}
-        className='my-lg'
+        className="my-lg"
       />
 
       <InformationsBlock
         title="Informations"
         titleLevel={1}
         informations={informations}
-        className='my-lg'
+        className="my-lg"
       />
 
       <ProjectListBlock
@@ -290,9 +136,8 @@ export default function ProjectsPage() {
         filters={filters}
         projects={projects}
         pageSize={16}
-        className='my-lg bg-black mx-auto w-full'
+        className="my-lg bg-black mx-auto w-full"
       />
-
     </>
   );
 }

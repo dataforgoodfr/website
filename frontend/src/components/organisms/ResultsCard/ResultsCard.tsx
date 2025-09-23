@@ -8,7 +8,7 @@ export type ResultsCardProps = {
   titleLevel?: TitleProps['level'];
   results: {
     id: string;
-    text: string;
+    text?: string;
     number: number;
     linkLabel: string;
     linkTarget: string;
@@ -80,9 +80,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             >
               <p className="mb-4 font-tertiary">
                 <span className="block font-secondary text-7xl">{result.number.toLocaleString()}</span>
-                <span className="h3-like">
+                {result.text && <span className="h3-like">
                   {result.text}
-                </span>
+                </span>}
               </p>
 
               <Button

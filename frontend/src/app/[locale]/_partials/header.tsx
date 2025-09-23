@@ -16,9 +16,9 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
   const topNav: Record<string, string> = {
-    project: '/projects',
-    volunteer: '/volunteer',
-    financier: '/financier',
+    volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
+    project: 'https://tally.so/r/wkGkG6',
+    financier: usePathLocale('/donations'),
   };
 
   const mainNav: Record<string, string> = {

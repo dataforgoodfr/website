@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "projects_lists",
+  "info": {
+    "singularName": "projects-list",
+    "pluralName": "projects-lists",
+    "displayName": "ProjectsList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "introduction": {
+      "type": "text"
+    },
+    "introduction_cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
+    },
+    "thematics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::thematic.thematic"
+    },
+    "informations": {
+      "type": "component",
+      "component": "information.information-block",
+      "repeatable": true
+    },
+    "seasons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season.season"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  }
+}

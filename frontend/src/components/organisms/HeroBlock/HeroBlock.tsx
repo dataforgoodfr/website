@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type HeroBlockProps = {
-  image: string;
+  image?: string;
   title: TiltedTitleProps;
   subtitle?: TiltedTitleProps;
-  talk: string;
+  talk?: string;
   className?: string;
 };
 
@@ -18,7 +18,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
   className,
   ...props
 }) => {
-  if (!title.children || !talk) {
+  if (!title.children) {
     return null;
   }
 

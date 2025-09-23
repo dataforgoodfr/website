@@ -35,6 +35,9 @@ export const pathnames = {
   "/projects": {
     fr: "/projets",
   },
+  "/projects/[slug]": {
+    fr: "/projets/[slug]",
+  },
   "/social-justice": {
     fr: "/justice-sociale",
   },

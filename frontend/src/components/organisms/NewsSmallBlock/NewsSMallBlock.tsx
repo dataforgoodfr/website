@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 
 export type NewsSmallBlockProps = {
-  title: string;
+  title?: string;
   titleLevel?: TitleProps['level'];
   blocks: NewsSmallCardProps[];
   className?: string;
@@ -32,8 +32,8 @@ const NewsSmallBlock: React.FC<NewsSmallBlockProps> = ({
       {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
 
       <div className='flex flex-col gap-xs'>
-        {blocks.map((block) => (
-            <NewsSmallCard key={block.title} {...block} />
+        {blocks.map((block, index) => (
+            <NewsSmallCard key={block.title ?? index} {...block} />
         ))}
       </div>
     </div>

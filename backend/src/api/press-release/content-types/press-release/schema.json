@@ -17,66 +17,86 @@
   },
   "attributes": {
     "title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "content": {
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "blocks"
+      }
     },
     "media_name": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "published_date": {
+      "type": "date",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "date"
+      }
     },
     "article_name": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "article_link": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "is_about_ai_impact": {
+      "type": "boolean",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "boolean"
+      }
     },
     "related_partners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::partner.partner",
       "inversedBy": "related_press_releases"
+    },
+    "thumbnail": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_information_information_texts",
+  "info": {
+    "displayName": "information_text"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "link": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

@@ -35,36 +35,71 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
+
   React.useEffect(() => {
     if (!api) {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
+    // Wait for the API to be fully initialized
+    const initializeCarousel = () => {
+      try {
+        const scrollSnapList = api.scrollSnapList();
+        if (scrollSnapList.length > 0) {
+          setCount(scrollSnapList.length);
+          setCurrent(api.selectedScrollSnap() + 1);
+        }
+      } catch (error) {
+        console.warn('Carousel API not ready yet:', error);
+      }
+    };
 
-    api.on("select", () => {
+    // Initialize immediately if possible
+    initializeCarousel();
+
+    // Also listen for reInit event in case the carousel needs to reinitialize
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1);
-    });
+    };
+
+    const handleReInit = () => {
+      initializeCarousel();
+    };
+
+    api.on("select", handleSelect);
+    api.on("reInit", handleReInit);
+
+    return () => {
+      api.off("select", handleSelect);
+      api.off("reInit", handleReInit);
+    };
   }, [api]);
 
 
+  // Don't render carousel if no images
+  if (!images || images.length === 0) {
+    return null;
+  }
+
   return (
-    <Carousel setApi={setApi} className={clsx(
-      'w-full relative',
-      className,
-    )}
-    style={{
-      // Get real image
-      maskImage: 'url(/images/mask-papper.svg)',
-      maskSize: 'cover',
-      maskRepeat: 'no-repeat',
-      maskPosition: 'center',
-      WebkitMaskImage: 'url(/images/mask-papper.svg)',
-      WebkitMaskSize: 'cover',
-      WebkitMaskRepeat: 'no-repeat',
-      WebkitMaskPosition: 'center',
-    }}>
+    <Carousel 
+      setApi={setApi} 
+      className={clsx(
+        'w-full relative',
+        className,
+      )}
+      style={{
+        // Get real image
+        maskImage: 'url(/images/mask-papper.svg)',
+        maskSize: 'cover',
+        maskRepeat: 'no-repeat',
+        maskPosition: 'center',
+        WebkitMaskImage: 'url(/images/mask-papper.svg)',
+        WebkitMaskSize: 'cover',
+        WebkitMaskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center',
+      }}
+    >
       <CarouselContent>
         {images.map((image) => (
           <CarouselItem 

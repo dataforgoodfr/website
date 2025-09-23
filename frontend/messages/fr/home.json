@@ -6,36 +6,14 @@
     },
     "carousel": {
       "title": "En construisant des projets concrets,",
-      "1": {
-        "title": "TrawlWatch",
-        "alt": "Océan avec bateau de pêche",
-        "description": "Un outil de surveillance en temps réel des navires de pêche industrielle dans les aires marines protégées",
-        "ctaText": "Voir projet"
-      },
-      "2": {
-        "title": "BioDiversity",
-        "alt": "Forêt et biodiversité",
-        "description": "Protection et préservation de la biodiversité forestière",
-        "ctaText": "Découvrir"
-      },
-      "3": {
-        "title": "GreenEnergy",
-        "alt": "Énergie renouvelable",
-        "description": "Transition vers des sources d'énergie durables et renouvelables",
-        "ctaText": "En savoir plus"
-      },
-      "4": {
-        "title": "MountainGuard",
-        "alt": "Montagnes et environnement",
-        "description": "Surveillance et protection des écosystèmes montagneux",
-        "ctaText": "Explorer"
-      }
+      "ctaText": "Voir projet"
     },
     "results": {
       "title": "Rejoignez le mouvement !",
+      "linkLabel": "Voir le projet",
       "realizedProjects": {
         "title": "projets réussis",
-        "linkLabel": "Soutenir l’association"
+        "linkLabel": "Soutenir l'association"
       },
       "activeVolunteers": {
         "title": "bénévoles heureux",
@@ -53,7 +31,20 @@
       "title": "et en interrogeant sur nos usages"
     },
     "thematics": {
-      "title": "Sur trois grandes thématiques"
+      "title": "Sur trois grandes thématiques",
+      "ctaText": "Voir les projets",
+      "ctaLink": "/projets"
+    },
+    "projects": {
+      "ctaText": "Voir le projet"
+    },
+    "events": {
+      "tag": "Evenement"
+    },
+    "resources": {
+      "defaultAuthor": "Data For Good",
+      "articleCtaText": "Lire l'article",
+      "pressCtaText": "Lire la presse"
     }
   }
 }

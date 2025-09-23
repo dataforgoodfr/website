@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_information_information_blocks",
+  "info": {
+    "displayName": "information_block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "component": "information.information-text",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
