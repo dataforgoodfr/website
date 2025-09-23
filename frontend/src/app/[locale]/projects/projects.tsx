@@ -126,13 +126,13 @@ export default function ProjectsPage({ data }: ProjectListProps) {
       <ThematicsBlock
         title={t('thematics.title')}
         subtitle={t('thematics.subtitle')}
-        thematics={thematics}
+        thematics={thematics ?? []}
         className="my-lg"
       />
 
       <InformationsBlock
         title="Informations"
-        informations={informations}
+        informations={informations ?? []}
         className="my-lg"
       />
 
