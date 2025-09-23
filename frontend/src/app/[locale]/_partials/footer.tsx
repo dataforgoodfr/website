@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
 
           <nav aria-labelledby="footer-community-nav" className="flex flex-col gap-5 text-sm">
-            <p id="footer-community-nav" className="uppercase font-black font-secondary">{t('community.title')}</p>
+            <p id="footer-community-nav" className="h4-like">{t('community.title')}</p>
             <ul className="space-y-5">
               {Object.keys(communityNav).map(community => (
                 <li key={community}>
@@ -70,7 +70,7 @@ const Footer = () => {
           </nav>
 
           <nav aria-labelledby="footer-informations-nav" className="flex flex-col gap-5 text-sm">
-            <p id="footer-informations-nav" className="uppercase font-black font-secondary">{t('informations.title')}</p>
+            <p id="footer-informations-nav" className="h4-like">{t('informations.title')}</p>
             <ul className="space-y-5">
               {Object.keys(informationsNav).map(informations => (
                 <li key={informations}>
@@ -83,7 +83,7 @@ const Footer = () => {
           </nav>
 
           <div className="flex flex-col gap-5 text-sm">
-            <p className="uppercase font-black font-secondary">{t('contact.title')}</p>
+            <p className="h4-like">{t('contact.title')}</p>
             <p><Button variant="secondary" href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
             <NewsletterForm />
             <ul className="flex gap-2">

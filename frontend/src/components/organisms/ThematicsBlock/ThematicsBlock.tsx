@@ -25,13 +25,13 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
   return (
     <div
       className={clsx(
-        'container relative overflow-hidden',
+        'container',
         className,
       )}
       {...props}
     >
       <div className="relative z-10">
-        <Title className="mb-xs text-left font-tertiary font-normal" level={titleLevel} variant="medium">
+        <Title className="mb-xs text-left" level={titleLevel} variant="medium">
           {title}
         </Title>
         {subtitle && <p className="mb-sm text-left lead">
@@ -42,7 +42,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
           {thematics.map((thematic, index) => (
             <li
               key={index}
-              className="max-w-80"
+              className="min-w-[420px] flex-1"
             >
               <ThematicsCard
                 {...{...thematic,

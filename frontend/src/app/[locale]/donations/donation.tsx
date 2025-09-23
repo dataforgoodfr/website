@@ -46,7 +46,7 @@ export default function DonationsPage({ data }: DonationProps) {
       <LargeTextImage
         title={data.banner_title ?? t('title')}
         titleLevel={1}
-        content="iFrame here"
+        content={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
         image={data.banner_video?.url}
         background="purple"
       />
@@ -69,7 +69,7 @@ export default function DonationsPage({ data }: DonationProps) {
         />
 
         <div className="flex justify-center mt-sm">
-          <Button href={data.donation_cta?.link} color="violet" hasArrow>{data.donation_cta?.text ?? ('cta')}</Button>
+          <Button href={data.donation_cta?.link} color="violet" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
         </div>
       </div>
 

@@ -5,8 +5,9 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathLocale } from '@/hooks/usePathLocale';
+import { ArrowIcon } from '@/components';
 
 const Header = () => {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ const Header = () => {
   const [selectedItem, setSelectedItem] = useState('home');
   const navRef = useRef<HTMLDivElement>(null);
   const [openNav, setOpenNav] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const topNav: Record<string, string> = {
     volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
@@ -126,13 +128,31 @@ const Header = () => {
     setSelectedItem(newItemSelected);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/90">
+    <header className={clsx(
+      "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
+      isScrolled && "bg-white"
+    )}>
       <nav
         aria-label={t('header.nav.toggle.alt')}
         ref={navRef}
       >
-        <div role="menubar" className="flex items-center lg:items-end justify-between gap-4 pl-4 lg:px-6 lg:pb-4">
+        <div role="menubar" className="flex items-center justify-between gap-4 pl-4 lg:px-6">
           <Link
             href="/"
             tabIndex={selectedItem === 'home' ? 0 : -1}
@@ -146,7 +166,7 @@ const Header = () => {
               alt={t('header.title')}
               width={176}
               height={43}
-              className="w-44 lg:w-[13.25rem] object-contain"
+              className="w-44 lg:w-64 object-contain"
             />
           </Link>
 
@@ -170,7 +190,7 @@ const Header = () => {
           </button>
           <div
             className={clsx(
-              'fixed z-50 left-0 top-0 size-full gap-4 lg:static lg:flex lg:items-end lg:flex-col lg:gap-9 bg-white lg:bg-transparent',
+              'fixed z-50 left-0 top-0 size-full gap-4 lg:static lg:flex lg:flex-1 lg:items-end lg:flex-col lg:gap-5 bg-white lg:bg-transparent',
               !openNav && 'hidden',
             )}
           >
@@ -195,7 +215,7 @@ const Header = () => {
             <ul
               role="menu"
               aria-label={t('header.nav.top.label')}
-              className="flex flex-col lg:flex-row gap-4 lg:gap-[1px] p-4 lg:p-0"
+              className="flex flex-col lg:flex-row gap-4 lg:gap-1 p-4 lg:p-0"
               onKeyDown={handleFocusNav}
             >
               {Object.keys(topNav).map(link => (
@@ -208,13 +228,14 @@ const Header = () => {
                     onClick={() => toggleNav(false)}
                     role="menuitem"
                     className={clsx(
-                      'inlie-block px-4 py-1.5',
-                      'font-secondary bg-alive text-black uppercase text-sm',
+                      'inline-flex items-center gap-2 px-4 py-2',
+                      'font-primary font-black tracking-widest bg-alive text-black uppercase text-sm hover:shadow-[inset_3px_3px_0_0_rgba(0,0,0,0.4)]',
                       'hover:bg-alive/80 focus:bg-alive/80',
                       topNav[link] === pathname && `bg-resistance`,
                     )}
                   >
                     {t(`header.nav.top.${link}`)}
+                    <ArrowIcon />
                   </Link>
                 </li>
               ))}
@@ -223,7 +244,7 @@ const Header = () => {
             <ul
               role="menu"
               aria-label={t('header.nav.main.label')}
-              className="flex flex-col lg:flex-row gap-4 lg:gap-0 p-4 lg:p-0"
+              className="flex flex-col lg:flex-row gap-4 lg:gap-0 p-4 lg:p-0 lg:pb-4"
               onKeyDown={handleFocusNav}
             >
               {Object.keys(mainNav).map(link => (
@@ -237,7 +258,7 @@ const Header = () => {
                     role="menuitem"
                     className={clsx(
                       'block px-4 py-1',
-                      'font-secondary uppercase font-black',
+                      'font-primary tracking-widest uppercase font-black',
                       'relative before:absolute before:bottom-0 before:left-0 before:w-0 before:right-0 lg:before:m-auto before:h-0.5 before:bg-black',
                       'hover:before:w-1/4 focus:before:w-1/4 lg:hover:before:w-full lg:focus:before:w-full before:transition-all before:duration-300',
                       mainNav[link] === pathname && 'before:w-1/4 lg:before:w-full',

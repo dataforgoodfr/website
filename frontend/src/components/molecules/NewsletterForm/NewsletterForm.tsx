@@ -2,7 +2,7 @@
 
 import React, { useState, useId } from 'react';
 import { useTranslations } from 'next-intl';
-import { Input, Checkbox, Button } from '@/components/atoms';
+import { Input, Checkbox, Button, ArrowIcon } from '@/components/atoms';
 
 export type NewsletterFormProps = {
   className?: string;
@@ -135,7 +135,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   return (
     <div className={className} {...props}>
-      <div className="max-w-md mx-auto">
+      <div className="lg:max-w-md mx-auto">
         {/* Error Message */}
         {message.type === 'error' && (
           <div 
@@ -163,7 +163,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         <form id={`newsletter-form-${uniqueId}`} onSubmit={handleSubmit} noValidate>
           {/* Newsletter Selection Fieldset */}
           <fieldset className="mb-6">
-            <legend className="text-sm font-medium text-gray-700 mb-3">
+            <legend className="h4-like mb-3">
               {t('newsletterChoice')}
             </legend>
             <div className="space-y-3">
@@ -194,37 +194,38 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
             )}
           </fieldset>
 
-          {/* Email Input */}
-          <div className="mb-6">
-            <label 
-              htmlFor={`email-${uniqueId}`}
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              {t('emailLabel')}
-            </label>
-            <Input
-              id={`email-${uniqueId}`}
-              name="EMAIL"
-              type="email"
-              value={email}
-              placeholder={t('emailPlaceholder')}
-              required
-              onChange={handleEmailChange}
-              error={!!errors.email}
-              errorMessage={errors.email}
-            />
+          <div className="flex">
+            {/* Email Input */}
+            <div>
+              <Input
+                id={`email-${uniqueId}`}
+                name="EMAIL"
+                type="email"
+                value={email}
+                aria-label={t('emailLabel')}
+                placeholder={t('emailPlaceholder')}
+                required
+                onChange={handleEmailChange}
+                error={!!errors.email}
+                errorMessage={errors.email}
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div>
+              <Button
+                type="submit"
+                variant="secondary"
+                className="h-10"
+                disabled={isSubmitting}
+                hasArrow={false}
+                aria-label={t('submitButton')}
+              >
+                <ArrowIcon />
+              </Button>
+            </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="text-center">
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              hasArrow={false}
-            >
-              {isSubmitting ? t('submitButtonLoading') : t('submitButton')}
-            </Button>
-          </div>
 
         </form>
       </div>

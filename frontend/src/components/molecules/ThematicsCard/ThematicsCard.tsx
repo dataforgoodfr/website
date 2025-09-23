@@ -52,12 +52,12 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
         width={imageWidth}
         height={imageHeight}
       />
-      <div className="pt-lg mb-xs sm:w-calc(50% - 1rem)">
+      <div className="pt-lg mb-xs">
         <TiltedTitle {...title.props} variant='medium' className={`${title.props.className} z-1. mb-xs`}>
           {title.children}
         </TiltedTitle>
-        <div className={`max-w-[289px] ml-${talkOffset}`}>
-          <p className='font-normal p-2 mb-xs -z-5 text-sm md:text-sm bg-white font-medium font-primary relative inline-flex before:absolute before:content-[""] before:bg-black before:-z-2 before:w-full before:h-full before:top-1 before:left-1 before:border-0' >
+        <div className={` ml-${talkOffset}`}>
+          <p className='relative p-2 mb-xs -z-5 text-sm md:text-sm bg-white font-medium font-primary inline-flex shadow-base' >
             {talk}
           </p>
         </div>
