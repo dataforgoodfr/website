@@ -10,7 +10,14 @@ async function fetchHomepageData() {
             populate: "*"
           },
           results: {
-            populate: "*"
+            populate: {
+              kpi: {
+                populate: "*",
+              },
+              cta: {
+                populate: "*",
+              }
+            }
           },
           featured_projects: {
             fields: ["title", "short_description"],

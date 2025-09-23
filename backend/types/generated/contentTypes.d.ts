@@ -889,15 +889,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    call_to_actions: Schema.Attribute.Component<
-      'call-to-action.call-to-action',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -943,7 +934,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    results: Schema.Attribute.Component<'kpi.kpi', true> &
+    results: Schema.Attribute.Component<'kpi.kpi-with-cta', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

@@ -18,21 +18,21 @@
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "hero.hero"
+      "component": "hero.hero",
+      "repeatable": false
     },
     "project_carousel_title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "featured_projects": {
       "type": "relation",
@@ -40,12 +40,12 @@
       "target": "api::project.project"
     },
     "thematics_section_title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "thematics": {
       "type": "relation",
@@ -53,48 +53,38 @@
       "target": "api::thematic.thematic"
     },
     "resources_section_title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "results_section_title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "results": {
       "type": "component",
-      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "kpi.kpi"
-    },
-    "call_to_actions": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "call-to-action.call-to-action"
+      "component": "kpi.kpi-with-cta",
+      "repeatable": true
     },
     "event_section_title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "events": {
       "type": "relation",
@@ -102,12 +92,12 @@
       "target": "api::event.event"
     },
     "join_newsletter_text": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "resources": {
       "type": "relation",

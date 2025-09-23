@@ -102,6 +102,17 @@ export interface KpiKpi extends Struct.ComponentSchema {
   };
 }
 
+export interface KpiKpiWithCta extends Struct.ComponentSchema {
+  collectionName: 'components_kpi_kpi_with_ctas';
+  info: {
+    displayName: 'kpi_with_cta';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'call-to-action.call-to-action', false>;
+    kpi: Schema.Attribute.Component<'kpi.kpi', false>;
+  };
+}
+
 export interface TestimonialTestimonial extends Struct.ComponentSchema {
   collectionName: 'components_testimonial_testimonials';
   info: {
@@ -126,6 +137,7 @@ declare module '@strapi/strapi' {
       'information.information-block': InformationInformationBlock;
       'information.information-text': InformationInformationText;
       'kpi.kpi': KpiKpi;
+      'kpi.kpi-with-cta': KpiKpiWithCta;
       'testimonial.testimonial': TestimonialTestimonial;
     }
   }

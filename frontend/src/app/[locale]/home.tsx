@@ -44,10 +44,10 @@ export default function Homepage({ data }: HomepageProps) {
 
   const results = data.results?.map((result) => ({
     id: result.id?.toString() || '',
-    number: parseInt(result.stat || '0'),
-    text: result.description,
-    linkTarget: `/projects/${result.id}`,
-    linkLabel: t('results.linkLabel'),
+    number: parseInt(result.kpi?.stat || '0'),
+    text: result.kpi?.description,
+    linkTarget: result.cta?.link,
+    linkLabel: result.cta?.text,
   })) ?? [];
 
   const events = data.events?.map((event) => ({

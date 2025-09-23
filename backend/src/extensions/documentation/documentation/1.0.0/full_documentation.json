@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-23T10:40:02.525Z"
+    "x-generation-date": "2025-09-23T14:55:00.559Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -33938,13 +33938,7 @@
               "results": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/KpiKpiComponent"
-                }
-              },
-              "call_to_actions": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+                  "$ref": "#/components/schemas/KpiKpiWithCtaComponent"
                 }
               },
               "event_section_title": {
@@ -36057,13 +36051,7 @@
           "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/KpiKpiComponent"
-            }
-          },
-          "call_to_actions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+              "$ref": "#/components/schemas/KpiKpiWithCtaComponent"
             }
           },
           "event_section_title": {
@@ -36682,13 +36670,7 @@
                 "results": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/KpiKpiComponent"
-                  }
-                },
-                "call_to_actions": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+                    "$ref": "#/components/schemas/KpiKpiWithCtaComponent"
                   }
                 },
                 "event_section_title": {
@@ -36935,6 +36917,20 @@
                 }
               }
             }
+          }
+        }
+      },
+      "KpiKpiWithCtaComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "kpi": {
+            "$ref": "#/components/schemas/KpiKpiComponent"
+          },
+          "cta": {
+            "$ref": "#/components/schemas/CallToActionCallToActionComponent"
           }
         }
       },

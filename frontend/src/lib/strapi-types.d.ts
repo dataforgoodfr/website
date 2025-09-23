@@ -9753,8 +9753,7 @@ export interface components {
                 thematics?: (number | string)[];
                 resources_section_title?: string;
                 results_section_title?: string;
-                results?: components["schemas"]["KpiKpiComponent"][];
-                call_to_actions?: components["schemas"]["CallToActionCallToActionComponent"][];
+                results?: components["schemas"]["KpiKpiWithCtaComponent"][];
                 event_section_title?: string;
                 events?: (number | string)[];
                 join_newsletter_text?: string;
@@ -10487,8 +10486,7 @@ export interface components {
             }[];
             resources_section_title?: string;
             results_section_title?: string;
-            results?: components["schemas"]["KpiKpiComponent"][];
-            call_to_actions?: components["schemas"]["CallToActionCallToActionComponent"][];
+            results?: components["schemas"]["KpiKpiWithCtaComponent"][];
             event_section_title?: string;
             events?: {
                 id?: number;
@@ -10709,8 +10707,7 @@ export interface components {
                 }[];
                 resources_section_title?: string;
                 results_section_title?: string;
-                results?: components["schemas"]["KpiKpiComponent"][];
-                call_to_actions?: components["schemas"]["CallToActionCallToActionComponent"][];
+                results?: components["schemas"]["KpiKpiWithCtaComponent"][];
                 event_section_title?: string;
                 events?: {
                     id?: number;
@@ -10798,6 +10795,11 @@ export interface components {
                     documentId?: string;
                 }[];
             };
+        };
+        KpiKpiWithCtaComponent: {
+            id?: number;
+            kpi?: components["schemas"]["KpiKpiComponent"];
+            cta?: components["schemas"]["CallToActionCallToActionComponent"];
         };
         MemberRequest: {
             data: {
