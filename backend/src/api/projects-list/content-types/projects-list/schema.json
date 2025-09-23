@@ -38,6 +38,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::project.project"
+    },
+    "categories": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "Plaidoyer",
+        "Outil Interne",
+        "Outil pour les citoyens"
+      ]
     }
   }
 }

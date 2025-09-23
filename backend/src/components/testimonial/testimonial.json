@@ -10,17 +10,17 @@
       "type": "string"
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "quote": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

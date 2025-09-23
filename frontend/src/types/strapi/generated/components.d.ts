@@ -40,6 +40,20 @@ export interface EditoEdito extends Struct.ComponentSchema {
   };
 }
 
+export interface GoalGoal extends Struct.ComponentSchema {
+  collectionName: 'components_goal_goals';
+  info: {
+    displayName: 'goal';
+  };
+  attributes: {
+    color: Schema.Attribute.String;
+    goal_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action-with-image',
+      false
+    >;
+  };
+}
+
 export interface HeroHero extends Struct.ComponentSchema {
   collectionName: 'components_hero_heroes';
   info: {
@@ -97,7 +111,7 @@ export interface TestimonialTestimonial extends Struct.ComponentSchema {
   attributes: {
     author: Schema.Attribute.String;
     avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    quote: Schema.Attribute.String;
+    quote: Schema.Attribute.Text;
   };
 }
 
@@ -107,6 +121,7 @@ declare module '@strapi/strapi' {
       'call-to-action.call-to-action': CallToActionCallToAction;
       'call-to-action.call-to-action-with-image': CallToActionCallToActionWithImage;
       'edito.edito': EditoEdito;
+      'goal.goal': GoalGoal;
       'hero.hero': HeroHero;
       'information.information-block': InformationInformationBlock;
       'information.information-text': InformationInformationText;

@@ -36,8 +36,8 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
 
 export default function PositionsPage({ data }: PositionPageProps) {
   const t = useTranslations('positions');
-  const press = transformPressReleases(data.press_releases);
-  const resources = transformResources(data.resources);
+  const press = transformPressReleases(data.press_releases ?? []);
+  const resources = transformResources(data.resources ?? []);
 
   return (
     <>
@@ -45,9 +45,9 @@ export default function PositionsPage({ data }: PositionPageProps) {
 
       <LargeTextImage
         image={data.testimonial_background?.url}
-        citation={data.testimonial.quote}
-        citationAuthor={data.testimonial.author}
-        citationAuthorImage={data.testimonial.avatar.url}
+        citation={data.testimonial?.quote}
+        citationAuthor={data.testimonial?.author}
+        citationAuthorImage={data.testimonial?.avatar?.url}
         background="purple"
         className="my-lg"
         id="lastContent"

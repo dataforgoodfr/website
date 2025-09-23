@@ -67,7 +67,7 @@ export default function Homepage({ data }: HomepageProps) {
       type: isBlog ? 'article' : 'press_release',
       author: isBlog ? ( (resource.blog?.author as { name: string })?.name || t('resources.defaultAuthor')) : (resource.press_release as { media_name: string })?.media_name || '',
       talk: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
-      image: isBlog ? resource.blog?.thumbnail?.url || '' : "/images/dataforgood.svg",
+      image: isBlog ? resource.blog?.thumbnail?.url || '' : resource.press_release?.thumbnail?.url || '',
       ctaText: isBlog ? t('resources.articleCtaText') : t('resources.pressCtaText'),
       ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
     }
@@ -83,7 +83,7 @@ export default function Homepage({ data }: HomepageProps) {
       }
     },
     id: thematic.id?.toString() || '',
-    talk: thematic.description || '',
+    talk: thematic.short_description || '',
     talkOffset: 10,
     image: thematic.thumbnail?.url || '',
     imageWidth: 251,

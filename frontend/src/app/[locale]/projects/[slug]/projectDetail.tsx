@@ -3,7 +3,6 @@
 import { Banner, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
 import { type ProjectPageData } from './page';
 
 type ProjectPageProps = {
@@ -12,21 +11,21 @@ type ProjectPageProps = {
 
 function getProjectTags(project: ProjectPageData) {
   return [
-  ...(project.seasons?.map(season => ({
-    "label": season.title,
-    "type": "temporal" as 'temporal' | 'subject'
-  })) || []),
-  {
-    "label": `${project.start_date ? new Date(project.start_date).toLocaleDateString() : 'N/A'} / ${project.end_date ? new Date(project.end_date).toLocaleDateString() : 'N/A'}`,
-    "type": "temporal" as 'temporal' | 'subject'
-  }, {
-    "label": project.state,
-    "type": "subject" as 'temporal' | 'subject'
-  },
-  ...(project.category?.map(cat => ({
-    "label": cat,
-    "type": "subject" as 'temporal' | 'subject'
-  })) || [])] ?? [];
+    ...(project.seasons?.map(season => ({
+      "label": season.title,
+      "type": "temporal" as 'temporal' | 'subject'
+    })) || []),
+    {
+      "label": `${project.start_date ? new Date(project.start_date).toLocaleDateString() : 'N/A'} / ${project.end_date ? new Date(project.end_date).toLocaleDateString() : 'N/A'}`,
+      "type": "temporal" as 'temporal' | 'subject'
+    }, {
+      "label": project.state,
+      "type": "subject" as 'temporal' | 'subject'
+    },
+    ...(project.category?.map(cat => ({
+      "label": cat,
+      "type": "subject" as 'temporal' | 'subject'
+    })) || [])];
 }
 
 function getProjectData(project: ProjectPageData) {
@@ -47,7 +46,7 @@ function getProjectData(project: ProjectPageData) {
 }
 
 function getProjectImpacts(project: ProjectPageData): IProjectImpacts[] {
-  return Array.from({length: 3}, (_, i) => ({
+  return Array.from({ length: 3 }, (_, i) => ({
     value: project[`value_${i + 1}`],
     text: project[`explanation_${i + 1}`]
   })).filter(Boolean);
@@ -143,13 +142,13 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         }
       />
 
-      { project.news?.length && <NewsSmallBlock
+      {project.news?.length && <NewsSmallBlock
         title={t('news.title')}
         blocks={news}
         className='my-lg'
       />}
 
-      { project.volunteers?.length && <MembersBlock
+      {project.volunteers?.length && <MembersBlock
         title={t('members.title')}
         categories={volunteers}
         className="my-lg"

@@ -16,28 +16,36 @@ export async function generateMetadata({
   };
 }
 
-async function fetchEventPageData() {
-  return await client.GET('/evenement', {
+async function fetchEventPageData(page: number, pageSize: number) {
+  return await client.GET('/events', {
     params: {
       query: {
-        populate: {
-          events: {
-            populate: '*',
-          },
-        },
+        "pagination[page]": page,
+        "pagination[pageSize]": pageSize,
+        populate: '*'
       },
     },
   });
 }
 
-export type EventsPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchEventPageData>>["data"]>["data"]>;
+export type EventsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchEventPageData>>["data"]>;
+export type EventsPageData = NonNullable<EventsPageResponse["data"]>;
+export type EventsPageMeta = NonNullable<NonNullable<EventsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page() {
-  const { data } = await fetchEventPageData();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+  const pageSize = 6;
 
-    if (!data?.data) {
+  const response = await fetchEventPageData(page, pageSize);
+
+  if (!response?.data || !response?.data.meta?.pagination) {
+    console.log('No data or pagination')
     return null;
   }
 
-  return <EventsPage data={data.data} />;
+  return <EventsPage data={response.data?.data} pagination={response.data.meta.pagination} currentPage={page} />;
 };

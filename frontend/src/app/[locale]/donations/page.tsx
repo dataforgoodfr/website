@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import DonationsPage from './donation';
+import client from '@/lib/strapi-client';
 
 export async function generateMetadata({
   params: { locale },
@@ -15,8 +16,41 @@ export async function generateMetadata({
   };
 }
 
-const Page = () => {
-  return <DonationsPage />;
-};
+async function fetchDonationData() {
+  return await client.GET('/donation', {
+    params: {
+      query: {
+        populate: {
+          banner_video: {
+            populate: "*",
+          },
+          actions: {
+            populate: "*"
+          },
+          goals: {
+            populate: {
+              goal_cta: {
+                populate: '*'
+              },
+            }
+          },
+          donation_cta: {
+            populate: "*"
+          },
+        }
+      }
+    }
+  });
+}
 
-export default Page;
+export type DonationsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchDonationData>>["data"]>["data"]>;
+
+export default async function Page() {
+  const { data } = await fetchDonationData();
+
+  if (!data?.data) {
+    return null;
+  }
+
+  return <DonationsPage data={data.data} />;
+};

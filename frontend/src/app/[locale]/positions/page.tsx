@@ -30,6 +30,9 @@ async function fetchPositionPageData() {
           testimonial: {
             populate: '*',
           },
+          testimonial_background: {
+            populate: '*',
+          }
         },
       },
     },
