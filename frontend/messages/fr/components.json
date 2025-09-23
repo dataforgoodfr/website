@@ -36,9 +36,18 @@
       "emailInvalidError": "Veuillez saisir une adresse email valide.",
       "newsletterRequiredError": "Vous devez sélectionner au moins une newsletter.",
       "newsletterLists": {
-        "iaGenerative": "IA Générative",
-        "pinkBombs": "PinkBombs",
-        "dataForGood": "Data For Good"
+        "iaGenerative": {
+          "title": "Techno-lucides",
+          "description": "Une newsletter mensuel pour découvrir les impacts sociaux, environnementaux et démocratique des technologies, et en particulier de l’IA sur nos vies."
+        },
+        "openSource": {
+          "title": "Vers l’open source et au-dela",
+          "description": "Une newsletter assez technique pour documenter toute notre migration vers des outils les plus libres possibles des intérêts privés, nos choix, nos difficultés."
+        },
+        "volonteers": {
+          "title": "La Gazette de Data for Good",
+          "description": "Une newsletter mensuelle pour suivre les actualités de l’association : articles, projets et événements en condensés. A consommer sans modération."
+        }
       }
     }
   }

@@ -167,7 +167,7 @@
   .prose img {
     @apply my-md;
   }
-  .prose :where(p, ul, ol) {
+  .prose :where(p, ul, ol), .small-content {
     @apply mx-auto max-w-[650px];
   }
 

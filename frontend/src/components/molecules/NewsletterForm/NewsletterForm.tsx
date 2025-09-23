@@ -32,9 +32,9 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   // Available newsletter lists
   const newsletterLists = [
-    { id: '10', name: t('newsletterLists.iaGenerative') },
-    { id: '13', name: t('newsletterLists.pinkBombs') },
-    { id: '15', name: t('newsletterLists.dataForGood') }
+    { id: '10', name: t('newsletterLists.iaGenerative.title'), description: t('newsletterLists.iaGenerative.description') },
+    { id: '115', name: t('newsletterLists.openSource.title'), description: t('newsletterLists.openSource.description') },
+    { id: '2', name: t('newsletterLists.volonteers.title'), description: t('newsletterLists.volonteers.description') }
   ];
 
   const validateEmail = (email: string): boolean => {
@@ -168,7 +168,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
             </legend>
             <div className="space-y-3">
               {newsletterLists.map((newsletter) => (
-                <div key={newsletter.id} className="flex items-center space-x-3">
+                <div key={newsletter.id} className="flex items-start space-x-3">
                   <Checkbox
                     id={`newsletter-${newsletter.id}-${uniqueId}`}
                     name={`newsletters-${uniqueId}`}
@@ -177,13 +177,18 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                     onChange={() => handleNewsletterChange(newsletter.id)}
                     error={!!errors.newsletters}
                     errorMessage={errors.newsletters}
+                    aria-describedby={`newsletter-${newsletter.id}-${uniqueId}-description`}
+                    className="mt-1"
                   />
-                  <label 
-                    htmlFor={`newsletter-${newsletter.id}-${uniqueId}`}
-                    className="text-sm text-gray-700 cursor-pointer"
-                  >
-                    {newsletter.name}
-                  </label>
+                  <div>
+                    <label 
+                      htmlFor={`newsletter-${newsletter.id}-${uniqueId}`}
+                      className="text-sm font-bold text-gray-700 cursor-pointer"
+                    >
+                      {newsletter.name}
+                    </label>
+                    <p id={`newsletter-${newsletter.id}-${uniqueId}-description`} className="text-sm text-gray-700">{newsletter.description}</p>
+                  </div>
                 </div>
               ))}
             </div>

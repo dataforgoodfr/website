@@ -13,10 +13,10 @@ export default function DonationsPage({ data }: DonationProps) {
 
   const talks = data.actions?.map((action) => {
     return {
-      id: action.id,
+      id: (action.id ?? '').toString(),
       type: 'article',
-      author: action.title,
-      talk: action.content,
+      author: action.title ?? '',
+      talk: action.content ?? '',
       image: action.image?.url || "/images/dataforgood.svg",
       ctaText: action.cta?.text,
       ctaLink: action.cta?.link,
@@ -25,16 +25,16 @@ export default function DonationsPage({ data }: DonationProps) {
 
   const goals = data.goals?.map((goal) => ({
     title: {
-      children: goal.goal_cta?.title,
+      children: goal.goal_cta?.title ?? '',
       props: {
         colors: `text-black bg-${goal.color}`,
         className: "drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
       }
     },
-    id: goal.id,
-    talk: goal.goal_cta?.content,
-    image: goal.goal_cta?.image?.url,
+    id: (goal.id ?? '').toString(),
+    talk: goal.goal_cta?.content ?? '',
+    image: goal.goal_cta?.image?.url ?? '',
     imageWidth: 301,
     imageHeight: 401,
     ctaText: goal.goal_cta?.cta?.text,
@@ -49,6 +49,7 @@ export default function DonationsPage({ data }: DonationProps) {
         content={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
         image={data.banner_video?.url}
         background="purple"
+        className="my-lg"
       />
 
       <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">
