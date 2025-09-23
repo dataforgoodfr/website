@@ -1,9 +1,113 @@
 {
   "charte": {
     "meta": {
-      "title": "Charte diversité",
-      "description": ""
+      "title": "Charte de diversité et inclusion",
+      "description": "Charte de diversité et inclusion de Data For Good"
     },
-    "title": "Charte diversité"
+    "title": "Charte de diversité et inclusion",
+    "preamble": {
+      "title": "Préambule",
+      "content": "<p>Chez Data For Good, <strong>la diversité et l'inclusion s'inscrivent au cœur de nos valeurs</strong>, nous croyons fermement qu'une communauté diverse et inclusive contribue positivement à la qualité de nos projets. Nous sommes des optimistes pragmatiques et savons que la diversité et l'inclusion ne se décrètent pas, <strong>il faut les créer et rechercher activement</strong>.</p><p>Nous sommes également conscients qu'il est humain d'avoir des stéréotypes, c'est pourquoi <strong>nous devons tous être sensibilisés et adopter</strong> dans nos projets, interventions, interactions <strong>des comportements et une communication qui visent à ce que</strong> <strong>tous se sentent</strong> <strong>inclus, respectés et capables de contribuer sans jugement</strong>.</p><p>La charte de la diversité et inclusion vise à <strong>ancrer et expliciter nos valeurs</strong> mais aussi à <strong>donner aux membres de notre communauté des repères et des moyens pratiques pour atteindre nos objectifs</strong> en matière de diversité et inclusion.</p>",
+      "info": "<p>La présente charte de diversité et inclusion est le fruit des réflexions menées par un groupe de travail réunissant des membres de la communauté Data For Good et dirigés par Caroline Jean-Pierre.<br>Les principaux contributeurs sont : Eric Vessier, Kalina Barsante, Sandrine Henry.</p><p>Pour toute question relative à la diversité et l'inclusion : <strong>diversite_inclusion@dataforgood.fr</strong></p>"
+    },
+    "engagement": {
+      "title": "Engagement des instances dirigeantes de Data For Good",
+      "subtitle": "Les instances dirigeantes de l'association s'engagent aux principes suivants :",
+      "principle1": {
+        "title": "1. Sensibiliser et former",
+        "content": "<p>les membres du CA, du bureau, responsables des pôles, chef et cheffes de projets puis progressivement l'ensemble des membres de la communauté aux enjeux de la non-discrimination, de la diversité et l'inclusion.</p>"
+      },
+      "principle2": {
+        "title": "2. Mettre en oeuvre une gouvernance dédiée à la diversité et l'inclusion",
+        "content": "<p>Le pole Diversité et Inclusion rattaché au CA, veille à la mise en oeuvre, l'application et le pilotage de la politique de diversité et d'inclusion. Une cellule dédiée au traitement d'alerte ou signalements concernant la discrimination ou la non application des principes de diversité et inclusion sera créée.</p>"
+      },
+      "principle3": {
+        "title": "3. Promouvoir la diversité et l'inclusion",
+        "content": "<p>et favoriser la parité dans l'ensemble des décisions et engagements pris par l'association en particulier lors de l'organisation des saisons et de la sélection des association participantes, dans les partenariats et représentations publiques de l'association.</p>"
+      },
+      "principle4": {
+        "title": "4. Communiquer l'engagement de Data For Good",
+        "content": "<p>auprès de l'ensemble de nos membres et notre communauté, auprès de nos <em>followers</em> sur nos réseaux sociaux, nos partenaires et l'ensemble des associations que nous accompagnons, afin de les encourager au respect et au déploiement de nos principes.</p>"
+      },
+      "principle5": {
+        "title": "5. Suivre et évaluer les progrès",
+        "content": "<p>Fixer des objectifs clairs et mesurables à atteindre annuellement au sein de l'organisation. A chaque saison, mesurer les résultats concrets issus de l'application de la politique de diversité et d'inclusion au sein des projets.</p>"
+      }
+    },
+    "guide": {
+      "title": "Guide des bonnes pratiques - Do and Don't",
+      "info": "<p>Le guide des bonnes pratiques vise à une mise en application des principes et valeurs de Data For Good en terme de diversité et inclusion.<br>Il regroupe les comportements attendus de l'ensemble des membres de la communauté.<br>Un section spécifique s'adresse aux porteurs et porteuses de projets dont le rôle est primordial pour faire appliquer les principes de la charte et promouvoir la diversité et l'inclusion.</p>",
+      "community": {
+        "title": "Bonnes pratiques applicables à tous les membres de la communauté",
+        "practices": [
+          {
+            "content": "<p>Je m'adresse à l'ensemble des membres de la communauté avec une attitude de respect et bienveillance.<br>Je garde en tête que la majorité des échanges chez Data For Good passe par la communication écrite, plus difficile à interpréter et par laquelle il peut être difficile de faire passer des émotions. Je m'engage à faire preuve d'empathie et redouble de politesse lors de mes échanges écrits avec les membres de la communauté.</p>"
+          },
+          {
+            "content": "<p>Je présume que tous les membres de notre communauté adhèrent aux principes et bonnes pratiques de cette charte et qu'ils et elles partent d'une bonne intention dans nos échanges. Si je sens que ma personne est agressée, exclue ou discriminée j'en réfère à mon chef ou ma cheffe de projet ou je m'adresse aux membres du pole Diversité et Inclusion Data For Good à l'adresse email diversite_inclusion@dataforgood.fr.</p>"
+          },
+          {
+            "content": "<p>J'appelle les personnes comme elles se sont présentées. Les membres de la communauté se présentent sur leur profil Slack, je peux m'y référer pour savoir comment s'adresser à un membre. Il est dans la culture de Data For Good de se tutoyer et de s'appeler par son prénom. Si j'ai envie de donner un surnom à une personne de la communauté, je lui demande si elle est d'accord.</p>"
+          },
+          {
+            "content": "<p>Je ne présume ni de la culture, ni de l'orientation sexuelle, de la religion, des orientations politiques, convictions personnelles des membres de la communauté.</p><p>J'évite l'humour qui porte sur ces sujets lors des réunions de travail, je l'évite également lors des rencontres informelles si je ne suis pas familier avec les personnes avec qui j'échange.</p><p>J'adopte une attitude d'ouverture et de dialogue, je me restreint d'interpeller publiquement des membres de la communauté sur leur choix ou mode de vie. Par exemple : \"ah toi tu prends l'avion toi ? \" ou \"je respecte le vivant car moi je suis végétarien\".</p>"
+          },
+          {
+            "content": "<p>J'évite de désigner les personnes en faisant référence à leur genre, leur statut marital ou leur âge. Par exemple \"La demoiselle\", \"le papy\", \"les boomers\", \"la jeune fille\". En effet :</p><ol><li>Il est peu probable que le statut marital des membres de la communauté ait quelque chose à voir avec ce pourquoi ils et elles viennent chez Data For Good.</li><li>Il est très probable que je ne connaisse ni l'âge ni le statut de la personnes que je appellerais \"La demoiselle\", \"jeune fille\", \"boomer\"…</li><li>Cela ne viendrait à l'idée de personne d'appeler un homme le damoiseau.</li></ol>"
+          },
+          {
+            "content": "<p>Je pars du principe que toutes les questions ou interventions des membres de la communauté sont légitimes quelque soit leur genre, âge, origines, j'évite de préjuger qu'il s'agisse d'une inquiétude ou d'un manque de confiance a priori.</p>"
+          },
+          {
+            "content": "<p>Je pars du principe que je suis légitime de répondre à un appel à projet, de proposer mon aide ou de prendre la parole même si je me sens en minorité.</p>"
+          },
+          {
+            "content": "<p>Je ne suppose pas que tout le monde ait les mêmes références culturelles et ne ne présume pas que tous connaissent le dernier outil tech à la mode et savent s'en servir (par exemple Instagram, ChatGPT, .. ).<br>Les membres de la communauté ont entre 18 et 99 ans et viennent d'horizons variés, j'évite de porter des jugements de valeur sur l'utilisation ou la méconnaissance de tel ou tel outils par certains membres.</p>"
+          },
+          {
+            "content": "<p>Lors que je participe à un projet, je respecte l'ordre du jour des meetings et je veille à ne pas monopoliser le temps de parole.</p>"
+          },
+          {
+            "content": "<p>Lors des meetings, j'adopte une attitude d'ouverture et d'écoute vis à vis de tous, j'évite toute remarque ou attitude corporelle sarcastique lorsqu'un autre membre s'exprime.</p>"
+          },
+          {
+            "content": "<p>Sur le projets, si j'estime qu'une personne a besoin d'aide, je lui propose mon aide et j'évite de faire à sa place, de façon générale j'évite tout comportement infantilisant vis à vis des membres de la communauté.</p>"
+          },
+          {
+            "content": "<p>Je respecte les choix des porteurs de projets lors de la constitution d'équipe pour des travaux en sous groupe ou événements publics. J'évite les remarques qui remettrait en cause les compétences des membres choisis comme par exemple \" C'est bien pour la parité mais…\"</p>"
+          }
+        ]
+      },
+      "projectLeaders": {
+        "title": "Bonnes pratiques pour les porteurs et porteuses de projets",
+        "subtitle": "En tant que porteur ou porteuse de projet j'applique en plus les principes suivants :",
+        "practices": [
+          {
+            "content": "<p>J'agi en tant qu'ambassadeur pour promouvoir la diversité et l'inclusion au sein des projets Data For Good. Je participe activement et veille à la remontée des informations visant à mesurer et évaluer la diversité et l'inclusion.</p>"
+          },
+          {
+            "content": "<p>Je montre l'exemple en ayant un comportement respectueux vis à vis de tous. Je m'engage à avoir une communication ouverte et transparente dans mes interactions tout au long du projet.</p>"
+          },
+          {
+            "content": "<p>Je reste vigilent et j'interviens si je constate un comportement qui va à l'encontre des principes de diversité et d'inclusion décrites dans la charte et le guide des bonnes pratiques. Je n'hésite pas à me faire accompagner ou demander de l'aide à mon référent du pole saison Data For Good ou au pole Diversité et Inclusion si besoin.</p>"
+          },
+          {
+            "content": "<p>Lors des appels à bénévoles je m'engage à publier des descriptions de postes inclusifs dans lesquels les femmes et les hommes peuvent se projeter. Lors que je communique oralement j'évite les expressions comme \"je cherche un mec\" ou \"j'a besoin d'un gars pour…\".</p>"
+          },
+          {
+            "content": "<p>Lorsque je sélectionne des bénévoles, je m'assure d'être équitable lorsque je cherche à valider leur compétences. Je m'assure que j'adresse les mêmes questions aux femmes et aux hommes sur leur parcours, formation, motivation.</p>"
+          },
+          {
+            "content": "<p>Je m'efforce de proposer des horaires de réunions qui ne discriminent pas systématiquement les membres de la communauté qui ont des enfants.</p>"
+          },
+          {
+            "content": "<p>Lors des réunions, j'encourage tous les membres de l'équipe à participer, je sollicite l'avis des membres qui n'ont pas pris la parole.</p>"
+          },
+          {
+            "content": "<p>Je veille à un bon équilibre des temps de parole et à ce qu'il y ait un climat d'écoute mutuelle au sein des équipes.</p>"
+          }
+        ]
+      }
+    }
   }
 }
