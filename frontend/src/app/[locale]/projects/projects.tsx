@@ -97,11 +97,11 @@ export default function ProjectsPage({ data }: ProjectListProps) {
               rotation: -4,
             }}
             content={{
-              text: data.introduction_cta?.content,
+              text: data.introduction_cta?.content ?? '',
               rotation: 1.5,
               className: 'sm:left-6',
             }}
-            image={data.introduction_cta?.image.url}
+            image={data.introduction_cta?.image.url ?? ''}
             imageClassName="object-fill"
             className="md:flex-1"
             contentClassName="relative md:top-24"
@@ -117,7 +117,6 @@ export default function ProjectsPage({ data }: ProjectListProps) {
 
       <ThematicsBlock
         title={t('thematics.title')}
-        titleLevel={1}
         subtitle={t('thematics.subtitle')}
         thematics={thematics}
         className="my-lg"
@@ -125,14 +124,13 @@ export default function ProjectsPage({ data }: ProjectListProps) {
 
       <InformationsBlock
         title="Informations"
-        titleLevel={1}
         informations={informations}
         className="my-lg"
       />
 
       <ProjectListBlock
         title="Tous les projets"
-        titleLevel={1}
+        titleLevel={2}
         filters={filters}
         projects={projects}
         pageSize={16}

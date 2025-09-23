@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import Confetti from 'react-confetti';
 import { Button, Title, TitleProps } from '@/components';
 
 export type ResultsCardProps = {
@@ -35,13 +34,13 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
       )}
       {...props}
     >
-      {/* @TODO: voir le confetti */}
       <Image
-        src="/images/confetti.svg"
+        src="/images/confettis.svg"
         alt=""
         width={1000}
         height={1000}
-        className="absolute top-0 left-0 z-0 w-full h-full"
+        loading="lazy"
+        className="absolute top-0 left-0 z-0 w-full h-full opacity-20"
       />
 
       <div className="relative z-10">

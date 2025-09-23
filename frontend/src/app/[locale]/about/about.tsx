@@ -105,8 +105,7 @@ export default async function AboutPage({ data }: AboutProps) {
     <>
       <div className="container mt-lg pt-md">
         <div className="max-w-2xl mx-auto text-center">
-          {/* @TODO: mettre le titre dans le fichier de traduction */}
-          <Title variant="medium" className="mb-xs">Nous connaitre</Title>
+          <Title variant="medium" className="mb-xs">{t('title')}</Title>
           <p className="lead">{data.introduction}</p>
         </div>
       </div>

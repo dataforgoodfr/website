@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathLocale } from '@/hooks/usePathLocale';
 import { ArrowIcon } from '@/components';
 
@@ -15,6 +15,7 @@ const Header = () => {
   const [selectedItem, setSelectedItem] = useState('home');
   const navRef = useRef<HTMLDivElement>(null);
   const [openNav, setOpenNav] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const topNav: Record<string, string> = {
     volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
@@ -127,9 +128,26 @@ const Header = () => {
     setSelectedItem(newItemSelected);
   };
 
-  // @TODO: faire apparaitre le fond (bg-white) au scroll en fade-in
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className={clsx(
+      "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
+      isScrolled && "bg-white"
+    )}>
       <nav
         aria-label={t('header.nav.toggle.alt')}
         ref={navRef}
@@ -207,7 +225,6 @@ const Header = () => {
                     aria-current={topNav[link] === pathname ? 'page' : undefined}
                     tabIndex={selectedItem === link ? 0 : -1}
                     data-ref={link}
-                    /* @TODO: add fleche */
                     onClick={() => toggleNav(false)}
                     role="menuitem"
                     className={clsx(
