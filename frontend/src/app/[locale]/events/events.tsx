@@ -2,38 +2,39 @@
 
 import { useTranslations } from 'next-intl';
 import { Title, BaseCardsBlock, Pagination } from '@/components';
-import { EventsPageData } from './page';
+import { EventsPageData, EventsPageMeta } from './page';
+import { usePagination } from '@/hooks/usePagination';
 
-type EventsData = NonNullable<
-  NonNullable<Awaited<ReturnType<any>>['data']>['data']
->;
-
-function transformEventsData(events: NonNullable<EventsData['events']>) {
-  return events.map(event => ({
-    id: event.id,
-    title: event.name,
-    date: new Date(event.date).toLocaleString(undefined, {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-    }),
-    image: event.image.url,
-    onSite: event.on_site,
-    link: event.link,
-    subInfos: event.tags,
-  }));
+function transformEventsData(events: NonNullable<EventsPageData>) {
+  return events.map(event => {
+    return ({
+      id: event.id,
+      title: event.name,
+      rawDate: event.date,
+      date: new Date(event.date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+      image: event.image?.url,
+      onSite: event.on_site,
+      link: event.link,
+      subInfos: event.tags,
+      tags: [new Date(event.date || '').toLocaleDateString(undefined, {dateStyle: 'medium'}), new Date(event.date || '').toLocaleTimeString(undefined, { timeStyle: 'short'}), event.on_site ? "Sur site" : "En ligne"]
+    })
+  });
 }
+
 
 type EventsProps = {
   data: EventsPageData;
+  pagination: EventsPageMeta;
+  currentPage: number;
 };
 
-export default function EventsPage({ data }: EventsProps) {
+export default function EventsPage({ data, pagination, currentPage }: EventsProps) {
   const t = useTranslations('events');
-  const events = transformEventsData(data.events);
-  const blocksNext = events.filter(event => new Date(event.date) > new Date());
-  const blocksPast = events.filter(event => new Date(event.date) <= new Date());
+  const events = transformEventsData(data);
+  const blocksNext = events.filter(event => new Date(event.rawDate) > new Date());
+  const blocksPast = events.filter(event => new Date(event.rawDate) <= new Date());
+
+  const { handlePageChange } = usePagination(currentPage);
 
   return (
     <div className="container my-lg">
@@ -42,21 +43,26 @@ export default function EventsPage({ data }: EventsProps) {
       </Title>
       <p>{t('description')}</p>
 
-      <BaseCardsBlock
-        title={t('nextEvents')}
-        blocks={blocksNext}
-        className="my-lg"
-      />
+      {blocksNext.length > 0 && (
+        <BaseCardsBlock
+          title={t('nextEvents')}
+          blocks={blocksNext}
+          className="my-lg"
+        />
+      )}
 
-      <BaseCardsBlock
-        title={t('pastEvents')}
-        blocks={blocksPast}
-        className="mt-lg mb-sm"
-      />
+      {blocksPast.length > 0 && (
+        <BaseCardsBlock
+          title={t('pastEvents')}
+          blocks={blocksPast}
+          className="mt-lg mb-sm"
+        />
+      )}
+
       <Pagination
-        pageCount={4}
-        currentPage={1}
-        setCurrentPage={() => {}}
+        pageCount={pagination.pageCount}
+        currentPage={pagination.page} // Use pagination.page directly
+        setCurrentPage={handlePageChange}
         className="mt-sm mb-lg mx-auto max-w-max"
         color="black"
       />
