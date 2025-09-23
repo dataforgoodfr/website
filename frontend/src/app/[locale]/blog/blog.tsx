@@ -2,32 +2,60 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
-import { BlogsPageData } from './page';
+import { Title, BaseCardsBlock, TalksBlock, Pagination, SearchInput } from '@/components';
+import { BlogsPageMeta, BlogsPageData } from './page';
+import { usePagination } from '@/hooks/usePagination';
+import { useState, useEffect } from 'react';
 
-function transformBlogsData(blogs: NonNullable<BlogsPageData['blogs']>) {
-  return blogs.map(blog => ({
-    id: blog.id,
-    title: blog.title,
-    date: new Date(blog.published_date).toLocaleString(undefined, {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-    }),
-    image: blog.thumbnail.url,
-    link: `/blog/${blog.slug}`,
-    subInfos: blog.tags,
-  }));
+
+function transformBlogsData(resources: NonNullable<BlogsPageData>) {
+  return resources.map(resource => {
+    const isBlog = !!resource.blog;
+    const element = isBlog ? resource.blog : resource.press_release;
+
+    return ({
+      id: resource.id,
+      title: element.title,
+      rawDate: resource.published_date,
+      date: new Date(resource.published_date).toLocaleString(undefined, {dateStyle: 'medium'}),
+      image: element.thumbnail?.url ?? "/images/dataforgood.svg",
+      link: isBlog ? `/blog/${element.slug}` : element.article_link,
+      subInfos: element.tags ? element.tags.map(tag => tag.name) : [],
+      tags: [new Date(element.published_date).toLocaleDateString(undefined, {dateStyle: 'long'})]
+    })
+  })
 }
 
 type BlogsPageProps = {
   data: BlogsPageData
+  pagination: BlogsPageMeta
+  currentPage: number
 }
 
-export default function BlogPage({data}: BlogsPageProps) {
+export default function BlogPage({data, pagination, currentPage}: BlogsPageProps) {
   const t = useTranslations('blog');
-  const blogs = transformBlogsData(data.blogs)
+  const resources = transformBlogsData(data)
+  const [filteredResources, setFilteredResources] = useState(resources);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.value);
+  };
+
+  const handleSearch = (query: string) => {
+    const filtered = resources.filter(resource => {
+      const title = resource.title.toLowerCase();
+      const queryLower = query.toLowerCase();
+      return title.includes(queryLower);
+    });
+    setFilteredResources(filtered);
+  };
+
+  useEffect(() => {
+    handleSearch(searchQuery);
+  }, [searchQuery]);
+
+  const { handlePageChange } = usePagination(currentPage);
 
   return (
       <div className="container my-lg">
@@ -36,18 +64,19 @@ export default function BlogPage({data}: BlogsPageProps) {
         </Title>
         <SearchInput
           className="my-lg"
-          handleChange={() => {}}
+          handleChange={handleInputChange}
+          value={searchQuery}
         />
 
         <BaseCardsBlock
-          blocks={blogs}
+          blocks={filteredResources}
           className="my-lg"
         />
 
         <Pagination
-          pageCount={4}
-          currentPage={1}
-          setCurrentPage={() => {}}
+          pageCount={pagination.pageCount}
+          currentPage={pagination.page}
+          setCurrentPage={handlePageChange}
           className="mt-sm mb-lg mx-auto max-w-max"
           color="black"
         />
