@@ -106,14 +106,15 @@ export default function Homepage({ data }: HomepageProps) {
       </div>
       {projects.length > 0 && <ImagesCarousel className="mb-lg" images={projects} />}
 
-      <TalksBlock
-        title={data.resources_section_title!}
-        talks={resources}
-      />
       <ThematicsBlock
         title={data.thematics_section_title!}
         thematics={thematics.map(t => ({ ...t, id: t.id?.toString() || '' }))}
         className="my-lg"
+      />
+
+      <TalksBlock
+        title={data.resources_section_title!}
+        talks={resources}
       />
       <ResultsCard
         title={data.results_section_title!}
