@@ -116,6 +116,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/donation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get/donation"];
+        put: operations["put/donation"];
+        post?: never;
+        delete: operations["delete/donation"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/evenement": {
         parameters: {
             query?: never;
@@ -8167,6 +8183,359 @@ export interface components {
             data?: components["schemas"]["Democracy"];
             meta?: Record<string, never>;
         };
+        DonationRequest: {
+            data: {
+                banner_title?: string;
+                /** @example string or id */
+                banner_video?: number | string;
+                introduction_text?: string;
+                resources_title?: string;
+                actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
+                goal_title?: string;
+                goals?: components["schemas"]["GoalGoalComponent"][];
+                donation_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                locale?: string;
+                localizations?: (number | string)[];
+            };
+        };
+        DonationListResponse: {
+            data?: components["schemas"]["Donation"][];
+            meta?: {
+                pagination?: {
+                    page?: number;
+                    pageSize?: number;
+                    pageCount?: number;
+                    total?: number;
+                };
+            };
+        };
+        Donation: {
+            id?: number;
+            documentId?: string;
+            banner_title?: string;
+            banner_video?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: unknown;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                /** Format: float */
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: unknown;
+                related?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                folder?: {
+                    id?: number;
+                    documentId?: string;
+                    name?: string;
+                    pathId?: number;
+                    parent?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    children?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    files?: {
+                        id?: number;
+                        documentId?: string;
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        /** Format: float */
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                        folder?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        folderPath?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        /** Format: date-time */
+                        updatedAt?: string;
+                        /** Format: date-time */
+                        publishedAt?: string;
+                        createdBy?: {
+                            id?: number;
+                            documentId?: string;
+                            firstname?: string;
+                            lastname?: string;
+                            username?: string;
+                            /** Format: email */
+                            email?: string;
+                            resetPasswordToken?: string;
+                            registrationToken?: string;
+                            isActive?: boolean;
+                            roles?: {
+                                id?: number;
+                                documentId?: string;
+                                name?: string;
+                                code?: string;
+                                description?: string;
+                                users?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                                permissions?: {
+                                    id?: number;
+                                    documentId?: string;
+                                    action?: string;
+                                    actionParameters?: unknown;
+                                    subject?: string;
+                                    properties?: unknown;
+                                    conditions?: unknown;
+                                    role?: {
+                                        id?: number;
+                                        documentId?: string;
+                                    };
+                                    /** Format: date-time */
+                                    createdAt?: string;
+                                    /** Format: date-time */
+                                    updatedAt?: string;
+                                    /** Format: date-time */
+                                    publishedAt?: string;
+                                    createdBy?: {
+                                        id?: number;
+                                        documentId?: string;
+                                    };
+                                    updatedBy?: {
+                                        id?: number;
+                                        documentId?: string;
+                                    };
+                                    locale?: string;
+                                    localizations?: {
+                                        id?: number;
+                                        documentId?: string;
+                                    }[];
+                                }[];
+                                /** Format: date-time */
+                                createdAt?: string;
+                                /** Format: date-time */
+                                updatedAt?: string;
+                                /** Format: date-time */
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: {
+                                    id?: number;
+                                    documentId?: string;
+                                }[];
+                            }[];
+                            blocked?: boolean;
+                            preferedLanguage?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            /** Format: date-time */
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: {
+                                id?: number;
+                                documentId?: string;
+                            }[];
+                        };
+                        updatedBy?: {
+                            id?: number;
+                            documentId?: string;
+                        };
+                        locale?: string;
+                        localizations?: {
+                            id?: number;
+                            documentId?: string;
+                        }[];
+                    }[];
+                    path?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                };
+                folderPath?: string;
+                /** Format: date-time */
+                createdAt?: string;
+                /** Format: date-time */
+                updatedAt?: string;
+                /** Format: date-time */
+                publishedAt?: string;
+                createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+            };
+            introduction_text?: string;
+            resources_title?: string;
+            actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
+            goal_title?: string;
+            goals?: components["schemas"]["GoalGoalComponent"][];
+            donation_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+            /** Format: date-time */
+            createdAt?: string;
+            /** Format: date-time */
+            updatedAt?: string;
+            /** Format: date-time */
+            publishedAt?: string;
+            createdBy?: {
+                id?: number;
+                documentId?: string;
+            };
+            updatedBy?: {
+                id?: number;
+                documentId?: string;
+            };
+            locale?: string;
+            localizations?: {
+                id?: number;
+                documentId?: string;
+                banner_title?: string;
+                banner_video?: {
+                    id?: number;
+                    documentId?: string;
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: unknown;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** Format: float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: unknown;
+                    related?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                    folder?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    folderPath?: string;
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    /** Format: date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                        id?: number;
+                        documentId?: string;
+                    }[];
+                };
+                introduction_text?: string;
+                resources_title?: string;
+                actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
+                goal_title?: string;
+                goals?: components["schemas"]["GoalGoalComponent"][];
+                donation_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                /** Format: date-time */
+                createdAt?: string;
+                /** Format: date-time */
+                updatedAt?: string;
+                /** Format: date-time */
+                publishedAt?: string;
+                createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+            }[];
+        };
+        DonationResponse: {
+            data?: components["schemas"]["Donation"];
+            meta?: Record<string, never>;
+        };
+        GoalGoalComponent: {
+            id?: number;
+            color?: string;
+            goal_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
+        };
         EvenementRequest: {
             data: {
                 events?: (number | string)[];
@@ -16154,6 +16523,7 @@ export interface components {
                 informations?: components["schemas"]["InformationInformationBlockComponent"][];
                 seasons?: (number | string)[];
                 projects?: (number | string)[];
+                categories?: unknown;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -16884,6 +17254,7 @@ export interface components {
                 id?: number;
                 documentId?: string;
             }[];
+            categories?: unknown;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -16917,6 +17288,7 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 }[];
+                categories?: unknown;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -23638,6 +24010,228 @@ export interface operations {
         };
     };
     "delete/democracy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": number;
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    "get/donation": {
+        parameters: {
+            query?: {
+                /** @description Sort by attributes ascending (asc) or descending (desc) */
+                sort?: string;
+                /** @description Return page/pageSize (default: true) */
+                "pagination[withCount]"?: boolean;
+                /** @description Page number (default: 0) */
+                "pagination[page]"?: number;
+                /** @description Page size (default: 25) */
+                "pagination[pageSize]"?: number;
+                /** @description Offset value (default: 0) */
+                "pagination[start]"?: number;
+                /** @description Number of entities to return (default: 25) */
+                "pagination[limit]"?: number;
+                /** @description Fields to return (ex: title,author) */
+                fields?: string;
+                /** @description Relations to return */
+                populate?: string;
+                /** @description Filters to apply */
+                filters?: {
+                    [key: string]: unknown;
+                };
+                /** @description Locale to apply */
+                locale?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DonationResponse"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    "put/donation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DonationRequest"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DonationResponse"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    "delete/donation": {
         parameters: {
             query?: never;
             header?: never;

@@ -23,6 +23,7 @@ async function fetchProjectListPageData() {
         populate: {
           introduction_cta: {
             populate: '*',
+
           },
           thematics: {
             populate: '*',
@@ -48,7 +49,7 @@ export type ProjectListPageData = NonNullable<NonNullable<Awaited<ReturnType<typ
 export default async function Page() {
   const { data } = await fetchProjectListPageData();
 
-    if (!data?.data) {
+  if (!data?.data) {
     return null;
   }
 

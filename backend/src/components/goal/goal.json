@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_goal_goals",
+  "info": {
+    "displayName": "goal"
+  },
+  "options": {},
+  "attributes": {
+    "color": {
+      "type": "string"
+    },
+    "goal_cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

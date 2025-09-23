@@ -1,39 +1,40 @@
-import { ThematicValues } from "./utils";
+import { ThematicValues } from './utils';
 
 export interface IProject {
   project: string;
-  link?: string
+  link?: string;
   association: string;
   description: string;
   thematics: ThematicValues[];
-  tags?: string[];
+  seasons?: string[];
+  categories?: string[];
   date: string;
   image: string;
 }
 
 export interface IFilter {
-    filterName: string;
-    filterValue: string;
-    thematic?: ThematicValues;
+  filterName: string;
+  filterValue: string;
+  filterType: 'thematic' | 'season' | 'category';
+  thematic?: ThematicValues;
 }
 
 export interface IInformation {
-    title: string;
-    text: {info: string; ctaLink?: string;}[];
+  title: string;
+  text: { info: string; ctaLink?: string }[];
 }
 
 interface IMember {
-    name: string;
-    role: string;
-    image: string;
+  name: string;
+  role: string;
+  image: string;
 }
 export interface IMembers {
-    title: string;
-    members: IMember[];
+  title: string;
+  members: IMember[];
 }
 
 export interface IProjectImpacts {
-    value: string;
-    text: string;
+  value: string;
+  text: string;
 }
-

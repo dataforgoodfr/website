@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import ProjectListBlock, { ProjectListBlockProps } from './ProjectListBlock';
+import ProjectListBlock from './ProjectListBlock';
 import { ThematicValues } from '@/lib/utils';
 import { IFilter, IProject } from '@/lib/types';
 
@@ -47,12 +47,12 @@ type Story = StoryObj<typeof meta>;
       thematic: "democracy" as ThematicValues,
     },
     {
-      filterName: "Saison 2025",
-      filterValue: "saison2025",
+      filterName: "Saison 11",
+      filterValue: "Saison 11",
     },
     {
-      filterName: "Saison 2024",
-      filterValue: "saison2024",
+      filterName: "Saison 12",
+      filterValue: "Saison 12",
     },
   ]
 
@@ -64,7 +64,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
+      seasons: ["Saison 12"],
       link: "/"
     },
     {
@@ -74,7 +74,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
+      seasons: ["Saison 12"],
       link: "/"
     },
     {
@@ -84,7 +84,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
+      seasons: ["Saison 12"],
     },
     {
       project: 'Trawlwatch',
@@ -93,7 +93,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025"],
+      seasons: ["Saison 12"],
     },
     {
       project: 'Trawlwatch',
@@ -102,7 +102,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
+      seasons: ["Saison 12"],
     },
     {
       project: 'Trawlwatch',
@@ -111,7 +111,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
+      seasons: ["Saison 11"],
     },
     {
       project: 'Trawlwatch',
@@ -120,7 +120,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2024"],
+      seasons: ["Saison 11"],
     },
     {
       project: 'Trawlwatch',
@@ -129,7 +129,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
+      seasons: ["Saison 12", "Saison 11"],
     },
     {
       project: 'Trawlwatch',
@@ -138,7 +138,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
+      seasons: ["Saison 12", "Saison 11"],
     },
     {
       project: 'Trawlwatch',
@@ -147,7 +147,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
+      seasons: ["Saison 12", "Saison 11"],
     },
     {
       project: 'Trawlwatch',
@@ -156,7 +156,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
+      seasons: ["Saison 12", "Saison 11"],
     },
     {
       project: 'Page3',
@@ -165,7 +165,7 @@ type Story = StoryObj<typeof meta>;
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
       date: Date.now().toLocaleString(),
-      tags: ["saison2025", "saison2024"],
+      seasons: ["Saison 12", "Saison 11"],
     },
   ];
 

@@ -1,10 +1,12 @@
 import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 import { thematicsColors, ThematicValues } from '@/lib/utils';
+import { IFilter } from '@/lib/types';
 
 export type FilterProps = HTMLAttributes<HTMLLabelElement> & {
     filterName: string;
     filterValue: string;
+    filterType: IFilter['filterType'];
     thematic?: ThematicValues;
     checked: any;
     onClick: (e: any) => void;
@@ -16,6 +18,7 @@ export type FilterProps = HTMLAttributes<HTMLLabelElement> & {
 const Filter = ({
     filterName,
     filterValue,
+    filterType,
     thematic,
     checked,
     onClick,
@@ -49,7 +52,7 @@ const Filter = ({
                     id={filterValue}
                     className='absolute opacity-0'
                     checked={checked}
-                    data-thematic={thematic}
+                    data-type={filterType}
                 />
             </>
         </label>
