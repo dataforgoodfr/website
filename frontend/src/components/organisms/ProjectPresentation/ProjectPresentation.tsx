@@ -66,7 +66,7 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
             {description.map((paragraph, index) => (<p className='text-sm font-secondary ' key={index}>{paragraph}</p>))}
           </div>
           <div className='flex flex-row'>
-            {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-cover" />}
+            {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
             <div className='bg-violet-light p-6 text-xs content-center text-start mx-auto'>
               {association.summary}
             </div>
