@@ -44,7 +44,7 @@ export default function PositionsPage({ data }: PositionPageProps) {
       <Animation />
 
       <LargeTextImage
-        image={data.testimonial_background.url}
+        image={data.testimonial_background?.url}
         citation={data.testimonial.quote}
         citationAuthor={data.testimonial.author}
         citationAuthorImage={data.testimonial.avatar.url}

@@ -103,14 +103,16 @@ export default async function AboutPage({ data }: AboutProps) {
 
   return (
     <>
-      <div className="container my-lg">
-        <Title className="mb-md max-w-5xl" variant="medium">
-          {data.introduction}
-        </Title>
+      <div className="container mt-lg pt-md">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* @TODO: mettre le titre dans le fichier de traduction */}
+          <Title variant="medium" className="mb-xs">Nous connaitre</Title>
+          <p className="lead">{data.introduction}</p>
+        </div>
       </div>
 
-      <div className="my-lg container flex flex-col md:flex-row gap-8">
-        <div className="md:flex-1 flex justify-end">
+      <div className="mb-lg flex flex-col md:flex-row md:justify-between gap-8">
+        <div className="flex justify-end w-full md:w-[770px]">
           <CtaWithImage
             title={{
               children: data.cta_left?.title,
@@ -145,7 +147,7 @@ export default async function AboutPage({ data }: AboutProps) {
             className: 'sm:left-6',
           }}
           image={data.cta_right?.image.url}
-          className="md:flex-1"
+          className="w-full md:w-[770px]"
           contentClassName="relative md:top-24"
           cta={{
             text: data.cta_right?.cta.text,
