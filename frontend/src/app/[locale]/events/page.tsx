@@ -22,6 +22,7 @@ async function fetchEventPageData(page: number, pageSize: number) {
       query: {
         "pagination[page]": page,
         "pagination[pageSize]": pageSize,
+        "sort": "date:desc",
         populate: '*'
       },
     },
