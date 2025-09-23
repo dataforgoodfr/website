@@ -94,7 +94,7 @@ export default function Homepage({ data }: HomepageProps) {
 
   return (
     <>
-      <HeroBlock className='mt-lg'
+      <HeroBlock
         {...heroData}
         title={{ ...heroData.title, children: t('hero.title') }}
         subtitle={{ ...heroData.subtitle, children: t('hero.subtitle') }}

@@ -1,16 +1,17 @@
 import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
-import { Button, ButtonProps } from '@/components';
 import { thematicsColors, ThematicValues } from '@/lib/utils';
 
-export type FilterProps = HTMLAttributes<HTMLDivElement> & {
+export type FilterProps = HTMLAttributes<HTMLLabelElement> & {
     filterName: string;
     filterValue: string;
     thematic?: ThematicValues;
     checked: any;
-    onClick: any;
+    onClick: (e: any) => void;
     className?: string;
 };
+
+
 
 const Filter = ({
     filterName,
@@ -21,36 +22,37 @@ const Filter = ({
     className = '',
     ...props
 }: FilterProps) => {
+    const handleClick = (e: any) => {
+        onClick?.(e.target);
+    };
+
     if (!filterName) {
         return null;
     }
 
     return (
-        <Button variant="tertiary" color="violet" onClick={onClick} hasArrow={false} filtervalue={filterValue} thematic={thematic} className={clsx(
-            'flex flex-row text-violet-light text-sm px-2.5 py-2 bg-opacity-0',
+        <label htmlFor={filterValue} className={clsx(
+            'flex flex-row text-violet-light hover:bg-building text-sm px-2.5 py-2 bg-opacity-0 border-2 items-center border-building ',
             className,
         )} {...props}>
             <>
-                {thematic && <p className={`size-[23px] rounded-full bg-${thematicsColors[thematic]}`}>
-                </p>
+                {thematic && <span className={`size-[23px] mr-2 rounded-full bg-${thematicsColors[thematic]}`} />
                 }
-                {!checked && (<label htmlFor={filterValue} className='checkbox'>
+                <span className={clsx('checkbox', checked && 'checked-label')}>
                     {filterName}
-                </label>)}
-                {checked && <label htmlFor={filterValue} className='checkbox checked-label'>
-                    {filterName}
-                </label>}
+                </span>
                 <input
                     type="checkbox"
                     value={filterValue}
                     name={filterValue}
-                    onChange={onClick}
+                    onChange={handleClick}
                     id={filterValue}
                     className='absolute opacity-0'
                     checked={checked}
+                    data-thematic={thematic}
                 />
             </>
-        </Button>
+        </label>
     );
 };
 

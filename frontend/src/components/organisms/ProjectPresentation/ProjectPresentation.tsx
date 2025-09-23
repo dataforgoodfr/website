@@ -44,7 +44,7 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
         <div className={clsx(
           'flex flex-col w-full sm:w-1/2',
         )}>
-          <Title className="mb-sm font-tertiary" level={2} variant="big" >{name}</Title>
+          <Title className="mb-sm font-tertiary" level={titleLevel} variant="big" >{name}</Title>
           <p className="mb-xs text-md font-tertiary" >{summary}</p>
           <div className='flex flex-row gap-xs mt-xs items-start'>
             {tags?.filter((tag) => tag.type === 'temporal').map((tag, index) => (
