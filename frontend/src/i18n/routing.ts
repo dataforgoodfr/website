@@ -14,8 +14,8 @@ export const pathnames = {
   "/blog": {
     fr: "/nos-articles",
   },
-  "/blog/[id]": {
-    fr: "/nos-articles/[id]",
+  "/blog/[slug]": {
+    fr: "/nos-articles/[slug]",
   },
   "/democracy": {
     fr: "/democratie",

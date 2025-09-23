@@ -27,8 +27,8 @@ const Header = () => {
     know: usePathLocale('/about'),
     projects: '/projects',
     positions: usePathLocale('/positions'),
-    news: usePathLocale('/blog'),
     events: usePathLocale('/events'),
+    resources: usePathLocale('/blog'),
   };
 
   const authorizeKeys = [

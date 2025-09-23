@@ -61,7 +61,7 @@ export default function EventsPage({ data, pagination, currentPage }: EventsProp
 
       <Pagination
         pageCount={pagination.pageCount}
-        currentPage={pagination.page} // Use pagination.page directly
+        currentPage={pagination.page}
         setCurrentPage={handlePageChange}
         className="mt-sm mb-lg mx-auto max-w-max"
         color="black"

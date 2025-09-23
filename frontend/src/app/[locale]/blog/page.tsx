@@ -16,28 +16,43 @@ export async function generateMetadata({
   };
 }
 
-async function fetchBlogPageData() {
-  return await client.GET('/blog-list', {
-        params: {
-          query: {
-            populate: {
-              blogs: {
-                populate: '*',
-              },
+async function fetchBlogsPageData(page: number, pageSize: number) {
+  return await client.GET('/resources', {
+      params: {
+        query: {
+          "pagination[page]": page,
+          "pagination[pageSize]": pageSize,
+          "sort": "createdAt:desc",
+          populate: {
+            blog: {
+              populate: '*',
+            },
+            press_release: {
+              populate: '*',
             },
           },
         },
-      });
+      },
+    });
 }
 
-export type BlogsPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchBlogPageData>>["data"]>["data"]>;
+export type BlogsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchBlogsPageData>>["data"]>;
+export type BlogsPageData = NonNullable<BlogsPageResponse["data"]>;
+export type BlogsPageMeta = NonNullable<NonNullable<BlogsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page() {
-  const { data } = await fetchBlogPageData();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+  const pageSize = 8;
+  const response = await fetchBlogsPageData(page, pageSize);
 
-    if (!data?.data) {
+  if (!response?.data || !response?.data.meta?.pagination) {
+    console.log('No data or pagination')
     return null;
   }
 
-  return <BlogPage data={data.data} />;
+  return <BlogPage data={response.data?.data} pagination={response.data.meta.pagination} currentPage={page}/>;
 };
