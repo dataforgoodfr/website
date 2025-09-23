@@ -10,6 +10,7 @@ export type ProjectListBlockProps = {
   titleLevel?: TitleProps['level'];
   filters: IFilter[];
   projects: IProject[];
+  joinCta?: {text?: string; link?: string;}
   pageSize: number;
   className?: string;
 };
@@ -19,6 +20,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   titleLevel = 2,
   filters,
   projects,
+  joinCta,
   pageSize,
   className,
   ...props
@@ -127,7 +129,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
 
         <div className='flex justify-center my-md'>
-          <Button href={"/todo"} color="white" hasArrow> Devenir bénévole sur un projet </Button>
+          <Button href={joinCta?.link ?? "/"} color="white" hasArrow> {joinCta?.text ?? t("cta.text")} </Button>
         </div>
       </div>
     </div>

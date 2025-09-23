@@ -65,7 +65,7 @@ function getDeliverable(project: ProjectPageData) {
   return {
     processes: [{
       name: "",
-      description: project.delivrable.split("\n")
+      description: project.delivrable?.split("\n") || []
     }]
   };
 }
@@ -125,16 +125,16 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         className="my-lg "
       />
 
-      <ProjectImpactBlock
+      {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
         title={t('impact.title')}
         impacts={impacts}
         className='my-lg'
-      />
+      />}
 
-      <ProjectCarousel
+      {slides.length > 0 && <ProjectCarousel
         title={t('carousel.title')}
         slides={slides}
-      />
+      />}
 
       <ProjectProcesses
         {...delivrables}

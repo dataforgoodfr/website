@@ -48,6 +48,11 @@
         "Outil Interne",
         "Outil pour les citoyens"
       ]
+    },
+    "join_cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action",
+      "repeatable": false
     }
   }
 }

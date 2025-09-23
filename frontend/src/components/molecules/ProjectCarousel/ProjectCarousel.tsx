@@ -100,7 +100,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
 
               <CarouselPrevious className='h-fit-content' />
               <div className="text-center text-black px-4">
-                {slides[current].description}
+                {slides[current]?.description}
               </div>
               <CarouselNext className='h-fit-content' />
             </div>

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-23T14:55:00.559Z"
+    "x-generation-date": "2025-09-23T15:29:52.466Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -40740,6 +40740,9 @@
                 ],
                 "example": "string or id"
               },
+              "manifest_cta": {
+                "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+              },
               "locale": {
                 "type": "string"
               },
@@ -43680,6 +43683,9 @@
               }
             }
           },
+          "manifest_cta": {
+            "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -43887,6 +43893,9 @@
                       }
                     }
                   }
+                },
+                "manifest_cta": {
+                  "$ref": "#/components/schemas/CallToActionCallToActionComponent"
                 },
                 "createdAt": {
                   "type": "string",
@@ -53357,6 +53366,9 @@
                 }
               },
               "categories": {},
+              "join_cta": {
+                "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+              },
               "locale": {
                 "type": "string"
               },
@@ -55442,6 +55454,9 @@
             }
           },
           "categories": {},
+          "join_cta": {
+            "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -55545,6 +55560,9 @@
                   }
                 },
                 "categories": {},
+                "join_cta": {
+                  "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"

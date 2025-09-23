@@ -37,6 +37,9 @@ async function fetchProjectListPageData() {
           projects: {
             populate: '*',
           },
+          join_cta: {
+            populate: '*',
+          }
         },
       },
     },

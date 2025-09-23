@@ -19,6 +19,15 @@ function transformPressReleases(press_releases: NonNullable<PositionsPageData['p
   }))
 }
 
+function transformAnimation(data: NonNullable<PositionsPageData>) {
+  return {
+    manifestCta: {
+      text: data.manifest_cta?.text || "",
+      link: data.manifest_cta?.link || "",
+    }
+  }
+}
+
 function transformResources(resources: NonNullable<PositionsPageData['resources']>) {
   return resources.map((resource) => {
     const isBlog = !!resource.blog;
@@ -38,10 +47,11 @@ export default function PositionsPage({ data }: PositionPageProps) {
   const t = useTranslations('positions');
   const press = transformPressReleases(data.press_releases ?? []);
   const resources = transformResources(data.resources ?? []);
+  const animationData = transformAnimation(data ?? {});
 
   return (
     <>
-      <Animation />
+      <Animation animationData={animationData} />
 
       <LargeTextImage
         image={data.testimonial_background?.url}

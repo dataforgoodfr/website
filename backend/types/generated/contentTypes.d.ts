@@ -1087,6 +1087,10 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
       'api::position.position'
     > &
       Schema.Attribute.Private;
+    manifest_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action',
+      false
+    >;
     press_releases: Schema.Attribute.Relation<
       'oneToMany',
       'api::press-release.press-release'
@@ -1455,6 +1459,10 @@ export interface ApiProjectsListProjectsList extends Struct.SingleTypeSchema {
     introduction: Schema.Attribute.Text;
     introduction_cta: Schema.Attribute.Component<
       'call-to-action.call-to-action-with-image',
+      false
+    >;
+    join_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action',
       false
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
