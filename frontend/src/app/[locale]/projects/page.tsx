@@ -23,6 +23,7 @@ async function fetchProjectListPageData() {
         populate: {
           introduction_cta: {
             populate: '*',
+
           },
           thematics: {
             populate: '*',
@@ -36,9 +37,6 @@ async function fetchProjectListPageData() {
           projects: {
             populate: '*',
           },
-          categories: {
-            populate: '*',
-          }
         },
       },
     },
@@ -51,10 +49,7 @@ export type ProjectListPageData = NonNullable<NonNullable<Awaited<ReturnType<typ
 export default async function Page() {
   const { data } = await fetchProjectListPageData();
 
-  console.log("test")
-  console.log(data)
-
-    if (!data?.data) {
+  if (!data?.data) {
     return null;
   }
 

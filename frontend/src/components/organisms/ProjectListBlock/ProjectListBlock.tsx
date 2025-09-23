@@ -30,7 +30,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   const [hideFilters, setHideFilters] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState<number>(1)
 
-  const [activeFilters, setActiveFilters] = useState<{ seasons: string[]; categories: [], thematics: string[]; project: string }>({
+  const [activeFilters, setActiveFilters] = useState<{ seasons: string[]; categories: string[], thematics: string[]; project: string }>({
     seasons: [],
     categories: [],
     thematics: [],
@@ -44,7 +44,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   useEffect(() => {
     setFilteredProjects(projects.filter((project) => project.project.toLowerCase().includes(activeFilters.project?.toLowerCase() ?? "")
       && (activeFilters.seasons.length === 0 || project.seasons?.some((tag) => (activeFilters.seasons.includes(tag))))
-      && (activeFilters.categories.length === 0 || project.category?.some((cat) => (activeFilters.categories.includes(cat))))
+      && (activeFilters.categories.length === 0 || project.categories?.some((cat) => (activeFilters.categories.includes(cat))))
       && (activeFilters.thematics.length === 0 || project.thematics?.some((thematic) => (activeFilters.thematics.includes(thematic))))
     ))
     setCurrentPage(1)
@@ -63,15 +63,19 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
   const handleClick = (e: any) => {
     const filterValue = e.value as string
-    const thematic = e.getAttribute("data-thematic")
-    if (thematic) {
+    const filterType = e.getAttribute("data-type")
+    if (filterType === 'thematic') {
       activeFilters.thematics.includes(filterValue)
         ? setActiveFilters({ ...activeFilters, thematics: activeFilters.thematics.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, thematics: [...activeFilters.thematics, filterValue] })
-    } else {
+    } else if(filterType === 'season') {
       activeFilters.seasons.includes(filterValue)
         ? setActiveFilters({ ...activeFilters, seasons: activeFilters.seasons.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, seasons: [...activeFilters.seasons, filterValue] })
+    } else if(filterType === 'category') {
+      activeFilters.categories.includes(filterValue)
+        ? setActiveFilters({ ...activeFilters, categories: activeFilters.categories.filter((filter) => filter !== filterValue) })
+        : setActiveFilters({ ...activeFilters, categories: [...activeFilters.categories, filterValue] })
     }
   }
 

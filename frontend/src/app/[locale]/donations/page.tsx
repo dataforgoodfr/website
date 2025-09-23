@@ -48,8 +48,7 @@ export type DonationsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fe
 export default async function Page() {
   const { data } = await fetchDonationData();
 
-  console.log(data?.data?.donation_cta)
-    if (!data?.data) {
+  if (!data?.data) {
     return null;
   }
 
