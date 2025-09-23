@@ -93,34 +93,32 @@ export default function ProjectsPage({ data }: ProjectListProps) {
 
   return (
     <>
-      <div className="my-lg container flex flex-col md:flex-row">
-        <div className="md:flex-1 md:flex justify-end">
-          <Title className="mb-md max-w-4xl content-center" variant="medium">
-            {data.introduction}
-          </Title>
+      <div className="my-lg container flex flex-col lg:flex-row">
+        <Title className="mb-md max-w-4xl content-center flex-1" variant="medium">
+          {data.introduction}
+        </Title>
 
-          <CtaWithImage
-            title={{
-              children: data.introduction_cta?.title,
-              rotation: -4,
-            }}
-            content={{
-              text: data.introduction_cta?.content ?? '',
-              rotation: 1.5,
-              className: 'sm:left-6',
-            }}
-            image={data.introduction_cta?.image.url ?? ''}
-            imageClassName="object-fill"
-            className="md:flex-1"
-            contentClassName="relative md:top-24"
-            cta={{
-              text: data.introduction_cta?.cta.text,
-              link: data.introduction_cta?.cta.link,
-              rotation: 0.7,
-              className: 'relative sm:left-48 -top-2',
-            }}
-          />
-        </div>
+        <CtaWithImage
+          title={{
+            children: data.introduction_cta?.title,
+            rotation: -4,
+          }}
+          content={{
+            text: data.introduction_cta?.content ?? '',
+            rotation: 1.5,
+            className: 'sm:left-6',
+          }}
+          image={data.introduction_cta?.image.url ?? ''}
+          imageClassName="object-fill"
+          className="md:w-[400px]"
+          contentClassName="relative md:top-24"
+          cta={{
+            text: data.introduction_cta?.cta.text,
+            link: data.introduction_cta?.cta.link,
+            rotation: 0.7,
+            className: 'relative sm:left-48 -top-2',
+          }}
+        />
       </div>
 
       <ThematicsBlock

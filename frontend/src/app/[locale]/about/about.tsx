@@ -110,8 +110,8 @@ export default async function AboutPage({ data }: AboutProps) {
         </div>
       </div>
 
-      <div className="mb-lg flex flex-col md:flex-row md:justify-between gap-8">
-        <div className="flex justify-end w-full md:w-[770px]">
+      <div className="mb-lg flex flex-col lg:flex-row lg:justify-between gap-8">
+        <div className="flex justify-end w-full sm:my-[200px] md:my-0 lg:w-[770px]">
           <CtaWithImage
             title={{
               children: data.cta_left?.title,
@@ -125,12 +125,12 @@ export default async function AboutPage({ data }: AboutProps) {
             }}
             image={data.cta_left?.image.url}
             imagePosition="left"
-            contentClassName="relative md:-top-24 md:-left-12"
+            contentClassName="relative lg:-top-24 lg:-left-12"
             cta={{
               text: data.cta_left?.cta.text,
               link: data.cta_left?.cta.link,
               rotation: -3.7,
-              className: 'relative sm:left-[182px] -top-4',
+              className: 'relative sm:left-[182px] md:-top-4',
             }}
           />
         </div>
@@ -141,13 +141,13 @@ export default async function AboutPage({ data }: AboutProps) {
             rotation: -4,
           }}
           content={{
-            text: data.cta_right?.content,
+            text: data.cta_right?.content ?? '',
             rotation: 1.5,
             className: 'sm:left-6',
           }}
-          image={data.cta_right?.image.url}
-          className="w-full md:w-[770px]"
-          contentClassName="relative md:top-24"
+          image={data.cta_right?.image.url ?? ''}
+          className="w-full lg:w-[770px]"
+          contentClassName="relative lg:top-24"
           cta={{
             text: data.cta_right?.cta.text,
             link: data.cta_right?.cta.link,

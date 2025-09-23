@@ -29,27 +29,25 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
 
   const ProjectCard = <div
     className={clsx(
-      'relative w-[313px] h-[377px]',
+      'relative grid grid-cols-1 grid-rows-1 h-[377px]',
       className
     )}
     {...props}
   >
-    {image && <div className='h-full w-full'>
-      <Image src={image} alt="" className="absolute w-full h-full object-cover border border-white" loading="lazy" width={160} height={209} />
-      <div className="absolute -z-10 bg-gradient-to-b from-white/0 to-black/80 h-full w-full" />
-    </div>}
-    <div className="absolute top-2 right-2 w-full flex flex-row gap-2 justify-end">
+    {image && <Image src={image} alt="" className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={160} height={209} />}
+    <div className="col-start-1 row-start-1 bg-gradient-to-b from-white/0 to-black h-full w-full" />
+    <div className="absolute top-3 right-5 flex gap-5">
       {thematics.map((thematic, index) => (<div key={index} className={`size-[23px] rounded-full bg-${thematicsColors[thematic]}`}></div>))}
     </div>
-    <div className="absolute bottom-3 pl-3 w-full flex flex-col gap-2 items-start">
-      <p className="pl-sm text-xs text-white">{project}</p>
-      <p className="pl-sm text-xs text-white opacity-50">{association}</p>
-      {description && <p className="pl-sm text-xs text-white">{description}</p>}
+    <div className="col-start-1 row-start-1 flex flex-col justify-end m-5 gap-2 items-start text-white">
+      <p className="h4-like">{project}</p>
+      <p className="h4-like opacity-50">{association}</p>
+      {description && <p className="text-xs">{description}</p>}
     </div>
   </div>;
   return (
     link 
-    ? (<Link href={link}>
+    ? (<Link href={link} className="block">
       {ProjectCard}
     </Link>) 
     : ProjectCard

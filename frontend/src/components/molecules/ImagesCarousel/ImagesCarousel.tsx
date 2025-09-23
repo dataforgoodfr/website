@@ -85,20 +85,9 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
     <Carousel 
       setApi={setApi} 
       className={clsx(
-        'w-full relative',
+        'w-full relative mask-papper',
         className,
       )}
-      style={{
-        // Get real image
-        maskImage: 'url(/images/mask-papper.svg)',
-        maskSize: 'cover',
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center',
-        WebkitMaskImage: 'url(/images/mask-papper.svg)',
-        WebkitMaskSize: 'cover',
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: 'center',
-      }}
     >
       <CarouselContent>
         {images.map((image) => (

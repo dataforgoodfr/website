@@ -107,7 +107,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
         </div>
 
 
-        <div className="flex gap-xs justify-center flex-wrap">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {displayProjects?.sort((a, b) => (new Date(b.date).valueOf() - new Date(a.date).valueOf())).map((project, index) => (
             <ProjectListCard
               key={index}

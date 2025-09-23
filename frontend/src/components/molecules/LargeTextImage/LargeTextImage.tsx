@@ -41,18 +41,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
   return (
     <div
       id={id}
-      className={className}
-      style={{
-        // Get real image
-        maskImage: 'url(/images/mask-papper.svg)',
-        maskSize: 'cover',
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center',
-        WebkitMaskImage: 'url(/images/mask-papper.svg)',
-        WebkitMaskSize: 'cover',
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: 'center',
-      }}
+      className={clsx(className, 'mask-papper')}
       {...props}
     >
       <div
@@ -65,7 +54,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
         
         <div className="col-start-1 row-start-2 md:row-start-1">
             <div className={clsx(
-              'flex flex-col justify-center items-start max-w-2xl lg:pl-40 ml-auto h-full bg-cover bg-left',
+              'flex flex-col justify-center items-start md:max-w-md lg:max-w-2xl p-8 md:p-0 md:pl-20 lg:pl-40 ml-auto h-full bg-cover bg-center md:bg-left',
               bgImageClass,
             )}>
               {title && <Title level={titleLevel} variant="medium">{title}</Title>}

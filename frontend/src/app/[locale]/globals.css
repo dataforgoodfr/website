@@ -209,4 +209,15 @@
   [class*="container-"] [class*="container-"] {
     @apply px-0;
   }
+
+
+  /* Others */
+  .mask-papper {
+    mask-image: url('/images/mask-papper.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('/images/mask-papper.svg');
+    -webkit-mask-size: cover;
+  }
 }
