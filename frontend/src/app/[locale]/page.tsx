@@ -10,7 +10,14 @@ async function fetchHomepageData() {
             populate: "*"
           },
           results: {
-            populate: "*"
+            populate: {
+              kpi: {
+                populate: "*",
+              },
+              cta: {
+                populate: "*",
+              }
+            }
           },
           featured_projects: {
             fields: ["title", "short_description"],
@@ -49,6 +56,7 @@ export type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fet
 
 export default async function Page() {
   const { data } = await fetchHomepageData();
+  console.log(data?.data?.results)
 
   if (!data?.data) {
     return null;

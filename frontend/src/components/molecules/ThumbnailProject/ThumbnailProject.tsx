@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 
 export type ThumbnailProjectProps = {
   name: TiltedTitleProps;
-  baseline?: string;
   images?: string[];
   link: string;
   company?: string;
@@ -19,7 +18,6 @@ export type ThumbnailProjectProps = {
 
 const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
   name,
-  baseline,
   images,
   link,
   company,
@@ -46,26 +44,30 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
             </div>
           ))}
         </div>}
-        {baseline && <Title level="p" variant="small" className="mb-xs">{baseline}</Title>}
-        {company && <Title level="p" variant="x-small" className="mb-xs">{company}</Title>}
+        {company && <Title level="p" variant="small" className="mb-xs">{company}</Title>}
         {description && <p className="lead mb-xs">{description}</p>}
-        
+
         <Button href={link}>{t('cta')}</Button>
       </div>
 
-      {kpis && <div className="w-full md:w-48 lg:w-96">
+      {kpis && kpis.some((kpi) => kpi.name) && <div className="w-full md:w-48 lg:w-96">
         <Title level={(typeof baseTitleLevel === 'number' ? baseTitleLevel + 1 : 3) as TitleProps['level']} variant="small" hasSeparator className="mb-sm">{t('impacts')}</Title>
-      
+
         <ul>
-          {kpis.map((kpi, index) => (
-            <li key={index} className="mb-md">
-              <div className="flex items-center gap-2">
-                <Image src="/images/bullet-purple.svg" alt="" width={22} height={22} className="w-[22px] h-[22px] object-contain" />
-                <Title level="p" variant="medium" className="flex-1">{kpi.name}</Title>
-              </div>
-              <p className="lead">{kpi.description}</p>
-            </li>
-          ))}
+          {kpis.map((kpi, index) => {
+            if (!kpi.name) {
+              return null
+            }
+            return (
+              <li key={index} className="mb-md">
+                <div className="flex items-center gap-2">
+                  <Image src="/images/bullet-purple.svg" alt="" width={22} height={22} className="w-[22px] h-[22px] object-contain" />
+                  <Title level="p" variant="medium" className="flex-1">{kpi.name}</Title>
+                </div>
+                <p className="lead">{kpi.description}</p>
+              </li>)
+          }
+          )}
         </ul>
       </div>}
     </div>

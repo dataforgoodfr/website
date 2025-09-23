@@ -13,10 +13,6 @@ const meta: Meta<typeof ThumbnailProject> = {
       control: 'object',
       description: 'Configuration du titre principal (TiltedTitle)',
     },
-    baseline: {
-      control: 'text',
-      description: 'Sous-titre ou baseline du projet',
-    },
     images: {
       control: 'object',
       description: 'Tableau des URLs des images du projet',
@@ -69,7 +65,6 @@ export const Default: Story = {
       level: 2,
       rotation: -5,
     },
-    baseline: 'Améliorer l\'impact social grâce aux données',
     images: [
       'https://picsum.photos/500/300?random=1',
       'https://picsum.photos/500/300?random=2',
@@ -88,7 +83,6 @@ export const WithoutImages: Story = {
       level: 2,
       rotation: -3,
     },
-    baseline: 'Un projet simple sans visuels',
     link: '/projets/simple',
     description: 'Description d\'un projet qui n\'a pas d\'images associées.',
   },
@@ -101,7 +95,6 @@ export const WithoutKpis: Story = {
       level: 2,
       rotation: -7,
     },
-    baseline: 'Projet en cours de développement',
     images: ['https://picsum.photos/500/300?random=3'],
     link: '/projets/en-cours',
     company: 'Startup Innovante',
@@ -126,7 +119,6 @@ export const WithSingleImage: Story = {
       level: 2,
       rotation: -4,
     },
-    baseline: 'Un seul visuel pour ce projet',
     images: ['https://picsum.photos/500/300?random=4'],
     link: '/projets/single-image',
     description: 'Ce projet n\'a qu\'une seule image pour illustrer son contenu.',
@@ -140,7 +132,6 @@ export const WithManyKpis: Story = {
       level: 2,
       rotation: -6,
     },
-    baseline: 'Projet très impactant',
     images: [
       'https://picsum.photos/500/300?random=5',
       'https://picsum.photos/500/300?random=6',
@@ -184,7 +175,6 @@ export const AllVariants: Story = {
             level: 2,
             rotation: -5,
           }}
-          baseline="Améliorer l'impact social grâce aux données"
           images={[
             'https://picsum.photos/500/300?random=7',
             'https://picsum.photos/500/300?random=8',
@@ -215,7 +205,6 @@ export const AllVariants: Story = {
             level: 2,
             rotation: -3,
           }}
-          baseline="Un projet simple sans visuels"
           link="/projets/simple"
           description="Description d'un projet qui n'a pas d'images associées."
         />

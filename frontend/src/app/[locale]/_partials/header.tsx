@@ -19,13 +19,13 @@ const Header = () => {
 
   const topNav: Record<string, string> = {
     volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
-    project: 'https://tally.so/r/wkGkG6',
+    project: 'https://noco.services.dataforgood.fr/dashboard/#/nc/form/88489f59-98e8-4e80-8d7b-a8711fd8fb49',
     financier: usePathLocale('/donations'),
   };
 
   const mainNav: Record<string, string> = {
     know: usePathLocale('/about'),
-    projects: '/projects',
+    projects: usePathLocale('/projects'),
     positions: usePathLocale('/positions'),
     events: usePathLocale('/events'),
     resources: usePathLocale('/blog'),

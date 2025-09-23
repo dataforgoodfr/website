@@ -9,7 +9,12 @@ import {
 import { useRef } from 'react';
 import Link from 'next/link';
 
-export default function Animation() {
+export default function Animation(animationData: {
+  manifestCta: {
+    text: string;
+    link: string;
+  };
+}) {
   const t = useTranslations('positions');
 
   const refContainer = useRef<HTMLDivElement>(null);
@@ -29,7 +34,7 @@ export default function Animation() {
           <p>{t('intro.0.text2')}</p>
         </div>
       </motion.div>
-      
+
       {/* Screen 2 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.05, 0.1, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <div className="mt-36 relative md:left-[-150px] md:top-[-40px] max-w-[800px] px-4 lead flex flex-col items-end">
@@ -90,7 +95,7 @@ export default function Animation() {
           <p className="h3-like relative  p-2 max-w-[564px] rotate-[-3.49deg] drop-shadow-3 drop-shadow-black">
             <span className="bg-alive relative z-1">{t('intro.5.description')}</span>
           </p>
-          <Button color="white" href="/" className="relative -bottom-2">{t('intro.5.cta')}</Button>
+          <Button color="white" href={animationData.manifestCta.link} className="relative -bottom-2">{animationData.manifestCta.text ?? t('intro.5.cta')}</Button>
         </div>
       </motion.div>
     </div>

@@ -32,6 +32,9 @@ async function fetchPositionPageData() {
           },
           testimonial_background: {
             populate: '*',
+          },
+          manifest_cta: {
+            populate: '*',
           }
         },
       },

@@ -44,10 +44,10 @@ export default function Homepage({ data }: HomepageProps) {
 
   const results = data.results?.map((result) => ({
     id: result.id?.toString() || '',
-    number: parseInt(result.stat || '0'),
-    text: result.description,
-    linkTarget: `/projects/${result.id}`,
-    linkLabel: t('results.linkLabel'),
+    number: result.kpi?.stat || '',
+    text: result.kpi?.description,
+    linkTarget: result.cta?.link,
+    linkLabel: result.cta?.text,
   })) ?? [];
 
   const events = data.events?.map((event) => ({
@@ -119,7 +119,7 @@ export default function Homepage({ data }: HomepageProps) {
       <ResultsCard
         title={data.results_section_title!}
         className="my-lg"
-        results={results.map(r => ({ ...r, linkLabel: t('results.linkLabel') }))}
+        results={results}
       />
 
       <NewsSmallBlock

@@ -889,15 +889,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    call_to_actions: Schema.Attribute.Component<
-      'call-to-action.call-to-action',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -943,7 +934,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    results: Schema.Attribute.Component<'kpi.kpi', true> &
+    results: Schema.Attribute.Component<'kpi.kpi-with-cta', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1096,6 +1087,10 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
       'api::position.position'
     > &
       Schema.Attribute.Private;
+    manifest_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action',
+      false
+    >;
     press_releases: Schema.Attribute.Relation<
       'oneToMany',
       'api::press-release.press-release'
@@ -1464,6 +1459,10 @@ export interface ApiProjectsListProjectsList extends Struct.SingleTypeSchema {
     introduction: Schema.Attribute.Text;
     introduction_cta: Schema.Attribute.Component<
       'call-to-action.call-to-action-with-image',
+      false
+    >;
+    join_cta: Schema.Attribute.Component<
+      'call-to-action.call-to-action',
       false
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

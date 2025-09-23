@@ -21,7 +21,7 @@ function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
       },
     },
     id: thematic.id.toString(),
-    talk: thematic.description,
+    talk: thematic.short_description,
     talkOffset: 10,
     image: thematic.thumbnail.url,
     imageWidth: 251,
@@ -139,6 +139,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         titleLevel={2}
         filters={filters}
         projects={projects}
+        joinCta={{text: data.join_cta?.text, link: data.join_cta?.link}}
         pageSize={16}
         className="my-lg bg-black mx-auto w-full"
       />

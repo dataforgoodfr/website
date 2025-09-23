@@ -50,7 +50,7 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
             <div key={index}>
               <p className="text-sm font-secondary font-bold">{process.name}</p>
               <ul className="list-disc list-outside mb-xs font-bold ml-3">
-                {process.description.map((item, id) => (<li className="ml-4 leading-2" key={id}> {item} </li>))}
+                {process.description?.map((item, id) => (<li className="ml-4 leading-2" key={id}> {item} </li>))}
               </ul>
             </div>
           ))}

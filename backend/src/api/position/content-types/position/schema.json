@@ -35,6 +35,11 @@
         "videos",
         "audios"
       ]
+    },
+    "manifest_cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action",
+      "repeatable": false
     }
   }
 }

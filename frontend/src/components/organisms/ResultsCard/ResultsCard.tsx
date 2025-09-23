@@ -62,7 +62,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               className="max-w-80"
             >
               <p className="mb-4 font-tertiary">
-                <span className="block font-secondary text-7xl">{result.number.toLocaleString()}</span>
+                <span className="block font-secondary text-7xl">{result.number}</span>
                 {result.text && <span className="h3-like">
                   {result.text}
                 </span>}

@@ -23,7 +23,6 @@ async function fetchProjectListPageData() {
         populate: {
           introduction_cta: {
             populate: '*',
-
           },
           thematics: {
             populate: '*',
@@ -37,6 +36,9 @@ async function fetchProjectListPageData() {
           projects: {
             populate: '*',
           },
+          join_cta: {
+            populate: '*',
+          }
         },
       },
     },

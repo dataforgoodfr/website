@@ -5,10 +5,12 @@ export type TagProps = HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   bgColor?: string;
+  color?: string;
 };
 
 const Tag = ({
   children,
+  color = 'text-white',
   bgColor = 'bg-black',
   className = '',
   ...props
@@ -19,8 +21,9 @@ const Tag = ({
 
   return (
     <div className={clsx(
-      'text-white text-sm font-black px-2.5 py-2 uppercase',
+      'text-sm font-black px-3 py-2 uppercase',
       bgColor,
+      color,
       className,
     )} {...props}>
       {children}

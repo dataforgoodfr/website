@@ -30,7 +30,6 @@ export function transformProjects(
     link: project.website_link || '',
     description: project.short_description || '',
     images: [project.thumbnail?.url || ''],
-    baseline: 'Baseline du projet 1',
     company: project.related_partners && project.related_partners.length > 0 && project.related_partners[0].name || '',
     kpis: [
       {
