@@ -45,7 +45,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {tags.map((tag, index) => (
-                <Tag key={index} bgColor="bg-building">{tag}</Tag>
+                <Tag key={index} color='text-black' bgColor="bg-violet-light">{tag}</Tag>
               ))}
             </div>
           )}
@@ -62,7 +62,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
         {isBlank && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
           <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
         </div>}
-        <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-cover" />
+        <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-contain" />
       </div>
     </Link>
   );
