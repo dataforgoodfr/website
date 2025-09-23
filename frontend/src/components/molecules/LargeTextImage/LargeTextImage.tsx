@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Button, Title, TitleProps } from '@/components';
 
-export type LargeTextImageProps = React.HTMLAttributes<HTMLDivElement> & {
+export type LargeTextImageProps = {
+  id?: string;
   title?: string;
   titleLevel?: TitleProps['level'];
   content?: React.ReactNode;
@@ -17,6 +18,7 @@ export type LargeTextImageProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const LargeTextImage: React.FC<LargeTextImageProps> = ({
+  id,
   title,
   titleLevel = 2,
   content,
@@ -38,6 +40,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
 
   return (
     <div
+      id={id}
       className={className}
       style={{
         // Get real image

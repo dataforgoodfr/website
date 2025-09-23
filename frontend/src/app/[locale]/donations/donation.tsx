@@ -84,7 +84,7 @@ export default function DonationsPage() {
       <LargeTextImage
         title={t('title')}
         titleLevel={1}
-        content="iFrame here"
+        content={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
         image="/images/pages/donations/donations.jpg"
         background="purple"
       />
@@ -108,7 +108,7 @@ export default function DonationsPage() {
         />
 
         <div className="flex justify-center mt-sm">
-          <Button href="https://soutenir.dataforgood.fr/b/mon-don?_cv=1" color="violet" hasArrow>{t('cta')}</Button>
+          <Button href="https://soutenir.dataforgood.fr/b/mon-don" color="violet" hasArrow>{t('cta')}</Button>
         </div>
       </div>
 
