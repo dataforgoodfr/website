@@ -8,7 +8,7 @@ export type FilterProps = HTMLAttributes<HTMLLabelElement> & {
     filterValue: string;
     filterType: IFilter['filterType'];
     thematic?: ThematicValues;
-    checked: any;
+    checked: boolean;
     onClick: (e: any) => void;
     className?: string;
 };

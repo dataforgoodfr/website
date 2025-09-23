@@ -23,7 +23,6 @@ async function fetchProjectListPageData() {
         populate: {
           introduction_cta: {
             populate: '*',
-
           },
           thematics: {
             populate: '*',
