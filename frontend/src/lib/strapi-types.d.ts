@@ -2399,6 +2399,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            linkedin?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -4184,6 +4185,7 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -5348,6 +5350,7 @@ export interface components {
                         documentId?: string;
                     }[];
                 }[];
+                linkedin?: string;
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -6546,6 +6549,7 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -7122,6 +7126,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -8385,6 +8390,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -10706,6 +10712,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -11725,6 +11732,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -13481,6 +13489,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -14621,6 +14630,7 @@ export interface components {
                                 id?: number;
                                 documentId?: string;
                             }[];
+                            linkedin?: string;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -15926,6 +15936,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -17097,6 +17108,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -18327,6 +18339,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -19449,6 +19462,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -21165,6 +21179,7 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -21758,6 +21773,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -22880,6 +22896,7 @@ export interface components {
                             id?: number;
                             documentId?: string;
                         }[];
+                        linkedin?: string;
                         /** Format: date-time */
                         createdAt?: string;
                         /** Format: date-time */
@@ -24258,6 +24275,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -25054,6 +25072,7 @@ export interface components {
                 avatar?: number | string;
                 role?: string;
                 projects?: (number | string)[];
+                linkedin?: string;
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -25535,6 +25554,7 @@ export interface components {
                         id?: number;
                         documentId?: string;
                     }[];
+                    linkedin?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -26140,6 +26160,7 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
+            linkedin?: string;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */

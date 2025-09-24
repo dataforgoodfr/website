@@ -30,7 +30,7 @@ function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
     id: partner.id,
     name: partner.name,
     image: partner.logo?.url,
-    link: partner.link ?? 'https://www.dataforgood.fr',
+    link: partner.website_link ?? 'https://www.dataforgood.fr',
   }));
 }
 
@@ -42,6 +42,7 @@ function transformMember(
     name: member.name,
     role: member.role,
     image: member.avatar?.url,
+    linkedin: member.linkedin,
   };
 }
 

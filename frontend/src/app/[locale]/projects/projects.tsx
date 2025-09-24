@@ -140,7 +140,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         filters={filters}
         projects={projects}
         joinCta={{text: data.join_cta?.text, link: data.join_cta?.link}}
-        pageSize={16}
+        pageSize={12}
         className="my-lg bg-black mx-auto w-full"
       />
     </>

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-24T13:12:30.347Z"
+    "x-generation-date": "2025-09-24T13:36:38.011Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -12953,6 +12953,9 @@
                                       }
                                     }
                                   },
+                                  "linkedin": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -18020,6 +18023,9 @@
                         }
                       }
                     },
+                    "linkedin": {
+                      "type": "string"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -21300,6 +21306,9 @@
                     }
                   }
                 }
+              },
+              "linkedin": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",
@@ -24681,6 +24690,9 @@
                         }
                       }
                     },
+                    "linkedin": {
+                      "type": "string"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -26343,6 +26355,9 @@
                                 }
                               }
                             }
+                          },
+                          "linkedin": {
+                            "type": "string"
                           },
                           "createdAt": {
                             "type": "string",
@@ -29949,6 +29964,9 @@
                                 }
                               }
                             }
+                          },
+                          "linkedin": {
+                            "type": "string"
                           },
                           "createdAt": {
                             "type": "string",
@@ -36586,6 +36604,9 @@
                                 }
                               }
                             },
+                            "linkedin": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -39528,6 +39549,9 @@
                             }
                           }
                         }
+                      },
+                      "linkedin": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -44530,6 +44554,9 @@
                           }
                         }
                       },
+                      "linkedin": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -47784,6 +47811,9 @@
                                         }
                                       }
                                     }
+                                  },
+                                  "linkedin": {
+                                    "type": "string"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -51481,6 +51511,9 @@
                                 }
                               }
                             },
+                            "linkedin": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -54883,6 +54916,9 @@
                                   }
                                 }
                               }
+                            },
+                            "linkedin": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -58381,6 +58417,9 @@
                         }
                       }
                     },
+                    "linkedin": {
+                      "type": "string"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -61576,6 +61615,9 @@
                                   }
                                 }
                               }
+                            },
+                            "linkedin": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -66442,6 +66484,9 @@
                       }
                     }
                   },
+                  "linkedin": {
+                    "type": "string"
+                  },
                   "createdAt": {
                     "type": "string",
                     "format": "date-time"
@@ -68123,6 +68168,9 @@
                             }
                           }
                         }
+                      },
+                      "linkedin": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -71327,6 +71375,9 @@
                                 }
                               }
                             }
+                          },
+                          "linkedin": {
+                            "type": "string"
                           },
                           "createdAt": {
                             "type": "string",
@@ -75292,6 +75343,9 @@
                           }
                         }
                       },
+                      "linkedin": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -77549,6 +77603,9 @@
                   "example": "string or id"
                 }
               },
+              "linkedin": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -78912,6 +78969,9 @@
                             }
                           }
                         }
+                      },
+                      "linkedin": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -80614,6 +80674,9 @@
                 }
               }
             }
+          },
+          "linkedin": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

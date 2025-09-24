@@ -88,6 +88,7 @@ function getVolunteers(project: ProjectPageData) {
       name: volunteer.name,
       role: volunteer.role,
       image: volunteer.avatar?.url,
+      linkedin: volunteer.linkedin,
     })) || [],
   }];
 }
