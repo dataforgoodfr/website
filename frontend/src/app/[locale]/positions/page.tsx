@@ -47,6 +47,7 @@ export type PositionsPageData = NonNullable<NonNullable<Awaited<ReturnType<typeo
 export default async function Page() {
   const { data } = await fetchPositionPageData();
 
+  console.log(data?.data?.manifest_cta)
   if (!data?.data) {
     return null;
   }
