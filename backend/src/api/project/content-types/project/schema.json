@@ -108,6 +108,14 @@
         }
       }
     },
+    "demo_video_embed": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "related_projects": {
       "type": "relation",
       "relation": "oneToMany",

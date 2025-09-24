@@ -16,13 +16,20 @@
     }
   },
   "attributes": {
-    "description": {
-      "type": "text",
+    "banner_image": {
+      "type": "media",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "projects": {
       "type": "relation",
@@ -35,6 +42,12 @@
       "relation": "oneToMany",
       "target": "api::partner.partner"
     },
+    "funders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::funder.funder",
+      "mappedBy": "thematics"
+    },
     "name": {
       "type": "string",
       "pluginOptions": {
@@ -43,7 +56,7 @@
         }
       }
     },
-    "description_2": {
+    "description": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
@@ -59,6 +72,29 @@
         }
       }
     },
+    "image_1": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description_2": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "quote2": {
       "type": "text",
       "pluginOptions": {
@@ -66,6 +102,21 @@
           "localized": true
         }
       }
+    },
+    "image_2": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "kpis": {
       "type": "component",

@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { TiltedTitle } from '@/components';
+import Link from 'next/link';
 
 export type MemberCardProps = {
   name: string;
   role: string;
   image?: string;
+  linkedin?: string;
   className?: string;
 };
 
@@ -13,6 +15,7 @@ const MemberCard: React.FC<MemberCardProps> = ({
   name,
   role,
   image,
+  linkedin,
   className,
   ...props
 }) => {
@@ -20,7 +23,7 @@ const MemberCard: React.FC<MemberCardProps> = ({
     return null;
   }
 
-  return (
+  const Card = (
     <div
       className={clsx(
         'relative pl-2 w-[240px] h-[315px]',
@@ -34,6 +37,14 @@ const MemberCard: React.FC<MemberCardProps> = ({
         <p className="px-1 text-xs text-black bg-white shadow-base -rotate-3">{role}</p>
       </div>
     </div>
+  );
+
+  return (
+    linkedin 
+    ? (<Link href={linkedin} className="block">
+      {Card}
+    </Link>) 
+    : Card
   );
 };
 

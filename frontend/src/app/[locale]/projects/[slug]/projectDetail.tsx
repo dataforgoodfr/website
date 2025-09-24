@@ -1,6 +1,6 @@
 'use client';
 
-import { Banner, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
+import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { type ProjectPageData } from './page';
@@ -88,6 +88,7 @@ function getVolunteers(project: ProjectPageData) {
       name: volunteer.name,
       role: volunteer.role,
       image: volunteer.avatar?.url,
+      linkedin: volunteer.linkedin,
     })) || [],
   }];
 }
@@ -128,6 +129,11 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
       {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
         title={t('impact.title')}
         impacts={impacts}
+        className='my-lg'
+      />}
+
+      {project.demo_video && <BannerVideo
+        video={project.demo_video_embed}
         className='my-lg'
       />}
 

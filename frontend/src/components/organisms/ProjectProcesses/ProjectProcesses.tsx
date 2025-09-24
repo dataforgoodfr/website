@@ -28,7 +28,7 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
     return null
   }
 
-  const t = useTranslations("projectDetail.processes")
+  const t = useTranslations("projectDetail.deliverables")
 
   return (
     <div

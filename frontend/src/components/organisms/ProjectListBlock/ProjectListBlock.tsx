@@ -93,7 +93,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
         </Title>}
 
         <div className='flex w-full flex-col md:flex-row'>
-          <div className='flex w-full md:w-2/3 gap-xs flex-col justify-center md:justify-start my-md'>
+          <div className='flex w-full  gap-xs flex-col justify-center md:justify-start my-md'>
             <Button variant="secondary" color='violet' className={clsx('w-max hover:bg-building', hideFilters ? 'not-rotate-arrow' : 'rotate-arrow')} onClick={() => setHideFilters(!hideFilters)}> Filtres </Button>
             <div className='flex w-full gap-xs flex-col md:flex-row flex-wrap transition-base' style={{ "visibility": hideFilters ? 'hidden' : "visible", "opacity": hideFilters ? '0' : '1', "height": hideFilters ? '0' : 'auto' }}>
               {filters?.map((filter, index) => (

@@ -23,36 +23,36 @@ type ThematicsProps = {
 
 export default function SocialPage({ data }: ThematicsProps) {
   const t = useTranslations('social');
-  const partners = transformPartners(data.funders);
-  const kpis = transformKpis(data.kpis);
-  const projects = transformProjects(data.projects);
+  const partners = transformPartners(data.thematic?.funders);
+  const kpis = transformKpis(data.thematic?.kpis);
+  const projects = transformProjects(data.thematic?.projects);
 
   return (
     <>
       <ThematicHeroBlock
         title={t('title')}
-        image={data.banner_image?.url || ''}
+        image={data.thematic?.banner_image?.url || ''}
         className="my-lg"
       />
 
       <Kpis kpis={kpis} className="my-lg" />
 
       <EditoCard
-        imageText={data.edito_1?.image_text || ''}
-        image={data.edito_1?.image?.url || ''}
+        imageText={data.thematic?.description || ''}
+        image={data.thematic?.image_1?.url || ''}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
       >
-        {data.edito_1?.content || ''}
+        {data.thematic?.quote || ''}
       </EditoCard>
 
       <EditoCard
-        imageText={data.edito_2?.image_text || ''}
-        image={data.edito_2?.image?.url || ''}
+        imageText={data.thematic?.description_2 || ''}
+        image={data.thematic?.image_2?.url || ''}
         className="my-lg container"
       >
-        {data.edito_2?.content}
+        {data.thematic?.quote2}
       </EditoCard>
 
       <ThumbnailProjectsBlock

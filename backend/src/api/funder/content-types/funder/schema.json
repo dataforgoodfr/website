@@ -66,6 +66,12 @@
           "localized": true
         }
       }
+    },
+    "thematics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::thematic.thematic",
+      "inversedBy": "funders"
     }
   }
 }
