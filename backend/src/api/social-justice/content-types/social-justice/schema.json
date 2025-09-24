@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "thematic": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::thematic.thematic"
+    },
     "banner_image": {
       "type": "media",
       "multiple": false,

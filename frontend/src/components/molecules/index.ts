@@ -43,3 +43,7 @@ export type { ProjectCarouselProps } from './ProjectCarousel/ProjectCarousel';
 
 export { default as Accordion } from './Accordion/Accordion';
 export type { AccordionProps, AccordionItemData } from './Accordion/Accordion';
+
+export { default as BannerVideo } from './BannerVideo/BannerVideo';
+export type { BannerVideoProps } from './BannerVideo/BannerVideo';
+
