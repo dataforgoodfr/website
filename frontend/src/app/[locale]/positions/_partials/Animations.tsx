@@ -18,7 +18,6 @@ export default function Animation({ animationData }: {
   }
 }) {
   const t = useTranslations('positions');
-  console.log(animationData)
 
   const refContainer = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: refContainer });
