@@ -73,6 +73,7 @@ export default async function RootLayout({
         <Script
           src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
           strategy="beforeInteractive"
+          defer
         />
       </head>
       <body
