@@ -18,31 +18,16 @@ export async function generateMetadata({
 
 async function fetchThematicPageData() {
   return await client.GET('/climate-and-biodiversity', {
-        params: {
-          query: {
-            populate: {
-              banner_image: {
-                populate: '*'
-              },
-              funders: {
-                populate: '*',
-              },
-              projects: {
-                populate: '*',
-              },
-              kpis: {
-                populate: '*',
-              },
-              edito_1: {
-                populate: '*',
-              },
-              edito_2: {
-                populate: '*',
-              },
-            },
+    params: {
+      query: {
+        populate: {
+          thematic: {
+            populate: '*'
           },
         },
-      });
+      },
+    },
+  });
 }
 
 export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematicPageData>>["data"]>["data"]>;
@@ -50,7 +35,7 @@ export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof
 export default async function Page() {
   const { data } = await fetchThematicPageData();
 
-    if (!data?.data) {
+  if (!data?.data) {
     return null;
   }
 

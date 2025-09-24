@@ -24,7 +24,7 @@ const BannerVideo: React.FC<BannerVideoProps> = ({
       )}
       {...props}
     >
-      <div  dangerouslySetInnerHTML={{__html: `${video}`}}/>
+      <div dangerouslySetInnerHTML={{ __html: `${video}` }} />
     </div>
   );
 };
