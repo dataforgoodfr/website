@@ -42,7 +42,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
           {thematics.map((thematic, index) => (
             <li
               key={index}
-              className="min-w-[420px] flex-1"
+              className="md:min-w-[420px] flex-1"
             >
               <ThematicsCard
                 {...{...thematic,
