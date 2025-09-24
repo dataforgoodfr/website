@@ -9,11 +9,13 @@ import {
 import { useRef } from 'react';
 import Link from 'next/link';
 
-export default function Animation(animationData: {
-  manifestCta: {
-    text: string;
-    link: string;
-  };
+export default function Animation({ animationData }: {
+  animationData: {
+    manifestCta: {
+      text: string;
+      link: string;
+    };
+  }
 }) {
   const t = useTranslations('positions');
 

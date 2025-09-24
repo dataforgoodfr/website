@@ -56,7 +56,6 @@ export type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fet
 
 export default async function Page() {
   const { data } = await fetchHomepageData();
-  console.log(data?.data?.results)
 
   if (!data?.data) {
     return null;
