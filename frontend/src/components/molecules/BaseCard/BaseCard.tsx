@@ -49,7 +49,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
               ))}
             </div>
           )}
-          <Title className="my-auto" variant="small" level="p">{title}</Title>
+          <Title className="mt-auto" variant="xx-small" level="p">{title}</Title>
 
           {subInfos.length > 0 && (
             <div className="flex flex-wrap gap-3">
@@ -62,7 +62,10 @@ const BaseCard: React.FC<BaseCardProps> = ({
         {isBlank && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
           <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
         </div>}
-        <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-contain" />
+        <div className="w-full h-[216px] relative">
+          <div className="absolute top-0 left-0 w-full h-full bg-black/10" />
+          <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-contain" />
+        </div>
       </div>
     </Link>
   );

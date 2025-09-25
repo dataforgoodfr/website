@@ -29,7 +29,7 @@ const BaseCardsBlock: React.FC<BaseCardsBlockProps> = ({
       )}
       {...props}
     >
-      {title && <Title level={titleLevel} variant="medium" className="mb-md">{title}</Title>}
+      {title && <Title level={titleLevel} variant="medium" hasSeparator className="mb-sm">{title}</Title>}
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {blocks.map((block) => (

@@ -15,6 +15,7 @@ function transformEventsData(events: NonNullable<EventsPageData>) {
       image: event.image?.url,
       onSite: event.on_site,
       link: event.link,
+      isBlank: true,
       subInfos: event.tags,
       tags: [new Date(event.date || '').toLocaleDateString(undefined, {dateStyle: 'medium'}), new Date(event.date || '').toLocaleTimeString(undefined, { timeStyle: 'short'}), event.on_site ? "Sur site" : "En ligne"]
     })
@@ -37,11 +38,13 @@ export default function EventsPage({ data, pagination, currentPage }: EventsProp
   const { handlePageChange } = usePagination(currentPage);
 
   return (
-    <div className="container my-lg">
-      <Title className="mb-md max-w-5xl" variant="big">
-        {t('title')}
-      </Title>
-      <p>{t('description')}</p>
+    <div className="my-lg pt-md">
+      <div className="container">
+        <Title className="mb-xs max-w-5xl" variant="big">
+          {t('title')}
+        </Title>
+        <p className="h2-like">{t('description')}</p>
+      </div>
 
       {blocksNext.length > 0 && (
         <BaseCardsBlock

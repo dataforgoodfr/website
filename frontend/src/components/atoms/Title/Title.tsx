@@ -5,7 +5,7 @@ import Image from 'next/image';
 export type TitleProps = HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6 | 'p';
-  variant?: 'big' | 'medium' | 'small' | 'x-small';
+  variant?: 'big' | 'medium' | 'small' | 'x-small' | 'xx-small';
   className?: string;
   hasSeparator?: boolean;
 };
@@ -23,6 +23,7 @@ const Title = ({
     'medium': 'h2-like',
     'small': 'h3-like',
     'x-small': 'h4-like',
+    'xx-small': 'lead',
   };
 
   const classes = clsx(
@@ -35,7 +36,7 @@ const Title = ({
   return (
     <HeadingTag className={classes} {...props}>
       {children}
-      {hasSeparator && <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-xs w-full h-auto" />}
+      {hasSeparator && <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-xs w-full h-2.5" />}
     </HeadingTag>
   );
 };

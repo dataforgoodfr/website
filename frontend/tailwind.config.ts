@@ -34,7 +34,8 @@ const config: Config = {
   			'building-light': 'hsl(var(--c-building-light))',
   			'grey-text': 'hsl(var(--c-grey-text))',
   			resistance: 'hsl(var(--c-resistance))',
-  			building: 'hsl(var(--c-building))'
+  			building: 'hsl(var(--c-building))',
+  			'dark-light': 'hsl(var(--c-dark-light))',
   		},
   		content: {
   			checkmark: 'url("/images/checkmark.svg")'

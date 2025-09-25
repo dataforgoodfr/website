@@ -41,10 +41,10 @@ const InformationsBlock: React.FC<InformationsBlockProps> = ({
 
       {informations.map((information, index) => (
         <div key={index}>
-          <Title variant="small" className="mb-xs" level={(titleLevel as number) + 1 as TitleProps['level']}>
+          <Title variant="xx-small" className="mb-xs" level={(titleLevel as number) + 1 as TitleProps['level']}>
             {information.title}
           </Title>
-          <p className="text-md font-medium font-tertiary relative">
+          <p className="text-sm font-normal">
             {information.text.map((info, index) => {
               if(info.ctaLink) {
                 return (<span key={index}><Link className="underline" href={info.ctaLink}>{info.info}</Link>&nbsp;</span>)
@@ -52,9 +52,7 @@ const InformationsBlock: React.FC<InformationsBlockProps> = ({
               return <span key={index}>{info.info}&nbsp;</span>
             })}
           </p>
-          {index !== informations.length - 1 &&
-            <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-sm mb-sm w-full h-auto" />
-          }
+          <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-sm mb-sm w-full h-auto" />
         </div>
       ))}
     </div>

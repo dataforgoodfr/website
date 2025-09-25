@@ -53,7 +53,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
         height={imageHeight}
       />
       <div className="pt-lg mb-xs">
-        <TiltedTitle {...title.props} variant='medium' className={`${title.props.className} z-1. mb-xs`}>
+        <TiltedTitle {...title.props} variant="small" className={`${title.props.className} z-1. mb-xs`}>
           {title.children}
         </TiltedTitle>
         <div className={` ml-${talkOffset}`}>

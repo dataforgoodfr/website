@@ -4,6 +4,7 @@ import { IFilter, IProject } from '@/lib/types';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export type ProjectListBlockProps = {
   title?: string;
@@ -83,54 +84,56 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
 
   return (
     <div
-      className={clsx('width-[100vw] mx-0 pt-md pb-sm', className)}
+      className={className}
       {...props}
     >
-      <div className='container'>
+      <Image src="/images/scratch-black.svg" alt="" width={212} height={48} className="relative top-[1px] object-contain w-full h-auto" />
+      <div className="bg-dark-light pt-10 pb-md">
+        <div className="container">
+          {title && <Title variant="medium" className="text-white" level={titleLevel}>
+            {title}
+          </Title>}
 
-        {title && <Title variant="medium" className="mb-sm text-white" level={titleLevel}>
-          {title}
-        </Title>}
-
-        <div className='flex w-full flex-col md:flex-row'>
-          <div className='flex w-full  gap-xs flex-col justify-center md:justify-start my-md'>
-            <Button variant="secondary" color='violet' className={clsx('w-max hover:bg-building', hideFilters ? 'not-rotate-arrow' : 'rotate-arrow')} onClick={() => setHideFilters(!hideFilters)}> Filtres </Button>
-            <div className='flex w-full gap-xs flex-col md:flex-row flex-wrap transition-base' style={{ "visibility": hideFilters ? 'hidden' : "visible", "opacity": hideFilters ? '0' : '1', "height": hideFilters ? '0' : 'auto' }}>
-              {filters?.map((filter, index) => (
-                <Filter key={index} {...filter} checked={activeFilters.seasons.concat(activeFilters.thematics).concat(activeFilters.categories).includes(filter.filterValue)} onClick={handleClick} />
-              ))}
+          <div className='flex w-full flex-col md:flex-row my-10'>
+            <div className='flex w-full  gap-xs flex-col justify-center md:justify-start'>
+              <Button variant="secondary" color='violet' className={clsx('w-max hover:bg-building', hideFilters ? 'not-rotate-arrow' : 'rotate-arrow')} onClick={() => setHideFilters(!hideFilters)}> Filtres </Button>
+              <div className='flex w-full gap-xs flex-col md:flex-row flex-wrap transition-base' style={{ "visibility": hideFilters ? 'hidden' : "visible", "opacity": hideFilters ? '0' : '1', "height": hideFilters ? '0' : 'auto' }}>
+                {filters?.map((filter, index) => (
+                  <Filter key={index} {...filter} checked={activeFilters.seasons.concat(activeFilters.thematics).concat(activeFilters.categories).includes(filter.filterValue)} onClick={handleClick} />
+                ))}
+              </div>
             </div>
+
+            <div className='flex w-full md:w-1/2 justify-center md:justify-end gap-xs flex-row flex-wrap md:pr-10'>
+              <SearchInput searchFilter={activeFilters.project} handleChange={handleChange} />
+            </div>
+
           </div>
 
-          <div className='flex w-full md:w-1/2 justify-center md:justify-end gap-xs flex-row flex-wrap md:pr-10 my-md'>
-            <SearchInput searchFilter={activeFilters.project} handleChange={handleChange} />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+            {displayProjects?.sort((a, b) => (new Date(b.date).valueOf() - new Date(a.date).valueOf())).map((project, index) => (
+              <ProjectListCard
+                key={index}
+                project={project.project}
+                link={project.link}
+                association={project.association}
+                description={project.description}
+                thematics={project.thematics}
+                image={project.image}
+              />
+            ))}
           </div>
 
-        </div>
+          <div className='flex justify-center my-md'>
+            <Pagination pageCount={Math.ceil(filteredProjects.length / pageSize)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          </div>
 
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {displayProjects?.sort((a, b) => (new Date(b.date).valueOf() - new Date(a.date).valueOf())).map((project, index) => (
-            <ProjectListCard
-              key={index}
-              project={project.project}
-              link={project.link}
-              association={project.association}
-              description={project.description}
-              thematics={project.thematics}
-              image={project.image}
-            />
-          ))}
-        </div>
-
-        <div className='flex justify-center my-md'>
-          <Pagination pageCount={Math.ceil(filteredProjects.length / pageSize)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        </div>
-
-
-        <div className='flex justify-center my-md'>
-          <Button href={joinCta?.link ?? "/"} color="white" hasArrow> {joinCta?.text ?? t("cta.text")} </Button>
-        </div>
+          <div className='flex justify-center my-md'>
+            <Button href={joinCta?.link ?? "/"} color="white" hasArrow> {joinCta?.text ?? t("cta.text")} </Button>
+          </div>
+          </div>
       </div>
     </div>
   );

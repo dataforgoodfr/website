@@ -109,7 +109,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
             <div className="flex items-center z-2 col-start-1 row-start-2 container">
               <div className="max-w-md">
                 {image.title && (
-                  <Title level={titleLevel} variant="medium" className="mb-xs">
+                  <Title level={titleLevel} variant="small" className="mb-xs">
                       {image.title}
                   </Title>
                 )}

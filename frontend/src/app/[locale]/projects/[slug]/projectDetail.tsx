@@ -82,7 +82,6 @@ function getNews(project: ProjectPageData) {
 
 function getVolunteers(project: ProjectPageData) {
   return [{
-    title: "Équipe",
     members: project.volunteers?.map(volunteer => ({
       id: volunteer.id,
       name: volunteer.name,
@@ -110,7 +109,6 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
     <>
       <Banner
         image={project.thumbnail?.url}
-        altImage='Project banner'
         className="mb-lg "
       />
 
@@ -119,12 +117,11 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         className='my-lg'
       />
 
-      <Banner
+      {presentationContent.length > 0 && <Banner
         image={project.thumbnail?.url}
-        altImage='Project banner'
-        content={presentationContent}
+        content={presentationContent as string[]}
         className="my-lg "
-      />
+      />}
 
       {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
         title={t('impact.title')}

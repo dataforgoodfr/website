@@ -93,7 +93,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
 
   return (
     <>
-      <div className="my-lg container flex flex-col lg:flex-row">
+      <div className="mt-lg container flex flex-col lg:flex-row">
         <Title className="mb-md max-w-4xl content-center flex-1" variant="medium">
           {data.introduction}
         </Title>
@@ -125,7 +125,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         title={t('thematics.title')}
         subtitle={t('thematics.subtitle')}
         thematics={thematics ?? []}
-        className="my-lg"
+        className="mb-lg"
       />
 
       <InformationsBlock
@@ -141,7 +141,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         projects={projects}
         joinCta={{text: data.join_cta?.text, link: data.join_cta?.link}}
         pageSize={12}
-        className="my-lg bg-black mx-auto w-full"
+        className="mt-lg"
       />
     </>
   );
