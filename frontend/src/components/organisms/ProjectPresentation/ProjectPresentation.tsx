@@ -1,79 +1,66 @@
 import { Tag, Title, TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image'
+import { useTranslations } from 'next-intl';
 
 export type ProjectPresentationProps = {
-  name: string;
-  summary: string;
-  titleLevel?: TitleProps["level"];
   tags?: {
-    label: string;
+    label?: string;
     type: 'temporal' | 'subject';
   }[];
   description: string[];
-  association: {
+  associations: {
     logo?: string;
     altLogo?: string;
     summary: string;
-  }
+  }[];
   className?: string;
 };
 
 const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
-  name,
-  summary,
   description,
-  association,
-  titleLevel = 2,
-  tags,
+  associations = [],
+  tags = [],
   className,
   ...props
 }) => {
+  const t = useTranslations('components.projectPresentation');
+
   return (
     <div
-      className={clsx('container', className)}
+      className={clsx("container flex flex-col lg:flex-row lg:items-start gap-md", className)}
       {...props}
     >
-      <div
-        className={clsx(
-          'flex flex-col sm:flex-row sm:items-start gap-md',
-          className,
-        )}
-        {...props}
-      >
-        <div className={clsx(
-          'flex flex-col w-full sm:w-1/2',
-        )}>
-          <Title className="mb-sm font-tertiary" level={titleLevel} variant="big" >{name}</Title>
-          <p className="mb-xs text-md font-tertiary" >{summary}</p>
-          <div className='flex flex-row gap-xs mt-xs items-start'>
-            {tags?.filter((tag) => tag.type === 'temporal').map((tag, index) => (
-              <div className='text-xs px-2.5 py-2 bg-back-green text-black' key={index}>
-                {tag.label}
-              </div>
-            ))}
-          </div>
-          <div className='flex flex-row gap-xs mt-xs items-start'>
-            {tags?.filter((tag) => tag.type === 'subject').map((tag, index) => (
-              <div className='text-xs px-2.5 py-2 bg-back-green text-black' key={index}>
-                {tag.label}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col items-start w-full sm:w-1/2">
-          <div className='flex flex-col gap-xs mb-md'>
-            {description.map((paragraph, index) => (<p className='text-sm font-secondary ' key={index}>{paragraph}</p>))}
-          </div>
-          <div className='flex flex-row'>
-            {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
-            <div className='bg-violet-light p-6 text-xs content-center text-start mx-auto'>
-              {association.summary}
-            </div>
-          </div>
-        </div>
+      <div className="flex-1 prose prose--big">
+        {description.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
       </div>
 
+      <div className="flex-1">
+        {tags.length > 0 && (<>
+          <Title level="p" variant="x-small" className="mb-xs">{t('tags')}</Title>
+          <ul className="flex flex-row flex-wrap gap-x-1 gap-y-2.5 max-w-96">
+            {tags.map((tag, index) => (
+              <li key={index}><Tag color="text-black" bgColor="bg-back-green" className="normal-case">{tag.label ?? ''}</Tag></li>
+            ))}
+          </ul>
+        </>)}
+
+        {associations.length > 0 && (<>
+          <Title level="p" variant="x-small" className="mt-sm mb-xs">{t('associations')}</Title>
+          <ul className="flex flex-col gap-xs">
+            {associations.map((association, index) => (
+              <li key={index}>
+                <div className="flex items-center gap-3 bg-white">
+                  {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
+                  <div className="flex-1 text-xs p-5">
+                    {association.summary}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>)}
+      </div>
     </div>
   );
 };

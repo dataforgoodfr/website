@@ -19,7 +19,7 @@ const BannerVideo: React.FC<BannerVideoProps> = ({
   return (
     <div
       className={clsx(
-        'max-w-[80%] md:max-w-[60%] max-h-[400px] mx-auto text-white',
+        'max-w-[80%] md:max-w-[60%] max-h-[400px] mx-auto shadow-lg',
         className,
       )}
       {...props}

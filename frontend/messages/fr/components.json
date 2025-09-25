@@ -23,6 +23,10 @@
       "readTime": "Temps de lecture :",
       "author": "Écrit par"
     },
+    "projectPresentation": {
+      "tags": "Tags",
+      "associations": "Partenaires"
+    },
     "newsletterForm": {
       "title": "Inscription à la newsletter",
       "newsletterChoice": "Choix des newsletter",

@@ -88,7 +88,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
                 alt={slide.altImage ?? ''}
                 width={1000}
                 height={400}
-                className={clsx("relative col-start-1 row-start-1 row-span-3 w-full h-full object-contain -z-1",
+                className={clsx("relative col-start-1 row-start-1 row-span-3 w-full h-full object-contain -z-1 bg-white",
                 )}
               />
             </CarouselItem>

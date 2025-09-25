@@ -52,12 +52,10 @@ export default function DonationsPage({ data }: DonationProps) {
 
   return (
     <>
-      <ArticleHeroBlock image={data.banner_video?.url} title={t('title')} className="my-lg" />
-
       <LargeTextImage
         title={data.banner_title ?? t('title')}
         titleLevel={1}
-        content={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
+        iframe={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
         image={data.banner_video?.url}
         background="purple"
         className="my-lg"

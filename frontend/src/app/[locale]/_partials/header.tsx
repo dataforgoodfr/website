@@ -231,7 +231,6 @@ const Header = () => {
                       'inline-flex items-center gap-2 px-4 py-2',
                       'font-primary font-black tracking-widest bg-alive text-black uppercase text-sm hover:shadow-[inset_3px_3px_0_0_rgba(0,0,0,0.4)]',
                       'hover:bg-alive/80 focus:bg-alive/80',
-                      topNav[link] === pathname && `bg-resistance`,
                     )}
                   >
                     {t(`header.nav.top.${link}`)}
