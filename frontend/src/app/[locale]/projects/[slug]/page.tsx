@@ -44,9 +44,6 @@ async function fetchProjectPageData(slug: string) {
           press_releases: {
             populate: '*'
           },
-          illustration_images: {
-            populate: '*'
-          },
           volunteers: {
             populate: '*'
           },

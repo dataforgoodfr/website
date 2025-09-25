@@ -22,7 +22,29 @@ async function fetchThematicPageData() {
       query: {
         populate: {
           thematic: {
-            populate: '*'
+            populate: {
+              projects: {
+                populate: '*'
+              },
+              partners: {
+                populate: '*'
+              },
+              funders: {
+                populate: '*'
+              },
+              kpis: {
+                populate: '*'
+              },
+              image_1: {
+                fields: ["url"]
+              },
+              image_2: {
+                fields: ["url"]
+              },
+              banner_image: {
+                fields: ["url"]
+              },
+            }
           },
         },
       },
