@@ -61,9 +61,9 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
 
               {content && <div className="prose my-xs max-w-sm">{content}</div>}
               
-              {citation && <div className="flex flex-wrap items-center gap-5">
+              {citation && <div className="flex flex-wrap items-center gap-5 px-8">
                 <div className="w-full font-tertiary text-xl lg:text-3xl lg:leading-normal">{citation}</div>
-                {citationAuthorImage && <Image src={citationAuthorImage} alt="" width={70} height={70} />}
+                {citationAuthorImage && <Image src={citationAuthorImage} alt="" width={70} height={70} className="mask-person" />}
                 {citationAuthor && <div className="flex-1 h4-like">{citationAuthor}</div>}
                 </div>}
 

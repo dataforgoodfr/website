@@ -221,4 +221,12 @@
     -webkit-mask-image: url('/images/mask-papper.svg');
     -webkit-mask-size: cover;
   }
+  .mask-person {
+    mask-image: url('/images/mask-person.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('/images/mask-person.svg');
+    -webkit-mask-size: cover;
+  }
 }
