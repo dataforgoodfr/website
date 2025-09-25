@@ -46,7 +46,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
     >
       <div
         className={clsx(
-          'overflow-hidden grid grid-cols-1 grid-rows-[200px_1fr] md:grid-rows-1 max-h-[850px] h-full',
+          'overflow-hidden grid grid-cols-1 grid-rows-[200px_1fr] md:grid-rows-1 min-h-[850px] h-full',
           background === "gray" ? "text-black bg-gray-100" : "text-white bg-building",
         )}
       >

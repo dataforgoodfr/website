@@ -82,12 +82,13 @@
     --c-blue: 187 67% 53%; /* blue */
     --c-alive: 67 72% 56%; /* green */
     --c-resistance: 37 98% 53%; /* orange */
-    --c-violet-light: 270 77% 91%; /* light purple */
+    --c-violet-light: 266 100% 92%; /* light purple */
     --c-building: 266 77% 50%; /* purple */
     --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
     --c-back-green: 92 14% 81%; /* light green */
     --c-grey-text: 0 0 40%; /* grey text */
+    --c-dark-light: 255 25 13%; /* dark light */
 
     /* Font variables */
     --font-primary: 'DMSans', system-ui, sans-serif;
@@ -114,7 +115,7 @@
     @apply text-3xl lg:text-[4.125rem] font-tertiary font-bold leading-tight;
   }
   .prose h2, .h2-like {
-    @apply text-2xl lg:text-3xl font-tertiary font-bold leading-tight;
+    @apply text-2xl lg:text-[2.5rem] font-tertiary font-bold leading-tight;
   }
   .prose h3, .h3-like {
     @apply text-lg lg:text-3xl font-tertiary font-bold leading-tight;
@@ -127,7 +128,7 @@
     @apply font-secondary font-medium;
   }
 
-  .prose p {
+  .prose:not(.prose--big) p {
     @apply mb-xs;
   }
 
@@ -167,7 +168,7 @@
   .prose img {
     @apply my-md;
   }
-  .prose :where(p, ul, ol), .small-content {
+  .prose:not(.prose--big) :where(p, ul, ol), .small-content {
     @apply mx-auto max-w-[650px];
   }
 

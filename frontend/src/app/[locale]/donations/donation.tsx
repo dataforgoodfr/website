@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Button, EditoCard, LargeTextImage, NewsletterBlock, TalksBlock, ThematicsBlock, Title } from '@/components';
+import { useEffect } from 'react';
+import { Button, EditoCard, LargeTextImage, NewsletterBlock, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock } from '@/components';
 import { DonationsData } from './page';
 
 type DonationProps = {
@@ -10,6 +11,14 @@ type DonationProps = {
 
 export default function DonationsPage({ data }: DonationProps) {
   const t = useTranslations('donations');
+
+  // Execute JavaScript when component mounts
+  useEffect(() => {
+    // Check if IRaiserFrame is available
+    if (typeof window !== 'undefined' && (window as any).IRaiserFrame) {
+      (window as any).IRaiserFrame.init();
+    }
+  }, []);
 
   const talks = data.actions?.map((action) => {
     return {
@@ -43,6 +52,8 @@ export default function DonationsPage({ data }: DonationProps) {
 
   return (
     <>
+      <ArticleHeroBlock image={data.banner_video?.url} title={t('title')} className="my-lg" />
+
       <LargeTextImage
         title={data.banner_title ?? t('title')}
         titleLevel={1}

@@ -106,8 +106,8 @@ export default async function AboutPage({ data }: AboutProps) {
     <>
       <div className="container mt-lg pt-md">
         <div className="max-w-2xl mx-auto text-center">
-          <Title variant="medium" className="mb-xs">{t('title')}</Title>
-          <p className="lead">{data.introduction}</p>
+          <Title variant="big" className="mb-xs">{t('title')}</Title>
+          <p className="h2-like">{data.introduction}</p>
         </div>
       </div>
 

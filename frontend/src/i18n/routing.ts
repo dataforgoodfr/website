@@ -12,10 +12,10 @@ export const pathnames = {
     fr: "/nous-connaitre",
   },
   "/blog": {
-    fr: "/nos-articles",
+    fr: "/ressources",
   },
   "/blog/[slug]": {
-    fr: "/nos-articles/[slug]",
+    fr: "/ressources/[slug]",
   },
   "/democracy": {
     fr: "/democratie",

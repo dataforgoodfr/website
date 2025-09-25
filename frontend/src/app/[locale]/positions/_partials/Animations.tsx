@@ -24,6 +24,7 @@ export default function Animation({ animationData }: {
 
   return (
     <div className="container flex justify-center items-center h-[600dvh]" ref={refContainer}>
+      <motion.div className="bg-fixed bg-[url('/images/bg-paper.jpg')] bg-repeat-y bg-cover fixed top-0 left-0 right-0 bottom-0" style={{ opacity: useTransform(scrollYProgress, [0.99, 1], [1, 0]) }} />
       <Link href="#lastContent" className="absolute z-1 top-[calc(100dvh-40px)] right-[40px] text-grey-text flex flex-col items-center hover:text-black">
         {t('skipLink')}
         <Image src="/icons/skip-arrow.svg" alt="" width={16} height={16} />
