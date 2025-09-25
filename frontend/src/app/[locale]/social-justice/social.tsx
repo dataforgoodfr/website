@@ -38,21 +38,21 @@ export default function SocialPage({ data }: ThematicsProps) {
       <Kpis kpis={kpis} className="my-lg" />
 
       <EditoCard
-        imageText={data.thematic?.description || ''}
+        imageText={data.thematic?.quote || ''}
         image={data.thematic?.image_1?.url || ''}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
       >
-        {data.thematic?.quote || ''}
+        {data.thematic?.description || ''}
       </EditoCard>
 
       <EditoCard
-        imageText={data.thematic?.description_2 || ''}
+        imageText={data.thematic?.quote2 || ''}
         image={data.thematic?.image_2?.url || ''}
         className="my-lg container"
       >
-        {data.thematic?.quote2}
+        {data.thematic?.description_2}
       </EditoCard>
 
       <ThumbnailProjectsBlock
