@@ -20,6 +20,7 @@ const BaseCardsBlock: React.FC<BaseCardsBlockProps> = ({
   if (!blocks.length) {
     return null;
   }
+  console.log(blocks.map((block) => block.subInfos))
 
   return (
     <div

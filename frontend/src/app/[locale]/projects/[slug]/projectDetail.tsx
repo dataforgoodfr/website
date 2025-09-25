@@ -103,7 +103,7 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
   const slides = getSlides(project);
   const delivrables = getDeliverable(project);
   const news = getNews(project)
-  const volunteers: IMembers[] = getVolunteers(project);
+  const volunteers = getVolunteers(project);
 
   return (
     <>

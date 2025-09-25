@@ -22,10 +22,31 @@ async function fetchPositionPageData() {
       query: {
         populate: {
           press_releases: {
-            populate: '*'
+            populate: {
+              tags: {
+                populate: '*'
+              },
+              thumbnail: {
+                populate: '*'
+              }
+            }
           },
           resources: {
-            populate: '*',
+            populate: {
+              blog: {
+                populate: "*"
+              },
+              press_release: {
+                populate: {
+                  tags: {
+                    populate: '*'
+                  },
+                  thumbnail: {
+                    populate: '*'
+                  }
+                }
+              }
+            }
           },
           testimonial: {
             populate: '*',
