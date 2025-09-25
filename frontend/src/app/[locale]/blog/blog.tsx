@@ -58,15 +58,16 @@ export default function BlogPage({data, pagination, currentPage}: BlogsPageProps
   const { handlePageChange } = usePagination(currentPage);
 
   return (
-      <div className="container my-lg">
-        <Title className="mb-md max-w-5xl" variant="big">
-          {t('title')}
-        </Title>
-        <SearchInput
-          className="my-lg"
-          handleChange={handleInputChange}
-          value={searchQuery}
-        />
+      <div className="my-lg pt-md">
+        <div className="container">
+          <Title className="mb-md max-w-5xl" variant="big">
+            {t('title')}
+          </Title>
+          <SearchInput
+            handleChange={handleInputChange}
+            value={searchQuery}
+          />
+        </div>
 
         <BaseCardsBlock
           blocks={filteredResources}
