@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type ThematicHeroBlockProps = {
-  image: string;
+  image?: string;
   title: string;
   className?: string;
   titleClassName?: string;
@@ -11,7 +11,7 @@ export type ThematicHeroBlockProps = {
 };
 
 const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
-  image,
+  image = "/images/default-image.svg",
   title,
   className,
   titleClassName,

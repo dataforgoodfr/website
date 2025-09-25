@@ -10,7 +10,7 @@ export type ThematicsCardProps = {
   id: string;
   talk: string;
   talkOffset?: number;
-  image: string;
+  image?: string;
   imageWidth: number;
   imageHeight: number;
   ctaText?: string;
@@ -23,7 +23,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
   title,
   talk,
   talkOffset = 0,
-  image,
+  image = "/images/default-image.svg",
   imageWidth,
   imageHeight,
   ctaText,
@@ -31,7 +31,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
   className,
   ...props
 }) => {
-  if (!title || !talk || !image) {
+  if (!title || !talk) {
     return null;
   }
 

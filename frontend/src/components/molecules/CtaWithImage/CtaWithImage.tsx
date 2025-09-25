@@ -9,7 +9,7 @@ export type CtaWithImageProps = {
     rotation: number;
     className?: string;
   };
-  image: string;
+  image?: string;
   imageClassName?: string;
   imagePosition?: "left" | "right";
   cta: {
@@ -25,7 +25,7 @@ export type CtaWithImageProps = {
 const CtaWithImage: React.FC<CtaWithImageProps> = ({
   title,
   content,
-  image,
+  image = "/images/default-image.svg",
   imageClassName,
   imagePosition = "right",
   cta,

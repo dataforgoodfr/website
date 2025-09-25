@@ -18,7 +18,7 @@ export type ProjectCarouselProps = {
   slides: Array<{
     id: string | number;
     description: string;
-    image: string;
+    image?: string;
     altImage?: string;
   }>;
   className?: string;
@@ -84,7 +84,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
               )}
             >
               <Image
-                src={slide.image}
+                src={slide.image ?? "/images/default-image.svg"}
                 alt={slide.altImage ?? ''}
                 width={1000}
                 height={400}

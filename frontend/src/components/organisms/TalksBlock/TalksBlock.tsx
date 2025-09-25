@@ -1,17 +1,11 @@
 import { Title, TitleProps } from '@/components';
-import { TalkCard } from '@/components/molecules';
+import { TalkCard, TalkCardProps } from '@/components/molecules';
 import clsx from 'clsx';
 
 export type TalksBlockProps = {
   title?: string;
   titleLevel?: TitleProps['level'];
-  talks: {
-    author: string;
-    talk: string;
-    image: string;
-    ctaText?: string;
-    ctaLink?: string;
-  }[];
+  talks: TalkCardProps[];
   className?: string;
 };
 

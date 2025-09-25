@@ -7,7 +7,7 @@ import Link from 'next/link';
 export type BaseCardProps = {
   title: string;
   tags?: string[];
-  image: string;
+  image?: string;
   link: string;
   subInfos: string[];
   className?: string;
@@ -17,7 +17,7 @@ export type BaseCardProps = {
 const BaseCard: React.FC<BaseCardProps> = ({
   title,
   tags,
-  image,
+  image = "/images/default-image.svg",
   link,
   subInfos,
   className,

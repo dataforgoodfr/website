@@ -5,7 +5,7 @@ import { Button } from '@/components';
 export type TalkCardProps = {
   author: string;
   talk: string;
-  image: string;
+  image?: string;
   ctaText?: string;
   ctaLink?: string;
   className?: string;
@@ -15,7 +15,7 @@ export type TalkCardProps = {
 const TalkCard: React.FC<TalkCardProps> = ({
   author,
   talk,
-  image,
+  image = "/images/default-image.svg",
   ctaText,
   ctaLink,
   className,
