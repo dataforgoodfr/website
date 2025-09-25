@@ -86,7 +86,7 @@
     --c-building: 266 77% 50%; /* purple */
     --c-building-light: 265 80% 90%; /* light purple */
     --c-alive-light: 68 78% 84%; /* light green */
-    --c-back-green: 92 14% 81%; /* light green */
+    --c-back-green: 88 14% 81%; /* light green */
     --c-grey-text: 0 0 40%; /* grey text */
     --c-dark-light: 255 25 13%; /* dark light */
 
@@ -219,6 +219,14 @@
     mask-repeat: no-repeat;
     mask-position: center;
     -webkit-mask-image: url('/images/mask-papper.svg');
+    -webkit-mask-size: cover;
+  }
+  .mask-person {
+    mask-image: url('/images/mask-person.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('/images/mask-person.svg');
     -webkit-mask-size: cover;
   }
 }

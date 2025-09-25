@@ -17,7 +17,7 @@ export type TestimoniesCarouselProps = {
     id: string | number;
     author: string;
     content: string;
-    image: string;
+    image?: string;
   }>;
   className?: string;
 };
@@ -63,7 +63,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
               <div className="relative flex flex-col items-center w-48 sm:-left-12">
-                <Image src={testimony.image} alt="" loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
+                <Image src={testimony.image ?? "/images/default-image.svg"} alt="" loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
                 <TiltedTitle className="text-center w-full text-sm md:text-base drop-shadow-1 drop-shadow-black" level="p" variant="x-small" colors="text-dark bg-blue block w-full text-center">
                   {testimony.author}
                 </TiltedTitle>

@@ -7,7 +7,7 @@ import Link from 'next/link';
 export type NewsSmallCardProps = {
   title?: string;
   tag: string;
-  image: string;
+  image?: string;
   link: string;
   date: string;
   className?: string;
@@ -16,7 +16,7 @@ export type NewsSmallCardProps = {
 const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
   title,
   tag,
-  image,
+  image = "/images/default-image.svg",
   link,
   date,
   className,

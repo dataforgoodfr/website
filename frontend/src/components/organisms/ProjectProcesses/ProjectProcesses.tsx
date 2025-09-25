@@ -2,6 +2,7 @@ import { Title, TitleProps } from "@/components";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import React from "react";
 
 export type ProjectProcessesProps = {
   title: string;
@@ -33,29 +34,32 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
   return (
     <div
       className={clsx(
-        "flex flex-col sm:flex-row sm:items-start gap-md bg-violet-light py-lg w-full px-6",
+        "bg-violet-light py-lg",
         className,
       )}
       {...props}
     >
-      <div className={clsx(
-        "flex flex-col w-full mr-xs pl-6 sm:w-1/3",
-      )}>
-        <Title className="mb-sm font-tertiary" level={titleLevel} variant="medium" >{title}</Title>
-        <p className="mb-xs w-3/4 text-md font-tertiary font-bold" >{summary}</p>
-      </div>
-      <div className="flex flex-col pr-2 items-start w-full sm:w-2/3">
-        <div className="flex flex-col gap-xs text-sm uppercase">
-          {processes.map((process, index) => (
-            <div key={index}>
-              <p className="text-sm font-secondary font-bold">{process.name}</p>
-              <ul className="list-disc list-outside mb-xs font-bold ml-3">
-                {process.description?.map((item, id) => (<li className="ml-4 leading-2" key={id}> {item} </li>))}
-              </ul>
-            </div>
-          ))}
+      <div className="container flex flex-col md:flex-row">
+        <div className="md:w-1/3">
+          <Title className="mb-sm" level={titleLevel} variant="medium" >{title}</Title>
+          <p className="w-3/4 lead" >{summary}</p>
         </div>
-        {link && <p className="mt-md text-xs"> {t("repoLink")} <Link href={link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{link}</Link></p>}
+
+        <div className="md:w-2/3">
+          <div className="h4-like flex flex-col gap-xs">
+            {processes.map((process, index) => (
+              <div key={index}>
+                {process.name && <p>{process.name}</p>}
+                <ul className="list-disc list-outside mb-sm ml-3">
+                  {process.description?.map((item, id) => (<React.Fragment key={id}>
+                    {item && <li>{item}</li>}
+                  </React.Fragment>))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          {link && <p className="mt-md text-xs"> {t("repoLink")} <Link href={link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{link}</Link></p>}
+        </div>
       </div>
     </div>
   );

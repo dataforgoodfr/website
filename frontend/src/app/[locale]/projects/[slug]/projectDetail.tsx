@@ -1,6 +1,6 @@
 'use client';
 
-import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectImpactBlock, ProjectPresentation, ProjectProcesses, Title } from '@/components';
+import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectHeroBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { type ProjectPageData } from './page';
@@ -22,37 +22,36 @@ function getProjectTags(project: ProjectPageData) {
       "label": project.state,
       "type": "subject" as 'temporal' | 'subject'
     },
-    ...(project.category?.map(cat => ({
+    ...((project.category as string[]).map(cat => ({
       "label": cat,
       "type": "subject" as 'temporal' | 'subject'
     })) || [])];
 }
 
+
 function getProjectData(project: ProjectPageData) {
-  const mainPartner = project.related_partners?.[0]
+  const mainPartner = project.related_partners
   const projectTags = getProjectTags(project);
 
   return {
-    name: project.title,
-    summary: project.short_description,
     description: [project.long_description],
     tags: projectTags,
-    association: mainPartner ? {
-      logo: mainPartner.logo?.url,
-      altLogo: mainPartner.logo?.alternativeText,
-      summary: mainPartner.description,
-    } : undefined
+    associations: (mainPartner ?? []).map((partner) => ({
+      logo: partner.logo?.url,
+      altLogo: partner.logo?.alternativeText,
+      summary: partner.description,
+    }))
   };
 }
 
 function getProjectImpacts(project: ProjectPageData): IProjectImpacts[] {
   return Array.from({ length: 3 }, (_, i) => ({
-    value: project[`value_${i + 1}`],
-    text: project[`explanation_${i + 1}`]
+    value: project[`value_${i + 1}` as keyof ProjectPageData] as string,
+    text: project[`explanation_${i + 1}` as keyof ProjectPageData] as string
   })).filter(Boolean);
 }
 
-function getSlides(project: ProjectPageData): IProjectSlides[] {
+function getSlides(project: ProjectPageData) {
   return project.illustration_images?.map((image, index) => ({
     id: index + 1,
     description: image.caption,
@@ -107,15 +106,22 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
 
   return (
     <>
-      <Banner
+      {project.title && <ProjectHeroBlock
         image={project.thumbnail?.url}
-        className="mb-lg "
-      />
+        title={project.title}
+        introduction={project.short_description}
+        className='my-lg'
+      />}
 
       <ProjectPresentation
         {...projectData}
         className='my-lg'
       />
+
+      {project.demo_video && <BannerVideo
+        video={project.demo_video_embed}
+        className='my-lg'
+      />}
 
       {presentationContent.length > 0 && <Banner
         image={project.thumbnail?.url}
@@ -129,14 +135,10 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         className='my-lg'
       />}
 
-      {project.demo_video && <BannerVideo
-        video={project.demo_video_embed}
-        className='my-lg'
-      />}
-
       {slides.length > 0 && <ProjectCarousel
         title={t('carousel.title')}
         slides={slides}
+        className='my-lg'
       />}
 
       <ProjectProcesses
@@ -156,8 +158,6 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         categories={volunteers}
         className="my-lg"
       />}
-
-
     </>
   );
 }

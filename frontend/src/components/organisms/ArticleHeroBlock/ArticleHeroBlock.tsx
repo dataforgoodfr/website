@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export type ArticleHeroBlockProps = {
-  image: string;
+  image?: string;
   title: string;
   introduction?: string;
   date: string;
@@ -18,7 +18,7 @@ export type ArticleHeroBlockProps = {
 };
 
 const ArticleHeroBlock: React.FC<ArticleHeroBlockProps> = ({
-  image,
+  image = "/images/default-image.svg",
   title,
   introduction,
   date,

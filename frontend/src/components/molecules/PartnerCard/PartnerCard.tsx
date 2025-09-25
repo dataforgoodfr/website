@@ -7,7 +7,7 @@ export type PartnerCardProps = {
   name: string;
   titleLevel?: TitleProps['level'];
   description?: string;
-  image: string;
+  image?: string;
   link: string;
   className?: string;
 };
@@ -16,7 +16,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
   name,
   titleLevel = 3,
   description,
-  image,
+  image = "/images/default-image.svg",
   link,
   className,
   ...props

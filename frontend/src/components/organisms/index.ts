@@ -16,6 +16,10 @@ export type { NewsletterBlockProps } from './NewsletterBlock/NewsletterBlock';
 export { default as PartnersBlock } from './PartnersBlock/PartnersBlock';
 export type { PartnersBlockProps } from './PartnersBlock/PartnersBlock';
 
+export { default as ProjectHeroBlock } from './ProjectHeroBlock/ProjectHeroBlock';
+export type { ProjectHeroBlockProps } from './ProjectHeroBlock/ProjectHeroBlock';
+
+
 export { default as ResultsCard } from './ResultsCard/ResultsCard';
 export type { ResultsCardProps } from './ResultsCard/ResultsCard';
 
