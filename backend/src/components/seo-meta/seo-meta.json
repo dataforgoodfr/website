@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_seo_meta_seo_metas",
+  "info": {
+    "displayName": "SEO-meta",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 160,
+      "required": true
+    },
+    "canonical_url": {
+      "type": "string"
+    },
+    "og_url": {
+      "type": "string"
+    },
+    "og_title": {
+      "type": "string"
+    },
+    "og_description": {
+      "type": "string"
+    },
+    "og_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
