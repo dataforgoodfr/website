@@ -48,7 +48,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
         dragFree: false,
       }}
       className={clsx(
-        'w-full relative',
+        'w-full relative overflow-hidden md:overflow-visible',
         className,
       )}
     >

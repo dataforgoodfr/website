@@ -50,7 +50,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
       >
         {image && <Image src={image} alt="" loading="lazy" width={1000} height={400} className="col-start-1 md:col-end-3 row-start-1 w-full h-full object-cover" />}
         
-        <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start pl-32 p-12 py-24 bg-cover bg-left", bgImageClass)}>
+        <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 py-24 bg-cover bg-left", bgImageClass)}>
           {title && <Title level={titleLevel} variant="medium">{title}</Title>}
 
           {content && <div className="prose my-xs max-w-sm">{content}</div>}

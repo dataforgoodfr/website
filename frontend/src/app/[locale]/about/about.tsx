@@ -89,7 +89,7 @@ type AboutProps = {
   data: AboutPageData;
 };
 
-export default async function AboutPage({ data }: AboutProps) {
+export default function AboutPage({ data }: AboutProps) {
   const t = useTranslations('about');
 
   const testimonies = transformTestimonials(data.testimonials!);
@@ -147,7 +147,7 @@ export default async function AboutPage({ data }: AboutProps) {
             className: 'sm:left-6',
           }}
           image={data.cta_right?.image.url ?? ''}
-          className="w-full lg:w-[770px]"
+          className="w-full lg:w-[770px] overflow-hidden md:overflow-visible"
           contentClassName="relative lg:top-24"
           cta={{
             text: data.cta_right?.cta.text,

@@ -68,7 +68,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           dragFree: false,
         }}
         className={clsx(
-          'w-full relative',
+          'w-full relative overflow-hidden md:overflow-visible',
           current === count - 1 && slides.length > 1 && 'md:[&>div:first-child]:pr-[25vw]',
           carouselClassName,
           

@@ -583,23 +583,15 @@ export interface ApiClimateAndBiodiversityClimateAndBiodiversity
     draftAndPublish: true;
   };
   attributes: {
-    banner_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    edito_1: Schema.Attribute.Component<'edito.edito', false>;
-    edito_2: Schema.Attribute.Component<'edito.edito', false>;
-    funders: Schema.Attribute.Relation<'oneToMany', 'api::funder.funder'>;
-    kpis: Schema.Attribute.Component<'kpi.kpi', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::climate-and-biodiversity.climate-and-biodiversity'
     > &
       Schema.Attribute.Private;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
@@ -620,23 +612,15 @@ export interface ApiDemocracyDemocracy extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    banner_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    edito_1: Schema.Attribute.Component<'edito.edito', false>;
-    edito_2: Schema.Attribute.Component<'edito.edito', false>;
-    funders: Schema.Attribute.Relation<'oneToMany', 'api::funder.funder'>;
-    kpis: Schema.Attribute.Component<'kpi.kpi', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::democracy.democracy'
     > &
       Schema.Attribute.Private;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
@@ -1621,23 +1605,15 @@ export interface ApiSocialJusticeSocialJustice extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    banner_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    edito_1: Schema.Attribute.Component<'edito.edito', false>;
-    edito_2: Schema.Attribute.Component<'edito.edito', false>;
-    funders: Schema.Attribute.Relation<'oneToMany', 'api::funder.funder'>;
-    kpis: Schema.Attribute.Component<'kpi.kpi', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::social-justice.social-justice'
     > &
       Schema.Attribute.Private;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
