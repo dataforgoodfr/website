@@ -422,6 +422,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::volunteer.volunteer'
     >;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     strategic_committee: Schema.Attribute.Relation<
       'oneToMany',
       'api::volunteer.volunteer'
@@ -459,6 +460,7 @@ export interface ApiActualiteActualite extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -487,6 +489,7 @@ export interface ApiBlogListBlogList extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -598,6 +601,7 @@ export interface ApiClimateAndBiodiversityClimateAndBiodiversity
       Schema.Attribute.Private;
     projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -634,6 +638,7 @@ export interface ApiDemocracyDemocracy extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -678,6 +683,7 @@ export interface ApiDonationDonation extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     resources_title: Schema.Attribute.String;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -706,6 +712,7 @@ export interface ApiEvenementEvenement extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -866,6 +873,12 @@ export interface ApiHippocrateHippocrate extends Struct.SingleTypeSchema {
       'api::hippocrate.hippocrate'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -947,6 +960,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         };
       }>;
     results_section_title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1103,6 +1122,7 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     resources: Schema.Attribute.Relation<'oneToMany', 'api::resource.resource'>;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     testimonial: Schema.Attribute.Component<'testimonial.testimonial', false>;
     testimonial_background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -1231,6 +1251,7 @@ export interface ApiProjectDetailProjectDetail extends Struct.SingleTypeSchema {
     >;
     project: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1486,6 +1507,7 @@ export interface ApiProjectsListProjectsList extends Struct.SingleTypeSchema {
     projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     seasons: Schema.Attribute.Relation<'oneToMany', 'api::season.season'>;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematics: Schema.Attribute.Relation<'oneToMany', 'api::thematic.thematic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1617,6 +1639,7 @@ export interface ApiSocialJusticeSocialJustice extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

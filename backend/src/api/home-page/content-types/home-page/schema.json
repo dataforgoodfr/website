@@ -16,6 +16,16 @@
     }
   },
   "attributes": {
+    "seo_meta": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
+    },
     "hero": {
       "type": "component",
       "pluginOptions": {

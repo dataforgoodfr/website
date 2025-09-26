@@ -12,33 +12,38 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "seo_meta": {
+      "type": "component",
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
+    },
     "introduction": {
       "type": "text"
     },
     "testimonials": {
       "type": "component",
-      "repeatable": true,
-      "component": "testimonial.testimonial"
+      "component": "testimonial.testimonial",
+      "repeatable": true
     },
     "map_cta": {
       "type": "component",
-      "repeatable": false,
-      "component": "call-to-action.call-to-action-with-image"
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
     },
     "volunteer_cta": {
       "type": "component",
-      "repeatable": false,
-      "component": "call-to-action.call-to-action-with-image"
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
     },
     "cta_left": {
       "type": "component",
-      "repeatable": false,
-      "component": "call-to-action.call-to-action-with-image"
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
     },
     "cta_right": {
       "type": "component",
-      "repeatable": false,
-      "component": "call-to-action.call-to-action-with-image"
+      "component": "call-to-action.call-to-action-with-image",
+      "repeatable": false
     },
     "funders": {
       "type": "relation",
