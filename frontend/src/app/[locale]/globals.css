@@ -101,11 +101,11 @@
     @apply bg-light text-dark font-primary;
   }
 
-  .blank {
+  .prose a[target="_blank"], .blank {
     @apply inline-flex items-center gap-1;
   }
 
-  .blank::after {
+  .prose a[target="_blank"]::after, .blank::after {
     content: '';
     @apply bg-[url("/icons/blank.svg")] bg-cover w-4 aspect-square;
   }
