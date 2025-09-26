@@ -68,19 +68,19 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           dragFree: false,
         }}
         className={clsx(
-          'w-full relative',
-          current === count - 1 && slides.length > 1 && 'md:[&>div:first-child]:pr-[25vw]',
+          'w-full relative overflow-hidden md:overflow-visible',
+          current === count - 1 && slides.length > 1 && 'md:[&>div:first-child]:pr-[10vw]',
           carouselClassName,
           
         )}
       >
-        <CarouselContent noOverflow className="px-[calc(50%-18rem)] items-center">
+        <CarouselContent noOverflow className="px-[calc(50%-24rem)] items-center">
           {slides.map((slide, index) => (
             <CarouselItem
               key={slide.id}
               className={clsx(
                 "max-w-3xl p-0 h-[520px]",
-                index !== current && "bg-violet-light/80 px-0 py-0 h-[460px]"
+                index !== current && "bg-violet-light/80 px-0 py-0 h-[460px]",
               )}
             >
               <Image

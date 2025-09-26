@@ -1,17 +1,20 @@
 import { Title, TitleProps } from '@/components';
 import { TalkCard, TalkCardProps } from '@/components/molecules';
 import clsx from 'clsx';
+import Image from "next/image"
 
 export type TalksBlockProps = {
   title?: string;
   titleLevel?: TitleProps['level'];
   talks: TalkCardProps[];
+  isHome: boolean;
   className?: string;
 };
 
 const TalksBlock: React.FC<TalksBlockProps> = ({
   title,
   titleLevel = 2,
+  isHome = false,
   talks,
   className,
   ...props
@@ -25,8 +28,15 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
       className={clsx('container', className)}
       {...props}
     >
+      {isHome && <Image
+        src="/icons/dot-orange.svg"
+        width={35}
+        height={35}
+        alt={"TODO"}
+        className='mx-auto mb-xs'
+      />}
       {title && (
-        <Title variant="medium" className="text-center" level={titleLevel}>
+        <Title variant="medium" className="text-center mx-auto max-w-[40%]" level={titleLevel}>
           {title}
         </Title>
       )}

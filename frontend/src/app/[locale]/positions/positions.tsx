@@ -24,7 +24,11 @@ function transformAnimation(data: NonNullable<PositionsPageData>) {
     manifestCta: {
       text: data.manifest_cta?.text || "",
       link: data.manifest_cta?.link || "",
-    }
+    },
+    images: data.animation?.map((elem) => ({
+      image_text: elem.image_text,
+      image: elem.image
+    }))
   }
 }
 
@@ -61,6 +65,7 @@ export default function PositionsPage({ data }: PositionPageProps) {
         background="purple"
         className="my-lg"
         id="lastContent"
+        internalClassName='max-h-[750px]'
       />
 
       <BaseCardsBlock

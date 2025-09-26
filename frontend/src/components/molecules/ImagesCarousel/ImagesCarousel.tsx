@@ -85,7 +85,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
     <Carousel 
       setApi={setApi} 
       className={clsx(
-        'w-full relative mask-papper',
+        'w-full relative mask-papper overflow-hidden md:overflow-visible',
         className,
       )}
     >

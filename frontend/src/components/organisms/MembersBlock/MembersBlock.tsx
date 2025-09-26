@@ -1,5 +1,5 @@
 import { Title, TitleProps } from '@/components';
-import { MemberCard, TalkCard } from '@/components/molecules';
+import { MemberCard } from '@/components/molecules';
 import clsx from 'clsx';
 
 export type MembersBlockProps = {

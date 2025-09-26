@@ -9,6 +9,7 @@ export type TalkCardProps = {
   ctaText?: string;
   ctaLink?: string;
   className?: string;
+  talkClassName?: string;
   imagePosition?: 'left' | 'right';
 };
 
@@ -19,6 +20,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
   ctaText,
   ctaLink,
   className,
+  talkClassName, 
   imagePosition = 'left',
   ...props
 }) => {
@@ -56,7 +58,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         <p className="h4-like">
           {author}
         </p>
-        <p className="my-xs h3-like">
+        <p className="my-xs h3-like text-[27px] leading-[2rem]">
           {talk}
         </p>
         {ctaText && ctaLink && (

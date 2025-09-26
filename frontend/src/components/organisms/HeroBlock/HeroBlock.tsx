@@ -33,7 +33,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
       {image && <div className='col-start-1 row-start-1 row-span-3 max-w-fit -z-1 w-full h-full'>
         <Image src={image} alt="" loading="lazy" width={1000} height={400} className="object-cover h-full md:max-w-fit" />
       </div>}
-      <div className="col-start-1 row-start-2 mt-lg md:mt-0 md:col-start-2 md:row-start-2">
+      <div className="col-start-1 row-start-2 mt-lg md:mt-0 md:col-start-2 md:row-start-2 self-center">
         <div className="container h-full">
           <div className="flex flex-col max-w-xl ml-auto items-start relative z-10">
             <TiltedTitle {...title} className={`${title.className} text-left font-tertiary`} />

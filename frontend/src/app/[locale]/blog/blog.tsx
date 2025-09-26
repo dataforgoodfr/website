@@ -2,7 +2,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Title, BaseCardsBlock, TalksBlock, Pagination, SearchInput } from '@/components';
+import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
 import { BlogsPageMeta, BlogsPageData } from './page';
 import { usePagination } from '@/hooks/usePagination';
 import { useState, useEffect } from 'react';

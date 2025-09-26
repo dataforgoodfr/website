@@ -20,7 +20,7 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <div
       className={clsx(
-        'grid grid-cols-1 grid-rows-1 max-h-[850px] mask-papper',
+        'grid grid-cols-1 grid-rows-1 md:max-h-[850px] mask-papper',
         className,
       )}
       {...props}
@@ -29,7 +29,7 @@ const Banner: React.FC<BannerProps> = ({
       
       <div className="col-start-1 row-start-1 bg-violet-light opacity-90" />
 
-      {content && content.length > 0 && <div className="col-start-1 row-start-1 container self-center z-1">
+      {content && content.length > 0 && <div className="whitespace-pre-wrap max-w-[60%] py-10 md:py-0 col-start-1 row-start-1 container self-center z-1">
         <div className={clsx(
           'prose prose--big text-center lead',
         )}>
