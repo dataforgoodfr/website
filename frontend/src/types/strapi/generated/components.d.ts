@@ -113,6 +113,31 @@ export interface KpiKpiWithCta extends Struct.ComponentSchema {
   };
 }
 
+export interface SeoMetaSeoMeta extends Struct.ComponentSchema {
+  collectionName: 'components_seo_meta_seo_metas';
+  info: {
+    displayName: 'SEO-meta';
+    icon: 'earth';
+  };
+  attributes: {
+    canonical_url: Schema.Attribute.String;
+    description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 160;
+      }>;
+    og_description: Schema.Attribute.String;
+    og_image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    og_title: Schema.Attribute.String;
+    og_url: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+  };
+}
+
 export interface TestimonialTestimonial extends Struct.ComponentSchema {
   collectionName: 'components_testimonial_testimonials';
   info: {
@@ -138,6 +163,7 @@ declare module '@strapi/strapi' {
       'information.information-text': InformationInformationText;
       'kpi.kpi': KpiKpi;
       'kpi.kpi-with-cta': KpiKpiWithCta;
+      'seo-meta.seo-meta': SeoMetaSeoMeta;
       'testimonial.testimonial': TestimonialTestimonial;
     }
   }
