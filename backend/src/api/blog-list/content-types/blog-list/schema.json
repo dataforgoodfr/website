@@ -15,6 +15,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog.blog"
+    },
+    "seo_meta": {
+      "type": "component",
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
     }
   }
 }

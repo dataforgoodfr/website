@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "seo_meta": {
+      "type": "component",
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
+    },
     "thematic": {
       "type": "relation",
       "relation": "oneToOne",
