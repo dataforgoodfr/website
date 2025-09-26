@@ -1,19 +1,20 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import PositionsPage from './positions';
 import client from '@/lib/strapi-client';
+import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'positions' });
+  const { data } = await fetchPositionPageData();
 
-  return {
-    title: t('meta.title'),
-    description: t('meta.description'),
-  };
+  if (!data?.data?.seo_meta) {
+    return {};
+  }
+
+  return generateMetadataFromSeo(data.data.seo_meta);
 }
 
 async function fetchPositionPageData() {
@@ -57,14 +58,17 @@ async function fetchPositionPageData() {
           manifest_cta: {
             populate: '*',
           },
-          animation: {
-            populate: {
-              image: {
-                populate: '*'
-              }
-            }
-          },
-        },
+           animation: {
+             populate: {
+               image: {
+                 populate: '*'
+               }
+             }
+           },
+           seo_meta: {
+             populate: "*"
+           }
+         },
       },
     },
   });

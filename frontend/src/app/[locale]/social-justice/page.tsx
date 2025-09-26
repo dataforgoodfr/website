@@ -1,19 +1,20 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import SocialPage from './social';
 import client from '@/lib/strapi-client';
+import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'social' });
+  const { data } = await fetchThematicPageData();
 
-  return {
-    title: t('meta.title'),
-    description: t('meta.description'),
-  };
+  if (!data?.data?.seo_meta) {
+    return {};
+  }
+
+  return generateMetadataFromSeo(data.data.seo_meta);
 }
 
 async function fetchThematicPageData() {
@@ -41,12 +42,15 @@ async function fetchThematicPageData() {
               image_2: {
                 fields: ["url"]
               },
-              banner_image: {
-                fields: ["url"]
-              },
-            }
-          },
-        },
+               banner_image: {
+                 fields: ["url"]
+               },
+             }
+           },
+           seo_meta: {
+             populate: "*"
+           }
+         },
       },
     },
   });

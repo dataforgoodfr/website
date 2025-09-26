@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import ProjectDetailPage from './projectDetail';
 import client from '@/lib/strapi-client';
@@ -59,15 +58,21 @@ async function fetchProjectPageData(slug: string) {
 export type ProjectPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchProjectPageData>>["data"]>["data"]>[0];
 
 export async function generateMetadata({
-  params: { locale },
+  params: { locale, slug },
 }: {
-  params: { locale: string };
+  params: { locale: string; slug: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'projectDetail' });
+  const { data } = await fetchProjectPageData(slug);
+
+  if (!data?.data || !data.data.length) {
+    return {};
+  }
+
+  const project = data.data[0];
 
   return {
-    title: t('meta.title'),
-    description: t('meta.description'),
+    title: project.title,
+    description: project.short_description,
   };
 }
 

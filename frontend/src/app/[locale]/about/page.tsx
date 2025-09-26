@@ -1,19 +1,20 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import AboutPage from './about';
 import client from '@/lib/strapi-client';
+import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'about' });
+  const { data } = await fetchAboutPageData();
 
-  return {
-    title: t('meta.title'),
-    description: t('meta.description'),
-  };
+  if (!data?.data?.seo_meta) {
+    return {};
+  }
+
+  return generateMetadataFromSeo(data.data.seo_meta);
 }
 
 async function fetchAboutPageData() {
@@ -48,12 +49,15 @@ async function fetchAboutPageData() {
           scientific_committee: {
             populate: "*"
           },
-          strategic_committee: {
-            populate: "*"
-          },
-          division_managers: {
-            populate: "*"
-          }
+           strategic_committee: {
+             populate: "*"
+           },
+           division_managers: {
+             populate: "*"
+           },
+           seo_meta: {
+             populate: "*"
+           }
         }
       }
     }

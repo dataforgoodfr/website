@@ -1,19 +1,20 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import DonationsPage from './donation';
 import client from '@/lib/strapi-client';
+import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'donations' });
+  const { data } = await fetchDonationData();
 
-  return {
-    title: t('meta.title'),
-    description: t('meta.description'),
-  };
+  if (!data?.data?.seo_meta) {
+    return {};
+  }
+
+  return generateMetadataFromSeo(data.data.seo_meta);
 }
 
 async function fetchDonationData() {
@@ -34,10 +35,13 @@ async function fetchDonationData() {
               },
             }
           },
-          donation_cta: {
-            populate: "*"
-          },
-        }
+           donation_cta: {
+             populate: "*"
+           },
+           seo_meta: {
+             populate: "*"
+           }
+         }
       }
     }
   });

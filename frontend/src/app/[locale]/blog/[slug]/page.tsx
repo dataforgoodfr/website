@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import client from '@/lib/strapi-client';
 import ArticlePage from './article';
@@ -30,15 +29,21 @@ async function fetchBlogPageData(slug: string) {
 export type BlogPageData = NonNullable<NonNullable<NonNullable<Awaited<ReturnType<typeof fetchBlogPageData>>["data"]>["data"]>["blogs"]>[0];
 
 export async function generateMetadata({
-  params: { locale },
+  params: { locale, slug },
 }: {
-  params: { locale: string };
+  params: { locale: string; slug: string };
 }) {
-  const t = await getTranslations({ locale, namespace: 'blog' });
+  const { data } = await fetchBlogPageData(slug);
+
+  if (!data?.data || !data.data.length) {
+    return {};
+  }
+
+  const blog = data.data[0];
 
   return {
-    title: "title",
-    description: "description",
+    title: blog.title,
+    description: blog.description,
   };
 }
 
