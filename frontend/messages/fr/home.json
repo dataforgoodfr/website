@@ -45,6 +45,10 @@
       "defaultAuthor": "Data For Good",
       "articleCtaText": "Lire l'article",
       "pressCtaText": "Lire la presse"
+    },
+    "dot": {
+      "purple": "purple dot",
+      "orange": "orange dot"
     }
   }
 }
