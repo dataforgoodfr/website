@@ -1,6 +1,7 @@
 import { Title, TitleProps } from '@/components';
 import { TalkCard, TalkCardProps } from '@/components/molecules';
 import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 import Image from "next/image"
 
 export type TalksBlockProps = {
@@ -23,6 +24,8 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
     return null;
   }
 
+  const t = useTranslations('home');
+
   return (
     <div
       className={clsx('container', className)}
@@ -32,7 +35,7 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
         src="/icons/dot-orange.svg"
         width={35}
         height={35}
-        alt={"TODO"}
+        alt={t('dot.orange')}
         className='mx-auto mb-xs'
       />}
       {title && (

@@ -105,7 +105,7 @@ export default function Homepage({ data }: HomepageProps) {
           src="/icons/dot-purple.svg"
           width={35}
           height={35}
-          alt={"TODO"}
+          alt={t('dot.purple')}
         />
         <Title level={2} className='ml-2' variant="medium">
           {data.project_carousel_title!}

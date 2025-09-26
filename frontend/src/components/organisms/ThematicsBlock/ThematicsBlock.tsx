@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Title, TitleProps } from '@/components/atoms';
 import ThematicsCard, { ThematicsCardProps } from '@/components/molecules/ThematicsCard/ThematicsCard';
 import Image from "next/image"
+import { useTranslations } from 'next-intl';
 
 export type ThematicsProps = {
   title: string;
@@ -25,6 +26,8 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
     return null;
   }
 
+  const t = useTranslations('home');
+  
   return (
     <div
       className={clsx(
@@ -39,7 +42,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
             src="/icons/dot-purple.svg"
             width={35}
             height={35}
-            alt={"TODO"}
+            alt={t('dot.purple')}
             className='mr-2 mb-xs'
           />}
           <Title className="mb-xs text-left" level={titleLevel} variant="medium">
