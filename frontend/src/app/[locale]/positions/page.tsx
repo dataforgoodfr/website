@@ -56,7 +56,14 @@ async function fetchPositionPageData() {
           },
           manifest_cta: {
             populate: '*',
-          }
+          },
+          animation: {
+            populate: {
+              image: {
+                populate: '*'
+              }
+            }
+          },
         },
       },
     },

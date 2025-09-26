@@ -38,10 +38,10 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
     >
       <div className="relative z-1 flex flex-col sm:flex-row items-stretch gap-md gap-y-2 bg-white">
         <div className="relative sm:order-2 sm:flex-1 h-24 sm:h-auto">
-          <Image loading="lazy" src={image} alt="" width={100} height={100} className="absolute w-full h-full object-cover" />
+          <Image loading="lazy" src={image} alt="" width={100} height={100} className="absolute w-full h-full object-contain" />
         </div>
         <div className="flex flex-col items-start gap-xs w-full sm:w-1/2 p-7">
-          <Tag>{tag}</Tag>
+          <Tag color='text-black' bgColor='bg-violet-light'>{tag}</Tag>
           <p className="font-secondary font-bold">{title}</p>
           <p className="text-sm text-black/60 font-black uppercase tracking-widest">{date}</p>
         </div>

@@ -29,7 +29,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   return (
     <div
       className={clsx(
-        'container py-lg relative overflow-hidden',
+        'container pb-xs relative overflow-hidden',
         className,
       )}
       {...props}
@@ -40,7 +40,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
         width={1000}
         height={1000}
         loading="lazy"
-        className="absolute top-0 left-0 z-0 w-full h-full opacity-20"
+        className="absolute top-0 left-0 z-0 w-full h-full opacity-90"
       />
 
       <div className="relative z-10">
@@ -62,7 +62,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               className="max-w-80"
             >
               <p className="mb-4 font-tertiary">
-                <span className="block font-secondary text-7xl">{result.number}</span>
+                <span className="block font-secondary font-bold text-5xl">{result.number}</span>
                 {result.text && <span className="h3-like">
                   {result.text}
                 </span>}

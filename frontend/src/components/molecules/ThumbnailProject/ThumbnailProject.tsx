@@ -44,7 +44,7 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
             </div>
           ))}
         </div>}
-        {company && <Title level="p" variant="small" className="mb-xs">{company}</Title>}
+        {company && <Title level={4} variant="x-small" className="mb-xs">{company}</Title>}
         {description && <p className="lead mb-xs">{description}</p>}
 
         <Button href={link}>{t('cta')}</Button>

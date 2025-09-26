@@ -49,7 +49,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
               ))}
             </div>
           )}
-          <Title className="mt-auto" variant="xx-small" level="p">{title}</Title>
+          <Title className="mt-auto font-bold" variant="xx-small" level="p">{title}</Title>
 
           {subInfos.length > 0 && (
             <div className="flex flex-wrap gap-3">

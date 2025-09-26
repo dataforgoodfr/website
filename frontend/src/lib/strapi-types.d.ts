@@ -6703,13 +6703,6 @@ export interface components {
                 seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
                 /** @example string or id */
                 thematic?: number | string;
-                /** @example string or id */
-                banner_image?: number | string;
-                funders?: (number | string)[];
-                projects?: (number | string)[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -7581,64 +7574,6 @@ export interface components {
                     documentId?: string;
                 }[];
             };
-            banner_image?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: unknown;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** Format: float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: unknown;
-                related?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                folder?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                folderPath?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-            };
-            funders?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            projects?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            kpis?: components["schemas"]["KpiKpiComponent"][];
-            edito_1?: components["schemas"]["EditoEditoComponent"];
-            edito_2?: components["schemas"]["EditoEditoComponent"];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -7662,64 +7597,6 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 };
-                banner_image?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
-                funders?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                projects?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -7745,70 +7622,11 @@ export interface components {
             data?: components["schemas"]["ClimateAndBiodiversity"];
             meta?: Record<string, never>;
         };
-        EditoEditoComponent: {
-            id?: number;
-            content?: string;
-            image_text?: string;
-            image?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: unknown;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** Format: float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: unknown;
-                related?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                folder?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                folderPath?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-            };
-        };
         DemocracyRequest: {
             data: {
                 seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
                 /** @example string or id */
                 thematic?: number | string;
-                /** @example string or id */
-                banner_image?: number | string;
-                funders?: (number | string)[];
-                projects?: (number | string)[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -8680,64 +8498,6 @@ export interface components {
                     documentId?: string;
                 }[];
             };
-            banner_image?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: unknown;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** Format: float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: unknown;
-                related?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                folder?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                folderPath?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-            };
-            funders?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            projects?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            kpis?: components["schemas"]["KpiKpiComponent"][];
-            edito_1?: components["schemas"]["EditoEditoComponent"];
-            edito_2?: components["schemas"]["EditoEditoComponent"];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -8761,64 +8521,6 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 };
-                banner_image?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
-                funders?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                projects?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -13453,6 +13155,7 @@ export interface components {
                 /** @example string or id */
                 testimonial_background?: number | string;
                 manifest_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                animation?: components["schemas"]["EditoEditoComponent"][];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -14481,6 +14184,7 @@ export interface components {
                 }[];
             };
             manifest_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+            animation?: components["schemas"]["EditoEditoComponent"][];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -14557,6 +14261,7 @@ export interface components {
                     }[];
                 };
                 manifest_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                animation?: components["schemas"]["EditoEditoComponent"][];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */
@@ -14581,6 +14286,58 @@ export interface components {
         PositionResponse: {
             data?: components["schemas"]["Position"];
             meta?: Record<string, never>;
+        };
+        EditoEditoComponent: {
+            id?: number;
+            content?: string;
+            image_text?: string;
+            image?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: unknown;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                /** Format: float */
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: unknown;
+                related?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+                folder?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                folderPath?: string;
+                /** Format: date-time */
+                createdAt?: string;
+                /** Format: date-time */
+                updatedAt?: string;
+                /** Format: date-time */
+                publishedAt?: string;
+                createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                    id?: number;
+                    documentId?: string;
+                }[];
+            };
         };
         PressReleaseRequest: {
             data: {
@@ -21401,13 +21158,6 @@ export interface components {
                 seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
                 /** @example string or id */
                 thematic?: number | string;
-                /** @example string or id */
-                banner_image?: number | string;
-                funders?: (number | string)[];
-                projects?: (number | string)[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -22279,64 +22029,6 @@ export interface components {
                     documentId?: string;
                 }[];
             };
-            banner_image?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: unknown;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** Format: float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: unknown;
-                related?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                folder?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                folderPath?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-            };
-            funders?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            projects?: {
-                id?: number;
-                documentId?: string;
-            }[];
-            kpis?: components["schemas"]["KpiKpiComponent"][];
-            edito_1?: components["schemas"]["EditoEditoComponent"];
-            edito_2?: components["schemas"]["EditoEditoComponent"];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -22360,64 +22052,6 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 };
-                banner_image?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
-                funders?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                projects?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                kpis?: components["schemas"]["KpiKpiComponent"][];
-                edito_1?: components["schemas"]["EditoEditoComponent"];
-                edito_2?: components["schemas"]["EditoEditoComponent"];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */

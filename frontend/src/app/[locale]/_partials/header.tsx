@@ -164,9 +164,9 @@ const Header = () => {
             <Image
               src="/images/dataforgood.svg"
               alt={t('header.title')}
-              width={176}
+              width={230}
               height={43}
-              className="w-44 lg:w-64 object-contain"
+              className="w-[176px] lg:w-[230px] object-contain"
             />
           </Link>
 
@@ -229,7 +229,7 @@ const Header = () => {
                     role="menuitem"
                     className={clsx(
                       'inline-flex items-center gap-2 px-4 py-2',
-                      'font-primary font-black tracking-widest bg-alive text-black uppercase text-sm hover:shadow-[inset_3px_3px_0_0_rgba(0,0,0,0.4)]',
+                      'font-primary font-black tracking-widest bg-alive text-black uppercase text-[12px] hover:shadow-[inset_3px_3px_0_0_rgba(0,0,0,0.4)]',
                       'hover:bg-alive/80 focus:bg-alive/80',
                     )}
                   >
@@ -256,7 +256,7 @@ const Header = () => {
                     onClick={() => toggleNav(false)}
                     role="menuitem"
                     className={clsx(
-                      'block px-4 py-1',
+                      'block px-4 py-1 text-sm',
                       'font-primary tracking-widest uppercase font-black',
                       'relative before:absolute before:bottom-0 before:left-0 before:w-0 before:right-0 lg:before:m-auto before:h-0.5 before:bg-black',
                       'hover:before:w-1/4 focus:before:w-1/4 lg:hover:before:w-full lg:focus:before:w-full before:transition-all before:duration-300',

@@ -1087,6 +1087,7 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    animation: Schema.Attribute.Component<'edito.edito', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

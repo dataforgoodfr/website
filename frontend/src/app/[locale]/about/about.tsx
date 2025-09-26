@@ -105,8 +105,7 @@ export default function AboutPage({ data }: AboutProps) {
   return (
     <>
       <div className="container mt-lg pt-md">
-        <div className="max-w-2xl mx-auto text-center">
-          <Title variant="big" className="mb-xs">{t('title')}</Title>
+        <div className="max-w-5xl mx-auto text-center">
           <p className="h2-like">{data.introduction}</p>
         </div>
       </div>
@@ -174,7 +173,7 @@ export default function AboutPage({ data }: AboutProps) {
       >
         <>
           {data.map_cta?.content?.split('\n').map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+            <p className='!ml-0' key={index}>{paragraph}</p>
           ))}
         </>
       </EditoCard>
@@ -186,6 +185,7 @@ export default function AboutPage({ data }: AboutProps) {
         ctaText={data.volunteer_cta.cta.text}
         ctaLink={data.volunteer_cta.cta.link}
         className="my-lg"
+        internalClassName='max-h-[650px]'
       />
 
       <PartnersBlock

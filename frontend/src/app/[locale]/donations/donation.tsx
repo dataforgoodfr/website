@@ -60,6 +60,7 @@ export default function DonationsPage({ data }: DonationProps) {
         image={data.banner_video?.url}
         background="purple"
         className="my-lg"
+        internalClassName='min-h-[850px]'
       />
 
       <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">

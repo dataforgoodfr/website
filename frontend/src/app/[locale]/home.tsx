@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
 import { HomepageData } from './page';
-
+import Image from 'next/image'
 
 type HomepageProps = {
   data: HomepageData;
@@ -40,6 +40,7 @@ export default function Homepage({ data }: HomepageProps) {
     alt: project.title || '',
     description: project.short_description || '',
     ctaText: t('projects.ctaText'),
+    ctaHref: `projects/${project.slug}`,
   })).filter(project => project.src && project.title) ?? [];
 
   const results = data.results?.map((result) => ({
@@ -99,8 +100,14 @@ export default function Homepage({ data }: HomepageProps) {
         title={{ ...heroData.title, children: t('hero.title') }}
         subtitle={{ ...heroData.subtitle, children: t('hero.subtitle') }}
       />
-      <div className="container mt-lg mb-sm">
-        <Title level={2} variant="medium">
+      <div className="container flex flex-row mt-lg mb-sm">
+        <Image
+          src="/icons/dot-purple.svg"
+          width={35}
+          height={35}
+          alt={"TODO"}
+        />
+        <Title level={2} className='ml-2' variant="medium">
           {data.project_carousel_title!}
         </Title>
       </div>
@@ -108,17 +115,19 @@ export default function Homepage({ data }: HomepageProps) {
 
       <ThematicsBlock
         title={data.thematics_section_title!}
+        isHome
         thematics={thematics.map(t => ({ ...t, id: t.id?.toString() || '' }))}
         className="my-lg"
       />
 
       <TalksBlock
+        isHome
         title={data.resources_section_title!}
         talks={resources}
       />
       <ResultsCard
         title={data.results_section_title!}
-        className="my-lg"
+        className="my-lg md:px-40"
         results={results}
       />
 

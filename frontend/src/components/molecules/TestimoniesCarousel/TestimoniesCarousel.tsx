@@ -68,7 +68,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
                   {testimony.author}
                 </TiltedTitle>
               </div>
-              <p className="relative flex-1 font-tertiary text-lg md:text-3xl py-10 px-8 md:pl-0 md:pr-12">
+              <p className="relative flex-1 font-tertiary font-bold text-lg md:text-[22px] py-10 px-8 md:pl-0 md:pr-12">
                   {testimony.content}
                 </p>
             </blockquote>

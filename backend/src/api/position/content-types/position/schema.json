@@ -45,6 +45,11 @@
       "type": "component",
       "component": "call-to-action.call-to-action",
       "repeatable": false
+    },
+    "animation": {
+      "type": "component",
+      "component": "edito.edito",
+      "repeatable": true
     }
   }
 }
