@@ -37,20 +37,9 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div className={clsx('w-full', className)}>
       {title && (
-        <>
-          <Title level={2} variant="medium" className={clsx('mb-4', titleClassName)}>
-            {title}
-          </Title>
-          <div className="mb-6">
-            <Image
-              src="/images/separate.svg"
-              alt=""
-              width={1322}
-              height={7}
-              className="w-full h-auto"
-            />
-          </div>
-        </>
+        <Title level={2} variant="medium" hasSeparator className={clsx('mb-4', titleClassName)}>
+          {title}
+        </Title>
       )}
 
       <AccordionUI
@@ -68,7 +57,7 @@ const Accordion: React.FC<AccordionProps> = ({
                   {item.title}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="pb-4 text-gray-700">
+              <AccordionContent className="pb-4 prose">
                 {item.content}
               </AccordionContent>
             </AccordionItem>
@@ -80,7 +69,7 @@ const Accordion: React.FC<AccordionProps> = ({
                   alt=""
                   width={1322}
                   height={7}
-                  className="w-full h-auto"
+                  className="w-full h-2.5"
                 />
               </div>
             )}
