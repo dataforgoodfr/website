@@ -20,7 +20,7 @@ async function fetchHomepageData() {
             }
           },
           featured_projects: {
-            fields: ["title", "short_description"],
+            fields: ["title", "short_description", "slug"],
             populate: "thumbnail"
           },
           thematics: {
