@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * actualite controller
+ * cgu controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::actualite.actualite');
+module.exports = createCoreController('api::cgu.cgu');

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * actualite service
+ * cgu service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::actualite.actualite');
+module.exports = createCoreService('api::cgu.cgu');

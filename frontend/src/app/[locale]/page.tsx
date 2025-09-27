@@ -1,11 +1,29 @@
 import Homepage from './home';
 import client from '@/lib/strapi-client';
+import { generateMetadataFromSeo } from '@/lib/utils';
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const { data } = await fetchHomepageData()
+
+  if (!data?.data?.seo_meta) {
+    return {};
+  }
+
+  return generateMetadataFromSeo(data.data.seo_meta);
+}
 
 async function fetchHomepageData() {
   return await client.GET('/home-page', {
     params: {
       query: {
         populate: {
+          seo_meta: {
+            populate: "*"
+          },
           hero: {
             populate: "*"
           },

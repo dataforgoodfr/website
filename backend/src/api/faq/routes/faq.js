@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * actualite router
+ * faq router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::actualite.actualite');
+module.exports = createCoreRouter('api::faq.faq');

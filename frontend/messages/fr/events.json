@@ -1,9 +1,5 @@
 {
   "events": {
-    "meta": {
-      "title": "Nos événements",
-      "description": ""
-    },
     "title": "Nos événements",
     "description": "Chaque mois nous organisons des évènements en ligne et en région : Paris, Lyon, Bordeaux, ...",
     "nextEvents": "À venir",

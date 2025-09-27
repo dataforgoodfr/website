@@ -1,9 +1,5 @@
 {
   "faq": {
-    "meta": {
-      "title": "Foire aux questions",
-      "description": "Trouvez les réponses aux questions les plus fréquentes sur Data For Good"
-    },
     "title": "Foire aux questions",
     "themes": [
       {

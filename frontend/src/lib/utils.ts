@@ -18,3 +18,29 @@ export const thematicsColors = {
 } as const;
 
 export type ThematicValues = keyof typeof thematicsColors;
+
+export function generateMetadataFromSeo(seo: {
+  title?: string;
+  description?: string;
+  canonical_url?: string;
+  og_url?: string;
+  og_title?: string;
+  og_description?: string;
+  og_image?: { url?: string } | null;
+}) {
+  if (!seo) return {};
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: seo.canonical_url,
+    },
+    openGraph: {
+      url: seo.og_url,
+      title: seo.og_title,
+      description: seo.og_description,
+      images: seo.og_image ? [{ url: seo.og_image.url }] : [],
+    },
+  };
+}

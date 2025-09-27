@@ -1,21 +1,16 @@
 {
   "kind": "singleType",
-  "collectionName": "actualites",
+  "collectionName": "diversity_charters",
   "info": {
-    "singularName": "actualite",
-    "pluralName": "actualites",
-    "displayName": "Actualite"
+    "singularName": "diversity-charter",
+    "pluralName": "diversity-charters",
+    "displayName": "DiversityCharter"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "blogs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog.blog"
-    },
     "seo_meta": {
       "type": "component",
       "component": "seo-meta.seo-meta",
