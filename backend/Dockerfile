@@ -5,7 +5,6 @@ ENV NODE_ENV=production
 
 WORKDIR /opt/
 COPY package.json yarn.lock ./
-RUN yarn add pg
 RUN yarn global add node-gyp
 RUN yarn config set network-timeout 600000 -g && yarn install --production
 ENV PATH /opt/node_modules/.bin:$PATH
