@@ -26,7 +26,7 @@ export type ImagesCarouselProps = {
   className?: string;
 };
 
-const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
+const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
   images,
   titleLevel = 3,
   className,
@@ -50,7 +50,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
           setCurrent(api.selectedScrollSnap() + 1);
         }
       } catch (error) {
-        console.warn('Carousel API not ready yet:', error);
+        // Carousel API not ready yet
       }
     };
 
@@ -90,16 +90,18 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
       )}
     >
       <CarouselContent>
-        {images.map((image) => (
+        {images.map((image, index) => (
           <CarouselItem 
             key={image.id} 
             className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-full sm:h-[700px] bg-black text-white"
           >
-            <Image 
-              src={image.src} 
-              alt={image.alt ?? ''} 
-              width={1000} 
-              height={400} 
+            <Image
+              src={image.src}
+              alt={image.alt ?? ''}
+              width={1000}
+              height={400}
+              loading="eager"
+              priority={index === 0}
               className="col-start-1 row-start-1 row-span-3 w-full h-full object-cover"
             />
 
@@ -152,6 +154,8 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({
       </div>
     </Carousel>
   );
-};
+});
+
+ImagesCarousel.displayName = 'ImagesCarousel';
 
 export default ImagesCarousel;

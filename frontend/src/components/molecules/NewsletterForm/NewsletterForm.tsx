@@ -17,7 +17,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   const t = useTranslations('components.newsletterForm');
   const generatedId = useId();
   const uniqueId = formId || generatedId;
-  
+
   const [email, setEmail] = useState('');
   const [selectedNewsletters, setSelectedNewsletters] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,7 +63,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -77,8 +77,6 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       if (!brevoApiKey) {
         throw new Error('Brevo API key not configured');
       }
-
-      console.log("selectedNewsletters", selectedNewsletters);
 
       // Prepare data for Brevo API
       const contactData = {
@@ -104,11 +102,9 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         setErrors({});
       } else {
         const errorData = await response.json();
-        console.error("Brevo API error:", errorData);
         setMessage({ type: 'error', text: t('errorMessage') });
       }
     } catch (error) {
-      console.error("Newsletter subscription error:", error);
       setMessage({ type: 'error', text: t('errorMessage') });
     } finally {
       setIsSubmitting(false);
@@ -123,8 +119,8 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   };
 
   const handleNewsletterChange = (newsletterId: string) => {
-    setSelectedNewsletters(prev => 
-      prev.includes(newsletterId) 
+    setSelectedNewsletters(prev =>
+      prev.includes(newsletterId)
         ? prev.filter(id => id !== newsletterId)
         : [...prev, newsletterId]
     );
@@ -138,7 +134,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       <div className="lg:max-w-md mx-auto">
         {/* Error Message */}
         {message.type === 'error' && (
-          <div 
+          <div
             id={`newsletter-error-${uniqueId}`}
             className="mb-4 p-4 text-red-800 bg-red-100 border border-red-300 rounded-md"
             role="alert"
@@ -150,7 +146,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
         {/* Success Message */}
         {message.type === 'success' && (
-          <div 
+          <div
             id={`newsletter-success-${uniqueId}`}
             className="mb-4 p-4 text-green-800 bg-green-100 border border-green-300 rounded-md"
             role="alert"
@@ -181,7 +177,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
                     className="mt-1"
                   />
                   <div>
-                    <label 
+                    <label
                       htmlFor={`newsletter-${newsletter.id}-${uniqueId}`}
                       className="text-sm font-bold text-gray-700 cursor-pointer"
                     >

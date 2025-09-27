@@ -55,7 +55,6 @@ export default async function Page({
   const response = await fetchEventPageData(page, pageSize);
 
   if (!response?.data || !response?.data.meta?.pagination) {
-    console.log('No data or pagination')
     return null;
   }
 
