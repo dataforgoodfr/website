@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "cgus",
+  "info": {
+    "singularName": "cgu",
+    "pluralName": "cgus",
+    "displayName": "CGU"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo_meta": {
+      "type": "component",
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
+    }
+  }
+}

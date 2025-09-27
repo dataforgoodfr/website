@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "diversity_charters",
+  "info": {
+    "singularName": "diversity-charter",
+    "pluralName": "diversity-charters",
+    "displayName": "DiversityCharter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo_meta": {
+      "type": "component",
+      "component": "seo-meta.seo-meta",
+      "repeatable": false
+    }
+  }
+}
