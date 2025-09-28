@@ -76,7 +76,10 @@ COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
 COPY --from=builder /app/frontend/public /app/frontend/public
 COPY --from=builder /app/frontend/messages /app/frontend/messages
 
+# Copy the server wrapper that ensures env vars are available
+COPY frontend/server-wrapper.js /app/frontend/server-wrapper.js
+
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "frontend/server.js"]
+CMD ["node", "frontend/server-wrapper.js"]
