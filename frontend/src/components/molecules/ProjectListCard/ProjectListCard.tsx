@@ -23,7 +23,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
   className,
   ...props
 }) => {
-  if (!project || !association) {
+  if (!project && !association) {
     return null;
   }
 
