@@ -21,13 +21,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Debug: Check if env var is available
-    console.log('Environment check:', {
-      hasBrevoKey: !!process.env.BREVO_API_KEY,
-      brevoKeyLength: process.env.BREVO_API_KEY?.length,
-      firstChars: process.env.BREVO_API_KEY?.substring(0, 10),
-    });
-
     const brevoApiKey = process.env.BREVO_API_KEY;
     if (!brevoApiKey) {
       console.error('Brevo API key not configured');
@@ -37,18 +30,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const contactData = { 
+    const contactData = {
       email: email,
       listIds: listIds,
       updateEnabled: true
     };
-
-    // Call Brevo API
-    console.log('Sending request to Brevo with headers:', {
-      'Content-Type': 'application/json',
-      'api-key': `${brevoApiKey.substring(0, 10)}...${brevoApiKey.substring(brevoApiKey.length - 5)}`,
-      'api-key-length': brevoApiKey.length,
-    });
 
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -59,18 +45,11 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(contactData),
     });
 
-    console.log('Brevo response status:', response.status, response.statusText);
-
     if (response.ok) {
       return NextResponse.json({ success: true });
     } else {
       const errorData = await response.json();
       console.error('Brevo API error:', errorData);
-      console.error('Request details:', {
-        url: 'https://api.brevo.com/v3/contacts',
-        method: 'POST',
-        contactData,
-      });
       return NextResponse.json(
         { error: 'Failed to subscribe to newsletter' },
         { status: 500 }
