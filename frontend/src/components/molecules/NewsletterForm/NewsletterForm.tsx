@@ -72,26 +72,17 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     setMessage({ type: null, text: '' });
 
     try {
-      // Use environment variable for Brevo API key
-      const brevoApiKey = process.env.NEXT_PUBLIC_BREVO_API_KEY;
-      if (!brevoApiKey) {
-        console.error('Brevo API key not configured');
-        throw new Error('Brevo API key not configured');
-      }
-
-      // Prepare data for Brevo API
+      // Prepare data for our API route
       const contactData = {
         email: email,
         listIds: selectedNewsletters.map(id => parseInt(id)), // Convert to numbers
-        updateEnabled: true
       };
 
-      // Use Brevo API REST endpoint
-      const response = await fetch('https://api.brevo.com/v3/contacts', {
+      // Use our secure API route
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'api-key': brevoApiKey,
         },
         body: JSON.stringify(contactData),
       });
