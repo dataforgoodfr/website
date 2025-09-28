@@ -36,6 +36,7 @@
     "react-router-dom": "^6.0.0",
     "sharp": "^0.34.4",
     "strapi-plugin-multi-select": "^2.1.1",
+    "strapi-v5-redirects": "^1.0.4",
     "strapi-plugin-tagsinput": "^2.0.2",
     "strapi-provider-email-brevo": "^1.0.4",
     "styled-components": "^6.0.0"
