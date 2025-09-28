@@ -41,7 +41,7 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
       title: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
       tags: ['Ressources'],
       image: isBlog ? resource.blog?.thumbnail?.url || '/images/dataforgood.svg' : resource.press_release?.thumbnail?.url || "/images/dataforgood.svg",
-      link: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
+      link: isBlog ? `/blog/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
       subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
     }
   })

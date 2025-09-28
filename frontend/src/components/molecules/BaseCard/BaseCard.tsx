@@ -64,7 +64,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
         </div>}
         <div className="w-full h-[216px] relative">
           <div className="absolute top-0 left-0 w-full h-full bg-black/10" />
-          {image && <Image loading="lazy" src={image} alt="" width={200} height={200} className="w-full h-[216px] object-contain" />}
+          {image && <Image loading="lazy" src={image} alt="" width={400} height={200} className="w-full h-[216px] object-contain" />}
         </div>
       </div>
     </Link>

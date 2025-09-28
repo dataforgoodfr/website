@@ -75,6 +75,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       // Use environment variable for Brevo API key
       const brevoApiKey = process.env.NEXT_PUBLIC_BREVO_API_KEY;
       if (!brevoApiKey) {
+        console.error('Brevo API key not configured');
         throw new Error('Brevo API key not configured');
       }
 
@@ -102,9 +103,11 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         setErrors({});
       } else {
         const errorData = await response.json();
+        console.error('Brevo API error:', errorData);
         setMessage({ type: 'error', text: t('errorMessage') });
       }
     } catch (error) {
+      console.error('Unexpected error:', error);
       setMessage({ type: 'error', text: t('errorMessage') });
     } finally {
       setIsSubmitting(false);
