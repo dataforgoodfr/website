@@ -21,8 +21,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In standalone mode, environment variables must be passed to the Node.js process
-    // They are not automatically available via process.env
+    // Debug: Check if env var is available
+    console.log('Environment check:', {
+      hasBrevoKey: !!process.env.BREVO_API_KEY,
+      brevoKeyLength: process.env.BREVO_API_KEY?.length,
+      firstChars: process.env.BREVO_API_KEY?.substring(0, 10),
+    });
+
     const brevoApiKey = process.env.BREVO_API_KEY;
     if (!brevoApiKey) {
       console.error('Brevo API key not configured');
