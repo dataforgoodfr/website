@@ -55,8 +55,8 @@ export default function Homepage({ data }: HomepageProps) {
     id: event.id,
     title: event.name || '',
     date: new Date(event.date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
-    image: event.image?.url || '',
-    tag: t('events.tag'),
+    image: event.image?.url,
+    tag: [t('events.tag')],
     link: event.link || '',
   })).filter(event => event.title && event.link) ?? [];
 

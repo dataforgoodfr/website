@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export type NewsSmallCardProps = {
   title?: string;
-  tag: string;
+  tags: string[];
   image?: string;
   link: string;
   date: string;
@@ -15,7 +15,7 @@ export type NewsSmallCardProps = {
 
 const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
   title,
-  tag,
+  tags,
   image = "/images/default-image.svg",
   link,
   date,
@@ -41,7 +41,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
           <Image loading="lazy" src={image} alt="" width={400} height={200} className="absolute w-full h-full object-contain" />
         </div>
         <div className="flex flex-col items-start gap-xs w-full sm:w-1/2 p-7">
-          <Tag color='text-black' bgColor='bg-violet-light'>{tag}</Tag>
+          {tags?.map((tag) => (<Tag color='text-black' bgColor='bg-violet-light'>{tag}</Tag>))}
           <p className="font-secondary font-bold">{title}</p>
           <p className="text-sm text-black/60 font-black uppercase tracking-widest">{date}</p>
         </div>

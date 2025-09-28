@@ -65,11 +65,7 @@ function transformFilters(thematics: ProjectListPageData["thematics"], seasons: 
 function transformProjects(projects: ProjectListPageData["projects"]) {
   return projects?.map((project: ProjectListPageData["projects"][0]) => ({
     project: project.title,
-    association:
-      (project.related_partners &&
-        project.related_partners.length > 0 &&
-        project.related_partners[0].name) ||
-      '',
+    partners: project.related_partners?.map((partner) => partner.name) || [],
     description: project.short_description,
     thematics: project.thematics.map(thematic => thematic.short_id),
     image: project.thumbnail?.url || '',
@@ -139,7 +135,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         titleLevel={2}
         filters={filters}
         projects={projects}
-        joinCta={{text: data.join_cta?.text, link: data.join_cta?.link}}
+        joinCta={{ text: data.join_cta?.text, link: data.join_cta?.link }}
         pageSize={24}
         className="mt-lg"
       />

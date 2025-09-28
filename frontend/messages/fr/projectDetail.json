@@ -19,6 +19,9 @@
         },
         "members": {
           "title": "L'équipe du projet"
+        },
+        "partners": {
+          "title": "Ils nous soutiennent"
         }
     }
 }

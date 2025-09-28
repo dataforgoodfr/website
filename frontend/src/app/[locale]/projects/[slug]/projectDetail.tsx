@@ -1,6 +1,6 @@
 'use client';
 
-import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, ProjectCarousel, ProjectHeroBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses } from '@/components';
+import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, PartnersBlock, ProjectCarousel, ProjectHeroBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { type ProjectPageData } from './page';
@@ -40,7 +40,9 @@ function getProjectData(project: ProjectPageData) {
       logo: partner.logo?.url,
       altLogo: partner.logo?.alternativeText,
       summary: partner.description,
-    }))
+      link: partner.website_link,
+    })),
+    thematics: project.thematics?.map((thematic) => ({name: thematic.name, color: thematic.color})) || []
   };
 }
 
@@ -73,9 +75,9 @@ function getNews(project: ProjectPageData) {
   return project.press_releases?.map((pressRelease) => ({
     title: pressRelease.title,
     tag: pressRelease.tags ?? [],
-    image: pressRelease.thumbnail?.url,
+    image: pressRelease.thumbnail?.url ?? '/images/dataforgood.svg',
     link: pressRelease.article_link,
-    date: new Date(pressRelease.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+    date: new Date(pressRelease.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric'}),
   })) || [];
 }
 
@@ -91,6 +93,15 @@ function getVolunteers(project: ProjectPageData) {
   }];
 }
 
+function getFunders(funders?: ProjectPageData["related_funders"]) {
+  return funders?.map((funder) => ({
+  name: funder.name,
+  description: funder.description,
+  image: funder.logo.url,
+  link: funder.website_link,
+  })) || []
+}
+
 export default function ProjectDetailPage({ project }: ProjectPageProps) {
   const t = useTranslations('projectDetail');
 
@@ -103,6 +114,7 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
   const delivrables = getDeliverable(project);
   const news = getNews(project)
   const volunteers = getVolunteers(project);
+  const funders = getFunders(project.related_funders)
 
   return (
     <>
@@ -147,7 +159,7 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         }
       />
 
-      {project.news?.length && <NewsSmallBlock
+      {news?.length && <NewsSmallBlock
         title={t('news.title')}
         blocks={news}
         className='my-lg'
@@ -158,6 +170,13 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         categories={volunteers}
         className="my-lg"
       />}
+
+      {project.related_funders?.length &&<PartnersBlock
+        title={t('partners.title')}
+        partners={funders}
+        className="my-lg"
+      />}
+
     </>
   );
 }

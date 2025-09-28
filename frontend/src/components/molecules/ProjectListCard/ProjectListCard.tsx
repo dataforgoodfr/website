@@ -6,7 +6,7 @@ import Link from 'next/link';
 export type ProjectListCardProps = {
   project: string;
   link?: string;
-  association: string;
+  partners: string[];
   description: string;
   thematics: ThematicValues[];
   image?: string;
@@ -16,14 +16,14 @@ export type ProjectListCardProps = {
 const ProjectListCard: React.FC<ProjectListCardProps> = ({
   project,
   link,
-  association,
+  partners,
   description,
   thematics,
   image,
   className,
   ...props
 }) => {
-  if (!project && !association) {
+  if (!project && partners.length === 0 ) {
     return null;
   }
 
@@ -41,7 +41,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
     </div>
     <div className="col-start-1 row-start-1 flex flex-col justify-end m-5 gap-2 items-start text-white">
       <p className="h4-like">{project}</p>
-      <p className="h4-like opacity-50">{association}</p>
+      {partners.map((partner, id) => (<p key={id} className="h4-like opacity-50">{partner}</p>))}
       {description && <p className="text-xs h-0 group-hover:h-auto transition-all overflow-hidden">{description}</p>}
     </div>
   </div>;

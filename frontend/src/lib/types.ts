@@ -3,7 +3,7 @@ import { ThematicValues } from './utils';
 export interface IProject {
   project: string;
   link?: string;
-  association: string;
+  partners: string[];
   description: string;
   thematics: ThematicValues[];
   seasons?: string[];

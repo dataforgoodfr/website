@@ -61,7 +61,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
           </Title>
         )}
 
-        <div className={contentClassName}>
+        <div className={clsx(contentClassName, "whitespace-pre-wrap")}>
           {children}
         </div>
 
@@ -78,7 +78,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
           imageClassName,
           imagePosition === 'left' && 'sm:-order-1',
         )}>
-          <Image src={image} alt={imageAlt} className="w-full h-full object-contain" loading="lazy" width={400} height={400} />
+          <Image src={image} alt={imageAlt} className="w-full h-full object-contain max-h-[40vh]" loading="lazy" width={400} height={400} />
 
           {imageText && (
             <div className={clsx(

@@ -11,11 +11,12 @@ type PositionPageProps = {
 
 function transformPressReleases(press_releases: NonNullable<PositionsPageData['press_releases']>) {
   return press_releases.map((release) => ({
-    title: release.title,
-    tags: ['Presse'],
+    title: release.article_name,
+    tags: [new Date(release.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), release.media_name],
     image: release.thumbnail?.url ?? '/images/dataforgood.svg',
     link: release.article_link,
     subInfos: release.tags,
+    isBlank: true,
   }))
 }
 
@@ -39,10 +40,11 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
     return {
       id: resource.id,
       title: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
-      tags: ['Ressources'],
+      tags: isBlog ? [new Date(resource.blog?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })] : [new Date(resource.press_release?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), resource.press_release?.media_name],
       image: isBlog ? resource.blog?.thumbnail?.url || '/images/dataforgood.svg' : resource.press_release?.thumbnail?.url || "/images/dataforgood.svg",
       link: isBlog ? `/blog/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
-      subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
+      subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags?.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
+      isBlank: true,
     }
   })
 }

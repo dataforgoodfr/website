@@ -18,8 +18,6 @@ const ProjectHeroBlock: React.FC<ProjectHeroBlockProps> = ({
   className,
   ...props
 }) => {
-  const t = useTranslations('components.projectHeroBlock');
-
   if (!title) {
     return null;
   }
