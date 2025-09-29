@@ -68,7 +68,9 @@ export default function DonationsPage({ data }: DonationProps) {
       <LargeTextImageDonation
         title={data.banner_title ?? t('title')}
         titleLevel={1}
-        iframe={<div className='p-4 rounded' ref={donationSectionRef}><a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a></div>}
+        iframe={<div className='p-4 rounded' ref={donationSectionRef}>
+          <a href="https://soutenir.dataforgood.fr/native-/#iraiser_native"></a>
+        </div>}
         image={data.banner_video?.url}
         background="purple"
         className="my-lg"
