@@ -111,7 +111,7 @@ export default function Homepage({ data }: HomepageProps) {
           {data.project_carousel_title!}
         </Title>
       </div>
-      {projects.length > 0 && <ImagesCarousel className="mb-lg" images={projects} />}
+      {projects.length > 0 && <ImagesCarousel className="mb-lg" titleLevel={2} images={projects} />}
 
       <ThematicsBlock
         title={data.thematics_section_title!}
