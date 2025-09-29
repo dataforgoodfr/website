@@ -178,7 +178,7 @@
     @apply relative block before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 before:transition-base;
   }
   a.shadow-block, button.shadow-block {
-    @apply hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:bg-building;
+    @apply hover:before:top-[2px] hover:before:left-[2px] focus:before:top-[2px] focus:before:left-[2px];
   }
   .shadow-block > * {
     @apply relative z-1;

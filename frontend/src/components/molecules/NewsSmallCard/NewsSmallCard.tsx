@@ -29,7 +29,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
   return (
     <Link
       className={clsx(
-        'relative block before:bg-building before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base',
+        'relative block shadow-block shadow-block--building',
         className,
       )}
       href={link}
@@ -45,7 +45,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
           <p className="font-secondary font-bold">{title}</p>
           <p className="text-sm text-black/60 font-black uppercase tracking-widest">{date}</p>
         </div>
-        {!link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto top-4 sm:top-0 sm:bottom-0 right-4 sm:right-10 rounded-full bg-white">
+        {!link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto top-4 sm:top-0 sm:bottom-0 right-4 sm:right-10 rounded-full shadow-base bg-white">
           <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
         </div>}
       </div>
