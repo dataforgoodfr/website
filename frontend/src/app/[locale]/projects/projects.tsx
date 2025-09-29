@@ -89,7 +89,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
 
   return (
     <>
-      <div className="mt-lg container flex flex-col lg:flex-row">
+      <div className="mt-lg container pr-0 md:pr-4 flex flex-col lg:flex-row">
         <Title className="mb-md max-w-4xl content-center flex-1" variant="medium">
           {data.introduction}
         </Title>
@@ -106,7 +106,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
           }}
           image={data.introduction_cta?.image.url ?? ''}
           imageClassName="object-fill"
-          className="md:w-[400px]"
+          className="overflow-hidden md:overflow-visible md:w-[400px]"
           contentClassName="relative md:top-24"
           cta={{
             text: data.introduction_cta?.cta.text,

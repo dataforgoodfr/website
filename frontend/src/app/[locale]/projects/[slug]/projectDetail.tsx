@@ -74,7 +74,7 @@ function getNews(project: ProjectPageData) {
   return project.press_releases?.map((pressRelease) => ({
     title: pressRelease.title,
     tag: pressRelease.tags ?? [],
-    image: pressRelease.thumbnail?.url ?? '/images/dataforgood.svg',
+    image: pressRelease.thumbnail?.url,
     link: pressRelease.article_link,
     date: new Date(pressRelease.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric'}),
   })) || [];
