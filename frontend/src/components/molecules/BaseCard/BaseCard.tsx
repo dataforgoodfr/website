@@ -59,7 +59,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
             </div>
           )}
         </div>
-        {isBlank && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
+        {isBlank && !link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white">
           <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
         </div>}
         <div className="w-full h-[216px] relative">
