@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl';
 import { ProjectListPageData } from './page';
 
 function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
-  return thematics.map(thematic => ({
+  return thematics?.map(thematic => ({
     title: {
       children: thematic.name,
       props: {
@@ -20,25 +20,25 @@ function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
         rotation: -2.58,
       },
     },
-    id: thematic.id.toString(),
+    id: thematic.id?.toString(),
     talk: thematic.short_description,
     talkOffset: 10,
-    image: thematic.thumbnail.url,
+    image: thematic.thumbnail?.url || '',
     imageWidth: 251,
     imageHeight: 318,
     ctaText: thematic.cta_text,
     ctaLink: thematic.cta_link,
-  }));
+  })) || [];
 }
 
 function transformInformations(informations: ProjectListPageData["informations"]) {
-  return informations.map(information => ({
+  return informations?.map(information => ({
     title: information.title,
-    text: information.content.map(content => ({
+    text: information.content?.map(content => ({
       info: content.text,
       ...(content.link ? { ctaLink: content.link } : {}),
-    })),
-  }));
+    })) || [],
+  })) || [];
 }
 
 function transformFilters(thematics: ProjectListPageData["thematics"], seasons: ProjectListPageData["seasons"], categories: ProjectListPageData["categories"]) {
@@ -124,21 +124,22 @@ export default function ProjectsPage({ data }: ProjectListProps) {
         className="mb-lg"
       />
 
-      <InformationsBlock
-        title="Informations"
-        informations={informations ?? []}
-        className="my-lg"
-      />
-
       <ProjectListBlock
-        title="Tous les projets"
+        title={t('projects.title')}
         titleLevel={2}
         filters={filters}
         projects={projects}
         joinCta={{ text: data.join_cta?.text, link: data.join_cta?.link }}
         pageSize={24}
+        className="my-lg"
+      />
+
+      <InformationsBlock
+        title={t('information.title')}
+        informations={informations ?? []}
         className="mt-lg"
       />
+
     </>
   );
 }

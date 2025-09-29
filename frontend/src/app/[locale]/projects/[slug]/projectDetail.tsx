@@ -64,10 +64,9 @@ function getSlides(project: ProjectPageData) {
 
 function getDeliverable(project: ProjectPageData) {
   return {
-    processes: [{
-      name: "",
-      description: project.delivrable?.split("\n") || []
-    }]
+    github_link: project.github_link,
+    website_link: project.website_link,
+    description: project.delivrable
   };
 }
 
@@ -137,20 +136,8 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
 
       {presentationContent.length > 0 && <Banner
         image={project.thumbnail?.url}
-        content={presentationContent as string[]}
+        content={presentationContent}
         className="my-lg "
-      />}
-
-      {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
-        title={t('impact.title')}
-        impacts={impacts}
-        className='my-lg'
-      />}
-
-      {slides.length > 0 && <ProjectCarousel
-        title={t('carousel.title')}
-        slides={slides}
-        className='my-lg'
       />}
 
       <ProjectProcesses
@@ -159,19 +146,31 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         }
       />
 
-      {news?.length && <NewsSmallBlock
+      {slides.length > 0 && <ProjectCarousel
+        title={t('carousel.title')}
+        slides={slides}
+        className='my-lg'
+      />}
+
+      {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
+        title={t('impact.title')}
+        impacts={impacts}
+        className='my-lg'
+      />}
+
+      {(news?.length || 0) > 0 && <NewsSmallBlock
         title={t('news.title')}
         blocks={news}
         className='my-lg'
       />}
 
-      {project.volunteers?.length && <MembersBlock
+      {(project.volunteers?.length || 0) > 0 && <MembersBlock
         title={t('members.title')}
         categories={volunteers}
         className="my-lg"
       />}
 
-      {project.related_funders?.length &&<PartnersBlock
+      {(project.related_funders?.length || 0) > 0 &&<PartnersBlock
         title={t('partners.title')}
         partners={funders}
         className="my-lg"

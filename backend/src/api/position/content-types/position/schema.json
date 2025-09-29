@@ -50,6 +50,16 @@
       "type": "component",
       "component": "edito.edito",
       "repeatable": true
+    },
+    "manifesto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

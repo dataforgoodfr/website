@@ -40,9 +40,6 @@ export default function EventsPage({ data, pagination, currentPage }: EventsProp
   return (
     <div className="my-lg pt-md">
       <div className="container">
-        <Title className="mb-xs max-w-5xl" variant="big">
-          {t('title')}
-        </Title>
         <p className="h2-like">{t('description')}</p>
       </div>
 

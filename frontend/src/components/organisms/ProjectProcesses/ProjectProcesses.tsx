@@ -8,11 +8,9 @@ export type ProjectProcessesProps = {
   title: string;
   titleLevel?: TitleProps["level"];
   summary?: string;
-  processes: {
-    name: string;
-    description: string[];
-  }[];
-  link?: string;
+  description?: string;
+  github_link?: string;
+  website_link?: string;
   className?: string;
 };
 
@@ -20,12 +18,13 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
   title,
   titleLevel = 2,
   summary,
-  processes,
-  link,
+  description,
+  github_link,
+  website_link,
   className,
   ...props
 }) => {
-  if (!processes || processes.length === 0) {
+  if (!description) {
     return null
   }
 
@@ -34,32 +33,18 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
   return (
     <div
       className={clsx(
-        "bg-violet-light py-lg",
+        "prose my-xs",
         className,
       )}
       {...props}
     >
-      <div className="container flex flex-col md:flex-row">
-        <div className="md:w-1/3">
-          <Title className="mb-sm" level={titleLevel} variant="medium" >{title}</Title>
-          <p className="w-3/4 lead" >{summary}</p>
-        </div>
+      <div className="container flex flex-col">
+        <Title level={titleLevel} variant="medium" >{title}</Title>
+        <p className="lead" >{summary}</p>
 
-        <div className="md:w-2/3">
-          <div className="h4-like flex flex-col gap-xs">
-            {processes.map((process, index) => (
-              <div key={index}>
-                {process.name && <p>{process.name}</p>}
-                <ul className="list-disc list-outside mb-sm ml-3">
-                  {process.description?.map((item, id) => (<React.Fragment key={id}>
-                    {item && <li>{item}</li>}
-                  </React.Fragment>))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          {link && <p className="mt-md text-xs"> {t("repoLink")} <Link href={link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{link}</Link></p>}
-        </div>
+        <div className="h3-like lg:text-[1.3rem]" dangerouslySetInnerHTML={{ __html: description }} />
+        {github_link && <p className="mt-md text-xs"> {t("githubLink")} <Link href={github_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{github_link}</Link></p>}
+        {website_link && <p className="mt-md text-xs"> {t("websiteLink")} <Link href={website_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{website_link}</Link></p>}
       </div>
     </div>
   );

@@ -15,6 +15,12 @@
         },
         "cta": {
           "text": "Devenir bénévole sur un projet"
+        },
+        "projects": {
+          "title": "Tous les projets"
+        },
+        "information": {
+          "title": "Nous développons 3 types de projets"
         }
     }
 

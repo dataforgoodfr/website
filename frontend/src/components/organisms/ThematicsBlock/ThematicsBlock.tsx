@@ -8,7 +8,7 @@ export type ThematicsProps = {
   title: string;
   subtitle?: string;
   titleLevel?: 1 | 2 | 3;
-  isHome: boolean;
+  isHome?: boolean;
   thematics: ThematicsCardProps[];
   className?: string;
 };

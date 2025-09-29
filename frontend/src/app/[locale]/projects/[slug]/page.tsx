@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectDetailPage from './projectDetail';
 import client from '@/lib/strapi-client';
+import { getMarkdownContent } from '@/lib/markdown';
 
 async function fetchProjectPageData(slug: string) {
   return await client.GET('/projects', {
@@ -85,6 +86,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   const projectData = data.data[0] as ProjectPageData;
+  const context = await getMarkdownContent(projectData.context);
+  const long_description = await getMarkdownContent(projectData.long_description);
+  const delivrable = await getMarkdownContent(projectData.delivrable);
 
-  return <ProjectDetailPage  project={projectData} />;
+  return <ProjectDetailPage  project={{...projectData, context, long_description, delivrable}} />;
 };

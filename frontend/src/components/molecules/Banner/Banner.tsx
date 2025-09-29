@@ -26,14 +26,14 @@ const Banner: React.FC<BannerProps> = ({
       {...props}
     >
       {image && <Image src={image} alt="" loading="lazy" width={1000} height={400} className="col-start-1 row-start-1 w-full h-full object-cover" />}
-      
+
       <div className="col-start-1 row-start-1 bg-violet-light opacity-90" />
 
       {content && content.length > 0 && <div className="whitespace-pre-wrap max-w-[60%] py-10 md:py-0 col-start-1 row-start-1 container self-center z-1">
         <div className={clsx(
           'prose prose--big text-center lead',
         )}>
-          {content.map((paragraph, index) => (<p key={index}>{paragraph}</p>))}
+          {content.map((paragraph, index) => ((<div dangerouslySetInnerHTML={{ __html: paragraph }} key={index} />)))}
 
         </div>
       </div>

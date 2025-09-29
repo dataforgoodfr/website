@@ -37,7 +37,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
     {image && <Image src={image} alt="" className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={400} height={600} />}
     <div className="col-start-1 row-start-1 bg-gradient-to-b from-white/0 to-black/90 group-hover:to-black transition-all h-full w-full" />
     <div className="absolute top-3 right-5 flex gap-5">
-      {thematics.map((thematic, index) => (<div key={index} className={`size-[23px] rounded-full bg-${thematicsColors[thematic]}`}></div>))}
+      {thematics.map((thematic, index) => (<div key={index} className={`size-[23px] rounded-full shadow-base bg-${thematicsColors[thematic]}`}></div>))}
     </div>
     <div className="col-start-1 row-start-1 flex flex-col justify-end m-5 gap-2 items-start text-white">
       <p className="lead font-bold">{project}</p>

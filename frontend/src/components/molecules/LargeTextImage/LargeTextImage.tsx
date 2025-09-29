@@ -58,7 +58,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
 
           {content && <div className="my-xs max-w-sm"><p className='lead'>{content}</p></div>}
 
-          {iframe && <div className="mt-8 flex justify-center items-center w-full">{iframe}</div>}
+          {iframe && <div className="mt-8 rounded-md flex justify-center  items-center w-full">{iframe}</div>}
 
           {citation && <div className="flex flex-wrap items-center gap-5 px-8">
             <div className="w-full font-tertiary text-xl lg:text-3xl lg:leading-normal">{citation}</div>

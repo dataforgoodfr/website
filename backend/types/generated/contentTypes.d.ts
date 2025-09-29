@@ -1151,6 +1151,7 @@ export interface ApiPositionPosition extends Struct.SingleTypeSchema {
       'call-to-action.call-to-action',
       false
     >;
+    manifesto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     press_releases: Schema.Attribute.Relation<
       'oneToMany',
       'api::press-release.press-release'

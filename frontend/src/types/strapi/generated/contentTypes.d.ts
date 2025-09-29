@@ -438,35 +438,6 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiActualiteActualite extends Struct.SingleTypeSchema {
-  collectionName: 'actualites';
-  info: {
-    displayName: 'Actualite';
-    pluralName: 'actualites';
-    singularName: 'actualite';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::actualite.actualite'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBlogListBlogList extends Struct.SingleTypeSchema {
   collectionName: 'blog_lists';
   info: {
@@ -571,6 +542,31 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCguCgu extends Struct.SingleTypeSchema {
+  collectionName: 'cgus';
+  info: {
+    displayName: 'CGU';
+    pluralName: 'cgus';
+    singularName: 'cgu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cgu.cgu'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiClimateAndBiodiversityClimateAndBiodiversity
   extends Struct.SingleTypeSchema {
   collectionName: 'climate_and_biodiversities';
@@ -624,6 +620,35 @@ export interface ApiDemocracyDemocracy extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     thematic: Schema.Attribute.Relation<'oneToOne', 'api::thematic.thematic'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDiversityCharterDiversityCharter
+  extends Struct.SingleTypeSchema {
+  collectionName: 'diversity_charters';
+  info: {
+    displayName: 'DiversityCharter';
+    pluralName: 'diversity-charters';
+    singularName: 'diversity-charter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::diversity-charter.diversity-charter'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -756,6 +781,31 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFaqFaq extends Struct.SingleTypeSchema {
+  collectionName: 'faqs';
+  info: {
+    displayName: 'FAQ';
+    pluralName: 'faqs';
+    singularName: 'faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo_meta: Schema.Attribute.Component<'seo-meta.seo-meta', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1973,6 +2023,45 @@ export interface PluginI18NLocale extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface PluginRedirectsRedirect extends Struct.CollectionTypeSchema {
+  collectionName: 'redirects';
+  info: {
+    displayName: 'Redirects';
+    pluralName: 'redirects';
+    singularName: 'redirect';
+  };
+  options: {
+    comment: '';
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    destination: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::redirects.redirect'
+    > &
+      Schema.Attribute.Private;
+    permanent: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginReviewWorkflowsWorkflow
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_workflows';
@@ -2344,14 +2433,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
-      'api::actualite.actualite': ApiActualiteActualite;
       'api::blog-list.blog-list': ApiBlogListBlogList;
       'api::blog.blog': ApiBlogBlog;
+      'api::cgu.cgu': ApiCguCgu;
       'api::climate-and-biodiversity.climate-and-biodiversity': ApiClimateAndBiodiversityClimateAndBiodiversity;
       'api::democracy.democracy': ApiDemocracyDemocracy;
+      'api::diversity-charter.diversity-charter': ApiDiversityCharterDiversityCharter;
       'api::donation.donation': ApiDonationDonation;
       'api::evenement.evenement': ApiEvenementEvenement;
       'api::event.event': ApiEventEvent;
+      'api::faq.faq': ApiFaqFaq;
       'api::funder.funder': ApiFunderFunder;
       'api::hippocrate.hippocrate': ApiHippocrateHippocrate;
       'api::home-page.home-page': ApiHomePageHomePage;
@@ -2371,6 +2462,7 @@ declare module '@strapi/strapi' {
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::redirects.redirect': PluginRedirectsRedirect;
       'plugin::review-workflows.workflow': PluginReviewWorkflowsWorkflow;
       'plugin::review-workflows.workflow-stage': PluginReviewWorkflowsWorkflowStage;
       'plugin::upload.file': PluginUploadFile;
