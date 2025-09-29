@@ -12,7 +12,8 @@
         },
         "deliverables": {
           "title": "Livrables",
-          "repoLink": "lien vers le repository"
+          "githubLink": "lien vers le repository",
+          "websiteLink": "lien vers le projet"
         },
         "news": {
           "title": "Dans la presse"
