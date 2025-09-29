@@ -24,7 +24,7 @@ const ProjectImpactCard: React.FC<ProjectImpactCardProps> = ({
       )}
       {...props}
     >
-      <p className="block font-tertiary text-5xl md:text-7xl">{value}</p>
+      <p className="block font-tertiary text-5xl md:text-6xl">{value}</p>
       <p className="font-tertiary h3-like">
         {text}
       </p>
