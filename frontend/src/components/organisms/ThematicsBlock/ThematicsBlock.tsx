@@ -27,7 +27,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
   }
 
   const t = useTranslations('home');
-  
+
   return (
     <div
       className={clsx(
@@ -53,7 +53,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
           {subtitle}
         </p>}
 
-        <ul className="flex flex-wrap justify-between gap-md md:gap-xs mt-md">
+        <ul className="grid grid-cols-1 md:flex md:flex-wrap justify-between gap-md md:gap-xs mt-md">
           {thematics.map((thematic, index) => (
             <li
               key={index}

@@ -19,12 +19,12 @@ const ProjectImpactCard: React.FC<ProjectImpactCardProps> = ({
   return (
     <div
       className={clsx(
-        'container flex gap-sm items-center flex-col md:flex-row relative',
+        'container flex gap-sm md:items-center flex-col md:flex-row relative',
         className,
       )}
       {...props}
     >
-      <p className="block font-tertiary text-5xl md:text-6xl">{value}</p>
+      <p className="block font-tertiary text-nowrap text-5xl md:text-6xl">{value}</p>
       <p className="font-tertiary h3-like">
         {text}
       </p>

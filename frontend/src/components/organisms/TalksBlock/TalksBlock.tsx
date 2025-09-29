@@ -39,7 +39,7 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
         className='mx-auto mb-xs'
       />}
       {title && (
-        <Title variant="medium" className="text-center mx-auto max-w-[40%]" level={titleLevel}>
+        <Title variant="medium" className="text-center mx-auto md:max-w-[40%]" level={titleLevel}>
           {title}
         </Title>
       )}

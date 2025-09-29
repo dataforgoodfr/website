@@ -110,7 +110,7 @@ export default function AboutPage({ data }: AboutProps) {
       </div>
 
       <div className="mb-lg flex flex-col lg:flex-row lg:justify-between gap-8">
-        <div className="flex justify-end w-full sm:my-[200px] md:my-0 lg:w-[770px]">
+        <div className="flex lg:justify-end w-full sm:my-[200px] md:my-0 lg:w-[770px]">
           <CtaWithImage
             title={{
               children: data.cta_left?.title,

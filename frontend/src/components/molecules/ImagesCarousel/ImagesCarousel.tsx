@@ -82,8 +82,8 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
   }
 
   return (
-    <Carousel 
-      setApi={setApi} 
+    <Carousel
+      setApi={setApi}
       className={clsx(
         'w-full relative mask-papper overflow-hidden md:overflow-visible',
         className,
@@ -91,9 +91,9 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
     >
       <CarouselContent>
         {images.map((image, index) => (
-          <CarouselItem 
-            key={image.id} 
-            className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-full sm:h-[700px] bg-black text-white"
+          <CarouselItem
+            key={image.id}
+            className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-[700px] bg-black text-white"
           >
             <Image
               src={image.src}
@@ -115,13 +115,13 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
                       {image.title}
                   </Title>
                 )}
-                
+
                 {image.description && (
                   <p className="font-secondary my-xs">
                     {image.description}
                   </p>
                 )}
-                
+
                 {image.ctaText && image.ctaHref && (
                   <Button href={image.ctaHref}>
                     {image.ctaText}
@@ -144,7 +144,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
 
             {/* Progress bar */}
             <div className="h-4 w-full mt-8 bg-[url('/images/carousel-progressbar-bg.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat">
-              <div 
+              <div
                 className="h-full bg-[url('/images/carousel-progressbar.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat transition-all duration-300"
                 style={{ width: `${(current / count) * 100}%` }}
               />
