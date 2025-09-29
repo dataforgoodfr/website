@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Button, EditoCard, LargeTextImage, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock } from '@/components';
 import { DonationsData } from './page';
 
@@ -11,6 +11,19 @@ type DonationProps = {
 
 export default function DonationsPage({ data }: DonationProps) {
   const t = useTranslations('donations');
+  const donationSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const DonationButton = () => {
+    return (
+      <Button onClick={() => scrollToRef(donationSectionRef)} color="violet" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
+    )
+  }
 
   // Execute JavaScript when component mounts
   useEffect(() => {
@@ -55,8 +68,7 @@ export default function DonationsPage({ data }: DonationProps) {
       <LargeTextImage
         title={data.banner_title ?? t('title')}
         titleLevel={1}
-        // iframe={<a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a>}
-        iframe={<a href="https://soutenir.dataforgood.fr/TEST-#iraiser_native"></a>}
+        iframe={<div className='p-4 rounded' ref={donationSectionRef}><a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a></div>}
         image={data.banner_video?.url}
         background="purple"
         className="my-lg"
@@ -65,6 +77,9 @@ export default function DonationsPage({ data }: DonationProps) {
 
       <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">
         <div dangerouslySetInnerHTML={{ __html: data.introduction_text }} />
+        <div className="flex justify-center mt-sm">
+          <DonationButton />
+        </div>
       </EditoCard>
 
       <div className="bg-violet-light py-lg">
@@ -72,6 +87,9 @@ export default function DonationsPage({ data }: DonationProps) {
           title={data.resources_title ?? t('talksTitle')}
           talks={talks}
         />
+        <div className="flex justify-center mt-sm">
+          <DonationButton />
+        </div>
       </div>
 
       <div className="my-lg">
@@ -81,7 +99,7 @@ export default function DonationsPage({ data }: DonationProps) {
         />
 
         <div className="flex justify-center mt-sm">
-          <Button href={data.donation_cta?.link} color="violet" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
+          <DonationButton />
         </div>
       </div>
     </>
