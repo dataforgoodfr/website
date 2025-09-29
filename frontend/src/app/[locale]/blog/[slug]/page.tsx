@@ -1,8 +1,7 @@
 import React from 'react';
 import client from '@/lib/strapi-client';
 import ArticlePage from './article';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { getMarkdownContent } from '@/lib/markdown';
 
 async function fetchBlogPageData(slug: string) {
   return await client.GET('/blogs', {
@@ -56,12 +55,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
  }
 
    const blogPageData = data.data[0] as BlogPageData;
-
-   // Use remark to process the markdown content
-   const processedContent = await remark()
-       .use(html)
-       .process(blogPageData.content);
-     const contentHtml = processedContent.toString();
+   const contentHtml = await getMarkdownContent(blogPageData.content)
 
   return <ArticlePage blog={{...blogPageData, contentHtml}} />;
 };

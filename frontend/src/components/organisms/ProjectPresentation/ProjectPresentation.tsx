@@ -36,7 +36,7 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
       {...props}
     >
       <div className="flex-1 prose prose--big">
-        {description.map((paragraph, index) => (<p className='whitespace-pre-wrap' key={index}>{paragraph}</p>))}
+        {description.map((paragraph, index) => (<div dangerouslySetInnerHTML={{ __html: paragraph }} key={index} />))}
       </div>
 
       <div className="flex-1">

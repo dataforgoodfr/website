@@ -45,9 +45,9 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
           <p className="font-secondary font-bold">{title}</p>
           <p className="text-sm text-black/60 font-black uppercase tracking-widest">{date}</p>
         </div>
-        <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto top-4 sm:top-0 sm:bottom-0 right-4 sm:right-10 rounded-full bg-white">
+        {!link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto top-4 sm:top-0 sm:bottom-0 right-4 sm:right-10 rounded-full bg-white">
           <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
-        </div>
+        </div>}
       </div>
     </Link>
   );
