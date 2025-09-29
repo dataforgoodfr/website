@@ -24,7 +24,7 @@ function transformAnimation(data: NonNullable<PositionsPageData>) {
   return {
     manifestCta: {
       text: data.manifest_cta?.text || "",
-      link: data.manifest_cta?.link || "",
+      link: data.manifesto?.url || "",
     },
     images: data.animation?.map((elem) => ({
       image_text: elem.image_text,
