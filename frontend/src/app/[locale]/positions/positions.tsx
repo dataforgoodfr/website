@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { BaseCardsBlock, LargeTextImage } from '@/components';
 import Animation from './_partials/Animations';
 import { PositionsPageData } from './page';
+import { useRef } from 'react';
 
 type PositionPageProps = {
   data: PositionsPageData
@@ -54,21 +55,31 @@ export default function PositionsPage({ data }: PositionPageProps) {
   const press = transformPressReleases(data.press_releases ?? []);
   const resources = transformResources(data.resources ?? []);
   const animationData = transformAnimation(data ?? {});
+  const skipToSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  };
+
+  const handleSkipClick = () => scrollToRef(skipToSectionRef)
 
   return (
     <>
-      <Animation animationData={animationData} />
+      <Animation animationData={animationData} handleSkipClick={handleSkipClick} />
 
-      <LargeTextImage
-        image={data.testimonial_background?.url}
-        citation={data.testimonial?.quote}
-        citationAuthor={data.testimonial?.author}
-        citationAuthorImage={data.testimonial?.avatar?.url}
-        background="purple"
-        className="my-lg"
-        id="lastContent"
-        internalClassName='max-h-[750px]'
-      />
+      <div ref={skipToSectionRef}>
+        <LargeTextImage
+          image={data.testimonial_background?.url}
+          citation={data.testimonial?.quote}
+          citationAuthor={data.testimonial?.author}
+          citationAuthorImage={data.testimonial?.avatar?.url}
+          background="purple"
+          className="mt-lg"
+          internalClassName='max-h-[750px]'
+        />
+      </div>
 
       <BaseCardsBlock
         title={t('press')}
