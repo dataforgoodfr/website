@@ -125,7 +125,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   return (
     <div className={className} {...props}>
-      <div className="lg:max-w-md mx-auto">
+      <div className="lg:max-w-2xl mx-auto">
         {/* Error Message */}
         {message.type === 'error' && (
           <div

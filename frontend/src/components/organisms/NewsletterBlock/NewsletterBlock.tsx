@@ -32,7 +32,7 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
       {...props}
     >
       <div className="container flex flex-col lg:flex-row gap-md pb-md">
-          <div className="flex items-start gap-sm pt-xs max-w-2xl">
+          <div className="flex items-start gap-sm pt-xs max-w-full md:max-w-xl">
             <Image src="/images/marty-2.svg" alt="" width={52} height={70} />
             <div>
               <Title level={titleLevel} className="mb-xs" variant="medium">{componentTitle}</Title>
