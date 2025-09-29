@@ -64,7 +64,7 @@ export default function DonationsPage({ data }: DonationProps) {
       />
 
       <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">
-        {data.introduction_text}
+        <div dangerouslySetInnerHTML={{ __html: data.introduction_text }} />
       </EditoCard>
 
       <div className="bg-violet-light py-lg">

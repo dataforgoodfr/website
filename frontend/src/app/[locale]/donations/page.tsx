@@ -2,6 +2,7 @@ import React from 'react';
 import DonationsPage from './donation';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
+import { getMarkdownContent } from '@/lib/markdown';
 
 export async function generateMetadata({
   params: { locale },
@@ -56,5 +57,6 @@ export default async function Page() {
     return null;
   }
 
-  return <DonationsPage data={data.data} />;
+  const introduction_text = await getMarkdownContent(data.data.introduction_text);
+  return <DonationsPage data={{...data.data, introduction_text}} />;
 };
