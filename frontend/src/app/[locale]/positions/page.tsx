@@ -68,9 +68,9 @@ async function fetchPositionPageData() {
            seo_meta: {
              populate: "*"
            },
-           manifesto: {
-             fields: ['id', 'url']
-           }
+          //  manifesto: {
+          //    fields: ['id', 'url']
+          //  }
          },
       },
     },

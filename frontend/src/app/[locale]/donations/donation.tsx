@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
-import { Button, EditoCard, LargeTextImage, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock } from '@/components';
+import { Button, EditoCard, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock, LargeTextImageDonation } from '@/components';
 import { DonationsData } from './page';
 
 type DonationProps = {
@@ -65,7 +65,7 @@ export default function DonationsPage({ data }: DonationProps) {
 
   return (
     <>
-      <LargeTextImage
+      <LargeTextImageDonation
         title={data.banner_title ?? t('title')}
         titleLevel={1}
         iframe={<div className='p-4 rounded' ref={donationSectionRef}><a href="https://soutenir.dataforgood.fr/b/mon-don#iraiser_native"></a></div>}
@@ -75,7 +75,8 @@ export default function DonationsPage({ data }: DonationProps) {
         internalClassName='min-h-[850px]'
       />
 
-      <EditoCard contentClassName="whitespace-pre-wrap font-primary text-center md:max-w-[60%] md:mx-auto" className="my-lg">
+      <EditoCard contentClassName="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary md:max-w-[80%] md:mx-auto" className="my-lg">
+
         <div dangerouslySetInnerHTML={{ __html: data.introduction_text }} />
         <div className="flex justify-center mt-sm">
           <DonationButton />
@@ -100,8 +101,8 @@ export default function DonationsPage({ data }: DonationProps) {
 
         <div className="flex justify-center mt-sm">
           <DonationButton />
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 }

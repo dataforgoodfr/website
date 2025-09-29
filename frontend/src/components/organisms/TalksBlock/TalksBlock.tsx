@@ -8,7 +8,7 @@ export type TalksBlockProps = {
   title?: string;
   titleLevel?: TitleProps['level'];
   talks: TalkCardProps[];
-  isHome: boolean;
+  isHome?: boolean;
   className?: string;
 };
 

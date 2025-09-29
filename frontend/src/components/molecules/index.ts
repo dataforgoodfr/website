@@ -47,3 +47,5 @@ export type { AccordionProps, AccordionItemData } from './Accordion/Accordion';
 export { default as BannerVideo } from './BannerVideo/BannerVideo';
 export type { BannerVideoProps } from './BannerVideo/BannerVideo';
 
+export { default as LargeTextImageDonation } from './LargeTextImageDonation/LargeTextImageDonation';
+export type { LargeTextImageDonationProps } from './LargeTextImageDonation/LargeTextImageDonation';

@@ -61,7 +61,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
           </Title>
         )}
 
-        <div className={clsx(contentClassName, "whitespace-pre-wrap")}>
+        <div className={contentClassName}>
           {children}
         </div>
 

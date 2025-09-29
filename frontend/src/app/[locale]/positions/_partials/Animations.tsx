@@ -8,6 +8,7 @@ import {
 } from "motion/react";
 import { useRef } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 export default function Animation({ animationData }: {
   animationData: {
@@ -44,12 +45,20 @@ export default function Animation({ animationData }: {
 
       {/* Screen 2 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.05, 0.1, 0.95, 1], [0, 0, 1, 1, 0]) }}>
+        <Image
+          src={animationData.images.length > 0 && animationData.images[0].image.url || ""}
+          alt={animationData.images.length > 0 && animationData.images[0].image.altText || ""}
+          width={1250}
+          height={1089}
+          className='absolute top-[15vh] h-[70vh] object-contain'
+        />
         <div className="mt-36 relative md:left-[-150px] md:top-[-40px] max-w-[800px] px-4 lead flex flex-col items-end">
           <Image
-            src={animationData.images.length > 0 && animationData.images[0].image.url || ""}
-            alt={animationData.images.length > 0 && animationData.images[0].image.altText || ""}
+            src={""}
+            alt={""}
             width={160}
             height={138}
+            className='opacity-0'
           />
           <p className="relative sm:bottom-2 sm:-left-8 shadow-base bg-white p-2 max-w-[430px] rotate-[-4.45deg]">{t('intro.1.text1')}</p>
         </div>
@@ -57,12 +66,20 @@ export default function Animation({ animationData }: {
 
       {/* Screen 3 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.25, 0.3, 0.95, 1], [0, 0, 1, 1, 0]) }}>
+        <Image
+          src={animationData.images.length > 1 && animationData.images[1].image.url || ""}
+          alt={animationData.images.length > 1 && animationData.images[1].image.altText || ""}
+          width={1250}
+          height={1089}
+          className='absolute top-[15vh] h-[70vh] object-contain'
+        />
         <div className="mt-36 relative md:left-[115px] max-w-[800px] px-4 lead flex flex-col items-end">
           <Image
-            src={animationData.images.length > 1 && animationData.images[1].image.url || ""}
-            alt={animationData.images.length > 1 && animationData.images[1].image.altText || ""}
+            src={""}
+            alt={""}
             width={300}
             height={250}
+            className='opacity-0'
           />
           <p className="relative sm:bottom-16 shadow-base bg-white p-2 max-w-[430px] rotate-[1.32deg]">{t('intro.2.text1')}</p>
         </div>
@@ -70,26 +87,41 @@ export default function Animation({ animationData }: {
 
       {/* Screen 4 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.45, 0.5, 0.95, 1], [0, 0, 1, 1, 0]) }}>
+        <Image
+          src={animationData.images.length > 1 && animationData.images[2].image.url || ""}
+          alt={animationData.images.length > 1 && animationData.images[2].image.altText || ""}
+          width={1250}
+          height={1089}
+          className='absolute top-[15vh] h-[70vh] object-contain'
+        />
         <div className="mt-36 relative md:-left-[120px] md:top-[-85px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
           <Image
-            src={animationData.images.length > 2 && animationData.images[2].image.url || ""}
-            alt={animationData.images.length > 2 && animationData.images[2].image.altText || ""}
+            src={""}
+            alt={""}
             width={300}
             height={250}
+            className='opacity-0'
           />
           <p className="relative shadow-base bg-white p-2 max-w-[430px] rotate-[-6.32deg]">{t('intro.3.text1')}</p>
         </div>
       </motion.div>
 
       {/* Screen 5 */}
-      <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.65, 0.7, 0.95, 1], [0, 0, 1, 1, 0]) }}>
+      <motion.div className={clsx("fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center")} style={{ opacity: useTransform(scrollYProgress, [0, 0.65, 0.7, 0.95, 1], [0, 0, 1, 1, 0]) }}>
+        <Image
+          src={animationData.images.length > 1 && animationData.images[3].image.url || ""}
+          alt={animationData.images.length > 1 && animationData.images[3].image.altText || ""}
+          width={1250}
+          height={1089}
+          className='absolute top-[15vh] h-[70vh] object-contain'
+        />
         <div className="mt-36 relative md:-left-[120px] md:top-[-180px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
           <Image
-            src={animationData.images.length > 3 && animationData.images[3].image.url || ""}
-            alt={animationData.images.length > 3 && animationData.images[3].image.altText || ""}
+            src={""}
+            alt={""}
             width={400}
             height={400}
-            className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] object-contain"
+            className="opacity-0"
           />
           <p className="relative sm:bottom-[34px] sm:left-[100px] shadow-base bg-white p-2 max-w-[564px] rotate-[-9.1deg]">{t('intro.4.text1')}</p>
         </div>
