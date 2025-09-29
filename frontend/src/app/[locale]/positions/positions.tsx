@@ -76,7 +76,7 @@ export default function PositionsPage({ data }: PositionPageProps) {
           citationAuthor={data.testimonial?.author}
           citationAuthorImage={data.testimonial?.avatar?.url}
           background="purple"
-          className="mt-lg"
+          className="-mt-[25vh]"
           internalClassName='max-h-[750px]'
         />
       </div>

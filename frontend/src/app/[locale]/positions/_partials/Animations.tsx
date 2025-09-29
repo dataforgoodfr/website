@@ -29,8 +29,8 @@ export default function Animation({ animationData, handleSkipClick }: {
   const { scrollYProgress } = useScroll({ target: refContainer });
 
   return (
-    <div className="container flex justify-center items-center h-[600dvh]" ref={refContainer}>
-      <motion.div className="bg-fixed bg-[url('/images/bg-paper.jpg')] bg-repeat-y bg-cover fixed top-0 left-0 right-0 bottom-0" style={{ opacity: useTransform(scrollYProgress, [0.99, 1], [1, 0]) }} />
+    <div className="container flex justify-center items-center h-[700dvh]" ref={refContainer}>
+      <motion.div className="bg-fixed bg-[url('/images/bg-paper.jpg')] bg-repeat-y bg-cover fixed top-0 left-0 right-0 bottom-0" style={{ opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0]) }} />
       <Link href="#lastContent" onClick={handleSkipClick} className="absolute z-1 top-[calc(100dvh-40px)] right-[40px] text-grey-text flex flex-col items-center hover:text-black">
         {t('skipLink')}
         <Image src="/icons/skip-arrow.svg" alt="" width={16} height={16} />
@@ -54,12 +54,8 @@ export default function Animation({ animationData, handleSkipClick }: {
           className='absolute top-[15vh] h-[70vh] object-contain'
         />
         <div className="mt-36 relative md:left-[-150px] md:top-[-40px] max-w-[800px] px-4 lead flex flex-col items-end">
-          <Image
-            src={""}
-            alt={""}
-            width={160}
-            height={138}
-            className='opacity-0'
+          <div
+            className='opacity-0 w-[160px] h-[138px]'
           />
           <p className="relative sm:bottom-2 sm:-left-8 shadow-base bg-white p-2 max-w-[430px] rotate-[-4.45deg]">{t('intro.1.text1')}</p>
         </div>
@@ -75,12 +71,8 @@ export default function Animation({ animationData, handleSkipClick }: {
           className='absolute top-[15vh] h-[70vh] object-contain'
         />
         <div className="mt-36 relative md:left-[115px] max-w-[800px] px-4 lead flex flex-col items-end">
-          <Image
-            src={""}
-            alt={""}
-            width={300}
-            height={250}
-            className='opacity-0'
+          <div
+            className='opacity-0 w-[300px] h-[250px]'
           />
           <p className="relative sm:bottom-16 shadow-base bg-white p-2 max-w-[430px] rotate-[1.32deg]">{t('intro.2.text1')}</p>
         </div>
@@ -96,12 +88,8 @@ export default function Animation({ animationData, handleSkipClick }: {
           className='absolute top-[15vh] h-[70vh] object-contain'
         />
         <div className="mt-36 relative md:-left-[120px] md:top-[-85px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
-          <Image
-            src={""}
-            alt={""}
-            width={300}
-            height={250}
-            className='opacity-0'
+          <div
+            className='opacity-0 w-[300px] h-[250px]'
           />
           <p className="relative shadow-base bg-white p-2 max-w-[430px] rotate-[-6.32deg]">{t('intro.3.text1')}</p>
         </div>
@@ -117,19 +105,15 @@ export default function Animation({ animationData, handleSkipClick }: {
           className='absolute top-[15vh] h-[70vh] object-contain'
         />
         <div className="mt-36 relative md:-left-[120px] md:top-[-180px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
-          <Image
-            src={""}
-            alt={""}
-            width={400}
-            height={400}
-            className="opacity-0"
+          <div
+            className='opacity-0 w-[400px] h-[400px]'
           />
           <p className="relative sm:bottom-[34px] sm:left-[100px] shadow-base bg-white p-2 max-w-[564px] rotate-[-9.1deg]">{t('intro.4.text1')}</p>
         </div>
       </motion.div>
 
       {/* Screen 6 */}
-      <motion.div id="lastContent" className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.85, 0.9, 0.99, 1], [0, 0, 1, 1, 0]) }}>
+      <motion.div id="lastContent" className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.80, 0.85, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <div className="mt-36 relative md:top-[-180px] px-4 lead flex flex-col items-center">
           <TiltedTitle level={1} variant="big" rotation={-3.49} className="relative top-4 drop-shadow-3 drop-shadow-black">{t('intro.5.title')}</TiltedTitle>
           <p className="h3-like relative  p-2 max-w-[564px] rotate-[-3.49deg] drop-shadow-3 drop-shadow-black">

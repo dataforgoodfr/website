@@ -32,8 +32,6 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
   className,
   ...props
 }) => {
-  const bgImageClass = background === "gray" ? 'md:bg-[url("/images/bg-highlight-gray.png")]' : 'md:bg-[url("/images/bg-highlight-purple.png")]';
-
   return (
     <div
       id={id}
@@ -47,12 +45,11 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
           internalClassName,
         )}
       >
-        <div className={clsx("col-start-1 md:col-start-1 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 py-24 bg-cover bg-left")}>
-          {image && <Image src={image} alt="" loading="lazy" width={1000} height={800} className="col-start-1 md:col-end-3 row-start-1 w-full h-full object-cover" />}
+        <div className={clsx("col-start-1 md:col-start-1 row-start-1 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 md:py-24 bg-cover bg-left")}>
           {title && <Title level={titleLevel} variant="medium">{title}</Title>}
         </div>
 
-        <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 py-24 bg-cover bg-left")}>
+        <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 md:px-12 px-6 pb-24 md:pt-24 bg-cover bg-left")}>
           {iframe && <div className="mt-8 flex justify-center h-full items-center w-full">{iframe}</div>}
         </div>
       </div>
