@@ -36,7 +36,7 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
   return (
     <div className={clsx(className, "flex flex-col md:flex-row gap-10 md:gap-20")} {...props}>
       <div className="flex-1">
-        <TiltedTitle level={baseTitleLevel} rotation={name.rotation ?? -5} className={clsx(name.className, "relative z-1 drop-shadow-3 drop-shadow-black")}>{name.children}</TiltedTitle>
+        <TiltedTitle level={baseTitleLevel} rotation={name.rotation ?? -5} className={clsx(name.className, "md:max-w-[310px] relative z-1 drop-shadow-3 drop-shadow-black")}>{name.children}</TiltedTitle>
         {images?.length && <div className="grid gap-4 mb-sm">
           {images.map((image, index) => (
             <div key={index} className={clsx("shadow-block sm:col-start-1 sm:row-start-1 max-w-full", index % 2 === 0 ? "w-[370px] h-[250px] justify-self-start shadow-block--alive items-start -rotate-2 before:rotate-2" : "w-[330px] h-[200px] justify-self-end self-end shadow-block--resistance items-end rotate-6 before:-translate-x-2")}>

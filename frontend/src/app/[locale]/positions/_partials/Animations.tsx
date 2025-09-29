@@ -51,7 +51,7 @@ export default function Animation({ animationData, handleSkipClick }: {
           alt={animationData.images.length > 0 && animationData.images[0].image.altText || ""}
           width={1250}
           height={1089}
-          className='absolute top-[15vh] h-[70vh] object-contain'
+          className='absolute top-[7.5vh] h-[85vh] object-contain'
         />
         <div className="mt-36 relative md:left-[-150px] md:top-[-40px] max-w-[800px] px-4 lead flex flex-col items-end">
           <div
@@ -68,7 +68,7 @@ export default function Animation({ animationData, handleSkipClick }: {
           alt={animationData.images.length > 1 && animationData.images[1].image.altText || ""}
           width={1250}
           height={1089}
-          className='absolute top-[15vh] h-[70vh] object-contain'
+          className='absolute top-[7.5vh] h-[85vh] object-contain'
         />
         <div className="mt-36 relative md:left-[115px] max-w-[800px] px-4 lead flex flex-col items-end">
           <div
@@ -85,7 +85,7 @@ export default function Animation({ animationData, handleSkipClick }: {
           alt={animationData.images.length > 1 && animationData.images[2].image.altText || ""}
           width={1250}
           height={1089}
-          className='absolute top-[15vh] h-[70vh] object-contain'
+          className='absolute top-[7.5vh] h-[85vh] object-contain'
         />
         <div className="mt-36 relative md:-left-[120px] md:top-[-85px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
           <div
@@ -102,7 +102,7 @@ export default function Animation({ animationData, handleSkipClick }: {
           alt={animationData.images.length > 1 && animationData.images[3].image.altText || ""}
           width={1250}
           height={1089}
-          className='absolute top-[15vh] h-[70vh] object-contain'
+          className='absolute top-[7.5vh] h-[85vh] object-contain'
         />
         <div className="mt-36 relative md:-left-[120px] md:top-[-180px] max-w-[800px] px-4 lead flex flex-col items-end gap-8">
           <div
