@@ -32,7 +32,7 @@ const ProjectImpactBlock: React.FC<ProjectImpactBlockProps> = ({
         width={1000}
         height={1000}
         loading="lazy"
-        className="absolute top-0 left-0 z-0 w-full h-full opacity-20"
+        className="absolute top-0 left-0 z-0 w-full h-full opacity-90"
       />
 
 

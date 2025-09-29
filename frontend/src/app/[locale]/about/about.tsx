@@ -6,7 +6,6 @@ import {
   EditoCard,
   LargeTextImage,
   MembersBlock,
-  NewsletterBlock,
   PartnersBlock,
   Title,
   TestimoniesCarousel,
@@ -199,8 +198,6 @@ export default function AboutPage({ data }: AboutProps) {
         categories={members}
         className="my-lg"
       />
-
-      <NewsletterBlock />
     </>
   );
 }

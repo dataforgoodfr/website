@@ -85,7 +85,6 @@ const Footer = () => {
           <div className="flex flex-col gap-5 text-sm">
             <p className="h4-like">{t('contact.title')}</p>
             <p><Button variant="secondary" href="mailto:contact@dataforgood.fr">contact@dataforgood.fr</Button></p>
-            <NewsletterForm />
             <ul className="flex gap-2">
               {Object.keys(socialLinks).map(social => (
                 <li key={social}>

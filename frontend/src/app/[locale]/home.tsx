@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsletterBlock, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
 import { HomepageData } from './page';
 import Image from 'next/image'
 
@@ -136,8 +136,6 @@ export default function Homepage({ data }: HomepageProps) {
         blocks={events}
         className='my-lg'
       />
-
-      <NewsletterBlock />
     </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { EditoCard, NewsletterBlock, Title } from '@/components';
+import { EditoCard, Title } from '@/components';
 
 export default function ChartePage() {
   const t = useTranslations('charte');
@@ -82,7 +82,6 @@ export default function ChartePage() {
         </div>
       </EditoCard>
 
-      <NewsletterBlock />
     </>
   );
 }

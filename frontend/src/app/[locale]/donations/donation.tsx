@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
-import { Button, EditoCard, LargeTextImage, NewsletterBlock, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock } from '@/components';
+import { Button, EditoCard, LargeTextImage, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock } from '@/components';
 import { DonationsData } from './page';
 
 type DonationProps = {
@@ -84,8 +84,6 @@ export default function DonationsPage({ data }: DonationProps) {
           <Button href={data.donation_cta?.link} color="violet" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
         </div>
       </div>
-
-      <NewsletterBlock />
     </>
   );
 }

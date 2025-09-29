@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { EditoCard, NewsletterBlock, Title } from '@/components';
+import { EditoCard, Title } from '@/components';
 
 export default function CguPage() {
   const t = useTranslations('cgu');
@@ -41,8 +41,6 @@ export default function CguPage() {
       <EditoCard className="my-lg" title={t('article7.title')}>
         <div dangerouslySetInnerHTML={{ __html: t.raw('article7.content') }} />
       </EditoCard>
-
-      <NewsletterBlock />
     </>
   );
 }

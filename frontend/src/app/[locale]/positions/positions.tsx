@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BaseCardsBlock, LargeTextImage, NewsletterBlock } from '@/components';
+import { BaseCardsBlock, LargeTextImage } from '@/components';
 import Animation from './_partials/Animations';
 import { PositionsPageData } from './page';
 
@@ -80,8 +80,6 @@ export default function PositionsPage({ data }: PositionPageProps) {
         blocks={resources}
         className="my-lg"
       />
-
-      <NewsletterBlock />
     </>
   );
 }

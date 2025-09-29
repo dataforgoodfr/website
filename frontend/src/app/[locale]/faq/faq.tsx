@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Accordion, NewsletterBlock, Title } from '@/components';
+import { Accordion, Title } from '@/components';
 import type { AccordionItemData } from '@/components';
 
 export default function FaqPage() {
@@ -38,8 +38,6 @@ export default function FaqPage() {
           />
         ))}
       </div>
-
-      <NewsletterBlock />
     </>
   );
 }

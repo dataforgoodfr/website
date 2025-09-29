@@ -3,7 +3,6 @@
 import {
   EditoCard,
   Kpis,
-  NewsletterBlock,
   PartnersBlock,
   ThematicHeroBlock,
   ThumbnailProjectsBlock,
@@ -65,8 +64,6 @@ export default function SocialPage({ data }: ThematicsProps) {
         partners={partners}
         className="my-lg"
       />
-
-      <NewsletterBlock />
     </>
   );
 }

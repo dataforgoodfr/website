@@ -58,7 +58,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         <p className="h4-like">
           {author}
         </p>
-        <p className="my-xs h3-like text-[27px] leading-[2rem]">
+        <p className="my-xs h3-like lg:text-[1.7rem] leading-[2rem]">
           {talk}
         </p>
         {ctaText && ctaLink && (
