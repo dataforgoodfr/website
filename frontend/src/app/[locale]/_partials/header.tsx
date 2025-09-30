@@ -215,7 +215,7 @@ const Header = () => {
             <ul
               role="menu"
               aria-label={t('header.nav.top.label')}
-              className="flex flex-col lg:flex-row gap-4 lg:gap-1 p-4 lg:p-0"
+              className="flex flex-col lg:flex-row gap-4 lg:gap-2 p-4 lg:p-0"
               onKeyDown={handleFocusNav}
             >
               {Object.keys(topNav).map(link => (
@@ -229,8 +229,8 @@ const Header = () => {
                     role="menuitem"
                     className={clsx(
                       'inline-flex items-center gap-2 px-4 py-2',
-                      'font-primary font-black tracking-widest bg-alive text-black uppercase text-[12px] hover:shadow-[inset_3px_3px_0_0_rgba(0,0,0,0.4)]',
-                      'hover:bg-alive/80 focus:bg-alive/80',
+                      link === 'financier' ? 'bg-resistance' : 'bg-alive',
+                      'font-primary font-black tracking-widest uppercase text-black text-[12px] shadow-block shadow-block--black',
                     )}
                   >
                     {t(`header.nav.top.${link}`)}
