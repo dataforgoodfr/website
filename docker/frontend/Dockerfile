@@ -44,19 +44,17 @@ COPY frontend ./frontend
 # Build frontend package
 RUN pnpm frontend build
 
+RUN pnpm deploy --filter=frontend --prod /app/deploy --legacy
+
 # --------------------
 # Runtime image
 # --------------------
-FROM node:20-alpine AS runner
+FROM base AS runner
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
 ENV NODE_ENV=production
 
 WORKDIR /app
 
-# Enable corepack in case pnpm is needed at runtime (optional)
-RUN corepack enable
 RUN apk add --no-cache bash
 
 # Remove telemetry
@@ -71,15 +69,10 @@ ENV NODE_ENV=production
 # Enable health check
 # HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
 
-COPY --from=builder /app/frontend/.next/standalone/ /app/
-COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
-COPY --from=builder /app/frontend/public /app/frontend/public
-COPY --from=builder /app/frontend/messages /app/frontend/messages
-
-# Copy the server wrapper that ensures env vars are available
-COPY frontend/server-wrapper.js /app/frontend/server-wrapper.js
+COPY --from=builder /app/deploy ./
+COPY --from=builder /app/frontend/.next ./.next
 
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "frontend/server-wrapper.js"]
+CMD ["pnpm", "start"]
