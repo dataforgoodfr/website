@@ -3,7 +3,8 @@ name: Build and Push Docker Images
 on:
   push:
     branches:
-      - feat/next_strapi_rewrite
+      - main
+  pull_request:
 
 env:
   REGISTRY: ghcr.io
@@ -56,15 +57,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Docker tags
+        id: meta-frontend
+        run: |
+          BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9._-]/-/g')
+          TAGS="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:${BRANCH_NAME}-${{ github.sha }}"
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            TAGS="${TAGS},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:latest"
+          fi
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+
       - name: Build and push frontend
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./docker/frontend/Dockerfile
           push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:${{ github.sha }}
+          tags: ${{ steps.meta-frontend.outputs.tags }}
           platforms: linux/amd64
 
   build-backend:
@@ -95,13 +104,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Docker tags
+        id: meta-backend
+        run: |
+          BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9._-]/-/g')
+          TAGS="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:${BRANCH_NAME}-${{ github.sha }}"
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            TAGS="${TAGS},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:latest"
+          fi
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+
       - name: Build and push backend
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./docker/backend/Dockerfile
           push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:${{ github.sha }}
+          tags: ${{ steps.meta-backend.outputs.tags }}
           platforms: linux/amd64
