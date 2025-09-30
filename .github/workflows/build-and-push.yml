@@ -17,16 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Cache PNPM dependencies
-        uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -55,22 +45,14 @@ jobs:
           push: true
           tags: ${{ steps.meta-frontend.outputs.tags }}
           platforms: linux/amd64
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:buildcache,mode=max
 
   build-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Cache PNPM dependencies
-        uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -100,3 +82,5 @@ jobs:
           push: true
           tags: ${{ steps.meta-backend.outputs.tags }}
           platforms: linux/amd64
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:buildcache,mode=max
