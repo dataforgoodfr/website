@@ -672,9 +672,7 @@ export interface ApiDonationDonation extends Struct.SingleTypeSchema {
     >;
     banner_subtitle: Schema.Attribute.String;
     banner_title: Schema.Attribute.String;
-    banner_video: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    banner_video: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
