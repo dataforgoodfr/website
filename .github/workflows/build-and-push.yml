@@ -11,28 +11,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      frontend: ${{ steps.filter.outputs.frontend }}
-      backend: ${{ steps.filter.outputs.backend }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            frontend:
-              - 'frontend/**'
-              - 'docker/frontend/**'
-            backend:
-              - 'backend/**'
-              - 'docker/backend/**'
-
   build-frontend:
-    needs: changes
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.frontend == 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -77,9 +57,7 @@ jobs:
           platforms: linux/amd64
 
   build-backend:
-    needs: changes
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.backend == 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
