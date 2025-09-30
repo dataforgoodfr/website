@@ -37,25 +37,16 @@ export async function getRedirects() {
     }
 
     const data = await res.json();
-    
-    if (Array.isArray(data)) {
-      return data.map((redirect) => ({
-        source: redirect.source,
-        destination: redirect.destination,
-        permanent: redirect.permanent || false,
-      }));
-    }
-    
-    if (data.data && Array.isArray(data.data)) {
-      return data.data.map((redirect) => ({
-        source: redirect.attributes?.source || redirect.source,
-        destination: redirect.attributes?.destination || redirect.destination,
-        permanent: redirect.attributes?.permanent || redirect.permanent || false,
-      }));
+
+    if (!data.length) {
+      return [];
     }
 
-    console.error('Invalid redirects data structure:', data);
-    return [];
+    return data.map((redirect) => ({
+      source: redirect.source,
+      destination: redirect.destination,
+      permanent: redirect.permanent || false,
+    }));
   } catch (error) {
     console.error('Error fetching redirects:', error);
     return [];
