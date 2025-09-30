@@ -23,14 +23,7 @@
       "type": "string"
     },
     "banner_video": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "type": "text"
     },
     "introduction_text": {
       "type": "richtext"
