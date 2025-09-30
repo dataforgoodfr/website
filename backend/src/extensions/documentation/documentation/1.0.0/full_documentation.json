@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-29T13:11:12.255Z"
+    "x-generation-date": "2025-09-30T19:28:18.174Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -28088,6 +28088,9 @@
               "banner_title": {
                 "type": "string"
               },
+              "banner_subtitle": {
+                "type": "string"
+              },
               "banner_video": {
                 "oneOf": [
                   {
@@ -28192,6 +28195,9 @@
             "$ref": "#/components/schemas/SeoMetaSeoMetaComponent"
           },
           "banner_title": {
+            "type": "string"
+          },
+          "banner_subtitle": {
             "type": "string"
           },
           "banner_video": {
@@ -28399,6 +28405,9 @@
                   "$ref": "#/components/schemas/SeoMetaSeoMetaComponent"
                 },
                 "banner_title": {
+                  "type": "string"
+                },
+                "banner_subtitle": {
                   "type": "string"
                 },
                 "banner_video": {
@@ -55309,12 +55318,6 @@
                   "example": "string or id"
                 }
               },
-              "informations": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/InformationInformationBlockComponent"
-                }
-              },
               "seasons": {
                 "type": "array",
                 "items": {
@@ -55346,6 +55349,15 @@
               "categories": {},
               "join_cta": {
                 "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+              },
+              "informations_title": {
+                "type": "string"
+              },
+              "informations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/InformationInformationBlockComponent"
+                }
               },
               "locale": {
                 "type": "string"
@@ -57821,12 +57833,6 @@
               }
             }
           },
-          "informations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/InformationInformationBlockComponent"
-            }
-          },
           "seasons": {
             "type": "array",
             "items": {
@@ -57858,6 +57864,15 @@
           "categories": {},
           "join_cta": {
             "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+          },
+          "informations_title": {
+            "type": "string"
+          },
+          "informations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InformationInformationBlockComponent"
+            }
           },
           "createdAt": {
             "type": "string",
@@ -57930,12 +57945,6 @@
                     }
                   }
                 },
-                "informations": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/InformationInformationBlockComponent"
-                  }
-                },
                 "seasons": {
                   "type": "array",
                   "items": {
@@ -57967,6 +57976,15 @@
                 "categories": {},
                 "join_cta": {
                   "$ref": "#/components/schemas/CallToActionCallToActionComponent"
+                },
+                "informations_title": {
+                  "type": "string"
+                },
+                "informations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InformationInformationBlockComponent"
+                  }
                 },
                 "createdAt": {
                   "type": "string",
