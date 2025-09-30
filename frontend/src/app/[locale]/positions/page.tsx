@@ -3,6 +3,8 @@ import PositionsPage from './positions';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
+export const dynamic = 'force-static';
+
 export async function generateMetadata({
   params: { locale },
 }: {

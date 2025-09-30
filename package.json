@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "sharp": "^0.34.4"
+  },
+  "volta": {
+    "node": "20.19.5"
   }
 }

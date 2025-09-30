@@ -4,6 +4,8 @@ import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
 import { getMarkdownContent } from '@/lib/markdown';
 
+export const dynamic = 'force-static';
+
 export async function generateMetadata({
   params: { locale },
 }: {
