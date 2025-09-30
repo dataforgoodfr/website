@@ -56,14 +56,26 @@ async function fetchThematicPageData() {
   });
 }
 
+async function fetchThematics() {
+  return await client.GET('/thematics', {
+    params: {
+      query: {
+        populate: '*'
+      },
+    },
+  });
+}
+
 export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematicPageData>>["data"]>["data"]>;
+export type ThematicsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematics>>["data"]>["data"]>;
 
 export default async function Page() {
   const { data } = await fetchThematicPageData();
+  const { data: thematicsData } = await fetchThematics();
 
-  if (!data?.data) {
+  if (!data?.data || !thematicsData?.data) {
     return null;
   }
 
-  return <SocialPage data={data.data} />;
+  return <SocialPage data={data.data} thematicsData={thematicsData.data} />;
 };

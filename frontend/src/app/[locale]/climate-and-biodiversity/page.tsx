@@ -56,14 +56,48 @@ async function fetchThematicPageData() {
   });
 }
 
+async function fetchThematics() {
+  return await client.GET('/thematics', {
+    params: {
+      query: {
+        populate: {
+          projects: {
+            populate: '*'
+          },
+          partners: {
+            populate: '*'
+          },
+          funders: {
+            populate: '*'
+          },
+          kpis: {
+            populate: '*'
+          },
+          image_1: {
+            fields: ["url"]
+          },
+          image_2: {
+            fields: ["url"]
+          },
+           thumbnail: {
+             fields: ["url"]
+           },
+         }
+       },
+    },
+  });
+}
+
 export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematicPageData>>["data"]>["data"]>;
+export type ThematicsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematics>>["data"]>["data"]>;
 
 export default async function Page() {
   const { data } = await fetchThematicPageData();
+  const { data: thematicsData } = await fetchThematics();
 
-  if (!data?.data) {
+  if (!data?.data || !thematicsData?.data) {
     return null;
   }
 
-  return <ClimatePage data={data.data} />;
+  return <ClimatePage data={data.data} thematicsData={thematicsData.data} />;
 };
