@@ -57,8 +57,6 @@ export default function DonationsPage({ data }: DonationProps) {
     id: (goal.id ?? '').toString(),
     talk: goal.goal_cta?.content ?? '',
     image: goal.goal_cta?.image?.url ?? '',
-    imageWidth: 301,
-    imageHeight: 401,
     ctaText: goal.goal_cta?.cta?.text,
     ctaLink: goal.goal_cta?.cta?.link,
   })) ?? []

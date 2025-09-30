@@ -24,8 +24,6 @@ function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
     talk: thematic.short_description,
     talkOffset: 10,
     image: thematic.thumbnail?.url || '',
-    imageWidth: 251,
-    imageHeight: 318,
     ctaText: thematic.cta_text,
     ctaLink: thematic.cta_link,
   })) || [];

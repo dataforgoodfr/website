@@ -11,8 +11,6 @@ export type ThematicsCardProps = {
   talk: string;
   talkOffset?: number;
   image?: string;
-  imageWidth: number;
-  imageHeight: number;
   ctaText?: string;
   ctaLink?: string;
   className?: string;
@@ -24,8 +22,6 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
   talk,
   talkOffset = 0,
   image = "/images/default-image.svg",
-  imageWidth,
-  imageHeight,
   ctaText,
   ctaLink,
   className,
@@ -49,8 +45,8 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
         alt=""
         className="absolute m-auto left-0 right-0 top-0 pb-lg justify-center h-fit -z-30 object-cover"
         loading="lazy"
-        width={imageWidth}
-        height={imageHeight}
+        width="301"
+        height="401"
       />
       <div className="pt-lg mb-xs">
         <TiltedTitle {...title.props} variant="small" className={`${title.props.className} z-1. mb-xs`}>
