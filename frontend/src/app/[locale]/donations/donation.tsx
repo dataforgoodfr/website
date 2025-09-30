@@ -69,19 +69,21 @@ export default function DonationsPage({ data }: DonationProps) {
         iframe={<div className='p-4 [&>iframe]:rounded-2xl' ref={donationSectionRef}>
           <a href="https://soutenir.dataforgood.fr/native-/#iraiser_native"></a>
         </div>}
-        image={data.banner_video?.url}
         background="purple"
         className="my-lg"
         internalClassName='min-h-[850px]'
       />
 
-      <EditoCard contentClassName=" md:max-w-[80%] md:mx-auto" className="my-lg">
+      <div className="container-lg mx-auto flex flex-col lg:flex-row items-center gap-12">
+        {data.banner_video?.url && <div className="shadow-lg bg-building w-full lg:max-w-60 rotate-[-2deg]" dangerouslySetInnerHTML={{ __html: data.banner_video?.url ?? '' }} />}
 
-        <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
-        <div className="flex justify-center mt-sm">
-          <DonationButton />
-        </div>
-      </EditoCard>
+        <EditoCard contentClassName="flex-1 md:max-w-[80%] md:mx-auto" className="my-lg">
+          <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
+          <div className="flex justify-center mt-sm">
+            <DonationButton />
+          </div>
+        </EditoCard>
+      </div>
 
       <div className="bg-violet-light py-lg">
         <TalksBlock
