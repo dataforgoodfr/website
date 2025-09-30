@@ -29,11 +29,6 @@
       "relation": "oneToMany",
       "target": "api::thematic.thematic"
     },
-    "informations": {
-      "type": "component",
-      "component": "information.information-block",
-      "repeatable": true
-    },
     "seasons": {
       "type": "relation",
       "relation": "oneToMany",
@@ -58,6 +53,14 @@
       "type": "component",
       "component": "call-to-action.call-to-action",
       "repeatable": false
+    },
+    "informations_title": {
+      "type": "string"
+    },
+    "informations": {
+      "type": "component",
+      "component": "information.information-block",
+      "repeatable": true
     }
   }
 }

@@ -19,6 +19,9 @@
     "banner_title": {
       "type": "string"
     },
+    "banner_subtitle": {
+      "type": "string"
+    },
     "banner_video": {
       "type": "media",
       "multiple": false,

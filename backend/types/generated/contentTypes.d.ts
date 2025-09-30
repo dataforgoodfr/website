@@ -670,6 +670,7 @@ export interface ApiDonationDonation extends Struct.SingleTypeSchema {
       'call-to-action.call-to-action-with-image',
       true
     >;
+    banner_subtitle: Schema.Attribute.String;
     banner_title: Schema.Attribute.String;
     banner_video: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -1525,6 +1526,7 @@ export interface ApiProjectsListProjectsList extends Struct.SingleTypeSchema {
       'information.information-block',
       true
     >;
+    informations_title: Schema.Attribute.String;
     introduction: Schema.Attribute.Text;
     introduction_cta: Schema.Attribute.Component<
       'call-to-action.call-to-action-with-image',
