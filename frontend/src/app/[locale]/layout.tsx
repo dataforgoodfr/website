@@ -76,6 +76,11 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           defer
         />
+        <Script
+          src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js"
+          defer={true}
+          data-domain="dataforgood.fr"
+        />
       </head>
       <body
         className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
