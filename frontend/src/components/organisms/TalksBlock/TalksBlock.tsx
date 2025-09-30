@@ -35,7 +35,7 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
         src="/icons/dot-orange.svg"
         width={35}
         height={35}
-        alt={t('dot.orange')}
+        alt=""
         className='mx-auto mb-xs'
       />}
       {title && (

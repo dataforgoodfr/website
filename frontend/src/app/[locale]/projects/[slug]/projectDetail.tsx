@@ -135,7 +135,6 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
       />}
 
       {presentationContent.length > 0 && <Banner
-        image={project.thumbnail?.url}
         content={presentationContent}
         className="my-lg"
       />}

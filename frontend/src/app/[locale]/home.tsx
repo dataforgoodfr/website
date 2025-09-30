@@ -87,8 +87,6 @@ export default function Homepage({ data }: HomepageProps) {
     talk: thematic.short_description || '',
     talkOffset: 10,
     image: thematic.thumbnail?.url || '',
-    imageWidth: 251,
-    imageHeight: 318,
     ctaText: thematic.cta_text,
     ctaLink: thematic.cta_link,
   })).filter(thematic => thematic.talk) ?? [];
@@ -105,7 +103,7 @@ export default function Homepage({ data }: HomepageProps) {
           src="/icons/dot-purple.svg"
           width={35}
           height={35}
-          alt={t('dot.purple')}
+          alt=""
         />
         <Title level={2} className='ml-2' variant="medium">
           {data.project_carousel_title!}

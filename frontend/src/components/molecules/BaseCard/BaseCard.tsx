@@ -54,7 +54,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
           {subInfos.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {subInfos.map((subInfo, index) => (
-                <p key={index} className="text-sm text-black/60 font-black uppercase tracking-widest">{subInfo}</p>
+                <p key={index} className="tag-like text-black/60">{subInfo}</p>
               ))}
             </div>
           )}

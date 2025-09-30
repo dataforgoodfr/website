@@ -51,7 +51,7 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="font-secondary">
+            <p className="font-secondary max-w-52">
               {t('description')}
             </p>
           </div>
@@ -94,7 +94,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="container flex flex-wrap gap-8 mx-auto px-4 mt-10 text-sm text-black/60">
+        <div className="container flex flex-wrap gap-8 mx-auto px-4 mt-10 lg:mt-36 text-xs text-black/60">
           <p>
             {t('copyright')}
             {new Date().getFullYear()}

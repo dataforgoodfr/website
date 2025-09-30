@@ -31,7 +31,7 @@ const ThumbnailProjectsBlock: React.FC<ThumbnailProjectsBlockProps> = ({
     >
         <Image src="/images/scratch-purple.svg" alt="" width={212} height={48} className="object-contain w-full h-auto" />
         <div className="bg-building-light pt-sm pb-md">
-          <div className="container">
+          <div className="container-lg">
             <Title hasSeparator className="mb-xs" level={titleLevel} variant="medium">
               {title}
             </Title>
