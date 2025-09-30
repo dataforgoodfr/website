@@ -53,7 +53,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
 
   return (
     <div className={clsx('container', className)}>
-      {title && <Title variant="medium" className="mb-md" level={titleLevel}>
+      {title && <Title variant="medium" className="mb-md" level={titleLevel} hasSeparator>
         {title}
       </Title>}
 
@@ -68,10 +68,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           dragFree: false,
         }}
         className={clsx(
-          'w-full relative overflow-hidden md:overflow-visible',
+          'w-full overflow-hidden md:overflow-visible',
           current === count - 1 && slides.length > 1 && 'md:[&>div:first-child]:pr-[10vw]',
           carouselClassName,
-          
         )}
       >
         <CarouselContent noOverflow className="px-[calc(50%-24rem)] items-center">
@@ -79,8 +78,8 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
             <CarouselItem
               key={slide.id}
               className={clsx(
-                "max-w-3xl p-0 h-[520px]",
-                index !== current && "bg-violet-light/80 px-0 py-0 h-[460px]",
+                "relative max-w-3xl p-0 h-[520px]",
+                index !== current ? "bg-violet-light/80 px-0 py-0 h-[460px]" : "z-1 shadow-lg",
               )}
             >
               <Image

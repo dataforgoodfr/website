@@ -21,7 +21,7 @@ const Tag = ({
 
   return (
     <div className={clsx(
-      'text-xs font-semibold tracking-widest px-2 py-1.5 uppercase opacity-70',
+      'tag-like px-2 py-1.5 uppercase opacity-70',
       bgColor,
       color,
       className,

@@ -124,6 +124,10 @@
     @apply text-sm font-black uppercase tracking-widest;
   }
 
+  .tag-like {
+    @apply text-[0.625rem] font-black uppercase tracking-widest;
+  }
+
   .lead {
     @apply font-secondary font-medium;
   }

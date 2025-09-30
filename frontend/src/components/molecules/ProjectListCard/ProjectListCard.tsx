@@ -41,7 +41,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
     </div>
     <div className="col-start-1 row-start-1 flex flex-col justify-end m-5 gap-2 items-start text-white">
       <p className="lead font-bold">{project}</p>
-      {partners.map((partner, id) => (<p key={id} className="text-xs font-semibold tracking-widest uppercase opacity-50">{partner}</p>))}
+      {partners.map((partner, id) => (<p key={id} className="tag-like opacity-50">{partner}</p>))}
       {description && <p className="text-xs h-0 group-hover:h-auto transition-all overflow-hidden">{description}</p>}
     </div>
   </div>;
