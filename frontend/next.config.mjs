@@ -25,7 +25,7 @@ const nextConfig = {
 
 export async function getRedirects() {
   try {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/api/redirects`, {
+    const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
       },
@@ -36,18 +36,26 @@ export async function getRedirects() {
       return [];
     }
 
-    const response = await res.json();
+    const data = await res.json();
     
-    if (!response.data || !Array.isArray(response.data)) {
-      console.error('Invalid redirects data structure:', response);
-      return [];
+    if (Array.isArray(data)) {
+      return data.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: redirect.permanent || false,
+      }));
+    }
+    
+    if (data.data && Array.isArray(data.data)) {
+      return data.data.map((redirect) => ({
+        source: redirect.attributes?.source || redirect.source,
+        destination: redirect.attributes?.destination || redirect.destination,
+        permanent: redirect.attributes?.permanent || redirect.permanent || false,
+      }));
     }
 
-    return response.data.map((redirect) => ({
-      source: redirect.attributes?.source || redirect.source,
-      destination: redirect.attributes?.destination || redirect.destination,
-      permanent: redirect.attributes?.permanent || redirect.permanent || false,
-    }));
+    console.error('Invalid redirects data structure:', data);
+    return [];
   } catch (error) {
     console.error('Error fetching redirects:', error);
     return [];
