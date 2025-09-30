@@ -79,7 +79,7 @@ export default function DonationsPage({ data }: DonationProps) {
 
       <EditoCard contentClassName=" md:max-w-[80%] md:mx-auto" className="my-lg">
 
-        <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text }} />
+        <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
         <div className="flex justify-center mt-sm">
           <DonationButton />
         </div>
