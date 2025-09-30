@@ -25,17 +25,28 @@ const nextConfig = {
 
 export async function getRedirects() {
   try {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
+    const res = await fetch(`${process.env.STRAPI_API_URL}/api/redirects`, {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
       },
     });
-    const data = await res.json();
 
-    return data.map((redirect) => ({
-      source: redirect.source,
-      destination: redirect.destination,
-      permanent: redirect.permanent || false,
+    if (!res.ok) {
+      console.error(`Error fetching redirects: ${res.status} ${res.statusText}`);
+      return [];
+    }
+
+    const response = await res.json();
+    
+    if (!response.data || !Array.isArray(response.data)) {
+      console.error('Invalid redirects data structure:', response);
+      return [];
+    }
+
+    return response.data.map((redirect) => ({
+      source: redirect.attributes?.source || redirect.source,
+      destination: redirect.attributes?.destination || redirect.destination,
+      permanent: redirect.attributes?.permanent || redirect.permanent || false,
     }));
   } catch (error) {
     console.error('Error fetching redirects:', error);
