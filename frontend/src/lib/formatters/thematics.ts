@@ -1,4 +1,5 @@
 import { ThematicPageData } from '@/app/[locale]/climate-and-biodiversity/page';
+import { ThematicsData } from '@/app/[locale]/social-justice/page';
 
 export function transformPartners(
   partners: NonNullable<ThematicPageData['funders']>
@@ -46,4 +47,25 @@ export function transformProjects(
       },
     ],
   })) ?? [];
+}
+
+export function transformThematics(
+  thematics: NonNullable<ThematicsData>
+) {
+  return thematics?.map(thematic => ({
+    title: {
+      children: thematic.name || '',
+      props: {
+        colors: `text-black bg-${thematic.color}`,
+        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        rotation: -2.58,
+      }
+    },
+    id: thematic.id?.toString() || '',
+    talk: thematic.short_description || '',
+    talkOffset: 10,
+    image: thematic.thumbnail?.url || '',
+    ctaText: thematic.cta_text,
+    ctaLink: thematic.cta_link,
+  })).filter(thematic => thematic.talk) ?? [];
 }
