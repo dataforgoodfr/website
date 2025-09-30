@@ -26,7 +26,7 @@
     "lucide-react": "^0.447.0",
     "mdast-util-toc": "^7.1.0",
     "motion": "^12.23.13",
-    "next": "14.2.14",
+    "next": "14.2.32",
     "next-intl": "^4.3.4",
     "next-video": "^2.5.0",
     "openapi-fetch": "^0.14.0",
