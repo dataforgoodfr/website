@@ -40,8 +40,8 @@ const MembersBlock: React.FC<MembersBlockProps> = ({
 
       {categories.map((category, index) => (
         <div key={index}>
-          {category.title && (
-            <Title variant="small" className="mb-sm" level={typeof titleLevel === 'number' ? (titleLevel + 1) as TitleProps['level'] : titleLevel}>
+          {category.title && category.members?.length > 0 && (
+            <Title variant="small" hasSeparator className="mb-sm" level={typeof titleLevel === 'number' ? (titleLevel + 1) as TitleProps['level'] : titleLevel}>
               {category.title}
             </Title>
           )}

@@ -49,7 +49,7 @@ const sampleTalks = [
   {
     author: 'Jean Martin',
     talk: 'Visualisation de données pour tous',
-    image: '/images/marty-2.svg',
+    image: '/images/marty.png',
     ctaText: 'En savoir plus',
     ctaLink: '/talks/visualisation',
   },
@@ -147,7 +147,7 @@ export const TalksWithLongContent: Story = {
       {
         author: 'Prof. Marc Dubois - Université de Paris',
         talk: 'Comment les données peuvent transformer notre compréhension des phénomènes sociaux complexes et améliorer les politiques publiques',
-        image: '/images/marty-2.svg',
+        image: '/images/marty.png',
         ctaText: 'Voir la vidéo',
         ctaLink: '/talks/politiques-publiques',
       },

@@ -55,7 +55,7 @@ const samplePartners = [
   {
     name: 'Institut National de la Statistique',
     description: 'L\'Insee collecte, produit, analyse et diffuse des informations sur l\'économie et la société françaises',
-    image: '/images/marty-2.svg',
+    image: '/images/marty.png',
     link: 'https://insee.fr',
   },
 ];

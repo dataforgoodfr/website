@@ -133,7 +133,7 @@ export default function ProjectsPage({ data }: ProjectListProps) {
       />
 
       <InformationsBlock
-        title={t('information.title')}
+        title={data.informations_title}
         informations={informations ?? []}
         className="mt-lg"
       />

@@ -74,7 +74,7 @@ export const LongDescription: Story = {
   args: {
     name: 'Institut National de la Statistique et des Études Économiques',
     description: 'L\'Insee collecte, produit, analyse et diffuse des informations sur l\'économie et la société françaises sur l\'ensemble du territoire national. Il coordonne le système statistique public et représente la France auprès des instances statistiques internationales.',
-    image: '/images/marty-2.svg',
+    image: '/images/marty.png',
     link: 'https://insee.fr',
   },
 };

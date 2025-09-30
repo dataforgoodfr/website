@@ -26,16 +26,31 @@ async function fetchProjectListPageData() {
             populate: '*',
           },
           thematics: {
-            populate: '*',
+            fields: ["name", "short_id", "color", "id", "short_description", "cta_text", "cta_link"],
+            populate: 'thumbnail',
           },
           informations: {
             populate: '*',
           },
           seasons: {
-            populate: '*',
+            fields: ["title"]
           },
           projects: {
-            populate: '*',
+            fields: ["title", "short_description", "category", "slug", "start_date"],
+            populate: {
+              thumbnail: {
+                fields: ["url"]
+              }, 
+              seasons: {
+                fields: ["title"]
+              },
+              thematics: {
+                fields: ["short_id"]
+              },
+              related_partners: {
+                fields: ["name"]
+              }
+            }
           },
            join_cta: {
              populate: '*',
@@ -59,5 +74,6 @@ export default async function Page() {
     return null;
   }
 
+  console.log(data.data)
   return <ProjectsPage data={data.data} />;
 };

@@ -33,13 +33,13 @@ async function fetchDonationData() {
               },
             }
           },
-           donation_cta: {
-             populate: "*"
-           },
-           seo_meta: {
-             populate: "*"
-           }
-         }
+          donation_cta: {
+            populate: "*"
+          },
+          seo_meta: {
+            populate: "*"
+          }
+        }
       }
     }
   });
@@ -55,5 +55,5 @@ export default async function Page() {
   }
 
   const introduction_text = await getMarkdownContent(data.data.introduction_text);
-  return <DonationsPage data={{...data.data, introduction_text}} />;
+  return <DonationsPage data={{ ...data.data, introduction_text }} />;
 };
