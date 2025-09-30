@@ -41,7 +41,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         imagePosition === 'right' && 'sm:order-2',
       )}>
         <div className={clsx(
-          'relative inline-flex before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
+          'relative flex before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
           imagePosition === 'right' ? 'rotate-3' : '-rotate-3',
         )}>
           <Image

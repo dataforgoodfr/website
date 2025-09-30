@@ -43,7 +43,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
       <Image
         src={image}
         alt=""
-        className="absolute m-auto left-0 right-0 top-0 pb-lg justify-center h-fit -z-30 object-cover"
+        className="absolute m-auto left-0 right-0 top-0 bottom-0 lg:bottom-auto pb-lg justify-center h-full lg:h-fit -z-30 object-contain lg:object-cover"
         loading="lazy"
         width="301"
         height="401"

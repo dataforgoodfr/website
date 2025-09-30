@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import Image from 'next/image';
-import { Button, Title, TitleProps } from '@/components';
+import { Title, TitleProps } from '@/components';
 
 export type LargeTextImageDonationProps = {
   id?: string;
@@ -8,7 +7,6 @@ export type LargeTextImageDonationProps = {
   titleLevel?: TitleProps['level'];
   content?: React.ReactNode;
   iframe?: React.ReactNode;
-  image?: string;
   citation?: string;
   citationAuthor?: string;
   citationAuthorImage?: string;
@@ -23,7 +21,6 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
   titleLevel = 2,
   content,
   iframe,
-  image,
   citation,
   citationAuthor,
   citationAuthorImage,
@@ -42,7 +39,6 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
         className={clsx(
           'overflow-hidden grid grid-cols-1 grid-rows-[200px_1fr] md:grid-cols-2 md:grid-rows-1 h-full',
           `text-white bg-[url("/images/donation-background.jpg")]`,
-          // `text-white bg-[url("/images/bg-donation.jpg")]`,
           internalClassName,
         )}
       >
