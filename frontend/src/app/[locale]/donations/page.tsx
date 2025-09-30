@@ -23,9 +23,6 @@ async function fetchDonationData() {
     params: {
       query: {
         populate: {
-          banner_video: {
-            populate: "*",
-          },
           actions: {
             populate: "*"
           },
