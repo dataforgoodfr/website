@@ -74,6 +74,5 @@ export default async function Page() {
     return null;
   }
 
-  console.log(data.data)
   return <ProjectsPage data={data.data} />;
 };
