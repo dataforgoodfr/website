@@ -228,12 +228,12 @@ const Header = () => {
                     onClick={() => toggleNav(false)}
                     role="menuitem"
                     className={clsx(
-                      'inline-flex items-center gap-2 px-4 py-0.5',
+                      'inline-flex items-center gap-2 px-4 py-2 lg:py-0.5',
                       link === 'financier' ? 'bg-resistance' : 'bg-alive',
                       'font-primary font-black tracking-widest uppercase text-black text-[12px] shadow-base',
                     )}
                   >
-                    <span className='pr-9'>{t(`header.nav.top.${link}`)}</span>
+                    <span className='lg:pr-9'>{t(`header.nav.top.${link}`)}</span>
                     <ArrowIcon />
                   </Link>
                 </li>
