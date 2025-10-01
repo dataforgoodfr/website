@@ -45,7 +45,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
       <div className="relative z-10">
         <Image
-          src="/images/marty-2.svg"
+          src="/images/marty.png"
           alt=""
           width={52}
           height={70}

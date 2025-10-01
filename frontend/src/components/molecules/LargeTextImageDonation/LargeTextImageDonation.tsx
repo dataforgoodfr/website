@@ -5,12 +5,8 @@ export type LargeTextImageDonationProps = {
   id?: string;
   title?: string;
   titleLevel?: TitleProps['level'];
-  content?: React.ReactNode;
+  subtitle?: string;
   iframe?: React.ReactNode;
-  citation?: string;
-  citationAuthor?: string;
-  citationAuthorImage?: string;
-  background?: "gray" | "purple";
   internalClassName?: string;
   className?: string;
 };
@@ -19,12 +15,8 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
   id,
   title,
   titleLevel = 2,
-  content,
+  subtitle,
   iframe,
-  citation,
-  citationAuthor,
-  citationAuthorImage,
-  background = "gray",
   internalClassName,
   className,
   ...props
@@ -44,6 +36,7 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
       >
         <div className={clsx("col-start-1 md:col-start-1 row-start-1 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 md:py-24 bg-cover bg-left")}>
           {title && <Title level={titleLevel} variant="medium">{title}</Title>}
+          {subtitle && <p className="mx-sm text-left h3-like"> {subtitle} </p>}
         </div>
 
         <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 md:px-12 px-6 pb-24 md:pt-24 bg-cover bg-left")}>

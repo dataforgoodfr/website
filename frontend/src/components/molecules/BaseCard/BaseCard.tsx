@@ -31,7 +31,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
   return (
     <Link
       className={clsx(
-        'relative block shadow-block shadow-block--building h-full',
+        'relative block max-sm:mx-5 shadow-block shadow-block--building h-full',
         className,
       )}
       target={isBlank ? '_blank' : undefined}

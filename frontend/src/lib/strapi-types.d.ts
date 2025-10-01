@@ -7546,8 +7546,8 @@ export interface components {
             data: {
                 seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
                 banner_title?: string;
-                /** @example string or id */
-                banner_video?: number | string;
+                banner_subtitle?: string;
+                banner_video?: string;
                 introduction_text?: string;
                 resources_title?: string;
                 actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
@@ -7574,53 +7574,8 @@ export interface components {
             documentId?: string;
             seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
             banner_title?: string;
-            banner_video?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: unknown;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** Format: float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: unknown;
-                related?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-                folder?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                folderPath?: string;
-                /** Format: date-time */
-                createdAt?: string;
-                /** Format: date-time */
-                updatedAt?: string;
-                /** Format: date-time */
-                publishedAt?: string;
-                createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                    id?: number;
-                    documentId?: string;
-                }[];
-            };
+            banner_subtitle?: string;
+            banner_video?: string;
             introduction_text?: string;
             resources_title?: string;
             actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
@@ -7647,53 +7602,8 @@ export interface components {
                 documentId?: string;
                 seo_meta?: components["schemas"]["SeoMetaSeoMetaComponent"];
                 banner_title?: string;
-                banner_video?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    alternativeText?: string;
-                    caption?: string;
-                    width?: number;
-                    height?: number;
-                    formats?: unknown;
-                    hash?: string;
-                    ext?: string;
-                    mime?: string;
-                    /** Format: float */
-                    size?: number;
-                    url?: string;
-                    previewUrl?: string;
-                    provider?: string;
-                    provider_metadata?: unknown;
-                    related?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                    folder?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    folderPath?: string;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    /** Format: date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                        id?: number;
-                        documentId?: string;
-                    }[];
-                };
+                banner_subtitle?: string;
+                banner_video?: string;
                 introduction_text?: string;
                 resources_title?: string;
                 actions?: components["schemas"]["CallToActionCallToActionWithImageComponent"][];
@@ -17047,11 +16957,12 @@ export interface components {
                 introduction?: string;
                 introduction_cta?: components["schemas"]["CallToActionCallToActionWithImageComponent"];
                 thematics?: (number | string)[];
-                informations?: components["schemas"]["InformationInformationBlockComponent"][];
                 seasons?: (number | string)[];
                 projects?: (number | string)[];
                 categories?: unknown;
                 join_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                informations_title?: string;
+                informations?: components["schemas"]["InformationInformationBlockComponent"][];
                 locale?: string;
                 localizations?: (number | string)[];
             };
@@ -17925,7 +17836,6 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
-            informations?: components["schemas"]["InformationInformationBlockComponent"][];
             seasons?: {
                 id?: number;
                 documentId?: string;
@@ -17936,6 +17846,8 @@ export interface components {
             }[];
             categories?: unknown;
             join_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+            informations_title?: string;
+            informations?: components["schemas"]["InformationInformationBlockComponent"][];
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -17961,7 +17873,6 @@ export interface components {
                     id?: number;
                     documentId?: string;
                 }[];
-                informations?: components["schemas"]["InformationInformationBlockComponent"][];
                 seasons?: {
                     id?: number;
                     documentId?: string;
@@ -17972,6 +17883,8 @@ export interface components {
                 }[];
                 categories?: unknown;
                 join_cta?: components["schemas"]["CallToActionCallToActionComponent"];
+                informations_title?: string;
+                informations?: components["schemas"]["InformationInformationBlockComponent"][];
                 /** Format: date-time */
                 createdAt?: string;
                 /** Format: date-time */

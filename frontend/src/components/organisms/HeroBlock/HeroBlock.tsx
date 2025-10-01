@@ -25,7 +25,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
   return (
     <div
       className={clsx(
-        'container grid grid-cols-1 grid-rows-[100px_1fr] md:grid-rows-[200px_1fr_200px] md:grid-cols-2 min-h-[850px] h-screen',
+        'container max-sm:px-0 grid grid-cols-1 grid-rows-[100px_1fr] md:grid-rows-[200px_1fr_200px] md:grid-cols-2 min-h-[850px] h-screen',
         className,
       )}
       {...props}
