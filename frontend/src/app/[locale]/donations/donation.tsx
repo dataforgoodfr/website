@@ -75,7 +75,7 @@ export default function DonationsPage({ data }: DonationProps) {
       />
 
       <div className="container-lg mx-auto flex flex-col lg:flex-row items-center gap-12">
-        {data.banner_video && <div className="shadow-lg bg-building w-full lg:max-w-60 rotate-[-2deg]" dangerouslySetInnerHTML={{ __html: data.banner_video ?? '' }} />}
+        {data.banner_video && <div className="shadow-lg shadow-building bg-building w-fit rotate-[-2deg]" dangerouslySetInnerHTML={{ __html: data.banner_video ?? '' }} />}
 
         <EditoCard contentClassName="flex-1 md:max-w-[80%] md:mx-auto" className="my-lg">
           <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
