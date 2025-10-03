@@ -22,7 +22,7 @@ function getProjectTags(project: ProjectPageData) {
       "label": project.state,
       "type": "subject" as 'temporal' | 'subject'
     },
-    ...((project.category as string[]).map(cat => ({
+    ...((project.category as string[])?.map(cat => ({
       "label": cat,
       "type": "subject" as 'temporal' | 'subject'
     })) || [])];
