@@ -85,7 +85,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
               'absolute z-1 before:absolute before:content-[""] before:-z-1 before:bg-black before:w-full before:h-full before:top-1 before:left-1',
               imageTextClassName,
             )} style={{ transform: `rotate(${imageTextRotation}deg)` }}>
-              <p className="relative z-2 h2-like p-2 text-black bg-white">{imageText}</p>
+              <p className="relative z-2 h3-like p-2 text-black bg-white">{imageText}</p>
             </div>
           )}
         </div>

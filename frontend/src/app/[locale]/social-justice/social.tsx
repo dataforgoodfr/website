@@ -45,6 +45,7 @@ export default function SocialPage({ data, thematicsData }: ThematicsProps) {
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
+        contentClassName="lead"
       >
         {data.thematic?.description || ''}
       </EditoCard>
@@ -53,6 +54,7 @@ export default function SocialPage({ data, thematicsData }: ThematicsProps) {
         imageText={data.thematic?.quote2 || ''}
         image={data.thematic?.image_2?.url || ''}
         className="my-lg container"
+        contentClassName="lead"
       >
         {data.thematic?.description_2}
       </EditoCard>
