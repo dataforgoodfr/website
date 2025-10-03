@@ -2,6 +2,13 @@
   "layout": {
     "header": {
       "title": "Data For Good, accueil",
+      "banner": {
+        "top": {
+          "desktopText": "Rejoins notre campagne de dons",
+          "mobileText":"Rejoins notre campagne de dons",
+          "cta": "Participer"
+        }
+      },
       "nav": {
         "toggle": {
           "alt": "Principale",

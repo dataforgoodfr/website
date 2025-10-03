@@ -49,3 +49,6 @@ export type { BannerVideoProps } from './BannerVideo/BannerVideo';
 
 export { default as LargeTextImageDonation } from './LargeTextImageDonation/LargeTextImageDonation';
 export type { LargeTextImageDonationProps } from './LargeTextImageDonation/LargeTextImageDonation';
+
+export { default as CampaignBanner } from './CampaignBanner/CampaignBanner';
+export type { CampaignBannerProps } from './CampaignBanner/CampaignBanner';

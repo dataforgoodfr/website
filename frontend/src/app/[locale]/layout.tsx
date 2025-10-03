@@ -8,7 +8,7 @@ import { routing } from '@/i18n/routing';
 import Footer from './_partials/footer';
 import Header from './_partials/header';
 import './globals.css';
-import { NewsletterBlock } from '@/components';
+import { CampaignBanner, NewsletterBlock } from '@/components';
 
 const dmMono = DM_Mono({
   subsets: ['latin'],
@@ -87,6 +87,7 @@ export default async function RootLayout({
         style={{ backgroundSize: '100vw 100vh' }}
       >
         <NextIntlClientProvider>
+          <CampaignBanner/>
           <Header />
           <main className="flex-1">
             {children}
