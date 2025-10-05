@@ -145,7 +145,7 @@ const Header = () => {
 
   return (
     <header className={clsx(
-      "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
+      "sticky top-0 left-0 w-full z-50 transition-colors duration-300",
       isScrolled && "bg-white"
     )}>
       <nav
@@ -215,7 +215,7 @@ const Header = () => {
             <ul
               role="menu"
               aria-label={t('header.nav.top.label')}
-              className="flex flex-col lg:flex-row gap-4 lg:gap-2 p-4 lg:p-0"
+              className="inline-flex lg:flex flex-col lg:flex-row gap-4 lg:gap-2 p-4 lg:p-0"
               onKeyDown={handleFocusNav}
             >
               {Object.keys(topNav).map(link => (
