@@ -32,9 +32,9 @@ const CampaignBanner: React.FC<CampaignBannerProps> = ({
         loading="lazy"
         className="absolute top-0 left-0 w-full h-full opacity-90 object-cover z-1"
       />
-      <div className="w-full relative lg:justify-start justify-between flex flex-row w-full z-2 px-6 py-4 lg:py-2 text-left  items-center lead">
-        <p className='uppercase text-sm max-md:hidden'>{t(`header.banner.top.desktopText`)}</p>
-        <p className='uppercase text-sm md:hidden'>{t(`header.banner.top.mobileText`)}</p>
+      <div className="w-full relative lg:justify-start justify-between flex flex-row w-full z-2 pl-6 pr-2 md:pr-6 py-4 lg:py-2 text-left  items-center lead">
+        <p className='uppercase text-sm font-black max-md:hidden'>{t(`header.banner.top.desktopText`)}</p>
+        <p className='uppercase text-sm font-black md:hidden'>{t(`header.banner.top.mobileText`)}</p>
         <Link
           href={cta_link}
           data-ref={cta_link}

@@ -4,8 +4,8 @@
       "title": "Data For Good, accueil",
       "banner": {
         "top": {
-          "desktopText": "Rejoins notre campagne de dons",
-          "mobileText":"Rejoins notre campagne de dons",
+          "desktopText": "Campagne de dons en cours",
+          "mobileText":"Campagne de dons en cours",
           "cta": "Participer"
         }
       },
