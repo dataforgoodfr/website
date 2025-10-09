@@ -30,7 +30,17 @@ export async function getRedirects() {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
       },
     });
+
+    if (!res.ok) {
+      console.error(`Error fetching redirects: ${res.status} ${res.statusText}`);
+      return [];
+    }
+
     const data = await res.json();
+
+    if (!data.length) {
+      return [];
+    }
 
     return data.map((redirect) => ({
       source: redirect.source,
