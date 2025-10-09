@@ -11,4 +11,11 @@ const client = createClient<paths>({
     qs.stringify(params, { encodeValuesOnly: true }),
 });
 
+// Cache configuration for static data
+export const cacheConfig = {
+  next: {
+    revalidate: 3600, // 1 hour for static content
+  },
+};
+
 export default client;

@@ -2,8 +2,10 @@ import React from 'react';
 import PositionsPage from './positions';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
+import { revalidatePath } from 'next/cache';
 
 export const dynamic = 'force-static';
+export const revalidate = 86400; // Revalidate every 24 hours for positions
 
 export async function generateMetadata({
   params: { locale },
@@ -27,54 +29,65 @@ async function fetchPositionPageData() {
           press_releases: {
             populate: {
               tags: {
-                populate: '*'
+                populate: "*"
               },
               thumbnail: {
-                populate: '*'
+                fields: ['url', 'alternativeText']
               }
             }
           },
           resources: {
             populate: {
               blog: {
-                populate: "*"
+                fields: ['title', 'slug', 'published_date', 'tags'],
+                populate: {
+                  thumbnail: {
+                    fields: ['url']
+                  },
+                }
               },
               press_release: {
+                fields: ['title', 'published_date', 'media_name', 'article_link'],
                 populate: {
                   tags: {
-                    populate: '*'
+                    populate: "*"
                   },
                   thumbnail: {
-                    populate: '*'
+                    fields: ['url', 'alternativeText']
                   }
                 }
               }
             }
           },
           testimonial: {
-            populate: '*',
+            fields: ['quote', 'author'],
+            populate: {
+              avatar: {
+                fields: ['url']
+              }
+            }
           },
           testimonial_background: {
-            populate: '*',
+            fields: ['url']
           },
           manifest_cta: {
-            populate: '*',
+            fields: ['text']
           },
            animation: {
-             populate: {
-               image: {
-                 populate: '*'
-               }
-             }
-           },
-           seo_meta: {
-             populate: "*"
-           },
-           manifesto: {
-             fields: ['id', 'url']
-           }
-         },
-      },
+              populate: {
+                image: {
+                  fields: ['url', 'alternativeText']
+                }
+              }
+            },
+            seo_meta: {
+              fields: ['title', 'description']
+            },
+            manifesto: {
+              fields: ['id', 'url']
+            }
+          },
+       },
     },
   });
 }

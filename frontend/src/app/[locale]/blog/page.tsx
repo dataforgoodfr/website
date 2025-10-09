@@ -2,6 +2,10 @@ import React from 'react';
 import BlogPage from './blog';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
+import { revalidatePath } from 'next/cache';
+
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Revalidate every hour
 
 export async function generateMetadata({
   params: { locale },
@@ -51,12 +55,8 @@ export type BlogsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchBlogs
 export type BlogsPageData = NonNullable<BlogsPageResponse["data"]>;
 export type BlogsPageMeta = NonNullable<NonNullable<BlogsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+export default async function Page() {
+  const page = 1;
   const pageSize = 8;
   const response = await fetchBlogsPageData(page, pageSize);
 

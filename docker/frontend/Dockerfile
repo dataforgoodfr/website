@@ -5,8 +5,6 @@ FROM node:20-alpine AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-
-# Enable corepack to install pnpm
 RUN corepack enable
 RUN apk add --no-cache bash
 
@@ -18,7 +16,6 @@ WORKDIR /app
 # --------------------
 FROM base AS builder
 
-# Add system build deps (for native packages)
 RUN apk add --no-cache \
   build-base \
   autoconf \
@@ -30,47 +27,52 @@ RUN apk add --no-cache \
   nasm \
   git
 
-# Copy dependencies
+# Copy workspace metadata
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+# Copy only frontend manifest first (for caching)
 COPY frontend/package.json ./frontend/
 
-# Install dependencies from root
+# Install deps for the frontend (and its workspaces)
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
   pnpm install --frozen-lockfile --filter=frontend
 
-# Copy frontend package
+# Copy source code
 COPY frontend ./frontend
 
-# Build frontend package
+# Build the Next.js app
 RUN pnpm frontend build
 
-RUN pnpm deploy --filter=frontend --prod /app/deploy --legacy
+# Create production bundle (includes node_modules)
+RUN pnpm deploy --filter=frontend --prod /app/deploy
+
+# Copy Next.js build artifacts into deploy folder
+RUN cp -r frontend/.next /app/deploy/.next && \
+    cp -r frontend/public /app/deploy/public && \
+    cp frontend/next.config.js /app/deploy/ || true
+
 
 # --------------------
 # Runtime image
 # --------------------
-FROM base AS runner
+FROM node:20-alpine AS runner
 
 ENV NODE_ENV=production
-
 WORKDIR /app
 
-RUN apk add --no-cache bash
+RUN apk add --no-cache vips-dev bash
 
-# Remove telemetry
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV SLS_TELEMETRY_DISABLED=1
-ENV SLS_NOTIFICATIONS_MODE=off
-ENV DISABLE_OPENCOLLECTIVE=true
-ENV SEMGREP_SEND_METRICS=off
-ENV COLLECT_LEARNINGS_OPT_OUT=true
-ENV NODE_ENV=production
+# Disable telemetry
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    SLS_TELEMETRY_DISABLED=1 \
+    SLS_NOTIFICATIONS_MODE=off \
+    DISABLE_OPENCOLLECTIVE=true \
+    SEMGREP_SEND_METRICS=off \
+    COLLECT_LEARNINGS_OPT_OUT=true \
+    NODE_ENV=production
 
-# Enable health check
-# HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
-
+# Copy everything from deploy
 COPY --from=builder /app/deploy ./
-COPY --from=builder /app/frontend/.next ./.next
 
 EXPOSE 3000
 ENV PORT=3000

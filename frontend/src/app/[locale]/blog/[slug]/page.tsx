@@ -3,6 +3,22 @@ import client from '@/lib/strapi-client';
 import ArticlePage from './article';
 import { getMarkdownContent } from '@/lib/markdown';
 
+export const dynamic = 'force-static';
+
+export async function generateStaticParams() {
+  const { data } = await client.GET('/blogs', {
+    params: {
+      query: {
+        fields: ['slug'],
+      },
+    },
+  });
+  
+  return data?.data?.map((blog) => ({
+    slug: blog.slug,
+  })) || [];
+}
+
 async function fetchBlogPageData(slug: string) {
   return await client.GET('/blogs', {
     params: {

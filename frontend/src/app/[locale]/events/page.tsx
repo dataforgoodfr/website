@@ -2,6 +2,10 @@ import React from 'react';
 import EventsPage from './events';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
+import { revalidatePath } from 'next/cache';
+
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Revalidate every hour
 
 export async function generateMetadata({
   params: { locale },
@@ -44,12 +48,8 @@ export type EventsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchEven
 export type EventsPageData = NonNullable<EventsPageResponse["data"]>;
 export type EventsPageMeta = NonNullable<NonNullable<EventsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+export default async function Page() {
+  const page = 1;
   const pageSize = 6;
 
   const response = await fetchEventPageData(page, pageSize);
