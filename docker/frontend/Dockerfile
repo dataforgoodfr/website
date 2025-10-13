@@ -71,6 +71,9 @@ ENV NEXT_TELEMETRY_DISABLED=1 \
     COLLECT_LEARNINGS_OPT_OUT=true \
     NODE_ENV=production
 
+# Enable health check
+# HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
+
 # Copy everything from deploy
 COPY --from=builder /app/deploy ./
 
