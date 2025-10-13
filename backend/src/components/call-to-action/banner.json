@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_call_to_action_banners",
+  "info": {
+    "displayName": "banner",
+    "icon": "volumeUp"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "component": "call-to-action.call-to-action",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

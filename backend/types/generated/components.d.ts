@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CallToActionBanner extends Struct.ComponentSchema {
+  collectionName: 'components_call_to_action_banners';
+  info: {
+    displayName: 'banner';
+    icon: 'volumeUp';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'call-to-action.call-to-action', false>;
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface CallToActionCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_call_to_action_call_to_actions';
   info: {
@@ -154,6 +166,7 @@ export interface TestimonialTestimonial extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'call-to-action.banner': CallToActionBanner;
       'call-to-action.call-to-action': CallToActionCallToAction;
       'call-to-action.call-to-action-with-image': CallToActionCallToActionWithImage;
       'edito.edito': EditoEdito;
