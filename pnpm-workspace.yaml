@@ -3,6 +3,8 @@ packages:
   - frontend
   - packages/*
 
+injectWorkspacePackages: true
+
 onlyBuiltDependencies:
   - '@swc/core'
   - better-sqlite3

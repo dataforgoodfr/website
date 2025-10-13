@@ -23,8 +23,15 @@ const nextConfig = {
 };
 
 export async function getRedirects() {
+  const strapiUrl = process.env.STRAPI_API_URL;
+
+  if (!strapiUrl) {
+    console.log('STRAPI_API_URL not defined, skipping redirects');
+    return [];
+  }
+
   try {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
+    const res = await fetch(`${strapiUrl}/redirects`, {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
       },

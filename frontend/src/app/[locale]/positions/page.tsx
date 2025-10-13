@@ -5,7 +5,7 @@ import { generateMetadataFromSeo } from '@/lib/utils';
 import { revalidatePath } from 'next/cache';
 
 export const dynamic = 'force-static';
-export const revalidate = 86400; // Revalidate every 24 hours for positions
+export const revalidate = 3600; // Revalidate every hour for positions
 
 export async function generateMetadata({
   params: { locale },
