@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Test results
+*.json
+*.csv
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
