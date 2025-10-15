@@ -70,7 +70,7 @@ export default function DonationsPage({ data }: DonationProps) {
         iframe={<div className='p-4 [&>iframe]:rounded-2xl' ref={donationSectionRef}>
           <a href="https://soutenir.dataforgood.fr/native-/#iraiser_native"></a>
         </div>}
-        className="my-lg"
+        className="my-md"
         internalClassName='min-h-[850px]'
       />
 
