@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getTranslations } from 'astro:i18n';
+
+const locale = Astro.currentLocale || 'fr';
+const t = await getTranslations(locale, 'about');
+---
+
+<Layout>
+  <section class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-6">Nous connaître</h1>
+    <p class="text-lg mb-8">Page en construction - Migration vers Astro en cours...</p>
+  </section>
+</Layout>

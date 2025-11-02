@@ -1,0 +1,41 @@
+{
+  "siteConfig": {
+    "title": "DataForGood",
+    "description": "DataForGood - Association pour l'impact social par la data",
+    "url": "https://dataforgood.fr"
+  },
+  "home": {
+    "hero": {
+      "title": "DataForGood",
+      "subtitle": "L'impact social par la data"
+    },
+    "projects": {
+      "ctaText": "Découvrir"
+    },
+    "events": {
+      "tag": "Événement"
+    },
+    "resources": {
+      "defaultAuthor": "DataForGood",
+      "articleCtaText": "Lire l'article",
+      "pressCtaText": "Voir le communiqué"
+    },
+    "news": {
+      "title": "Actualités"
+    }
+  },
+  "layout": {
+    "navigation": {
+      "home": "Accueil",
+      "about": "Nous connaître",
+      "projects": "Projets",
+      "donations": "Faire un don",
+      "resources": "Ressources",
+      "events": "Événements",
+      "contact": "Contact"
+    },
+    "footer": {
+      "description": "Association pour l'impact social par la data"
+    }
+  }
+}

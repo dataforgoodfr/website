@@ -1,0 +1,16 @@
+<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<mask id="mask0_5188_2068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="0" width="20" height="23">
+<path d="M3.20701 5.51124C3.43755 4.94038 4.52438 3.51543 7.02737 2.3825C8.20202 1.81164 10.7094 0.669922 11.3417 0.669922H13.4166C14.0533 0.834593 15.531 1.26932 16.3477 1.69088C17.1645 2.11244 18.708 3.29367 19.3777 3.8316L20.9256 6.96034V10.3196C20.9256 11.5052 19.6521 15.622 19.0154 17.5322C18.6531 18.1689 17.8825 19.5346 17.698 19.9035C17.5136 20.2723 15.8647 21.4184 15.0633 21.9454L13.713 22.3406L10.6831 21.9454L8.70701 20.9573L6.69803 19.607L2.38366 13.646L1.88965 12.6909V9.92441L3.20701 5.51124Z" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_5188_2068)">
+<rect x="0.44043" y="0.439453" width="22.4611" height="22.0659" fill="url(#pattern0_5188_2068)"/>
+<g style="mix-blend-mode:plus-darker">
+<rect x="0.44043" y="0.439453" width="22.1976" height="22" fill="#721DE2"/>
+</g>
+</g>
+<defs>
+<pattern id="pattern0_5188_2068" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_5188_2068" transform="matrix(-0.00129889 0 0 -0.000804645 2.03954 2.17344)"/>
+</pattern>
+</defs>
+</svg>

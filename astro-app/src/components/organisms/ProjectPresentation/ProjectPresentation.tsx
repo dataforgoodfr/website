@@ -1,0 +1,83 @@
+import { Tag, Title, TitleProps } from '@/components';
+import clsx from 'clsx';
+import Image from 'next/image'
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+
+export type ProjectPresentationProps = {
+  tags?: {
+    label?: string;
+    type: 'temporal' | 'subject';
+  }[];
+  description: string[];
+  associations: {
+    logo?: string;
+    altLogo?: string;
+    summary: string;
+    link: string;
+  }[];
+  thematics?: { name: string; color: string; }[];
+  className?: string;
+};
+
+const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
+  description,
+  associations = [],
+  tags = [],
+  thematics = [],
+  className,
+  ...props
+}) => {
+  const t = useTranslations('components.projectPresentation');
+
+  return (
+    <div
+      className={clsx("container flex flex-col lg:flex-row lg:items-start gap-md", className)}
+      {...props}
+    >
+      <div className="flex-1 prose prose--big">
+        {description.map((paragraph, index) => (<div dangerouslySetInnerHTML={{ __html: paragraph }} key={index} />))}
+      </div>
+
+      <div className="flex-1">
+        {tags.length > 0 && (<>
+          <Title level="p" variant="x-small" className="mb-xs">{t('tags')}</Title>
+          <ul className="flex flex-row flex-wrap gap-x-1 gap-y-2.5 max-w-96">
+            {tags.map((tag, index) => (
+              <li key={index}><Tag color="text-black" bgColor="bg-back-green">{tag.label ?? ''}</Tag></li>
+            ))}
+            {thematics?.map((thematic, index) => (
+              <li key={index}><Tag color="text-black" bgColor={`bg-${thematic.color}`}>{thematic.name ?? ''}</Tag></li>
+            ))}
+          </ul>
+        </>)}
+
+        {associations.length > 0 && (<>
+          <Title level="p" variant="x-small" className="mt-sm mb-xs">{t('associations')}</Title>
+          <ul className="flex flex-col gap-xs">
+            {associations.map((association, index) => {
+              const AssoInfo = (
+                <div className="flex items-center gap-3 bg-white">
+                  {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
+                  <div className="flex-1 text-xs p-5">
+                    {association.summary}
+                  </div>
+                </div>
+              )
+              return association.link ? (<li key={index}>
+                <Link href={association.link ?? '/'}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {AssoInfo}
+                </Link>
+              </li>) : (<li key={index}>{AssoInfo}</li>)
+            })}
+          </ul>
+        </>)}
+      </div>
+    </div>
+  );
+};
+
+export default ProjectPresentation;

@@ -1,0 +1,31 @@
+---
+import '../styles/globals.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- Scripts from Next.js -->
+    <script src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js" defer></script>
+    <script src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js" defer data-domain="dataforgood.fr"></script>
+    
+    <title>Data for Good France</title>
+    <meta name="description" content="Data for Good France est une association qui promeut l'utilisation de la data pour l'intérêt général." />
+  </head>
+  <body class="min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url('/images/bg-paper.jpg')] bg-repeat-y" style="background-size: 100vw 100vh">
+    <!-- Components will be added later -->
+    <main class="flex-1">
+      <slot />
+    </main>
+    <!-- Footer will be added later -->
+  </body>
+</html>

@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-dark: 0 0% 0%;
+  --c-light: 0 0% 100%;
+  --c-blue: 210 100% 50%;
+  --c-alive: 120 100% 25%;
+  --c-alive-light: 120 100% 75%;
+  --c-back-green: 120 100% 95%;
+  --c-violet-light: 270 100% 85%;
+  --c-building-light: 45 100% 85%;
+  --c-grey-text: 0 0% 40%;
+  --c-resistance: 0 100% 50%;
+  --c-building: 45 100% 50%;
+  --c-dark-light: 0 0% 20%;
+  
+  --font-primary: 'DM Sans', system-ui, sans-serif;
+  --font-secondary: 'TC Jimmy Sans Pro', system-ui, sans-serif;
+  --font-tertiary: 'DM Mono', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+  }
+}
