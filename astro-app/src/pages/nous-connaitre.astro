@@ -1,14 +1,229 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getTranslations } from 'astro:i18n';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-const locale = Astro.currentLocale || 'fr';
-const t = await getTranslations(locale, 'about');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data fetching for about page
+const { data } = await client.GET('/about', {
+  params: {
+    query: {
+      populate: {
+        cta_left: {
+          populate: "*"
+        },
+        cta_right: {
+          populate: "*"
+        },
+        testimonials: {
+          populate: "*"
+        },
+        map_cta: {
+          populate: "*"
+        },
+        volunteer_cta: {
+          populate: "*"
+        },
+        funders: {
+          populate: "*"
+        },
+        board_of_directors: {
+          populate: "*"
+        },
+        employees: {
+          populate: "*"
+        },
+        scientific_committee: {
+          populate: "*"
+        },
+        strategic_committee: {
+          populate: "*"
+        },
+        division_managers: {
+          populate: "*"
+        },
+        seo_meta: {
+          populate: "*"
+        }
+      }
+    }
+  }
+});
+
+if (!data?.data) {
+  return Astro.redirect('/404');
+}
+
+const aboutData = data.data;
 ---
 
 <Layout>
   <section class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Nous connaître</h1>
-    <p class="text-lg mb-8">Page en construction - Migration vers Astro en cours...</p>
+    <div class="max-w-5xl mx-auto text-center mb-12">
+      <h1 class="text-4xl font-bold mb-6">Nous connaître</h1>
+      <p class="text-xl">{aboutData.introduction}</p>
+    </div>
+
+    {aboutData.cta_left && (
+      <div class="mb-12 flex flex-col lg:flex-row lg:justify-between gap-8">
+        <div class="flex lg:justify-end w-full lg:w-[770px]">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            {aboutData.cta_left.image?.url && (
+              <img 
+                src={aboutData.cta_left.image.url} 
+                alt={aboutData.cta_left.title || ''}
+                class="w-full h-64 object-cover"
+              />
+            )}
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-4">{aboutData.cta_left.title}</h3>
+              <p class="text-gray-600 mb-6">{aboutData.cta_left.content}</p>
+              {aboutData.cta_left.cta && (
+                <a 
+                  href={aboutData.cta_left.cta.link}
+                  class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                >
+                  {aboutData.cta_left.cta.text}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {aboutData.cta_right && (
+          <div class="w-full lg:w-[770px]">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              {aboutData.cta_right.image?.url && (
+                <img 
+                  src={aboutData.cta_right.image.url} 
+                  alt={aboutData.cta_right.title || ''}
+                  class="w-full h-64 object-cover"
+                />
+              )}
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">{aboutData.cta_right.title}</h3>
+                <p class="text-gray-600 mb-6">{aboutData.cta_right.content}</p>
+                {aboutData.cta_right.cta && (
+                  <a 
+                    href={aboutData.cta_right.cta.link}
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                  >
+                    {aboutData.cta_right.cta.text}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+
+    {aboutData.testimonials && aboutData.testimonials.length > 0 && (
+      <div class="my-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Témoignages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {aboutData.testimonials.map((testimonial) => (
+            <div class="bg-white rounded-lg shadow-md p-6">
+              {testimonial.avatar?.url && (
+                <img 
+                  src={testimonial.avatar.url} 
+                  alt={testimonial.author || ''}
+                  class="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
+                />
+              )}
+              <p class="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
+              <p class="font-semibold text-center">{testimonial.author}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {aboutData.map_cta && (
+      <div class="my-12">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="md:flex">
+            {aboutData.map_cta.image?.url && (
+              <div class="md:w-1/2">
+                <img 
+                  src={aboutData.map_cta.image.url} 
+                  alt={aboutData.map_cta.title || ''}
+                  class="w-full h-64 md:h-full object-cover"
+                />
+              </div>
+            )}
+            <div class="md:w-1/2 p-8">
+              <h3 class="text-2xl font-bold mb-4">{aboutData.map_cta.title}</h3>
+              <div class="text-gray-600 mb-6">
+                {aboutData.map_cta.content?.split('\n').map((paragraph, index) => (
+                  <p class="mb-2" key={index}>{paragraph}</p>
+                ))}
+              </div>
+              {aboutData.map_cta.cta && (
+                <a 
+                  href={aboutData.map_cta.cta.link}
+                  class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                >
+                  {aboutData.map_cta.cta.text}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {aboutData.volunteer_cta && (
+      <div class="my-12">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="md:flex">
+            <div class="md:w-1/2 p-8">
+              <h3 class="text-2xl font-bold mb-4">{aboutData.volunteer_cta.title}</h3>
+              <p class="text-gray-600 mb-6">{aboutData.volunteer_cta.content}</p>
+              {aboutData.volunteer_cta.cta && (
+                <a 
+                  href={aboutData.volunteer_cta.cta.link}
+                  class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                >
+                  {aboutData.volunteer_cta.cta.text}
+                </a>
+              )}
+            </div>
+            {aboutData.volunteer_cta.image?.url && (
+              <div class="md:w-1/2">
+                <img 
+                  src={aboutData.volunteer_cta.image.url} 
+                  alt={aboutData.volunteer_cta.title || ''}
+                  class="w-full h-64 md:h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+
+    {aboutData.funders && aboutData.funders.length > 0 && (
+      <div class="my-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Partenaires</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {aboutData.funders.map((partner) => (
+            <div class="bg-white rounded-lg shadow-md p-4 flex items-center justify-center">
+              {partner.logo?.url ? (
+                <img 
+                  src={partner.logo.url} 
+                  alt={partner.name || ''}
+                  class="max-h-16 max-w-full object-contain"
+                />
+              ) : (
+                <span class="text-gray-600 text-center">{partner.name}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </section>
 </Layout>

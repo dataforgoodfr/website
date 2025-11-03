@@ -1,8 +1,6 @@
-import { Tag, Title, TitleProps } from '@/components';
+import { Tag, Title } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image'
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 export type ProjectPresentationProps = {
   tags?: {
@@ -58,19 +56,19 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
             {associations.map((association, index) => {
               const AssoInfo = (
                 <div className="flex items-center gap-3 bg-white">
-                  {association.logo && <Image loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
+                  {association.logo && <img loading="lazy" src={association.logo} alt={association.altLogo || ""} width={200} height={200} className="w-auto h-auto max-w-[83px] object-contain" />}
                   <div className="flex-1 text-xs p-5">
                     {association.summary}
                   </div>
                 </div>
               )
               return association.link ? (<li key={index}>
-                <Link href={association.link ?? '/'}
+                <a href={association.link ?? '/'}
                   target='_blank'
                   rel='noreferrer'
                 >
                   {AssoInfo}
-                </Link>
+                </a>
               </li>) : (<li key={index}>{AssoInfo}</li>)
             })}
           </ul>

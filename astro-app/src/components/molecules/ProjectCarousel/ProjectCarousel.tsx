@@ -1,7 +1,5 @@
 
-import React from 'react';
-import clsx from 'clsx';
-import Image from 'next/image';
+import { Title, type TitleProps } from '@/components';
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +8,9 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Title, TitleProps } from '@/components';
+import clsx from 'clsx';
+import React from 'react';
+;
 
 export type ProjectCarouselProps = {
   title?: string;
@@ -82,7 +82,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
                 index !== current ? "bg-violet-light/80 px-0 py-0 h-[460px]" : "z-1 shadow-lg",
               )}
             >
-              <Image
+              <img
                 src={slide.image ?? "/images/default-image.svg"}
                 alt={slide.altImage ?? ''}
                 width={1000}

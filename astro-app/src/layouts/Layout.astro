@@ -1,6 +1,8 @@
 ---
 import '../styles/globals.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -22,10 +24,10 @@ const t = useTranslations(lang);
     <meta name="description" content="Data for Good France est une association qui promeut l'utilisation de la data pour l'intérêt général." />
   </head>
   <body class="min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url('/images/bg-paper.jpg')] bg-repeat-y" style="background-size: 100vw 100vh">
-    <!-- Components will be added later -->
+    <Header />
     <main class="flex-1">
       <slot />
     </main>
-    <!-- Footer will be added later -->
+    <Footer />
   </body>
 </html>

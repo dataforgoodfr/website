@@ -1,6 +1,6 @@
-import clsx from 'clsx';
-import Image from 'next/image';
 import { Button, Title, TitleProps } from '@/components';
+import clsx from 'clsx';
+;
 
 export type ResultsCardProps = {
   title: string;
@@ -34,7 +34,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
       )}
       {...props}
     >
-      <Image
+      <img
         src="/images/confettis.svg"
         alt=""
         width={1000}

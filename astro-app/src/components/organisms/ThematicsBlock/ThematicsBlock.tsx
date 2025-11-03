@@ -1,7 +1,6 @@
-import clsx from 'clsx';
 import { Title, TitleProps } from '@/components/atoms';
 import ThematicsCard, { ThematicsCardProps } from '@/components/molecules/ThematicsCard/ThematicsCard';
-import Image from "next/image"
+import clsx from 'clsx';
 
 export type ThematicsProps = {
   title: string;
@@ -35,7 +34,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
     >
       <div className="relative z-10">
         <div className='flex flex-row'>
-          {isHome && <Image
+          {isHome && <img
             src="/icons/dot-purple.svg"
             width={35}
             height={35}

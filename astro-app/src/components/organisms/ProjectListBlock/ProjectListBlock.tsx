@@ -4,14 +4,14 @@ import { IFilter, IProject } from '@/lib/types';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+;
 
 export type ProjectListBlockProps = {
   title?: string;
   titleLevel?: TitleProps['level'];
   filters: IFilter[];
   projects: IProject[];
-  joinCta?: {text?: string; link?: string;}
+  joinCta?: { text?: string; link?: string; }
   pageSize: number;
   className?: string;
 };
@@ -71,11 +71,11 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
       activeFilters.thematics.includes(filterValue)
         ? setActiveFilters({ ...activeFilters, thematics: activeFilters.thematics.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, thematics: [...activeFilters.thematics, filterValue] })
-    } else if(filterType === 'season') {
+    } else if (filterType === 'season') {
       activeFilters.seasons.includes(filterValue)
         ? setActiveFilters({ ...activeFilters, seasons: activeFilters.seasons.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, seasons: [...activeFilters.seasons, filterValue] })
-    } else if(filterType === 'category') {
+    } else if (filterType === 'category') {
       activeFilters.categories.includes(filterValue)
         ? setActiveFilters({ ...activeFilters, categories: activeFilters.categories.filter((filter) => filter !== filterValue) })
         : setActiveFilters({ ...activeFilters, categories: [...activeFilters.categories, filterValue] })
@@ -87,7 +87,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
       className={className}
       {...props}
     >
-      <Image src="/images/scratch-black.svg" alt="" width={212} height={48} className="relative top-[1px] object-contain w-full h-auto" />
+      <img src="/images/scratch-black.svg" alt="" width={212} height={48} className="relative top-[1px] object-contain w-full h-auto" />
       <div className="bg-dark-light pt-10 pb-md">
         <div className="container">
           {title && <Title variant="medium" className="text-white" level={titleLevel}>
@@ -133,7 +133,7 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
           <div className='flex justify-center my-md'>
             <Button href={joinCta?.link ?? "/"} color="white" hasArrow> {joinCta?.text ?? t("cta.text")} </Button>
           </div>
-          </div>
+        </div>
       </div>
     </div>
   );

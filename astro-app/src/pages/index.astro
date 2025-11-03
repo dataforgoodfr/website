@@ -1,8 +1,9 @@
 ---
+import { HeroBlock, ImagesCarousel, NewsSmallBlock, ResultsCard, TalksBlock, ThematicsBlock, Title, TitleProps } from '@/components';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import client from '../lib/strapi-client';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -60,51 +61,129 @@ const { data } = await client.GET('/home-page', {
 });
 
 if (!data?.data) {
-  return Astro.redirect('/404');
+  return Astro.redirect('home./404');
 }
+
+const heroData = {
+  image: data.data.hero?.image?.url,
+  title: {
+    level: 1 as TitleProps['level'],
+    variant: "big" as TitleProps['variant'],
+    children: data.data.hero?.title || '',
+    colors: 'text-white bg-building',
+    className: "drop-shadow-3 drop-shadow-black before:-z-1",
+    rotation: -3.47,
+  },
+  subtitle: {
+    level: 2 as TitleProps['level'],
+    variant: "medium" as TitleProps['variant'],
+    children: data.data.hero?.subtitle || '',
+    colors: 'text-black bg-white',
+    className: "drop-shadow-1 drop-shadow-black before:-z-1",
+    rotation: -3.47,
+  },
+  talk: data.data.hero?.talk || '',
+};
+
+const projects = data.data.featured_projects?.map(project => ({
+  id: (project.id ?? "" ).toString(),
+  src: project.thumbnail?.url || '',
+  title: project.title || '',
+  alt: project.title || '',
+  description: project.short_description || '',
+  ctaText: t('home.projects.ctaText'),
+  ctaHref: `projects/${project.slug}`,
+})).filter(project => project.src && project.title) ?? [];
+
+const results = data.data.results?.map((result) => ({
+  id: result.id?.toString() || '',
+  number: result.kpi?.stat || '',
+  text: result.kpi?.description,
+  linkTarget: result.cta?.link,
+  linkLabel: result.cta?.text,
+})) ?? [];
+
+const events = data.data.events?.map((event) => ({
+  id: event.id,
+  title: event.name || '',
+  date: new Date(event.date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+  image: event.image?.url,
+  tag: [t('home.events.tag')],
+  link: event.link || '',
+})).filter(event => event.title && event.link) ?? [];
+
+const resources = data.data.resources?.map((resource) => {
+  const isBlog = !!resource.blog;
+
+  return {
+    id: resource.id,
+    type: isBlog ? 'article' : 'press_release',
+    author: isBlog ? ( (resource.blog?.author as { name: string })?.name || t('home.resources.defaultAuthor')) : (resource.press_release as { media_name: string })?.media_name || '',
+    talk: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
+    image: isBlog ? resource.blog?.thumbnail?.url || '' : resource.press_release?.thumbnail?.url || '',
+    ctaText: isBlog ? t('home.resources.articleCtaText') : t('home.resources.pressCtaText'),
+    ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
+  }
+}) ?? [];
+
+const thematics = data.data.thematics?.map(thematic => ({
+  title: {
+    children: thematic.name || '',
+    props: {
+      colors: `text-black bg-${thematic.color}`,
+      className: "drop-shadow-3 drop-shadow-black before:-z-1",
+      rotation: -2.58,
+    }
+  },
+  id: thematic.id?.toString() || '',
+  talk: thematic.short_description || '',
+  talkOffset: 10,
+  image: thematic.thumbnail?.url || '',
+  ctaText: thematic.cta_text,
+  ctaLink: thematic.cta_link,
+})).filter(thematic => thematic.talk) ?? [];
 ---
 
 <Layout>
-  <section class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Data for Good France</h1>
-    <p class="text-xl mb-8">Utilisons la data pour l'intérêt général</p>
-    
-    {data.data.hero?.image?.url && (
-      <img 
-        src={data.data.hero.image.url} 
-        alt={data.data.hero.title || 'DataForGood'}
-        class="w-full h-96 object-cover rounded-lg shadow-lg mb-8"
-      />
-    )}
-    
-    {data.data.project_carousel_title && (
-      <h2 class="text-3xl font-bold mb-6">{data.data.project_carousel_title}</h2>
-    )}
-    
-    {data.data.featured_projects && data.data.featured_projects.length > 0 && (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {data.data.featured_projects.map((project) => (
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            {project.thumbnail?.url && (
-              <img 
-                src={project.thumbnail.url} 
-                alt={project.title || ''}
-                class="w-full h-48 object-cover"
-              />
-            )}
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
-              <p class="text-gray-600 mb-4">{project.short_description}</p>
-              <a 
-                href={`/projets/${project.slug}`}
-                class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-              >
-                Voir le projet
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    )}
-  </section>
+  <HeroBlock
+    {...heroData}
+    title={{ ...heroData.title, children: t('home.hero.title') }}
+    subtitle={{ ...heroData.subtitle, children: t('home.hero.subtitle') }}
+  />
+  <div class="container flex flex-row mt-lg mb-sm">
+    <Image
+      src="/icons/dot-purple.svg"
+      width={35}
+      height={35}
+      alt=""
+    />
+    <Title level={2} className='ml-2' variant="medium">
+      {data.data.project_carousel_title!}
+    </Title>
+  </div>
+  <!-- {projects.length > 0 && <ImagesCarousel className="mb-lg" titleLevel={2} images={projects} />} -->
+
+  <ThematicsBlock
+    title={data.data.thematics_section_title!}
+    isHome
+    thematics={thematics.map(t => ({ ...t, id: t.id?.toString() || '' }))}
+    className="my-lg"
+  />
+
+  <TalksBlock
+    isHome
+    title={data.data.resources_section_title!}
+    talks={resources}
+  />
+  <ResultsCard
+    title={data.data.results_section_title!}
+    className="my-lg md:px-40"
+    results={results}
+  />
+
+  <NewsSmallBlock
+    title={t('home.news.title')}
+    blocks={events}
+    className='my-lg'
+  />
 </Layout>

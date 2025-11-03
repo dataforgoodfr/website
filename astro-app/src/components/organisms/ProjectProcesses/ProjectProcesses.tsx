@@ -1,7 +1,6 @@
-import { Title, TitleProps } from "@/components";
+import { Title, type TitleProps } from "@/components";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import React from "react";
 
 export type ProjectProcessesProps = {
@@ -43,8 +42,8 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
         <p className="lead" >{summary}</p>
 
         <div className="h3-like lg:text-[1.3rem]" dangerouslySetInnerHTML={{ __html: description }} />
-        {github_link && <p className="mt-md text-xs"> {t("githubLink")} <Link href={github_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{github_link}</Link></p>}
-        {website_link && <p className="mt-md text-xs"> {t("websiteLink")} <Link href={website_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{website_link}</Link></p>}
+        {github_link && <p className="mt-md text-xs"> {t("githubLink")} <a href={github_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{github_link}</a></p>}
+        {website_link && <p className="mt-md text-xs"> {t("websiteLink")} <a href={website_link} target="_blank" rel="noreferrer" className="underline hover:no-underline blank">{website_link}</a></p>}
       </div>
     </div>
   );

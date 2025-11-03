@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 
 export type SocialLinkProps = {
   href: string;
@@ -15,7 +14,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({
   className,
 }) => {
   return (
-    <Link
+    <a
       className={clsx(
         'flex justify-center items-center w-10 h-10 border border-black transition-colors rounded-full bg-white text-black hover:bg-black hover:text-white',
         className,
@@ -24,7 +23,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({
       aria-label={label}
     >
       {icon}
-    </Link>
+    </a>
   );
 };
 

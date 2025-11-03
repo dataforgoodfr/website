@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
-import Image from 'next/image';
+import type { HTMLAttributes } from 'react';
+;
 
 export type TitleProps = HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
@@ -36,7 +36,7 @@ const Title = ({
   return (
     <HeadingTag className={classes} {...props}>
       {children}
-      {hasSeparator && <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-xs w-full h-2.5" />}
+      {hasSeparator && <img loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-xs w-full h-2.5" />}
     </HeadingTag>
   );
 };

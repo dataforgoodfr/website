@@ -1,0 +1,69 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import client from '../../../lib/strapi-client';
+import { getMarkdownContent } from '../../../lib/markdown';
+import ArticleHeroBlock from '../../../components/organisms/ArticleHeroBlock/ArticleHeroBlock';
+import EditoCard from '../../../components/molecules/EditoCard/EditoCard';
+
+const { slug } = Astro.params;
+
+// Data fetching
+const { data } = await client.GET('/blogs', {
+  params: {
+    query: {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: {
+        author: {
+          populate: "*"
+        },
+        thumbnail: {
+          fields: ["id","url", "caption", "alternativeText", "formats"]
+        }
+      }
+    },
+  },
+});
+
+if (!data?.data || !data.data.length) {
+  return Astro.redirect('/404');
+}
+
+const blogPageData = data.data[0];
+const contentHtml = await getMarkdownContent(blogPageData.content);
+
+function estimateReadingTime(content: string): string {
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min`;
+}
+
+const heroBlock = {
+  image: blogPageData.thumbnail?.formats?.large?.url ?? '/images/dataforgood.svg',
+  title: blogPageData.title,
+  introduction: blogPageData.description,
+  date: new Date(blogPageData.published_date).toLocaleDateString('fr-FR', { dateStyle: "long" }),
+  readTime: estimateReadingTime(blogPageData.content),
+  author: {
+    name: blogPageData.author?.name ?? 'DataForGood',
+    link: ""
+  },
+};
+---
+
+<Layout>
+  <div class="mb-lg">
+    <ArticleHeroBlock {...heroBlock} className="mb-lg" />
+
+    <div class="container-md">
+      {/* Main content */}
+      <EditoCard className="my-sm">
+        <div set:html={contentHtml} />
+      </EditoCard>
+    </div>
+  </div>
+</Layout>

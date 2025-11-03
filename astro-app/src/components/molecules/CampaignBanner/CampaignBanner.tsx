@@ -2,8 +2,6 @@ import { ArrowIcon, Button } from '@/components/atoms';
 import { usePathLocale } from '@/hooks/usePathLocale';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
-import Image from "next/image"
-import Link from 'next/link';
 
 export type CampaignBannerProps = {
   className?: string;
@@ -14,7 +12,7 @@ const CampaignBanner: React.FC<CampaignBannerProps> = ({
   ...props
 }) => {
   const t = useTranslations('layout');
-  const cta_link = usePathLocale('/donations')
+  const cta_link = '/donations'
 
   return (
     <div
@@ -24,7 +22,7 @@ const CampaignBanner: React.FC<CampaignBannerProps> = ({
       )}
       {...props}
     >
-      <Image
+      <img
         src="/images/confettis-banner.svg"
         alt=""
         width={1000}
@@ -35,7 +33,7 @@ const CampaignBanner: React.FC<CampaignBannerProps> = ({
       <div className="w-full relative lg:justify-start justify-between flex flex-row w-full z-2 pl-6 pr-2 md:pr-6 py-4 lg:py-2 text-left  items-center lead">
         <p className='uppercase text-sm font-black max-md:hidden'>{t(`header.banner.top.desktopText`)}</p>
         <p className='uppercase text-sm font-black md:hidden'>{t(`header.banner.top.mobileText`)}</p>
-        <Link
+        <a
           href={cta_link}
           data-ref={cta_link}
           className={clsx(
@@ -46,7 +44,7 @@ const CampaignBanner: React.FC<CampaignBannerProps> = ({
         >
           <span>{t(`header.banner.top.cta`)}</span>
           <ArrowIcon />
-        </Link>
+        </a>
 
 
       </div>

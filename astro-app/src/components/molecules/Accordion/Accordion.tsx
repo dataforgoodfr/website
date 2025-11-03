@@ -1,13 +1,13 @@
-import type { PropsWithChildren, ReactNode } from 'react';
-import clsx from 'clsx';
-import Image from 'next/image';
-import { ArrowIcon, Title } from '@/components';
+import { Title } from '@/components';
 import {
-  Accordion as AccordionUI,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Accordion as AccordionUI,
 } from '@/components/ui/accordion';
+import clsx from 'clsx';
+import type { PropsWithChildren, ReactNode } from 'react';
+;
 
 export type AccordionItemData = {
   id: string;
@@ -43,7 +43,7 @@ const Accordion: React.FC<AccordionProps> = ({
       )}
 
       <AccordionUI
-        {...(type === 'single' 
+        {...(type === 'single'
           ? { type: 'single' as const, collapsible, defaultValue }
           : { type: 'multiple' as const }
         )}
@@ -61,10 +61,10 @@ const Accordion: React.FC<AccordionProps> = ({
                 {item.content}
               </AccordionContent>
             </AccordionItem>
-            
+
             {index < items.length - 1 && (
               <div className="my-2">
-                <Image
+                <img
                   src="/images/separate.svg"
                   alt=""
                   width={1322}

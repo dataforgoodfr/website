@@ -1,6 +1,6 @@
-import clsx from 'clsx';
-import Image from 'next/image';
 import { Button } from '@/components';
+import clsx from 'clsx';
+;
 
 export type TalkCardProps = {
   author: string;
@@ -44,7 +44,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
           'relative flex before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
           imagePosition === 'right' ? 'rotate-3' : '-rotate-3',
         )}>
-          <Image
+          <img
             src={image}
             alt=""
             className="relative z-1 w-full sm:w-[400px] sm:h-[237px] object-cover"

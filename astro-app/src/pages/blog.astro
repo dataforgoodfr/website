@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Title from '../components/atoms/Title/Title';
+import BaseCardsBlock from '../components/organisms/BaseCardsBlock/BaseCardsBlock';
+import Pagination from '../components/atoms/Pagination/Pagination';
+import SearchInput from '../components/molecules/SearchInput/SearchInput';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get pagination from URL params
+const urlParams = new URLSearchParams(Astro.url.search);
+const currentPage = Math.max(1, parseInt(urlParams.get('page') || '1'));
+const pageSize = 8;
+
+// Data fetching
+const { data: response } = await client.GET('/resources', {
+  params: {
+    query: {
+      "pagination[page]": currentPage,
+      "pagination[pageSize]": pageSize,
+      "sort": "createdAt:desc",
+      populate: {
+        blog: {
+          populate: '*',
+        },
+        press_release: {
+          populate: '*',
+        },
+      },
+    },
+  },
+});
+
+// SEO data
+const { data: seoData } = await client.GET('/blog-list', {
+  params: {
+    query: {
+      populate: {
+        seo_meta: {
+          populate: "*"
+        }
+      }
+    }
+  }
+});
+
+if (!response?.data || !response?.meta?.pagination) {
+  return Astro.redirect('/404');
+}
+
+function transformBlogsData(resources: any[]) {
+  return resources.map(resource => {
+    const isBlog = !!resource.blog;
+    const element = isBlog ? resource.blog : resource.press_release;
+
+    return {
+      id: resource.id,
+      title: element.title,
+      rawDate: resource.published_date,
+      date: new Date(resource.published_date).toLocaleDateString('fr-FR', {dateStyle: 'medium'}),
+      image: element.thumbnail?.url ?? "/images/dataforgood.svg",
+      link: isBlog ? `/blog/${element.slug}` : element.article_link,
+      subInfos: element.tags ? element.tags.map((tag: any) => tag.name) : [],
+      tags: [new Date(element.published_date).toLocaleDateString('fr-FR', {dateStyle: 'long'}), element.media_name],
+      isBlank: true,
+    }
+  })
+}
+
+const resources = transformBlogsData(response.data);
+const pagination = response.meta.pagination;
+---
+
+<Layout>
+  <div class="my-lg pt-md">
+    <div class="container">
+      <Title className="mb-md max-w-5xl" variant="big">
+        {t('blog.title')}
+      </Title>
+      <SearchInput client:idle />
+    </div>
+
+    <BaseCardsBlock
+      blocks={resources}
+      className="my-lg"
+    />
+
+    <Pagination
+      pageCount={pagination.pageCount}
+      currentPage={pagination.page}
+      className="mt-sm mb-lg mx-auto max-w-max"
+      color="black"
+    />
+  </div>
+</Layout>

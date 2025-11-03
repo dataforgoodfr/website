@@ -1,7 +1,5 @@
-import clsx from 'clsx';
-import Image from 'next/image';
 import { Tag } from '@/components/atoms';
-import Link from 'next/link';
+import clsx from 'clsx';
 
 
 export type NewsSmallCardProps = {
@@ -27,7 +25,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
   }
 
   return (
-    <Link
+    <a
       className={clsx(
         'relative block shadow-block shadow-block--building',
         className,
@@ -38,7 +36,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
     >
       <div className="relative z-1 flex flex-col sm:flex-row items-stretch gap-md gap-y-2 bg-white">
         {image && <div className="relative sm:order-2 sm:flex-1 h-24 sm:h-auto">
-          <Image loading="lazy" src={image} alt="" width={400} height={200} className="absolute w-full h-full object-contain" />
+          <img loading="lazy" src={image} alt="" width={400} height={200} className="absolute w-full h-full object-contain" />
         </div>}
         <div className="flex flex-col items-start gap-xs w-full sm:w-1/2 p-7">
           {tags?.map((tag) => (<Tag color='text-black' bgColor='bg-violet-light'>{tag}</Tag>))}
@@ -46,10 +44,10 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
           <p className="tag-like text-black/60">{date}</p>
         </div>
         {!link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto top-4 sm:top-0 sm:bottom-0 right-4 sm:right-10 rounded-full shadow-base bg-white">
-          <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
+          <img loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
         </div>}
       </div>
-    </Link>
+    </a>
   );
 };
 

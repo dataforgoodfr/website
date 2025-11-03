@@ -1,7 +1,6 @@
+import { Title, type TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Title, TitleProps } from '@/components';
+
 
 export type PartnerCardProps = {
   name: string;
@@ -26,7 +25,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
   }
 
   return (
-    <Link
+    <a
       className={clsx(
         'shadow-block shadow-block--building w-full h-full',
         className,
@@ -36,13 +35,13 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
       {...props}
     >
       <div className="flex flex-col sm:flex-row items-center bg-white h-full">
-        <Image loading="lazy" src={image} alt="" width={157} height={157} className="w-[157px] h-[157px] object-contain" />
+        <img loading="lazy" src={image} alt="" width={157} height={157} className="w-[157px] h-[157px] object-contain" />
         <div className="flex-1 flex flex-col justify-center gap-xs py-10 px-5">
           <Title level={titleLevel} variant="x-small">{name}</Title>
           {description && <p>{description}</p>}
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

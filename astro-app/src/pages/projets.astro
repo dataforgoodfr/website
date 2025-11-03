@@ -1,14 +1,210 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getTranslations } from 'astro:i18n';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-const locale = Astro.currentLocale || 'fr';
-const t = await getTranslations(locale, 'projects');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data fetching for projects page
+const { data } = await client.GET('/projects-list', {
+  params: {
+    query: {
+      populate: {
+        introduction_cta: {
+          populate: '*',
+        },
+        thematics: {
+          fields: ["name", "short_id", "color", "id", "short_description", "cta_text", "cta_link"],
+          populate: 'thumbnail',
+        },
+        informations: {
+          populate: '*',
+        },
+        seasons: {
+          fields: ["title"]
+        },
+        projects: {
+          fields: ["title", "short_description", "category", "slug", "start_date"],
+          populate: {
+            thumbnail: {
+              fields: ["url"]
+            }, 
+            seasons: {
+              fields: ["title"]
+            },
+            thematics: {
+              fields: ["short_id"]
+            },
+            related_partners: {
+              fields: ["name"]
+            }
+          }
+        },
+        join_cta: {
+          populate: '*',
+        },
+        seo_meta: {
+          populate: "*"
+        }
+      },
+    },
+  },
+});
+
+if (!data?.data) {
+  return Astro.redirect('/404');
+}
+
+const projectsData = data.data;
 ---
 
 <Layout>
   <section class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Projets</h1>
-    <p class="text-lg mb-8">Page en construction - Migration vers Astro en cours...</p>
+    <div class="flex flex-col lg:flex-row gap-8 mb-12">
+      <div class="flex-1">
+        <h1 class="text-4xl font-bold mb-6">Projets</h1>
+        <p class="text-xl">{projectsData.introduction}</p>
+      </div>
+
+      {projectsData.introduction_cta && (
+        <div class="lg:w-[400px]">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            {projectsData.introduction_cta.image?.url && (
+              <img 
+                src={projectsData.introduction_cta.image.url} 
+                alt={projectsData.introduction_cta.title || ''}
+                class="w-full h-48 object-cover"
+              />
+            )}
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-4">{projectsData.introduction_cta.title}</h3>
+              <p class="text-gray-600 mb-6">{projectsData.introduction_cta.content}</p>
+              {projectsData.introduction_cta.cta && (
+                <a 
+                  href={projectsData.introduction_cta.cta.link}
+                  class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                >
+                  {projectsData.introduction_cta.cta.text}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+    {projectsData.thematics && projectsData.thematics.length > 0 && (
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Thématiques</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectsData.thematics.map((thematic) => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              {thematic.thumbnail?.url && (
+                <img 
+                  src={thematic.thumbnail.url} 
+                  alt={thematic.name || ''}
+                  class="w-full h-48 object-cover"
+                />
+              )}
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-4">{thematic.name}</h3>
+                <p class="text-gray-600 mb-6">{thematic.short_description}</p>
+                {thematic.cta_text && thematic.cta_link && (
+                  <a 
+                    href={thematic.cta_link}
+                    class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                  >
+                    {thematic.cta_text}
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {projectsData.projects && projectsData.projects.length > 0 && (
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-8">Nos Projets</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectsData.projects.map((project) => (
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              {project.thumbnail?.url && (
+                <img 
+                  src={project.thumbnail.url} 
+                  alt={project.title || ''}
+                  class="w-full h-48 object-cover"
+                />
+              )}
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+                <p class="text-gray-600 mb-4">{project.short_description}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.thematics?.map((thematic) => (
+                    <span 
+                      key={thematic.short_id}
+                      class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
+                    >
+                      {thematic.short_id}
+                    </span>
+                  ))}
+                </div>
+                <a 
+                  href={`/projets/${project.slug}`}
+                  class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                >
+                  Voir le projet
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {projectsData.join_cta && (
+      <div class="my-12">
+        <div class="bg-blue-600 text-white rounded-lg p-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">{projectsData.join_cta.text}</h3>
+          <a 
+            href={projectsData.join_cta.link}
+            class="inline-block bg-white text-blue-600 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-semibold"
+          >
+            Rejoindre
+          </a>
+        </div>
+      </div>
+    )}
+
+    {projectsData.informations && projectsData.informations.length > 0 && (
+      <div class="my-12">
+        <h2 class="text-3xl font-bold mb-8">{projectsData.informations_title}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projectsData.informations.map((information) => (
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-4">{information.title}</h3>
+              <div class="text-gray-600">
+                {information.content?.map((content, index) => (
+                  <p class="mb-2" key={index}>{content.text}</p>
+                ))}
+              </div>
+              {information.content?.map((content, index) => (
+                content.link && (
+                  <a 
+                    key={index}
+                    href={content.link}
+                    class="inline-block mt-4 text-blue-600 hover:underline"
+                  >
+                    En savoir plus
+                  </a>
+                )
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </section>
 </Layout>

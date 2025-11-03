@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import EditoCard from '../components/molecules/EditoCard/EditoCard';
+import Kpis from '../components/molecules/Kpis/Kpis';
+import PartnersBlock from '../components/organisms/PartnersBlock/PartnersBlock';
+import ThematicHeroBlock from '../components/organisms/ThematicHeroBlock/ThematicHeroBlock';
+import ThematicsBlock from '../components/organisms/ThematicsBlock/ThematicsBlock';
+import ThumbnailProjectsBlock from '../components/organisms/ThumbnailProjectsBlock/ThumbnailProjectsBlock';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data fetching for democracy thematic
+const { data: democracyData } = await client.GET('/democracy', {
+  params: {
+    query: {
+      populate: {
+        thematic: {
+          populate: {
+            banner_image: '*',
+            image_1: '*',
+            image_2: '*',
+            funders: {
+              populate: '*'
+            },
+            kpis: {
+              populate: '*'
+            },
+            projects: {
+              populate: {
+                thumbnail: '*'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
+// Data fetching for all thematics
+const { data: thematicsData } = await client.GET('/thematics', {
+  params: {
+    query: {
+      populate: '*'
+    }
+  }
+});
+
+if (!democracyData?.data?.thematic) {
+  return Astro.redirect('/404');
+}
+
+function transformPartners(funders?: any[]) {
+  return funders?.map((funder: any) => ({
+    name: funder.name,
+    description: funder.description,
+    image: funder.logo?.url,
+    link: funder.website_link,
+  })) || []
+}
+
+function transformKpis(kpis?: any[]) {
+  return kpis?.map((kpi: any) => ({
+    number: kpi.stat,
+    text: kpi.description,
+  })) || []
+}
+
+function transformProjects(projects?: any[]) {
+  return projects?.map((project: any) => ({
+    id: project.id,
+    title: project.title,
+    image: project.thumbnail?.url,
+    link: `/projets/${project.slug}`,
+  })) || []
+}
+
+function transformThematics(thematics?: any[]) {
+  return thematics?.map((thematic: any) => ({
+    title: {
+      children: thematic.name,
+      props: {
+        colors: `text-black bg-${thematic.color}`,
+        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        rotation: -2.58,
+      }
+    },
+    id: thematic.id?.toString() || '',
+    talk: thematic.short_description,
+    talkOffset: 10,
+    image: thematic.thumbnail?.url || '',
+    ctaText: thematic.cta_text,
+    ctaLink: thematic.cta_link,
+  })).filter(thematic => thematic.talk) || [];
+}
+
+const partners = transformPartners(democracyData.data.thematic.funders);
+const kpis = transformKpis(democracyData.data.thematic.kpis);
+const projects = transformProjects(democracyData.data.thematic.projects);
+const thematics = transformThematics(thematicsData?.data);
+---
+
+<Layout>
+  <ThematicHeroBlock
+    title={t('democracy.title')}
+    image={democracyData.data.thematic.banner_image?.url || ''}
+    className="my-lg"
+  />
+
+  <Kpis kpis={kpis} className="my-lg" />
+
+  <EditoCard
+    imageText={democracyData.data.thematic.quote || ''}
+    image={democracyData.data.thematic.image_1?.url || ''}
+    imagePosition="left"
+    imageTextRotation={-6}
+    className="my-lg container"
+    contentClassName="lead"
+  >
+    {democracyData.data.thematic.description || ''}
+  </EditoCard>
+
+  <EditoCard
+    imageText={democracyData.data.thematic.quote2 || ''}
+    image={democracyData.data.thematic.image_2?.url || ''}
+    className="my-lg container"
+    contentClassName="lead"
+  >
+    {democracyData.data.thematic.description_2}
+  </EditoCard>
+
+  <ThumbnailProjectsBlock
+    title={t('democracy.projectsTitle')}
+    projects={projects}
+    className="my-lg"
+  />
+
+  <PartnersBlock
+    title={t('democracy.partners')}
+    partners={partners}
+    className="my-lg"
+  />
+
+  <ThematicsBlock
+    title={t('democracy.thematics')}
+    thematics={thematics}
+    className="my-lg"
+  />
+</Layout>

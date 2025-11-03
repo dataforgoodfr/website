@@ -1,7 +1,4 @@
-
-import React from 'react';
-import clsx from 'clsx';
-import Image from 'next/image';
+import { Button, Title, type TitleProps } from '@/components';
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +7,8 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button, Title, TitleProps } from '@/components';
+import clsx from 'clsx';
+import React from 'react';
 
 export type ImagesCarouselProps = {
   images: Array<{
@@ -35,13 +33,11 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
-
   React.useEffect(() => {
     if (!api) {
       return;
     }
 
-    // Wait for the API to be fully initialized
     const initializeCarousel = () => {
       try {
         const scrollSnapList = api.scrollSnapList();
@@ -54,10 +50,8 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
       }
     };
 
-    // Initialize immediately if possible
     initializeCarousel();
 
-    // Also listen for reInit event in case the carousel needs to reinitialize
     const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     };
@@ -75,8 +69,6 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
     };
   }, [api]);
 
-
-  // Don't render carousel if no images
   if (!images || images.length === 0) {
     return null;
   }
@@ -90,29 +82,27 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
       )}
     >
       <CarouselContent>
-        {images.map((image, index) => (
+        {images.map((image) => (
           <CarouselItem
             key={image.id}
             className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-[700px] bg-black text-white"
           >
-            <Image
+            <img
               src={image.src}
               alt={image.alt ?? ''}
               width={1000}
               height={400}
-              loading="eager"
-              priority={index === 0}
+              decoding="async"
+              loading="lazy"
               className="col-start-1 row-start-1 row-span-3 w-full h-full object-cover"
             />
 
-            {/* Dark overlay to improve text readability */}
             <div className="z-1 col-start-1 row-start-1 row-span-3 bg-gradient-to-r from-black/80 to-white/0" />
-            {/* Slide content */}
             <div className="flex items-center z-2 col-start-1 row-start-2 container">
               <div className="max-w-md">
                 {image.title && (
                   <Title level={titleLevel} variant="medium" className="mb-xs">
-                      {image.title}
+                    {image.title}
                   </Title>
                 )}
 
@@ -142,7 +132,6 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
             </div>
             <CarouselNext />
 
-            {/* Progress bar */}
             <div className="h-4 w-full mt-8 bg-[url('/images/carousel-progressbar-bg.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat">
               <div
                 className="h-full bg-[url('/images/carousel-progressbar.svg')] bg-size-[208px_auto] bg-left-top bg-no-repeat transition-all duration-300"

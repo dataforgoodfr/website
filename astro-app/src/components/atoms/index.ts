@@ -1,5 +1,5 @@
-export { default as Button } from './Button/Button';
-export type { ButtonProps } from './Button/Button';
+export { default as Button } from './Button/Button.astro';
+export type { Props as ButtonProps } from './Button/Button.astro';
 
 export { default as SocialLink } from './SocialLink/SocialLink';
 export type { SocialLinkProps } from './SocialLink/SocialLink';

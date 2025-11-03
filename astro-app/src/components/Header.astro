@@ -1,0 +1,159 @@
+---
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
+const topNav = {
+  volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
+  project: 'https://noco.services.dataforgood.fr/dashboard/#/nc/form/88489f59-98e8-4e80-8d7b-a8711fd8fb49',
+  financier: translatePath('/faire-un-don'),
+};
+
+const mainNav = {
+  know: translatePath('/nous-connaitre'),
+  projects: translatePath('/projets'),
+  positions: translatePath('/positions'),
+  events: translatePath('/events'),
+  resources: translatePath('/blog'),
+};
+---
+
+<header class="sticky top-0 left-0 w-full z-50 transition-colors duration-300 bg-white">
+  <nav aria-label="Navigation principale">
+    <div role="menubar" class="flex items-center justify-between gap-4 pl-4 lg:px-6">
+      <a
+        href={translatePath('/')}
+        role="menuitem"
+        aria-current={Astro.url.pathname === '/' ? 'page' : undefined}
+      >
+        <img
+          src="/images/dataforgood.svg"
+          alt="Data for Good France"
+          width="230"
+          height="43"
+          class="w-[176px] lg:w-[230px] object-contain"
+        />
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        class="block lg:hidden p-4 hover:bg-alive/50 focus:bg-alive/50"
+        type="button"
+        id="mobile-menu-button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+      >
+        <img
+          src="/icons/menu.svg"
+          width="24"
+          height="24"
+          alt="Ouvrir le menu"
+        />
+      </button>
+
+      <!-- Navigation menu -->
+      <div
+        id="mobile-menu"
+        class="hidden fixed z-50 left-0 top-0 size-full gap-4 lg:static lg:flex lg:flex-1 lg:items-end lg:flex-col lg:gap-5 bg-white lg:bg-transparent"
+      >
+        <!-- Mobile close button -->
+        <button
+          class="ml-auto block p-4 lg:hidden hover:bg-alive/50 focus:bg-alive/50"
+          onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            src="/icons/close.svg"
+            width="24"
+            height="24"
+            alt="Fermer le menu"
+          />
+        </button>
+
+        <!-- Top navigation -->
+        <ul
+          role="menu"
+          aria-label="Actions rapides"
+          class="inline-flex lg:flex flex-col lg:flex-row gap-4 lg:gap-2 p-4 lg:p-0"
+        >
+          {Object.entries(topNav).map(([key, href]) => (
+            <li role="none" key={`topnav-${key}`}>
+              <a
+                href={href}
+                aria-current={href === Astro.url.pathname ? 'page' : undefined}
+                role="menuitem"
+                class={`flex items-center gap-2 px-4 py-2 lg:py-0.5 ${
+                  key === 'financier' ? 'bg-resistance' : 'bg-alive'
+                } font-primary font-black tracking-widest uppercase text-black text-[12px] shadow-base`}
+              >
+                <span class="lg:pr-9">
+                  {key === 'volunteer' && 'Bénévolat'}
+                  {key === 'project' && 'Proposer un projet'}
+                  {key === 'financier' && 'Faire un don'}
+                </span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 6L10.5 6M10.5 6L7 2.5M10.5 6L7 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Main navigation -->
+        <ul
+          role="menu"
+          aria-label="Navigation principale"
+          class="flex flex-col lg:flex-row gap-4 lg:gap-0 p-4 lg:p-0 lg:pb-4"
+        >
+          {Object.entries(mainNav).map(([key, href]) => (
+            <li role="none" key={`mainNav-${key}`}>
+              <a
+                href={href}
+                aria-current={href === Astro.url.pathname ? 'page' : undefined}
+                role="menuitem"
+                class="block px-4 py-1 text-sm font-primary tracking-widest uppercase font-black relative before:absolute before:bottom-0 before:left-0 before:w-0 before:right-0 lg:before:m-auto before:h-0.5 before:bg-black hover:before:w-1/4 focus:before:w-1/4 lg:hover:before:w-full lg:focus:before:w-full before:transition-all before:duration-300"
+              >
+                {key === 'know' && 'Nous connaître'}
+                {key === 'projects' && 'Projets'}
+                {key === 'positions' && 'Positions'}
+                {key === 'events' && 'Événements'}
+                {key === 'resources' && 'Ressources'}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const button = document.getElementById('mobile-menu-button');
+    
+    if (!menu.contains(e.target) && !button.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Handle scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    const header = document.querySelector('header');
+    
+    if (currentScroll > 0) {
+      header.classList.add('bg-white');
+    } else {
+      header.classList.remove('bg-white');
+    }
+    
+    lastScroll = currentScroll;
+  }, { passive: true });
+</script>

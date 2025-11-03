@@ -1,7 +1,7 @@
 import { NewsletterForm, Title, TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+;
 
 
 export type NewsletterBlockProps = {
@@ -32,14 +32,14 @@ const NewsletterBlock: React.FC<NewsletterBlockProps> = ({
       {...props}
     >
       <div className="container flex flex-col lg:flex-row gap-md pb-md">
-          <div className="flex flex-col md:flex-row items-start gap-sm pt-xs max-w-full md:max-w-xl">
-            <Image src="/images/marty.png" alt="" width={52} height={70} className='hidden md:block mb-xs self-center md:self-start'/>
-            <div>
-              <Image src="/images/marty.png" alt="" width={52} height={70} className='md:hidden mb-xs self-center md:self-start'/>
-              <Title level={titleLevel} className="mb-xs" variant="medium">{componentTitle}</Title>
-              <p className="lead">{componentContent}</p>
-            </div>
+        <div className="flex flex-col md:flex-row items-start gap-sm pt-xs max-w-full md:max-w-xl">
+          <img src="/images/marty.png" alt="" width={52} height={70} className='hidden md:block mb-xs self-center md:self-start' />
+          <div>
+            <img src="/images/marty.png" alt="" width={52} height={70} className='md:hidden mb-xs self-center md:self-start' />
+            <Title level={titleLevel} className="mb-xs" variant="medium">{componentTitle}</Title>
+            <p className="lead">{componentContent}</p>
           </div>
+        </div>
 
         <div className="pt-xs flex-1">
           <NewsletterForm />

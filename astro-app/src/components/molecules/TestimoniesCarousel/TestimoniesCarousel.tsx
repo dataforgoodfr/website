@@ -1,7 +1,5 @@
 
-import React from 'react';
-import clsx from 'clsx';
-import Image from 'next/image';
+import { TiltedTitle } from '@/components';
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +8,9 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { TiltedTitle } from '@/components';
+import clsx from 'clsx';
+import React from 'react';
+;
 
 export type TestimoniesCarouselProps = {
   testimonies: Array<{
@@ -38,8 +38,8 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
   }, [api]);
 
   return (
-    <Carousel 
-      setApi={setApi} 
+    <Carousel
+      setApi={setApi}
       opts={{
         align: 'center',
         loop: false,
@@ -54,8 +54,8 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
     >
       <CarouselContent noOverflow className="px-[calc(50%-24rem)]">
         {testimonies.map((testimony, index) => (
-          <CarouselItem 
-            key={testimony.id} 
+          <CarouselItem
+            key={testimony.id}
             className={clsx(
               "max-w-3xl py-6 px-8",
               index !== current && "opacity-20"
@@ -63,14 +63,14 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
               <div className="relative flex flex-col items-center w-48 sm:-left-12">
-                <Image src={testimony.image ?? "/images/default-image.svg"} alt="" loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
+                <img src={testimony.image ?? "/images/default-image.svg"} alt="" loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
                 <TiltedTitle className="text-center w-full drop-shadow-1 drop-shadow-black" level="p" variant="x-small" colors="text-dark bg-blue block w-full text-center">
                   {testimony.author}
                 </TiltedTitle>
               </div>
               <p className="relative flex-1 font-tertiary font-bold text-lg md:text-[22px] py-10 px-8 md:pl-0 md:pr-12">
-                  {testimony.content}
-                </p>
+                {testimony.content}
+              </p>
             </blockquote>
           </CarouselItem>
         ))}

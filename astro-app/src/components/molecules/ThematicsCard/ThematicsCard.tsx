@@ -1,6 +1,6 @@
+import { Button, TiltedTitle, type TiltedTitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { Button, TiltedTitle, TiltedTitleProps } from '@/components';
+;
 
 export type ThematicsCardProps = {
   title: {
@@ -40,7 +40,7 @@ const ThematicsCard: React.FC<ThematicsCardProps> = ({
       )}
       {...props}
     >
-      <Image
+      <img
         src={image}
         alt=""
         className="absolute m-auto left-0 right-0 top-0 bottom-0 lg:bottom-auto pb-lg justify-center h-full lg:h-fit -z-30 object-contain lg:object-cover"

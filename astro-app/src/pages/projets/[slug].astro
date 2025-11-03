@@ -1,0 +1,239 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import client from '../../../lib/strapi-client';
+import { getMarkdownContent } from '../../../lib/markdown';
+import ProjectHeroBlock from '../../../components/organisms/ProjectHeroBlock/ProjectHeroBlock';
+import ProjectPresentation from '../../../components/organisms/ProjectPresentation/ProjectPresentation';
+import BannerVideo from '../../../components/molecules/BannerVideo/BannerVideo';
+import Banner from '../../../components/molecules/Banner/Banner';
+import ProjectProcesses from '../../../components/organisms/ProjectProcesses/ProjectProcesses';
+import ProjectCarousel from '../../../components/molecules/ProjectCarousel/ProjectCarousel';
+import ProjectImpactBlock from '../../../components/organisms/ProjectImpactBlock/ProjectImpactBlock';
+import NewsSmallBlock from '../../../components/organisms/NewsSmallBlock/NewsSmallBlock';
+import MembersBlock from '../../../components/organisms/MembersBlock/MembersBlock';
+import PartnersBlock from '../../../components/organisms/PartnersBlock/PartnersBlock';
+
+const { slug } = Astro.params;
+
+// Data fetching
+const { data } = await client.GET('/projects', {
+  params: {
+    query: {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: {
+        logo: {
+          populate: '*',
+        },
+        thumbnail: {
+          populate: '*',
+        },
+        illustration_images: {
+          populate: '*',
+        },
+        related_projects: {
+          populate: {
+            logo: {
+              fields: ['url']
+            },
+            thumbnail: {
+              fields: ["url"]
+            }
+          }
+        },
+        related_partners: {
+          populate: '*'
+        },
+        related_funders: {
+          populate: '*'
+        },
+        thematics: {
+          populate: '*'
+        },
+        press_releases: {
+          populate: '*'
+        },
+        volunteers: {
+          populate: '*'
+        },
+        seasons: {
+          populate: '*'
+        }
+      },
+    },
+  },
+});
+
+if (!data?.data || !data.data.length) {
+  return Astro.redirect('/404');
+}
+
+const projectData = data.data[0];
+const context = await getMarkdownContent(projectData.context);
+const long_description = await getMarkdownContent(projectData.long_description);
+const delivrable = await getMarkdownContent(projectData.delivrable);
+
+const project = { ...projectData, context, long_description, delivrable };
+
+function getProjectTags(project: any) {
+  return [
+    ...(project.seasons?.map((season: any) => ({
+      "label": season.title,
+      "type": "temporal" as 'temporal' | 'subject'
+    })) || []),
+    {
+      "label": `${project.start_date ? new Date(project.start_date).toLocaleDateString() : 'N/A'} / ${project.end_date ? new Date(project.end_date).toLocaleDateString() : 'N/A'}`,
+      "type": "temporal" as 'temporal' | 'subject'
+    }, {
+      "label": project.state,
+      "type": "subject" as 'temporal' | 'subject'
+    },
+    ...((project.category as string[])?.map((cat: string) => ({
+      "label": cat,
+      "type": "subject" as 'temporal' | 'subject'
+    })) || [])];
+}
+
+function getProjectData(project: any) {
+  const mainPartner = project.related_partners
+  const projectTags = getProjectTags(project);
+
+  return {
+    description: [project.long_description],
+    tags: projectTags,
+    associations: (mainPartner ?? []).map((partner: any) => ({
+      logo: partner.logo?.url,
+      altLogo: partner.logo?.alternativeText,
+      summary: partner.description,
+      link: partner.website_link,
+    })),
+    thematics: project.thematics?.map((thematic: any) => ({name: thematic.name, color: thematic.color})) || []
+  };
+}
+
+function getProjectImpacts(project: any) {
+  return Array.from({ length: 3 }, (_, i) => ({
+    value: project[`value_${i + 1}`] as string,
+    text: project[`explanation_${i + 1}`] as string
+  })).filter(Boolean);
+}
+
+function getSlides(project: any) {
+  return project.illustration_images?.map((image: any, index: number) => ({
+    id: index + 1,
+    description: image.caption,
+    image: image.url,
+    altImage: image.alternativeText
+  })) || [];
+}
+
+function getDeliverable(project: any) {
+  return {
+    github_link: project.github_link,
+    website_link: project.website_link,
+    description: project.delivrable
+  };
+}
+
+function getNews(project: any) {
+  return project.press_releases?.map((pressRelease: any) => ({
+    title: pressRelease.title,
+    tag: pressRelease.tags ?? [],
+    image: pressRelease.thumbnail?.url,
+    link: pressRelease.article_link,
+    date: new Date(pressRelease.published_date || '').toLocaleDateString('fr-FR', { month: 'short', day: 'numeric', year: 'numeric'}),
+  })) || [];
+}
+
+function getVolunteers(project: any) {
+  return [{
+    members: project.volunteers?.map((volunteer: any) => ({
+      id: volunteer.id,
+      name: volunteer.name,
+      role: volunteer.role,
+      image: volunteer.avatar?.url,
+      linkedin: volunteer.linkedin,
+    })) || [],
+  }];
+}
+
+function getFunders(funders?: any[]) {
+  return funders?.map((funder: any) => ({
+    name: funder.name,
+    description: funder.description,
+    image: funder.logo.url,
+    link: funder.website_link,
+  })) || []
+}
+
+const projectDataProcessed = getProjectData(project);
+const presentationContent = [project.context];
+const impacts = getProjectImpacts(project);
+const slides = getSlides(project);
+const delivrables = getDeliverable(project);
+const news = getNews(project);
+const volunteers = getVolunteers(project);
+const funders = getFunders(project.related_funders);
+---
+
+<Layout>
+  {project.title && <ProjectHeroBlock
+    image={project.thumbnail?.url}
+    title={project.title}
+    introduction={project.short_description}
+    className='my-lg'
+  />}
+
+  <ProjectPresentation
+    {...projectDataProcessed}
+    className='my-lg'
+  />
+
+  {project.demo_video && <BannerVideo
+    video={project.demo_video_embed}
+    className='my-lg'
+  />}
+
+  {presentationContent.length > 0 && <Banner
+    content={presentationContent}
+    className="my-lg"
+  />}
+
+  <ProjectProcesses
+    {...delivrables}
+    title='Livrables'
+  />
+
+  {slides.length > 0 && <ProjectCarousel
+    title='Illustrations'
+    slides={slides}
+    className='my-lg'
+  />}
+
+  {!impacts.every((impact) => !!!impact.value) && <ProjectImpactBlock
+    title='Impact'
+    impacts={impacts}
+    className='my-lg'
+  />}
+
+  {(news?.length || 0) > 0 && <NewsSmallBlock
+    title='Actualités'
+    blocks={news}
+    className='my-lg'
+  />}
+
+  {(project.volunteers?.length || 0) > 0 && <MembersBlock
+    title='Bénévoles'
+    categories={volunteers}
+    className="my-lg"
+  />}
+
+  {(project.related_funders?.length || 0) > 0 && <PartnersBlock
+    title='Financeurs'
+    partners={funders}
+    className="my-lg"
+  />}
+</Layout>

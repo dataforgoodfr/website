@@ -1,14 +1,169 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getTranslations } from 'astro:i18n';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-const locale = Astro.currentLocale || 'fr';
-const t = await getTranslations(locale, 'donations');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data fetching for donation page
+const { data } = await client.GET('/donation', {
+  params: {
+    query: {
+      actions: {
+        populate: "*"
+      },
+      goals: {
+        populate: {
+          goal_cta: {
+            populate: '*'
+          },
+        }
+      },
+      donation_cta: {
+        populate: "*"
+      },
+      seo_meta: {
+        populate: "*"
+      }
+    }
+  }
+});
+
+if (!data?.data) {
+  return Astro.redirect('/404');
+}
+
+const donationData = data.data;
 ---
 
 <Layout>
   <section class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Faire un don</h1>
-    <p class="text-lg mb-8">Page en construction - Migration vers Astro en cours...</p>
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-6">{donationData.banner_title || 'Faire un don'}</h1>
+      {donationData.banner_subtitle && (
+        <p class="text-xl text-gray-600">{donationData.banner_subtitle}</p>
+      )}
+    </div>
+
+    <!-- Donation iframe section -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg p-4">
+        <div class="min-h-[850px]">
+          <iframe 
+            src="https://soutenir.dataforgood.fr/native/#iraiser_native"
+            class="w-full h-full min-h-[800px] rounded-2xl border-0"
+            title="Formulaire de don"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Introduction section -->
+    {donationData.introduction_text && (
+      <div class="mb-12">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+          <div class="prose prose-lg max-w-none">
+            <div set:html={donationData.introduction_text} />
+          </div>
+          <div class="text-center mt-6">
+            <a 
+              href="#donation-form"
+              class="inline-block bg-violet-600 text-white px-8 py-3 rounded-lg hover:bg-violet-700 transition-colors font-semibold"
+            >
+              {donationData.donation_cta?.text || 'Faire un don'}
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Actions/Resources section -->
+    {donationData.actions && donationData.actions.length > 0 && (
+      <div class="mb-12 bg-violet-50 py-12">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-8 text-center">
+            {donationData.resources_title || 'Nos actions'}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {donationData.actions.map((action) => (
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                {action.image?.url && (
+                  <img 
+                    src={action.image.url} 
+                    alt={action.title || ''}
+                    class="w-full h-48 object-cover"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-4">{action.title}</h3>
+                  <p class="text-gray-600 mb-6">{action.content}</p>
+                  {action.cta && (
+                    <a 
+                      href={action.cta.link}
+                      class="inline-block bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 transition-colors"
+                    >
+                      {action.cta.text}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="text-center mt-8">
+            <a 
+              href="#donation-form"
+              class="inline-block bg-violet-600 text-white px-8 py-3 rounded-lg hover:bg-violet-700 transition-colors font-semibold"
+            >
+              {donationData.donation_cta?.text || 'Faire un don'}
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Goals section -->
+    {donationData.goals && donationData.goals.length > 0 && (
+      <div class="mb-12">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-8 text-center">
+            {donationData.goal_title || 'Nos objectifs'}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {donationData.goals.map((goal) => (
+              <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                {goal.goal_cta?.image?.url && (
+                  <img 
+                    src={goal.goal_cta.image.url} 
+                    alt={goal.goal_cta.title || ''}
+                    class="w-full h-48 object-cover"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-4">{goal.goal_cta?.title}</h3>
+                  <p class="text-gray-600 mb-6">{goal.goal_cta?.content}</p>
+                  {goal.goal_cta?.cta && (
+                    <a 
+                      href={goal.goal_cta.cta.link}
+                      class="inline-block bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 transition-colors"
+                    >
+                      {goal.goal_cta.cta.text}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="text-center mt-8">
+            <a 
+              href="#donation-form"
+              class="inline-block bg-violet-600 text-white px-8 py-3 rounded-lg hover:bg-violet-700 transition-colors font-semibold"
+            >
+              {donationData.donation_cta?.text || 'Faire un don'}
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
   </section>
 </Layout>

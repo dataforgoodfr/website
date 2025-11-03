@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Title from '../components/atoms/Title/Title';
+import BaseCardsBlock from '../components/organisms/BaseCardsBlock/BaseCardsBlock';
+import Pagination from '../components/atoms/Pagination/Pagination';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get pagination from URL params
+const urlParams = new URLSearchParams(Astro.url.search);
+const currentPage = Math.max(1, parseInt(urlParams.get('page') || '1'));
+const pageSize = 8;
+
+// Data fetching
+const { data: response } = await client.GET('/events', {
+  params: {
+    query: {
+      "pagination[page]": currentPage,
+      "pagination[pageSize]": pageSize,
+      "sort": "date:desc",
+      populate: {
+        image: {
+          populate: '*',
+        },
+        tags: {
+          populate: '*',
+        },
+      },
+    },
+  },
+});
+
+if (!response?.data || !response?.meta?.pagination) {
+  return Astro.redirect('/404');
+}
+
+function transformEventsData(events: any[]) {
+  return events.map(event => {
+    return {
+      id: event.id,
+      title: event.name,
+      rawDate: event.date,
+      date: new Date(event.date || '').toLocaleDateString('fr-FR', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
+      image: event.image?.url,
+      onSite: event.on_site,
+      link: event.link,
+      isBlank: true,
+      subInfos: event.tags,
+      tags: [new Date(event.date || '').toLocaleDateString('fr-FR', {dateStyle: 'medium'}), new Date(event.date || '').toLocaleTimeString('fr-FR', { timeStyle: 'short'}), event.on_site ? "Sur site" : "En ligne"]
+    }
+  });
+}
+
+const events = transformEventsData(response.data);
+const blocksNext = events.filter(event => new Date(event.rawDate) > new Date());
+const blocksPast = events.filter(event => new Date(event.rawDate) <= new Date());
+const pagination = response.meta.pagination;
+---
+
+<Layout>
+  <div class="my-lg pt-md">
+    <div class="container">
+      <p class="h2-like">{t('events.description')}</p>
+    </div>
+
+    {blocksNext.length > 0 && (
+      <BaseCardsBlock
+        title={t('events.nextEvents')}
+        blocks={blocksNext}
+        className="my-lg"
+      />
+    )}
+
+    {blocksPast.length > 0 && (
+      <BaseCardsBlock
+        title={t('events.pastEvents')}
+        blocks={blocksPast}
+        className="mt-lg mb-sm"
+      />
+    )}
+
+    <Pagination
+      pageCount={pagination.pageCount}
+      currentPage={pagination.page}
+      className="mt-sm mb-lg mx-auto max-w-max"
+      color="black"
+    />
+  </div>
+</Layout>

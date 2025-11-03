@@ -1,7 +1,5 @@
-import clsx from 'clsx';
-import Image from 'next/image';
 import { Tag, Title } from '@/components/atoms';
-import Link from 'next/link';
+import clsx from 'clsx';
 
 
 export type BaseCardProps = {
@@ -12,6 +10,7 @@ export type BaseCardProps = {
   subInfos: string[];
   className?: string;
   isBlank?: boolean;
+  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
 const BaseCard: React.FC<BaseCardProps> = ({
@@ -22,14 +21,15 @@ const BaseCard: React.FC<BaseCardProps> = ({
   subInfos,
   className,
   isBlank = false,
+  titleLevel = 3,
   ...props
 }) => {
   if (!title || !link) {
     return null;
   }
 
-  return (
-    <Link
+return (
+    <a
       className={clsx(
         'relative block max-sm:mx-5 shadow-block shadow-block--building h-full',
         className,
@@ -45,29 +45,18 @@ const BaseCard: React.FC<BaseCardProps> = ({
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {tags.map((tag, index) => (
-                <Tag key={index} color='text-black' bgColor="bg-violet-light">{tag}</Tag>
+                <Tag key={index} color='text-black' bgColor='bg-violet-light'>{tag}</Tag>
               ))}
             </div>
           )}
-          <Title className="mt-auto font-bold" variant="xx-small" level="p">{title}</Title>
-
-          {subInfos.length > 0 && (
-            <div className="flex flex-wrap gap-3">
-              {subInfos.map((subInfo, index) => (
-                <p key={index} className="tag-like text-black/60">{subInfo}</p>
-              ))}
-            </div>
-          )}
+          <Title level={titleLevel} variant="x-small">{title}</Title>
         </div>
-        {isBlank && !link.startsWith('/') && <div className="absolute z-1 flex items-center justify-center w-16 h-16 m-auto right-5 bottom-5 rounded-full bg-white shadow-base">
-          <Image loading="lazy" src="/icons/blank-purple.svg" alt="" width={33} height={33} />
-        </div>}
         <div className="w-full h-[216px] relative">
           <div className="absolute top-0 left-0 w-full h-full bg-black/10" />
-          {image && <Image loading="lazy" src={image} alt="" width={400} height={200} className="w-full h-[216px] object-contain" />}
+          {image && <img loading="lazy" src={image} alt="" width={400} height={200} className="w-full h-[216px] object-contain" />}
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

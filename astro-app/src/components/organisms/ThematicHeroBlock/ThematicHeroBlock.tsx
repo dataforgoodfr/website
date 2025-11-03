@@ -1,6 +1,5 @@
+import { TiltedTitle } from '@/components/atoms';
 import clsx from 'clsx';
-import Image from 'next/image'
-import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type ThematicHeroBlockProps = {
   image?: string;
@@ -38,7 +37,7 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
       {...props}
     >
       <div className="col-start-1 row-start-1">
-        <Image src={image} alt="" width={1000} height={400} className="object-contain h-full w-full" />
+        <img src={image} alt="" width={1000} height={400} className="object-contain h-full w-full" />
       </div>
       <div className="col-start-1 row-start-1 flex items-center justify-center">
         <TiltedTitle variant="big" className={clsx(titleClassName, "drop-shadow-3 drop-shadow-black")} colors={colorsClass[colors]}>{title}</TiltedTitle>

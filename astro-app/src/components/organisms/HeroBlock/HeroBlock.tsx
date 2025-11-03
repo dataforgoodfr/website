@@ -1,6 +1,5 @@
+import { TiltedTitle, type TiltedTitleProps } from '@/components/atoms';
 import clsx from 'clsx';
-import Image from 'next/image'
-import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type HeroBlockProps = {
   image?: string;
@@ -31,7 +30,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
       {...props}
     >
       {image && <div className='col-start-1 row-start-1 row-span-3 max-w-fit -z-1 w-full h-full'>
-        <Image src={image} alt="" priority={true} width={1000} height={400} className="object-cover h-full md:max-w-fit overflow-hidden md:overflow-visible" />
+        <img src={image} alt="" width={1000} height={400} className="object-cover h-full md:max-w-fit overflow-hidden md:overflow-visible" />
       </div>}
       <div className="col-start-1 row-start-2 mt-lg md:mt-0 md:col-start-2 md:row-start-2 self-center">
         <div className="container h-full">

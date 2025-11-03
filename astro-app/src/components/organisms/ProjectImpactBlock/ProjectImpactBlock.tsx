@@ -1,7 +1,7 @@
 import { Title, TitleProps } from '@/components';
 import ProjectImpactCard, { ProjectImpactCardProps } from '@/components/molecules/ProjectImpactCard/ProjectImpactCard';
 import clsx from 'clsx';
-import Image from 'next/image';
+;
 
 export type ProjectImpactBlockProps = {
   title?: string;
@@ -26,7 +26,7 @@ const ProjectImpactBlock: React.FC<ProjectImpactBlockProps> = ({
       className={clsx('container relative', className)}
       {...props}
     >
-      <Image
+      <img
         src="/images/confettis.svg"
         alt=""
         width={1000}

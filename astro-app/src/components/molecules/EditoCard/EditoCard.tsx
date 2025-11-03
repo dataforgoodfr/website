@@ -1,7 +1,7 @@
+import { Button, Title, type TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { Button, Title, TitleProps } from '@/components';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
+;
 
 export type EditoCardProps = PropsWithChildren<{
   title?: string;
@@ -78,7 +78,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
           imageClassName,
           imagePosition === 'left' && 'sm:-order-1',
         )}>
-          <Image src={image} alt={imageAlt} className="w-full h-full object-contain max-h-[40vh]" loading="lazy" width={400} height={400} />
+          <img src={image} alt={imageAlt} className="w-full h-full object-contain max-h-[40vh]" loading="lazy" width={400} height={400} />
 
           {imageText && (
             <div className={clsx(

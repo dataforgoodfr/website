@@ -2,7 +2,6 @@ import { Title, TitleProps } from '@/components';
 import { TalkCard, TalkCardProps } from '@/components/molecules';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
-import Image from "next/image"
 
 export type TalksBlockProps = {
   title?: string;
@@ -31,7 +30,7 @@ const TalksBlock: React.FC<TalksBlockProps> = ({
       className={clsx('container', className)}
       {...props}
     >
-      {isHome && <Image
+      {isHome && <img
         src="/icons/dot-orange.svg"
         width={35}
         height={35}

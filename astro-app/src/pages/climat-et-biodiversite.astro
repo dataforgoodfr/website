@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import client from '../lib/strapi-client';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import EditoCard from '../components/molecules/EditoCard/EditoCard';
+import Kpis from '../components/molecules/Kpis/Kpis';
+import PartnersBlock from '../components/organisms/PartnersBlock/PartnersBlock';
+import ThematicHeroBlock from '../components/organisms/ThematicHeroBlock/ThematicHeroBlock';
+import ThematicsBlock from '../components/organisms/ThematicsBlock/ThematicsBlock';
+import ThumbnailProjectsBlock from '../components/organisms/ThumbnailProjectsBlock/ThumbnailProjectsBlock';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data fetching for climate thematic
+const { data: climateData } = await client.GET('/climate-and-biodiversity', {
+  params: {
+    query: {
+      populate: {
+        thematic: {
+          populate: {
+            banner_image: '*',
+            image_1: '*',
+            image_2: '*',
+            funders: {
+              populate: '*'
+            },
+            kpis: {
+              populate: '*'
+            },
+            projects: {
+              populate: {
+                thumbnail: '*'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
+// Data fetching for all thematics
+const { data: thematicsData } = await client.GET('/thematics', {
+  params: {
+    query: {
+      populate: '*'
+    }
+  }
+});
+
+if (!climateData?.data?.thematic) {
+  return Astro.redirect('/404');
+}
+
+function transformPartners(funders?: any[]) {
+  return funders?.map((funder: any) => ({
+    name: funder.name,
+    description: funder.description,
+    image: funder.logo?.url,
+    link: funder.website_link,
+  })) || []
+}
+
+function transformKpis(kpis?: any[]) {
+  return kpis?.map((kpi: any) => ({
+    number: kpi.stat,
+    text: kpi.description,
+  })) || []
+}
+
+function transformProjects(projects?: any[]) {
+  return projects?.map((project: any) => ({
+    id: project.id,
+    title: project.title,
+    image: project.thumbnail?.url,
+    link: `/projets/${project.slug}`,
+  })) || []
+}
+
+function transformThematics(thematics?: any[]) {
+  return thematics?.map((thematic: any) => ({
+    title: {
+      children: thematic.name,
+      props: {
+        colors: `text-black bg-${thematic.color}`,
+        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        rotation: -2.58,
+      }
+    },
+    id: thematic.id?.toString() || '',
+    talk: thematic.short_description,
+    talkOffset: 10,
+    image: thematic.thumbnail?.url || '',
+    ctaText: thematic.cta_text,
+    ctaLink: thematic.cta_link,
+  })).filter(thematic => thematic.talk) || [];
+}
+
+const partners = transformPartners(climateData.data.thematic.funders);
+const kpis = transformKpis(climateData.data.thematic.kpis);
+const projects = transformProjects(climateData.data.thematic.projects);
+const thematics = transformThematics(thematicsData?.data);
+---
+
+<Layout>
+  <ThematicHeroBlock
+    title={t('climate.title')}
+    image={climateData.data.thematic.banner_image?.url || ''}
+    className="my-lg"
+  />
+
+  <Kpis kpis={kpis} className="my-lg" />
+
+  <EditoCard
+    imageText={climateData.data.thematic.quote || ''}
+    image={climateData.data.thematic.image_1?.url || ''}
+    imagePosition="left"
+    imageTextRotation={-6}
+    className="my-lg container"
+    contentClassName="lead"
+  >
+    {climateData.data.thematic.description || ''}
+  </EditoCard>
+
+  <EditoCard
+    imageText={climateData.data.thematic.quote2 || ''}
+    image={climateData.data.thematic.image_2?.url || ''}
+    className="my-lg container"
+    contentClassName="lead"
+  >
+    {climateData.data.thematic.description_2}
+  </EditoCard>
+
+  <ThumbnailProjectsBlock
+    title={t('climate.projectsTitle')}
+    projects={projects}
+    className="my-lg"
+  />
+
+  <PartnersBlock
+    title={t('climate.partners')}
+    partners={partners}
+    className="my-lg"
+  />
+
+  <ThematicsBlock
+    title={t('climate.thematics')}
+    thematics={thematics}
+    className="my-lg"
+  />
+</Layout>

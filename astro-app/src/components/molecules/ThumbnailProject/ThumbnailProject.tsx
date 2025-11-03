@@ -1,7 +1,7 @@
+import { Button, TiltedTitle, type TiltedTitleProps, Title, type TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { Button, TiltedTitle, TiltedTitleProps, Title, TitleProps } from '@/components';
 import { useTranslations } from 'next-intl';
+;
 
 export type ThumbnailProjectProps = {
   name: TiltedTitleProps;
@@ -40,7 +40,7 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
         {images?.length && <div className="grid gap-4 mb-sm">
           {images.map((image, index) => (
             <div key={index} className={clsx("shadow-block sm:col-start-1 sm:row-start-1 max-w-full", index % 2 === 0 ? "w-[370px] h-[250px] justify-self-start shadow-block--alive items-start -rotate-2 before:rotate-2" : "w-[330px] h-[200px] justify-self-end self-end shadow-block--resistance items-end rotate-6 before:-translate-x-2")}>
-              <Image src={image} alt="" width={1000} height={400} className="w-full h-full object-cover" />
+              <img src={image} alt="" width={1000} height={400} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>}
@@ -61,7 +61,7 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
             return (
               <li key={index} className="mb-md">
                 <div className="flex items-center gap-2">
-                  <Image src="/images/bullet-purple.svg" alt="" width={22} height={22} className="w-[22px] h-[22px] object-contain" />
+                  <img src="/images/bullet-purple.svg" alt="" width={22} height={22} className="w-[22px] h-[22px] object-contain" />
                   <Title level="p" variant="medium" className="flex-1">{kpi.name}</Title>
                 </div>
                 <p className="lead">{kpi.description}</p>

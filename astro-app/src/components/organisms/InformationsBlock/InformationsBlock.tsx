@@ -1,7 +1,5 @@
-import { Title, TitleProps } from '@/components';
+import { Title, type TitleProps } from '@/components';
 import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export type InformationsBlockProps = {
   title?: string;
@@ -46,13 +44,13 @@ const InformationsBlock: React.FC<InformationsBlockProps> = ({
           </Title>
           <p className="text-sm font-normal">
             {information.text.map((info, index) => {
-              if(info.ctaLink) {
-                return (<span key={index}><Link className="underline" href={info.ctaLink}>{info.info}</Link>&nbsp;</span>)
+              if (info.ctaLink) {
+                return (<span key={index}><a className="underline" href={info.ctaLink}>{info.info}</a>&nbsp;</span>)
               }
               return <span key={index}>{info.info}&nbsp;</span>
             })}
           </p>
-          <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-sm mb-sm w-full h-auto" />
+          <img loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-sm mb-sm w-full h-auto" />
         </div>
       ))}
     </div>

@@ -1,7 +1,6 @@
-import { thematicsColors, ThematicValues } from '@/lib/utils';
+import { thematicsColors, type ThematicValues } from '@/lib/utils';
 import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
+
 
 export type ProjectListCardProps = {
   project: string;
@@ -23,7 +22,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
   className,
   ...props
 }) => {
-  if (!project && partners.length === 0 ) {
+  if (!project && partners.length === 0) {
     return null;
   }
 
@@ -34,7 +33,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
     )}
     {...props}
   >
-    {image && <Image src={image} alt="" className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={400} height={600} />}
+    {image && <img src={image} alt="" className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={400} height={600} />}
     <div className="col-start-1 row-start-1 bg-gradient-to-b from-white/0 to-black/90 group-hover:to-black transition-all h-full w-full" />
     <div className="absolute top-3 right-5 flex gap-5">
       {thematics.map((thematic, index) => (<div key={index} className={`size-[23px] rounded-full shadow-base bg-${thematicsColors[thematic]}`}></div>))}
@@ -47,10 +46,10 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
   </div>;
   return (
     link
-    ? (<Link href={link} className="block group">
-      {ProjectCard}
-    </Link>)
-    : ProjectCard
+      ? (<a href={link} className="block group">
+        {ProjectCard}
+      </a>)
+      : ProjectCard
   );
 };
 

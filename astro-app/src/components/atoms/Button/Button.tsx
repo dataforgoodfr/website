@@ -1,8 +1,6 @@
-import type { HTMLAttributes, MouseEventHandler, PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import Link from 'next/link';
-import { Button as ButtonUI } from '@/components/ui/button';
-import { ArrowIcon } from '@/components';
+import type { HTMLAttributes, MouseEventHandler, PropsWithChildren } from 'react';
+import ArrowIcon from '../ArrowIcon/ArrowIcon';
 
 type Variant = 'primary' | 'secondary' | 'tertiary';
 type Color = 'black' | 'white' | 'violet';
@@ -27,7 +25,7 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> 
 
 
 const ButtonChildren = ({ children, hasArrow, variant, color }: ButtonChildrenProps) => {
-  const variantsChildrenClasses: Partial<Record<Variant, {base: string, colors: Record<Color, string>}>> = {
+  const variantsChildrenClasses: Partial<Record<Variant, { base: string, colors: Record<Color, string> }>> = {
     primary: {
       base: 'relative px-4 py-2.5',
       colors: {
@@ -65,7 +63,7 @@ const Button: React.FC<ButtonProps> = ({
   hasArrow = true,
   ...props
 }) => {
-  const variantsParentClasses: Record<Variant, {base: string, colors: Record<Color, string>}> = {
+  const variantsParentClasses: Record<Variant, { base: string, colors: Record<Color, string> }> = {
     primary: {
       base: 'relative z-1 before:absolute before:content-[""] before:-z-1 before:w-full before:h-full before:top-1 before:left-1 hover:before:top-0 hover:before:left-0 focus:before:top-0 focus:before:left-0 before:transition-base',
       colors: {
@@ -103,31 +101,31 @@ const Button: React.FC<ButtonProps> = ({
     <>
       {href
         ? (
-            <Link
-              href={href}
-              className={classElement}
-              {...props}
-              target={isBlank ? '_blank' : undefined}
-              rel={isBlank ? 'noreferrer' : undefined}
-            >
-              <ButtonChildren variant={variant} color={color} hasArrow={hasArrow}>
-                {children}
-              </ButtonChildren>
-            </Link>
-          )
+          <Link
+            href={href}
+            className={classElement}
+            {...props}
+            target={isBlank ? '_blank' : undefined}
+            rel={isBlank ? 'noreferrer' : undefined}
+          >
+            <ButtonChildren variant={variant} color={color} hasArrow={hasArrow}>
+              {children}
+            </ButtonChildren>
+          </Link>
+        )
         : (
-            <ButtonUI
-              onClick={onClick}
-              type={type}
-              disabled={disabled}
-              className={classElement}
-              {...props}
-            >
-              <ButtonChildren variant={variant} color={color} hasArrow={hasArrow}>
-                {children}
-              </ButtonChildren>
-            </ButtonUI>
-          )}
+          <ButtonUI
+            onClick={onClick}
+            type={type}
+            disabled={disabled}
+            className={classElement}
+            {...props}
+          >
+            <ButtonChildren variant={variant} color={color} hasArrow={hasArrow}>
+              {children}
+            </ButtonChildren>
+          </ButtonUI>
+        )}
     </>
   );
 };
