@@ -87,7 +87,7 @@ export default async function RootLayout({
         style={{ backgroundSize: '100vw 100vh' }}
       >
         <NextIntlClientProvider>
-          <CampaignBanner/>
+          {/* <CampaignBanner/> */}
           <Header />
           <main className="flex-1">
             {children}
