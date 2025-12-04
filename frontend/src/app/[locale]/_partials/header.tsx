@@ -1,13 +1,13 @@
 'use client';
 
+import { ArrowIcon } from '@/components';
+import { usePathLocale } from '@/hooks/usePathLocale';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { usePathLocale } from '@/hooks/usePathLocale';
-import { ArrowIcon } from '@/components';
 
 const Header = () => {
   const pathname = usePathname();
@@ -18,7 +18,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const topNav: Record<string, string> = {
-    volunteer: 'https://ffb35838.sibforms.com/serve/MUIEAOPtEpVbDgcqr78ZqBZ4e29fMDkyLfy8STH6MkmxU5ePAP5_NQQeWEI0nR8fdBds27Va8cMSjjzNni1iqd_mpJsZS8uQUA95o0Tg3njStpz8nDV59tRiQJ_ZWBat1uyRjTYtyVHMpV3I--z4g14Ggsji0895jBcQr70arsW82eFJGwC8fgxYOvnPL-rFQcNwmjkA5JTbjcvd',
+    volunteer: 'https://authentik.services.dataforgood.fr/if/flow/default-authentication-flow/?next=%2F',
     project: 'https://noco.services.dataforgood.fr/dashboard/#/nc/form/88489f59-98e8-4e80-8d7b-a8711fd8fb49',
     financier: usePathLocale('/donations'),
   };
@@ -74,7 +74,7 @@ const Header = () => {
       && navRef?.current
         ?.querySelector(`[data-ref="toggleClose"]`)
         ?.checkVisibility()
-        && e.code === 'Escape'
+      && e.code === 'Escape'
     ) {
       return toggleNav(false);
     }
