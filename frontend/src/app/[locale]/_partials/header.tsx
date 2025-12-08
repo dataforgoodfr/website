@@ -18,7 +18,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const topNav: Record<string, string> = {
-    volunteer: 'https://authentik.services.dataforgood.fr/if/flow/default-authentication-flow/?next=%2F',
+    volunteer: 'https://authentik.services.dataforgood.fr/if/flow/main-page-enrollment/?next=%2F',
     project: 'https://noco.services.dataforgood.fr/dashboard/#/nc/form/88489f59-98e8-4e80-8d7b-a8711fd8fb49',
     financier: usePathLocale('/donations'),
   };
