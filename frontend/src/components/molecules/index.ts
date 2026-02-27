@@ -52,3 +52,6 @@ export type { LargeTextImageDonationProps } from './LargeTextImageDonation/Large
 
 export { default as CampaignBanner } from './CampaignBanner/CampaignBanner';
 export type { CampaignBannerProps } from './CampaignBanner/CampaignBanner';
+
+export { default as CtaList } from './CtaList/CtaList';
+export type { CtaListProps, CtaListItem } from './CtaList/CtaList';
