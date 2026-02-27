@@ -9,6 +9,7 @@ import {
   PartnersBlock,
   Title,
   TestimoniesCarousel,
+  CtaList,
 } from '@/components';
 import { IMembers } from '@/lib/types';
 import { AboutPageData } from './page';
@@ -84,6 +85,16 @@ function transformMembers({
   ];
 }
 
+function transformActivityReports(
+  reports: NonNullable<AboutPageData['activity_reports']>
+) {
+  return reports.map(report => ({
+    id: report.documentId || report.id,
+    text: report.date,
+    link: report.file?.url || '#',
+  }));
+}
+
 type AboutProps = {
   data: AboutPageData;
 };
@@ -100,6 +111,9 @@ export default function AboutPage({ data }: AboutProps) {
     strategic_committee: data.strategic_committee,
     division_managers: data.division_managers,
   });
+  const activityReports = data.activity_reports 
+    ? transformActivityReports(data.activity_reports)
+    : [];
 
   return (
     <>
@@ -198,6 +212,15 @@ export default function AboutPage({ data }: AboutProps) {
         categories={members}
         className="my-lg"
       />
+
+      {activityReports.length > 0 && (
+        <div className="container my-lg">
+          <Title className="mb-md" level={2} hasSeparator variant="medium">
+            Rapports d'activités
+          </Title>
+          <CtaList items={activityReports} />
+        </div>
+      )}
     </>
   );
 }
