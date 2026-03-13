@@ -1,9 +1,10 @@
 import clsx from 'clsx';
-import Image from 'next/image'
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type ThematicHeroBlockProps = {
   image?: string;
+  imageCredit?: string | null;
   title: string;
   className?: string;
   titleClassName?: string;
@@ -12,11 +13,11 @@ export type ThematicHeroBlockProps = {
 
 const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
   image = "/images/default-image.svg",
+  imageCredit,
   title,
   className,
   titleClassName,
   colors = "alive",
-  ...props
 }) => {
   if (!title) {
     return null;
@@ -35,10 +36,9 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
         'container grid grid-rows-1 grid-cols-1',
         className,
       )}
-      {...props}
     >
       <div className="col-start-1 row-start-1">
-        <Image src={image} alt="" width={1000} height={400} className="object-contain h-full w-full" />
+        <ImageWithCredit src={image} alt="" credit={imageCredit} width={1000} height={400} className="object-contain h-full w-full" />
       </div>
       <div className="col-start-1 row-start-1 flex items-center justify-center">
         <TiltedTitle variant="big" className={clsx(titleClassName, "drop-shadow-3 drop-shadow-black")} colors={colorsClass[colors]}>{title}</TiltedTitle>

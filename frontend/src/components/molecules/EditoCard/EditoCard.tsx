@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Button, Title, TitleProps } from '@/components';
 import { PropsWithChildren } from 'react';
 
@@ -10,6 +10,7 @@ export type EditoCardProps = PropsWithChildren<{
   titleClassName?: string;
   contentClassName?: string;
   image?: string;
+  imageCredit?: string | null;
   imageClassName?: string;
   imagePosition?: 'left' | 'right';
   imageAlt?: string;
@@ -29,6 +30,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
   titleClassName,
   contentClassName = 'prose my-xs',
   image,
+  imageCredit,
   imageClassName = '',
   imagePosition = 'right',
   imageAlt = '',
@@ -52,7 +54,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
         'container flex flex-col sm:flex-row sm:items-center gap-md',
         className,
       )}
-      {...props}
+      
     >
       <div className="flex-1">
         {title && (
@@ -78,7 +80,7 @@ const EditoCard: React.FC<EditoCardProps> = ({
           imageClassName,
           imagePosition === 'left' && 'sm:-order-1',
         )}>
-          <Image src={image} alt={imageAlt} className="w-full h-full object-contain max-h-[40vh]" loading="lazy" width={400} height={400} />
+          <ImageWithCredit src={image} alt={imageAlt} credit={imageCredit} className="w-full h-full object-contain max-h-[40vh]" loading="lazy" width={400} height={400} />
 
           {imageText && (
             <div className={clsx(

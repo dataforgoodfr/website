@@ -1,7 +1,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +20,7 @@ export type ProjectCarouselProps = {
     description: string;
     image?: string;
     altImage?: string;
+    credit?: string | null;
   }>;
   className?: string;
   carouselClassName?: string;
@@ -82,9 +83,10 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
                 index !== current ? "bg-violet-light/80 px-0 py-0 h-[460px]" : "z-1 shadow-lg",
               )}
             >
-              <Image
+              <ImageWithCredit
                 src={slide.image ?? "/images/default-image.svg"}
                 alt={slide.altImage ?? ''}
+                credit={slide.credit}
                 width={1000}
                 height={400}
                 className={clsx("relative col-start-1 row-start-1 row-span-3 w-full h-full object-contain -z-1 bg-white",

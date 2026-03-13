@@ -1,7 +1,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import {
   Carousel,
   CarouselContent,
@@ -17,6 +17,7 @@ export type ImagesCarouselProps = {
     id: string | number;
     src: string;
     alt?: string;
+    credit?: string | null;
     title?: string;
     description?: string;
     ctaText?: string;
@@ -95,9 +96,10 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = React.memo(({
             key={image.id}
             className="grid grid-cols-1 grid-rows-[5rem_1fr_5rem] h-[700px] bg-black text-white"
           >
-            <Image
+            <ImageWithCredit
               src={image.src}
               alt={image.alt ?? ''}
+              credit={image.credit}
               width={1000}
               height={400}
               loading="eager"

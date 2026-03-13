@@ -58,7 +58,8 @@ function getSlides(project: ProjectPageData) {
     id: index + 1,
     description: image.caption,
     image: image.url,
-    altImage: image.alternativeText
+    altImage: image.alternativeText,
+    credit: image.caption
   })) || [];
 }
 
@@ -119,6 +120,7 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
     <>
       {project.title && <ProjectHeroBlock
         image={project.thumbnail?.url}
+        imageCredit={project.thumbnail?.caption ?? null}
         title={project.title}
         introduction={project.short_description}
         className='my-lg'

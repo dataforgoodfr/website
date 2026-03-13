@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Tag, Title } from '@/components/atoms';
 import Link from 'next/link';
 
@@ -8,6 +9,7 @@ export type BaseCardProps = {
   title: string;
   tags?: string[];
   image?: string;
+  imageCredit?: string | null;
   link: string;
   subInfos: string[];
   className?: string;
@@ -18,11 +20,11 @@ const BaseCard: React.FC<BaseCardProps> = ({
   title,
   tags,
   image,
+  imageCredit,
   link,
   subInfos,
   className,
   isBlank = false,
-  ...props
 }) => {
   if (!title || !link) {
     return null;
@@ -38,7 +40,6 @@ const BaseCard: React.FC<BaseCardProps> = ({
       rel={isBlank ? 'noreferrer' : undefined}
       href={link}
       aria-label={title}
-      {...props}
     >
       <div className="relative flex flex-col z-1 bg-white h-full">
         <div className="flex flex-col justify-between flex-1 min-h-64 px-6 py-7 gap-y-2">
@@ -64,7 +65,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
         </div>}
         <div className="w-full h-[216px] relative">
           <div className="absolute top-0 left-0 w-full h-full bg-black/10" />
-          {image && <Image loading="lazy" src={image} alt="" width={400} height={200} className="w-full h-[216px] object-contain" />}
+          {image && <ImageWithCredit loading="lazy" src={image} alt="" credit={imageCredit} width={400} height={200} className="w-full h-[216px] object-contain" />}
         </div>
       </div>
     </Link>

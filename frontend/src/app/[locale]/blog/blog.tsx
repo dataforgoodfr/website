@@ -19,6 +19,7 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>) {
       rawDate: resource.published_date,
       date: new Date(resource.published_date).toLocaleString(undefined, {dateStyle: 'medium'}),
       image: element.thumbnail?.url ?? "/images/dataforgood.svg",
+      imageCredit: element.thumbnail?.caption ?? null,
       link: isBlog ? `/blog/${element.slug}` : element.article_link,
       subInfos: element.tags ? element.tags.map(tag => tag.name) : [],
       tags: [new Date(element.published_date).toLocaleDateString(undefined, {dateStyle: 'long'}), element.media_name],

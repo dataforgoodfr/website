@@ -14,6 +14,7 @@ export default function Homepage({ data }: HomepageProps) {
 
   const heroData = {
     image: data.hero?.image?.url,
+    imageCredit: data.hero?.image?.caption ?? null,
     title: {
       level: 1 as TitleProps['level'],
       variant: "big" as TitleProps['variant'],
@@ -36,6 +37,7 @@ export default function Homepage({ data }: HomepageProps) {
   const projects = data.featured_projects?.map(project => ({
     id: (project.id ?? "" ).toString(),
     src: project.thumbnail?.url || '',
+    credit: project.thumbnail?.caption ?? null,
     title: project.title || '',
     alt: project.title || '',
     description: project.short_description || '',
@@ -56,6 +58,7 @@ export default function Homepage({ data }: HomepageProps) {
     title: event.name || '',
     date: new Date(event.date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric' }),
     image: event.image?.url,
+    imageCredit: event.image?.caption ?? null,
     tag: [t('events.tag')],
     link: event.link || '',
   })).filter(event => event.title && event.link) ?? [];
@@ -69,6 +72,7 @@ export default function Homepage({ data }: HomepageProps) {
       author: isBlog ? ( (resource.blog?.author as { name: string })?.name || t('resources.defaultAuthor')) : (resource.press_release as { media_name: string })?.media_name || '',
       talk: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
       image: isBlog ? resource.blog?.thumbnail?.url || '' : resource.press_release?.thumbnail?.url || '',
+      imageCredit: isBlog ? (resource.blog?.thumbnail?.caption ?? null) : (resource.press_release?.thumbnail?.caption ?? null),
       ctaText: isBlog ? t('resources.articleCtaText') : t('resources.pressCtaText'),
       ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
     }
@@ -87,6 +91,7 @@ export default function Homepage({ data }: HomepageProps) {
     talk: thematic.short_description || '',
     talkOffset: 10,
     image: thematic.thumbnail?.url || '',
+    imageCredit: thematic.thumbnail?.caption ?? null,
     ctaText: thematic.cta_text,
     ctaLink: thematic.cta_link,
   })).filter(thematic => thematic.talk) ?? [];
