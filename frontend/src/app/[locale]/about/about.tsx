@@ -90,7 +90,7 @@ function transformActivityReports(
 ) {
   return reports.map(report => ({
     id: report.documentId || report.id,
-    text: report.date,
+    text: new Date(report.date).getFullYear().toString(),
     link: report.file?.url || '#',
   }));
 }
