@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Button, Title, TitleProps } from '@/components';
 
 export type LargeTextImageProps = {
@@ -9,6 +10,7 @@ export type LargeTextImageProps = {
   content?: React.ReactNode;
   iframe?: React.ReactNode;
   image?: string;
+  imageCredit?: string | null;
   ctaText?: string;
   ctaLink?: string;
   citation?: string;
@@ -26,6 +28,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
   content,
   iframe,
   image,
+  imageCredit,
   ctaText,
   ctaLink,
   citation,
@@ -42,7 +45,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
     <div
       id={id}
       className={clsx(className, 'mask-papper')}
-      {...props}
+      
     >
       <div
         className={clsx(
@@ -51,7 +54,7 @@ const LargeTextImage: React.FC<LargeTextImageProps> = ({
           internalClassName,
         )}
       >
-        {image && <Image src={image} alt="" loading="lazy" width={1000} height={800} className="col-start-1 md:col-end-3 row-start-1 w-full h-full object-cover" />}
+        {image && <ImageWithCredit src={image} alt="" credit={imageCredit} loading="lazy" width={1000} height={800} className="col-start-1 md:col-end-3 row-start-1 w-full h-full object-cover" />}
 
         <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 py-24 bg-cover bg-left", bgImageClass)}>
           {title && <Title level={titleLevel} variant="medium">{title}</Title>}

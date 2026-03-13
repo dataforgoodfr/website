@@ -1,11 +1,15 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Button, TiltedTitle, TiltedTitleProps, Title, TitleProps } from '@/components';
 import { useTranslations } from 'next-intl';
 
 export type ThumbnailProjectProps = {
   name: TiltedTitleProps;
-  images?: string[];
+  images?: Array<{
+    src: string;
+    credit?: string | null;
+  }> | string[];
   link: string;
   company?: string;
   description?: string;
@@ -38,11 +42,15 @@ const ThumbnailProject: React.FC<ThumbnailProjectProps> = ({
       <div className="flex-1">
         <TiltedTitle level={baseTitleLevel} rotation={name.rotation ?? -5} className={clsx(name.className, "md:max-w-[310px] relative z-1 drop-shadow-3 drop-shadow-black")}>{name.children}</TiltedTitle>
         {images?.length && <div className="grid gap-4 mb-sm">
-          {images.map((image, index) => (
-            <div key={index} className={clsx("shadow-block sm:col-start-1 sm:row-start-1 max-w-full", index % 2 === 0 ? "w-[370px] h-[250px] justify-self-start shadow-block--alive items-start -rotate-2 before:rotate-2" : "w-[330px] h-[200px] justify-self-end self-end shadow-block--resistance items-end rotate-6 before:-translate-x-2")}>
-              <Image src={image} alt="" width={1000} height={400} className="w-full h-full object-cover" />
-            </div>
-          ))}
+          {images.map((image, index) => {
+            const src = typeof image === 'string' ? image : image.src;
+            const credit = typeof image === 'string' ? null : image.credit;
+            return (
+              <div key={index} className={clsx("shadow-block sm:col-start-1 sm:row-start-1 max-w-full", index % 2 === 0 ? "w-[370px] h-[250px] justify-self-start shadow-block--alive items-start -rotate-2 before:rotate-2" : "w-[330px] h-[200px] justify-self-end self-end shadow-block--resistance items-end rotate-6 before:-translate-x-2")}>
+                <ImageWithCredit src={src} alt="" credit={credit} width={1000} height={400} className="w-full h-full object-cover" />
+              </div>
+            );
+          })}
         </div>}
         {company && <Title level={4} variant="x-small" className="mb-xs">{company}</Title>}
         {description && <p className="lead mb-xs">{description}</p>}

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import {
   Carousel,
   CarouselContent,
@@ -18,6 +18,7 @@ export type TestimoniesCarouselProps = {
     author: string;
     content: string;
     image?: string;
+    imageCredit?: string | null;
   }>;
   className?: string;
 };
@@ -63,7 +64,7 @@ const TestimoniesCarousel: React.FC<TestimoniesCarouselProps> = ({
           >
             <blockquote className="relative z-1 flex flex-col md:flex-row items-center before:absolute before:content-[''] before:w-full before:h-full before:bg-white before:shadow-base before:-rotate-3">
               <div className="relative flex flex-col items-center w-48 sm:-left-12">
-                <Image src={testimony.image ?? "/images/default-image.svg"} alt="" loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
+                <ImageWithCredit src={testimony.image ?? "/images/default-image.svg"} alt="" credit={testimony.imageCredit} loading="lazy" width={192} height={192} className="w-full h-full object-contain" />
                 <TiltedTitle className="text-center w-full drop-shadow-1 drop-shadow-black" level="p" variant="x-small" colors="text-dark bg-blue block w-full text-center">
                   {testimony.author}
                 </TiltedTitle>

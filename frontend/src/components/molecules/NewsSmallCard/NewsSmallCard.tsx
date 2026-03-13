@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Tag } from '@/components/atoms';
 import Link from 'next/link';
 
@@ -8,6 +9,7 @@ export type NewsSmallCardProps = {
   title?: string;
   tags: string[];
   image?: string;
+  imageCredit?: string | null;
   link: string;
   date: string;
   className?: string;
@@ -17,6 +19,7 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
   title,
   tags,
   image,
+  imageCredit,
   link,
   date,
   className,
@@ -34,11 +37,11 @@ const NewsSmallCard: React.FC<NewsSmallCardProps> = ({
       )}
       href={link}
       aria-label={title}
-      {...props}
+      
     >
       <div className="relative z-1 flex flex-col sm:flex-row items-stretch gap-md gap-y-2 bg-white">
         {image && <div className="relative sm:order-2 sm:flex-1 h-24 sm:h-auto">
-          <Image loading="lazy" src={image} alt="" width={400} height={200} className="absolute w-full h-full object-contain" />
+          <ImageWithCredit loading="lazy" src={image} alt="" credit={imageCredit} width={400} height={200} className="absolute w-full h-full object-contain" />
         </div>}
         <div className="flex flex-col items-start gap-xs w-full sm:w-1/2 p-7">
           {tags?.map((tag) => (<Tag color='text-black' bgColor='bg-violet-light'>{tag}</Tag>))}

@@ -1,16 +1,16 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import {
   CtaWithImage,
   EditoCard,
   LargeTextImage,
   MembersBlock,
   PartnersBlock,
-  Title,
   TestimoniesCarousel,
+  Title,
 } from '@/components';
 import { IMembers } from '@/lib/types';
+import { useTranslations } from 'next-intl';
 import { AboutPageData } from './page';
 
 function transformTestimonials(
@@ -21,6 +21,7 @@ function transformTestimonials(
     author: testimonial.author,
     content: testimonial.quote,
     image: testimonial.avatar?.url,
+    imageCredit: testimonial.avatar?.caption ?? null,
   }));
 }
 
@@ -41,6 +42,7 @@ function transformMember(
     name: member.name,
     role: member.role,
     image: member.avatar?.url,
+    imageCredit: member.avatar?.caption ?? null,
     linkedin: member.linkedin,
   };
 }
@@ -131,6 +133,7 @@ export default function AboutPage({ data }: AboutProps) {
               rotation: -3.7,
               className: 'relative sm:left-[182px] md:-top-4',
             }}
+            imageCredit={data.cta_left?.image?.caption}
           />
         </div>
 
@@ -145,6 +148,7 @@ export default function AboutPage({ data }: AboutProps) {
             className: 'sm:left-6',
           }}
           image={data.cta_right?.image.url ?? ''}
+          imageCredit={data.cta_right?.image.caption ?? null}
           className="w-full lg:w-[770px] overflow-hidden md:overflow-visible"
           contentClassName="relative lg:top-24"
           cta={{
@@ -166,6 +170,7 @@ export default function AboutPage({ data }: AboutProps) {
       <EditoCard
         title={data.map_cta?.title}
         image={data.map_cta?.image.url}
+        imageCredit={data.map_cta?.image.caption ?? null}
         ctaText={data.map_cta?.cta.text}
         ctaLink={data.map_cta?.cta.link}
         className="my-lg"
@@ -181,6 +186,7 @@ export default function AboutPage({ data }: AboutProps) {
         title={data.volunteer_cta?.title}
         content={data.volunteer_cta?.content}
         image={data.volunteer_cta?.image.url}
+        imageCredit={data.volunteer_cta?.image.caption ?? null}
         ctaText={data.volunteer_cta.cta.text}
         ctaLink={data.volunteer_cta.cta.link}
         className="my-lg"

@@ -34,6 +34,7 @@ export default function SocialPage({ data , thematicsData }: ThematicsProps) {
       <ThematicHeroBlock
         title={t('title')}
         image={data.thematic?.banner_image?.url || ''}
+        imageCredit={data.thematic?.banner_image?.caption ?? null}
         className="my-lg"
       />
 
@@ -42,6 +43,7 @@ export default function SocialPage({ data , thematicsData }: ThematicsProps) {
       <EditoCard
         imageText={data.thematic?.quote || ''}
         image={data.thematic?.image_1?.url || ''}
+        imageCredit={data.thematic?.image_1?.caption ?? null}
         imagePosition="left"
         imageTextRotation={-6}
         className="my-lg container"
@@ -53,6 +55,7 @@ export default function SocialPage({ data , thematicsData }: ThematicsProps) {
       <EditoCard
         imageText={data.thematic?.quote2 || ''}
         image={data.thematic?.image_2?.url || ''}
+        imageCredit={data.thematic?.image_2?.caption ?? null}
         className="my-lg container"
         contentClassName="lead"
       >

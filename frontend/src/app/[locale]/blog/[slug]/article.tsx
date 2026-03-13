@@ -17,11 +17,12 @@ function estimateReadingTime(content: string): string {
 
 export default function ArticlePage({ blog }: BlogPageProps) {
   const heroBlock = {
-    image: blog.thumbnail?.formats?.large?.url ?? '/images/dataforgood.svg',
-    title: blog.title,
-    introduction: blog.description,
-    date: new Date(blog.published_date).toLocaleDateString(undefined, { dateStyle: "long" }),
-    readTime: estimateReadingTime(blog.content),
+    image: blog.thumbnail?.url ?? '/images/dataforgood.svg',
+    imageCredit: blog.thumbnail?.caption ?? null,
+    title: blog.title || '',
+    introduction: blog.description || '',
+    date: new Date(blog.published_date || '').toLocaleDateString(undefined, { dateStyle: "long" }),
+    readTime: estimateReadingTime(blog.content || ''),
     author: {
       name: blog.author?.name ?? 'DataForGood',
       link: ""

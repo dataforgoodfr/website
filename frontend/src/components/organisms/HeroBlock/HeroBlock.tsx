@@ -1,9 +1,10 @@
 import clsx from 'clsx';
-import Image from 'next/image'
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { TiltedTitle, TiltedTitleProps } from '@/components/atoms';
 
 export type HeroBlockProps = {
   image?: string;
+  imageCredit?: string | null;
   title: TiltedTitleProps;
   subtitle?: TiltedTitleProps;
   talk?: string;
@@ -12,11 +13,11 @@ export type HeroBlockProps = {
 
 const HeroBlock: React.FC<HeroBlockProps> = ({
   image,
+  imageCredit,
   title,
   subtitle,
   talk,
   className,
-  ...props
 }) => {
   if (!title.children) {
     return null;
@@ -28,10 +29,9 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
         'container max-sm:px-0 grid grid-cols-1 grid-rows-[100px_1fr] md:grid-rows-[200px_1fr_200px] md:grid-cols-2 min-h-[850px] h-screen',
         className,
       )}
-      {...props}
     >
       {image && <div className='col-start-1 row-start-1 row-span-3 max-w-fit -z-1 w-full h-full'>
-        <Image src={image} alt="" priority={true} width={1000} height={400} className="object-cover h-full md:max-w-fit overflow-hidden md:overflow-visible" />
+        <ImageWithCredit src={image} alt="" credit={imageCredit} priority={true} width={1000} height={400} className="object-cover h-full md:max-w-fit overflow-hidden md:overflow-visible" />
       </div>}
       <div className="col-start-1 row-start-2 mt-lg md:mt-0 md:col-start-2 md:row-start-2 self-center">
         <div className="container h-full">

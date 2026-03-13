@@ -1,6 +1,6 @@
 import { thematicsColors, ThematicValues } from '@/lib/utils';
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import Link from 'next/link';
 
 export type ProjectListCardProps = {
@@ -10,6 +10,7 @@ export type ProjectListCardProps = {
   description: string;
   thematics: ThematicValues[];
   image?: string;
+  imageCredit?: string | null;
   className?: string;
 };
 
@@ -20,6 +21,7 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
   description,
   thematics,
   image,
+  imageCredit,
   className,
   ...props
 }) => {
@@ -32,9 +34,9 @@ const ProjectListCard: React.FC<ProjectListCardProps> = ({
       'relative grid grid-cols-1 grid-rows-1 h-[360px] shadow-lg',
       className
     )}
-    {...props}
+    
   >
-    {image && <Image src={image} alt="" className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={400} height={600} />}
+    {image && <ImageWithCredit src={image} alt="" credit={imageCredit} className="col-start-1 row-start-1 w-full h-full object-cover" loading="lazy" width={400} height={600} />}
     <div className="col-start-1 row-start-1 bg-gradient-to-b from-white/0 to-black/90 group-hover:to-black transition-all h-full w-full" />
     <div className="absolute top-3 right-5 flex gap-5">
       {thematics.map((thematic, index) => (<div key={index} className={`size-[23px] rounded-full shadow-base bg-${thematicsColors[thematic]}`}></div>))}

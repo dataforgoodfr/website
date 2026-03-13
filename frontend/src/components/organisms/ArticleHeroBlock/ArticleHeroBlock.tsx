@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import Image from 'next/image'
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { TiltedTitle } from '@/components/atoms';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export type ArticleHeroBlockProps = {
   image?: string;
+  imageCredit?: string | null;
   title: string;
   introduction?: string;
   date: string;
@@ -19,13 +20,13 @@ export type ArticleHeroBlockProps = {
 
 const ArticleHeroBlock: React.FC<ArticleHeroBlockProps> = ({
   image = "/images/default-image.svg",
+  imageCredit,
   title,
   introduction,
   date,
   readTime,
   author,
   className,
-  ...props
 }) => {
   const t = useTranslations('components.articleHeroBlock');
 
@@ -39,11 +40,10 @@ const ArticleHeroBlock: React.FC<ArticleHeroBlockProps> = ({
         '',
         className,
       )}
-      {...props}
     >
       <div className="grid grid-cols-1 grid-rows-1 min-h-[400px] h-screen">
         {image && <div className='col-start-1 row-start-1'>
-          <Image src={image} alt="" loading="lazy" width={1000} height={400} className="object-cover w-full h-full" />
+          <ImageWithCredit src={image} alt="" credit={imageCredit} loading="lazy" width={1000} height={400} className="object-cover w-full h-full" />
         </div>}
         <div className="col-start-1 row-start-1 self-center p-4 md:p-12">
           <TiltedTitle variant="big" level={1} colors="text-black bg-white" className="drop-shadow-3 drop-shadow-black max-w-[55rem] before:-z-1" rotation={-2}>{title}</TiltedTitle>

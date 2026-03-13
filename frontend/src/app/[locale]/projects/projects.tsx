@@ -24,6 +24,7 @@ function transformThematicsData(thematics: ProjectListPageData["thematics"]) {
     talk: thematic.short_description,
     talkOffset: 10,
     image: thematic.thumbnail?.url || '',
+    imageCredit: thematic.thumbnail?.caption ?? null,
     ctaText: thematic.cta_text,
     ctaLink: thematic.cta_link,
   })) || [];
@@ -92,27 +93,28 @@ export default function ProjectsPage({ data }: ProjectListProps) {
           {data.introduction}
         </Title>
 
-        <CtaWithImage
-          title={{
-            children: data.introduction_cta?.title,
-            rotation: -4,
-          }}
-          content={{
-            text: data.introduction_cta?.content ?? '',
-            rotation: 1.5,
-            className: 'sm:left-6',
-          }}
-          image={data.introduction_cta?.image.url ?? ''}
-          imageClassName="object-fill"
-          className="overflow-hidden md:overflow-visible md:w-[400px]"
-          contentClassName="relative md:top-24"
-          cta={{
-            text: data.introduction_cta?.cta.text,
-            link: data.introduction_cta?.cta.link,
-            rotation: 0.7,
-            className: 'relative sm:left-48 -top-2',
-          }}
-        />
+          <CtaWithImage
+            title={{
+              children: data.introduction_cta?.title,
+              rotation: -4,
+            }}
+            content={{
+              text: data.introduction_cta?.content ?? '',
+              rotation: 1.5,
+              className: 'sm:left-6',
+            }}
+            image={data.introduction_cta?.image.url ?? ''}
+            imageCredit={data.introduction_cta?.image.caption ?? null}
+            imageClassName="object-fill"
+            className="overflow-hidden md:overflow-visible md:w-[400px]"
+            contentClassName="relative md:top-24"
+            cta={{
+              text: data.introduction_cta?.cta.text,
+              link: data.introduction_cta?.cta.link,
+              rotation: 0.7,
+              className: 'relative sm:left-48 -top-2',
+            }}
+          />
       </div>
 
       <ThematicsBlock

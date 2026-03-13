@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import Image from 'next/image';
+import ImageWithCredit from '@/components/molecules/ImageWithCredit';
 import { Button } from '@/components';
 
 export type TalkCardProps = {
   author: string;
   talk: string;
   image?: string;
+  imageCredit?: string | null;
   ctaText?: string;
   ctaLink?: string;
   className?: string;
@@ -17,6 +18,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
   author,
   talk,
   image = "/images/default-image.svg",
+  imageCredit,
   ctaText,
   ctaLink,
   className,
@@ -34,7 +36,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         'flex flex-col sm:flex-row sm:items-center gap-md py-md max-w-4xl',
         className,
       )}
-      {...props}
+      
     >
       <div className={clsx(
         'w-full sm:w-calc(50% - 1rem)',
@@ -44,9 +46,10 @@ const TalkCard: React.FC<TalkCardProps> = ({
           'relative flex before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
           imagePosition === 'right' ? 'rotate-3' : '-rotate-3',
         )}>
-          <Image
+          <ImageWithCredit
             src={image}
             alt=""
+            credit={imageCredit}
             className="relative z-1 w-full sm:w-[400px] sm:h-[237px] object-cover"
             loading="lazy"
             width={400}
