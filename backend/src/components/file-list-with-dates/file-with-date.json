@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_file_list_with_dates_file_with_dates",
+  "info": {
+    "displayName": "File-with-date",
+    "icon": "filePdf"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

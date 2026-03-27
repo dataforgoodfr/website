@@ -74,6 +74,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::volunteer.volunteer"
+    },
+    "activity_reports": {
+      "type": "component",
+      "component": "file-list-with-dates.file-with-date",
+      "repeatable": true
     }
   }
 }

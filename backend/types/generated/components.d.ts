@@ -40,6 +40,19 @@ export interface EditoEdito extends Struct.ComponentSchema {
   };
 }
 
+export interface FileListWithDatesFileWithDate extends Struct.ComponentSchema {
+  collectionName: 'components_file_list_with_dates_file_with_dates';
+  info: {
+    displayName: 'File-with-date';
+    icon: 'filePdf';
+  };
+  attributes: {
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface GoalGoal extends Struct.ComponentSchema {
   collectionName: 'components_goal_goals';
   info: {
@@ -157,6 +170,7 @@ declare module '@strapi/strapi' {
       'call-to-action.call-to-action': CallToActionCallToAction;
       'call-to-action.call-to-action-with-image': CallToActionCallToActionWithImage;
       'edito.edito': EditoEdito;
+      'file-list-with-dates.file-with-date': FileListWithDatesFileWithDate;
       'goal.goal': GoalGoal;
       'hero.hero': HeroHero;
       'information.information-block': InformationInformationBlock;

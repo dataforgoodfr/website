@@ -1,7 +1,6 @@
-import React from 'react';
-import AboutPage from './about';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
+import AboutPage from './about';
 
 export async function generateMetadata({
   params: { locale },
@@ -49,15 +48,22 @@ async function fetchAboutPageData() {
           scientific_committee: {
             populate: "*"
           },
-           strategic_committee: {
-             populate: "*"
-           },
-           division_managers: {
-             populate: "*"
-           },
-           seo_meta: {
-             populate: "*"
-           }
+          strategic_committee: {
+            populate: "*"
+          },
+          division_managers: {
+            populate: "*"
+          },
+          seo_meta: {
+            populate: "*"
+          },
+          activity_reports: {
+            populate: {
+              file: {
+                populate: '*'
+              }
+            }
+          }
         }
       }
     }
@@ -68,9 +74,10 @@ export type AboutPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fe
 
 
 export default async function Page() {
-  const { data } = await fetchAboutPageData();
+  const { data, error } = await fetchAboutPageData();
 
-    if (!data?.data) {
+  if (!data?.data) {
+    console.error(error);
     return null;
   }
 

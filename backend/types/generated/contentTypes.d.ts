@@ -385,6 +385,10 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    activity_reports: Schema.Attribute.Component<
+      'file-list-with-dates.file-with-date',
+      true
+    >;
     board_of_directors: Schema.Attribute.Relation<
       'oneToMany',
       'api::volunteer.volunteer'
