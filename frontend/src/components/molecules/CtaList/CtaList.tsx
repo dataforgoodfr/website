@@ -22,12 +22,14 @@ const CtaList: React.FC<CtaListProps> = ({ items, className }) => {
         <Link
           key={item.id}
           href={item.link}
-          className="group relative flex items-center justify-between w-full p-6 bg-white border-2 border-building transition-colors hover:bg-building hover:text-white"
+          className="shadow-block shadow-block--building w-full"
         >
-          <span className="text-lg font-bold uppercase tracking-widest">
-            {item.text}
-          </span>
-          <ArrowIcon direction="down" className="w-6 h-6" />
+          <div className="flex items-center justify-between w-full p-6 bg-white text-building">
+            <span className="text-lg font-bold uppercase tracking-widest">
+              {item.text}
+            </span>
+            <ArrowIcon direction="download" className="w-6 h-6" />
+          </div>
         </Link>
       ))}
     </div>
