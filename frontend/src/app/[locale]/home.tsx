@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
 import { HomepageData } from './page';
 import Image from 'next/image'
+import { getPressReleaseLink } from '@/lib/utils';
 
 type HomepageProps = {
   data: HomepageData;
@@ -70,7 +71,7 @@ export default function Homepage({ data }: HomepageProps) {
       talk: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
       image: isBlog ? resource.blog?.thumbnail?.url || '' : resource.press_release?.thumbnail?.url || '',
       ctaText: isBlog ? t('resources.articleCtaText') : t('resources.pressCtaText'),
-      ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
+      ctaLink: isBlog ? `/articles/${resource.blog?.slug || ''}` : getPressReleaseLink(resource.press_release as { press_release_type: string; article_link: string; article_file: {url: string;}}) || '',
     }
   }) ?? [];
 

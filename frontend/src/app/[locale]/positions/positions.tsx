@@ -5,6 +5,7 @@ import { BaseCardsBlock, LargeTextImage } from '@/components';
 import Animation from './_partials/Animations';
 import { PositionsPageData } from './page';
 import { useRef } from 'react';
+import { getPressReleaseLink } from '@/lib/utils';
 
 type PositionPageProps = {
   data: PositionsPageData
@@ -15,7 +16,7 @@ function transformPressReleases(press_releases: NonNullable<PositionsPageData['p
     title: release.article_name,
     tags: [new Date(release.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), release.media_name],
     image: release.thumbnail?.url ?? '/images/dataforgood.svg',
-    link: release.article_link,
+    link: getPressReleaseLink(release as { press_release_type: string; article_link: string; article_file: {url: string;}}),
     subInfos: release.tags,
     isBlank: true,
   }))
@@ -43,7 +44,7 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
       title: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
       tags: isBlog ? [new Date(resource.blog?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })] : [new Date(resource.press_release?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), resource.press_release?.media_name],
       image: isBlog ? resource.blog?.thumbnail?.url || '/images/dataforgood.svg' : resource.press_release?.thumbnail?.url || "/images/dataforgood.svg",
-      link: isBlog ? `/blog/${resource.blog?.slug || ''}` : (resource.press_release as { article_link: string })?.article_link || '',
+      link: isBlog ? `/blog/${resource.blog?.slug || ''}` : getPressReleaseLink(resource as { press_release_type: string; article_link: string; article_file: {url: string;}}) || '',
       subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags?.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
       isBlank: true,
     }

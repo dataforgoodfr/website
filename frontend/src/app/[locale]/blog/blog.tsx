@@ -6,6 +6,7 @@ import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
 import { BlogsPageMeta, BlogsPageData } from './page';
 import { usePagination } from '@/hooks/usePagination';
 import { useState, useEffect } from 'react';
+import { getPressReleaseLink } from '@/lib/utils';
 
 
 function transformBlogsData(resources: NonNullable<BlogsPageData>) {
@@ -19,7 +20,7 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>) {
       rawDate: resource.published_date,
       date: new Date(resource.published_date).toLocaleString(undefined, {dateStyle: 'medium'}),
       image: element.thumbnail?.url ?? "/images/dataforgood.svg",
-      link: isBlog ? `/blog/${element.slug}` : element.article_link,
+      link: isBlog ? `/blog/${element.slug}` : getPressReleaseLink(element as { press_release_type: string; article_link: string; article_file: {url: string;}}),
       subInfos: element.tags ? element.tags.map(tag => tag.name) : [],
       tags: [new Date(element.published_date).toLocaleDateString(undefined, {dateStyle: 'long'}), element.media_name],
       isBlank: true,

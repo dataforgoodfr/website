@@ -88,7 +88,7 @@ function getNews(project: ProjectPageData) {
     title: pressRelease.title,
     tag: pressRelease.tags ?? [],
     image: pressRelease.thumbnail?.url,
-    link: pressRelease.article_link,
+    link: getPressReleaseLink(pressRelease as { press_release_type: string; article_link: string; article_file: {url: string;}}),
     date: new Date(pressRelease.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric'}),
   })) || [];
 }

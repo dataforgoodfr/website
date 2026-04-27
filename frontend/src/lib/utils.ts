@@ -44,3 +44,18 @@ export function generateMetadataFromSeo(seo: {
     },
   };
 }
+
+export function getPressReleaseLink(press_release: {
+  press_release_type: string;
+  article_link?: string;
+  article_file?: {
+    url: string;
+  };
+}) {
+  if(press_release.press_release_type === 'file') {
+    return press_release.article_file?.url
+  } else if(press_release.press_release_type === 'url') {
+    return press_release.article_link
+  }
+  return ""
+}
