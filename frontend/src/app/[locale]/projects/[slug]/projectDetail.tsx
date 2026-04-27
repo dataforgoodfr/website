@@ -16,7 +16,7 @@ function getProjectTags(project: ProjectPageData) {
       "type": "temporal" as 'temporal' | 'subject'
     })) || []),
     {
-      "label": `${project.start_date ? new Date(project.start_date).toLocaleDateString() : 'N/A'} / ${project.end_date ? new Date(project.end_date).toLocaleDateString() : 'N/A'}`,
+      "label": `${(project.start_date && project.end_date) ? `Du ${new Date(project.start_date).toLocaleDateString()} au ${new Date(project.end_date).toLocaleDateString()}` : (project.start_date ? `Depuis le ${new Date(project.start_date).toLocaleDateString()}` : (project.end_date ? `Terminé le ${new Date(project.end_date).toLocaleDateString()}` : 'N/A'))}`,
       "type": "temporal" as 'temporal' | 'subject'
     }, {
       "label": project.state,

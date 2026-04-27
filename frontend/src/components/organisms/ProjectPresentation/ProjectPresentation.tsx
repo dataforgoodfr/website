@@ -30,6 +30,15 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
 }) => {
   const t = useTranslations('components.projectPresentation');
 
+  const getTagColor = (tag?: string) => {
+    if(tag === "en cours") {
+      return 'bg-resistance'
+    } else if(tag === "terminé") {
+      return 'bg-alive'
+    } 
+    return "bg-back-green"
+  }
+
   return (
     <div
       className={clsx("container flex flex-col lg:flex-row lg:items-start gap-md", className)}
@@ -44,7 +53,7 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
           <Title level="p" variant="x-small" className="mb-xs">{t('tags')}</Title>
           <ul className="flex flex-row flex-wrap gap-x-1 gap-y-2.5 max-w-96">
             {tags.map((tag, index) => (
-              <li key={index}><Tag color="text-black" bgColor="bg-back-green">{tag.label ?? ''}</Tag></li>
+              <li key={index}><Tag color="text-black" bgColor={getTagColor(tag.label)}>{tag.label ?? ''}</Tag></li>
             ))}
             {thematics?.map((thematic, index) => (
               <li key={index}><Tag color="text-black" bgColor={`bg-${thematic.color}`}>{thematic.name ?? ''}</Tag></li>
