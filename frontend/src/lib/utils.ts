@@ -54,8 +54,6 @@ export function getPressReleaseLink(press_release: {
 }) {
   if(press_release.press_release_type === 'file') {
     return press_release.article_file?.url
-  } else if(press_release.press_release_type === 'url') {
-    return press_release.article_link
   }
-  return ""
+  return press_release.article_link ?? ""
 }
