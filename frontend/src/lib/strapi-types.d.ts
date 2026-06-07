@@ -3303,6 +3303,12 @@ export interface components {
             stat?: string;
             description?: string;
         };
+        VideoVideoEmbedComponent: {
+            id?: number;
+            url?: string;
+            embed?: string;
+            orientation?: "horizontal" | "vertical";
+        };
         BlogRequest: {
             data: {
                 title?: string;
