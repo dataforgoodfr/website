@@ -10,21 +10,34 @@ type ProjectPageProps = {
 };
 
 function getProjectTags(project: ProjectPageData) {
+  const getTagColor = (tag?: string) => {
+      if(tag === "en cours") {
+        return 'bg-resistance'
+      } else if(tag === "terminé") {
+        return 'bg-alive'
+      } 
+      return "bg-back-green"
+    }
+
   return [
     ...(project.seasons?.map(season => ({
       "label": season.title,
-      "type": "temporal" as 'temporal' | 'subject'
+      "type": "temporal" as 'temporal' | 'subject',
+      "color": "bg-back-green" 
     })) || []),
     {
-      "label": `${project.start_date ? new Date(project.start_date).toLocaleDateString() : 'N/A'} / ${project.end_date ? new Date(project.end_date).toLocaleDateString() : 'N/A'}`,
-      "type": "temporal" as 'temporal' | 'subject'
+      "label": `${(project.start_date && project.end_date) ? `Du ${new Date(project.start_date).toLocaleDateString()} au ${new Date(project.end_date).toLocaleDateString()}` : (project.start_date ? `Depuis le ${new Date(project.start_date).toLocaleDateString()}` : (project.end_date ? `Terminé le ${new Date(project.end_date).toLocaleDateString()}` : 'N/A'))}`,
+      "type": "temporal" as 'temporal' | 'subject',
+      "color": "bg-back-green" 
     }, {
       "label": project.state,
-      "type": "subject" as 'temporal' | 'subject'
+      "type": "subject" as 'temporal' | 'subject',
+      "color": getTagColor(project.state) 
     },
     ...((project.category as string[])?.map(cat => ({
       "label": cat,
-      "type": "subject" as 'temporal' | 'subject'
+      "type": "subject" as 'temporal' | 'subject',
+      "color": "bg-back-green" 
     })) || [])];
 }
 

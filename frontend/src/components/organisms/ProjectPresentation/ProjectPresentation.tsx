@@ -8,6 +8,7 @@ export type ProjectPresentationProps = {
   tags?: {
     label?: string;
     type: 'temporal' | 'subject';
+    color: string;
   }[];
   description: string[];
   associations: {
@@ -44,7 +45,7 @@ const ProjectPresentation: React.FC<ProjectPresentationProps> = ({
           <Title level="p" variant="x-small" className="mb-xs">{t('tags')}</Title>
           <ul className="flex flex-row flex-wrap gap-x-1 gap-y-2.5 max-w-96">
             {tags.map((tag, index) => (
-              <li key={index}><Tag color="text-black" bgColor="bg-back-green">{tag.label ?? ''}</Tag></li>
+              <li key={index}><Tag color="text-black" bgColor={tag.color}>{tag.label ?? ''}</Tag></li>
             ))}
             {thematics?.map((thematic, index) => (
               <li key={index}><Tag color="text-black" bgColor={`bg-${thematic.color}`}>{thematic.name ?? ''}</Tag></li>
