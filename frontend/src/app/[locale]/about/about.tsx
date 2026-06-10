@@ -26,12 +26,12 @@ function transformTestimonials(
 }
 
 function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
-  return funders.map(partner => ({
-    id: partner.id,
-    name: partner.name,
-    description: partner.description,
-    image: partner.logo?.url,
-    link: partner.website_link ?? 'https://www.dataforgood.fr',
+  return funders.map(funder => ({
+    id: funder.id,
+    name: funder.name,
+    description: funder.description,
+    image: funder.logo?.url,
+    link: funder.website_link ?? 'https://www.dataforgood.fr',
   }));
 }
 
