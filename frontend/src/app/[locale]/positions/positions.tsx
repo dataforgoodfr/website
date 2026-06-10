@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { BaseCardsBlock, LargeTextImage } from '@/components';
 import Animation from './_partials/Animations';
 import { PositionsPageData } from './page';

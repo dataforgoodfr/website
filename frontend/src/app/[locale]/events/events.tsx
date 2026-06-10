@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { Title, BaseCardsBlock, Pagination } from '@/components';
 import { EventsPageData, EventsPageMeta } from './page';
 import { usePagination } from '@/hooks/usePagination';

@@ -1,6 +1,7 @@
+'use client';
 import { Title, TitleProps } from "@/components";
 import clsx from "clsx";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/i18n/index";
 import Link from "next/link";
 import React from "react";
 

@@ -1,7 +1,8 @@
+'use client';
 import { Tag, Title, TitleProps } from '@/components';
 import clsx from 'clsx';
 import Image from 'next/image'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import Link from 'next/link';
 
 export type ProjectPresentationProps = {

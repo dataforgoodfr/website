@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { EditoCard, Title } from '@/components';
 
 export default function ChartePage() {

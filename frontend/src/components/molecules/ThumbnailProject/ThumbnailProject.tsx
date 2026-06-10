@@ -1,7 +1,8 @@
+'use client';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Button, TiltedTitle, TiltedTitleProps, Title, TitleProps } from '@/components';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 
 export type ThumbnailProjectProps = {
   name: TiltedTitleProps;

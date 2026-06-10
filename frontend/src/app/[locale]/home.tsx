@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
 import { HomepageData } from './page';
 import Image from 'next/image'

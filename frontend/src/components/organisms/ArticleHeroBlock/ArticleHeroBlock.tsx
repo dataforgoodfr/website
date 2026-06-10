@@ -1,7 +1,8 @@
+'use client';
 import clsx from 'clsx';
 import Image from 'next/image'
 import { TiltedTitle } from '@/components/atoms';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import Link from 'next/link';
 
 export type ArticleHeroBlockProps = {

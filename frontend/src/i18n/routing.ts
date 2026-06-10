@@ -1,60 +1,27 @@
-import { defineRouting } from 'next-intl/routing';
-import { Pathnames } from 'next-intl/routing';
-
-const locales = ['fr'] as const;
+export const locales = ['fr'] as const;
 
 export const pathnames = {
   "/": "/",
-  "/donations": {
-    fr: "/faire-un-don",
-  },
-  "/about": {
-    fr: "/nous-connaitre",
-  },
-  "/blog": {
-    fr: "/ressources",
-  },
-  "/blog/[slug]": {
-    fr: "/ressources/[slug]",
-  },
-  "/democracy": {
-    fr: "/democratie",
-  },
-  "/events": {
-    fr: "/nos-evenements",
-  },
-  "/events/[id]": {
-    fr: "/nos-evenements/[id]",
-  },
-  "/positions": {
-    fr: "/nos-positions",
-  },
-  "/climate-and-biodiversity": {
-    fr: "/climat-et-biodiversite",
-  },
-  "/projects": {
-    fr: "/projets",
-  },
-  "/projects/[slug]": {
-    fr: "/projets/[slug]",
-  },
-  "/social-justice": {
-    fr: "/justice-sociale",
-  },
-  "/faq": {
-    fr: "/foire-aux-questions",
-  },
-  "/cgu": {
-    fr: "/conditions-generales-d-utilisation",
-  },
-  "/charte": {
-    fr: "/charte-diversite",
-  },
-} satisfies Pathnames<typeof locales>;
+  "/donations": "/faire-un-don",
+  "/about": "/nous-connaitre",
+  "/blog": "/ressources",
+  "/blog/[slug]": "/ressources/[slug]",
+  "/democracy": "/democratie",
+  "/events": "/nos-evenements",
+  "/events/[id]": "/nos-evenements/[id]",
+  "/positions": "/nos-positions",
+  "/climate-and-biodiversity": "/climat-et-biodiversite",
+  "/projects": "/projets",
+  "/projects/[slug]": "/projets/[slug]",
+  "/social-justice": "/justice-sociale",
+  "/faq": "/foire-aux-questions",
+  "/cgu": "/conditions-generales-d-utilisation",
+  "/charte": "/charte-diversite",
+};
 
-export const routing = defineRouting({
+export const routing = {
   locales,
-  localePrefix: 'as-needed',
-  defaultLocale: 'fr',
+  localePrefix: 'as-needed' as const,
+  defaultLocale: 'fr' as const,
   pathnames,
-});
+};

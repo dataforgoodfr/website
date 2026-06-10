@@ -41,8 +41,8 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
 # Copy frontend package
 COPY frontend ./frontend
 
-# Build frontend package
-RUN pnpm frontend build
+# Build frontend with Vinext
+RUN pnpm --filter frontend build:vinext
 
 # --------------------
 # Runtime image
@@ -60,26 +60,15 @@ RUN corepack enable
 RUN apk add --no-cache bash
 
 # Remove telemetry
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV SLS_TELEMETRY_DISABLED=1
-ENV SLS_NOTIFICATIONS_MODE=off
-ENV DISABLE_OPENCOLLECTIVE=true
-ENV SEMGREP_SEND_METRICS=off
-ENV COLLECT_LEARNINGS_OPT_OUT=true
 ENV NODE_ENV=production
 
-# Enable health check
-# HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:3000/api/health || exit 1
+# Copy Vinext standalone output
+COPY --from=builder /app/frontend/dist/standalone /app
 
-COPY --from=builder /app/frontend/.next/standalone/ /app/
-COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
-COPY --from=builder /app/frontend/public /app/frontend/public
-COPY --from=builder /app/frontend/messages /app/frontend/messages
-
-# Copy the server wrapper that ensures env vars are available
-COPY frontend/server-wrapper.js /app/frontend/server-wrapper.js
+# Copy messages (already included in standalone via build script, but ensure they're present)
+COPY --from=builder /app/frontend/messages /app/messages
 
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "frontend/server-wrapper.js"]
+CMD ["node", "server.js"]

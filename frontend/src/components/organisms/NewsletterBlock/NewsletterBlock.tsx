@@ -1,8 +1,11 @@
-import { NewsletterForm, Title, TitleProps } from '@/components';
+'use client';
+
+import NewsletterForm from '@/components/molecules/NewsletterForm/NewsletterForm';
+import Title from '@/components/atoms/Title/Title';
+import type { TitleProps } from '@/components/atoms/Title/Title';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from '@/i18n/index';
 
 export type NewsletterBlockProps = {
   title?: string;

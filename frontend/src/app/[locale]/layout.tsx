@@ -1,58 +1,23 @@
-import clsx from 'clsx';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
-import { DM_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
-import { routing } from '@/i18n/routing';
-import Footer from './_partials/footer';
+import { I18nProvider } from '@/i18n/provider';
+import { loadAllMessages } from '@/i18n/server';
+import { locales } from '@/i18n/routing';
 import Header from './_partials/header';
+import Footer from './_partials/footer';
+import NewsletterBlock from '@/components/organisms/NewsletterBlock/NewsletterBlock';
 import './globals.css';
-import { CampaignBanner, NewsletterBlock } from '@/components';
 
-const dmMono = DM_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-secondary',
-});
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: (typeof routing.locales)[number] }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale: locale as string, namespace: 'siteConfig' });
-
+export async function generateMetadata() {
   return {
-    metadataBase: new URL(t('url')),
-    title: {
-      default: t('title'),
-      template: `%s | ${t('title')}`,
-    },
-    description: t('description'),
+    title: 'Data For Good',
+    description: "Data For Good - Association pour l'impact social par la data",
     robots: { index: true, follow: true },
     icons: {
       icon: '/favicon/favicon.ico',
       shortcut: '/favicon/favicon.ico',
       apple: '/favicon/apple-touch-icon.png',
     },
-    manifest: `/favicon/site.webmanifest`,
-    openGraph: {
-      url: t('url'),
-      title: t('title'),
-      description: t('description'),
-      siteName: t('title'),
-      images: [`${t('url')}/images/og.jpg`],
-      type: 'website',
-      locale: 'fr',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: [`${t('url')}/images/og.jpg`],
-    },
+    manifest: '/favicon/site.webmanifest',
   };
 }
 
@@ -63,39 +28,32 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale || 'fr';
+
+  const isValidLocale = locales.includes(locale as typeof locales[number]);
+
+  if (!isValidLocale) {
     notFound();
   }
 
+  let messages: Record<string, unknown> = {};
+  try {
+    messages = await loadAllMessages(locale);
+  } catch (e) {
+    console.error('Failed to load messages:', e);
+  }
+
   return (
-    <html lang={locale} className="scroll-smooth">
-      <head>
-        <Script
-          src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
-          strategy="beforeInteractive"
-          defer
-        />
-        <Script
-          src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js"
-          defer={true}
-          data-domain="dataforgood.fr"
-        />
-      </head>
-      <body
-        className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
-        style={{ backgroundSize: '100vw 100vh' }}
-      >
-        <NextIntlClientProvider>
-          {/* <CampaignBanner/> */}
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <NewsletterBlock />
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <I18nProvider messages={messages} locale={locale}>
+        <Header />
+        <main className="flex-1">
+          {children}
+        </main>
+        <NewsletterBlock />
+        <Footer />
+      </I18nProvider>
+    </>
   );
 }

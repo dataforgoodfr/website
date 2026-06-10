@@ -1,3 +1,13 @@
 **node_modules/
 .DS_Store
 .pi/extensions/emdash-hook.ts
+.factory/settings.json
+
+# Build outputs
+frontend/.output/
+frontend/.vinext/
+frontend/dist/
+frontend/.next/
+
+# Backup files
+*.bak

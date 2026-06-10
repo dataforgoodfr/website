@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig = {
   output: 'standalone',
@@ -24,6 +23,11 @@ const nextConfig = {
 };
 
 export async function getRedirects() {
+  if (!process.env.STRAPI_API_URL || !process.env.STRAPI_API_TOKEN) {
+    console.warn('STRAPI_API_URL or STRAPI_API_TOKEN not set — skipping redirects fetch');
+    return [];
+  }
+
   try {
     const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
       headers: {
@@ -43,5 +47,4 @@ export async function getRedirects() {
   }
 }
 
-const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default nextConfig;

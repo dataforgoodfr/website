@@ -1,4 +1,5 @@
-import { useTranslations } from 'next-intl';
+'use client';
+import { useTranslations } from '@/i18n/index';
 import { TiltedTitle, Button } from '@/components';
 import Image from 'next/image';
 import {

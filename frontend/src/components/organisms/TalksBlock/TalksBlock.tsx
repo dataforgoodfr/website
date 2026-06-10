@@ -1,7 +1,8 @@
+'use client';
 import { Title, TitleProps } from '@/components';
 import { TalkCard, TalkCardProps } from '@/components/molecules';
 import clsx from 'clsx';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import Image from "next/image"
 
 export type TalksBlockProps = {

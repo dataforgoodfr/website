@@ -7,7 +7,7 @@ import {
   Title,
 } from '@/components';
 import ProjectListBlock from '@/components/organisms/ProjectListBlock/ProjectListBlock';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { ProjectListPageData } from './page';
 
 function transformThematicsData(thematics: ProjectListPageData["thematics"]) {

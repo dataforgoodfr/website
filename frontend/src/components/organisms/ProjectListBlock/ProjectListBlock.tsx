@@ -1,8 +1,9 @@
+'use client';
 import { Button, Filter, Pagination, Title, TitleProps } from '@/components';
 import { ProjectListCard, SearchInput } from '@/components/molecules';
 import { IFilter, IProject } from '@/lib/types';
 import clsx from 'clsx';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 

@@ -1,83 +1,116 @@
-import Homepage from './home';
 import client from '@/lib/strapi-client';
-import { generateMetadataFromSeo } from '@/lib/utils';
+import Homepage from './home';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const { data } = await fetchHomepageData()
+export type HomepageData = {
+  hero?: {
+    image?: { url: string };
+    title?: string;
+    subtitle?: string;
+    talk?: string;
+  };
+  featured_projects?: Array<{
+    id?: number;
+    thumbnail?: { url: string };
+    title?: string;
+    short_description?: string;
+    slug?: string;
+  }>;
+  results?: Array<{
+    id?: number;
+    kpi?: {
+      stat?: string;
+      description?: string;
+    };
+    cta?: {
+      link?: string;
+      text?: string;
+    };
+  }>;
+  events?: Array<{
+    id?: number;
+    name?: string;
+    date?: string;
+    image?: { url: string };
+    link?: string;
+  }>;
+  resources?: Array<{
+    id?: number;
+    blog?: {
+      title: string;
+      author?: { name: string };
+      thumbnail?: { url: string };
+      slug: string;
+    } | null;
+    press_release?: {
+      media_name?: string;
+      title?: string;
+      thumbnail?: { url: string };
+      article_link?: string;
+    } | null;
+  }>;
+  thematics?: Array<{
+    id?: number;
+    name?: string;
+    color?: string;
+    short_description?: string;
+    thumbnail?: { url: string };
+    cta_text?: string;
+    cta_link?: string;
+  }>;
+  project_carousel_title?: string;
+  thematics_section_title?: string;
+  resources_section_title?: string;
+  results_section_title?: string;
+};
 
-  if (!data?.data?.seo_meta) {
-    return {};
-  }
-
-  return generateMetadataFromSeo(data.data.seo_meta);
-}
-
-async function fetchHomepageData() {
-  return await client.GET('/home-page', {
-    params: {
-      query: {
-        populate: {
-          seo_meta: {
-            populate: "*"
-          },
-          hero: {
-            populate: "*"
-          },
-          results: {
-            populate: {
-              kpi: {
-                populate: "*",
-              },
-              cta: {
-                populate: "*",
-              }
-            }
-          },
-          featured_projects: {
-            fields: ["title", "short_description", "slug"],
-            populate: "thumbnail"
-          },
-          thematics: {
-            populate: "*"
-          },
-          events: {
-            populate: "*"
-          },
-          resources: {
-            populate: {
-              blog: {
-                populate: {
-                  author: {
-                    fields: ["name"]
-                  },
-                  thumbnail: {
-                    fields: ["url"]
-                  }
-                }
-              },
-              press_release: {
-                populate: "*"
-              }
-            }
-          }
-        }
-      }
-    }
-  });
-}
-
-export type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchHomepageData>>["data"]>["data"]>;
-
-export default async function Page() {
-  const { data } = await fetchHomepageData();
-
-  if (!data?.data) {
+async function fetchHomepageData(): Promise<HomepageData | null> {
+  if (!process.env.STRAPI_API_URL) {
+    console.warn('STRAPI_API_URL not set — returning empty homepage data');
     return null;
   }
+  try {
+    const { data, error } = await client.GET('/home-page', {
+      params: {
+        query: {
+          populate: {
+            hero: {
+              populate: { image: { fields: ['url'] } },
+            },
+            featured_projects: {
+              populate: { thumbnail: { fields: ['url'] } },
+            },
+            results: {
+              populate: '*',
+            },
+            events: {
+              populate: { image: { fields: ['url'] } },
+            },
+            resources: {
+              populate: {
+                blog: { populate: { thumbnail: { fields: ['url'] }, author: { fields: ['name'] } } },
+                press_release: { populate: { thumbnail: { fields: ['url'] } } },
+              },
+            },
+            thematics: {
+              populate: { thumbnail: { fields: ['url'] } },
+            },
+          },
+        },
+      },
+    });
+    if (error) {
+      console.error('Failed to fetch homepage data:', error);
+      return null;
+    }
+    return (data as unknown as { data: HomepageData })?.data ?? null;
+  } catch (e) {
+    console.error('Failed to fetch homepage data:', e);
+    return null;
+  }
+}
 
-  return <Homepage data={data.data} />;
+export default async function Page() {
+  const data = await fetchHomepageData();
+
+  return <Homepage data={data ?? {}} />;
 }

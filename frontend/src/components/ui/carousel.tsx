@@ -1,3 +1,4 @@
+'use client';
 "use client"
 
 import * as React from "react"
@@ -6,7 +7,7 @@ import useEmblaCarousel, {
 } from "embla-carousel-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/index"
 import Image from "next/image"
 import clsx from "clsx"
 

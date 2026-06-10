@@ -2,7 +2,7 @@
 
 import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, PartnersBlock, ProjectCarousel, ProjectHeroBlock, ProjectImpactBlock, ProjectPresentation, ProjectProcesses } from '@/components';
 import { IMembers, IProjectImpacts } from '@/lib/types';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { type ProjectPageData } from './page';
 
 type ProjectPageProps = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { useEffect, useRef } from 'react';
 import { Button, EditoCard, TalksBlock, ThematicsBlock, Title, ArticleHeroBlock, LargeTextImageDonation } from '@/components';
 import { DonationsData } from './page';

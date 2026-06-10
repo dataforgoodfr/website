@@ -1,8 +1,11 @@
 'use client';
 
 import React, { useState, useId } from 'react';
-import { useTranslations } from 'next-intl';
-import { Input, Checkbox, Button, ArrowIcon } from '@/components/atoms';
+import { useTranslations } from '@/i18n/index';
+import Input from '@/components/atoms/Input/Input';
+import Checkbox from '@/components/atoms/Checkbox/Checkbox';
+import Button from '@/components/atoms/Button/Button';
+import ArrowIcon from '@/components/atoms/ArrowIcon/ArrowIcon';
 
 export type NewsletterFormProps = {
   className?: string;

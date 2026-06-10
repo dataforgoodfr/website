@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBluesky, FaInstagram, FaLinkedin, FaMastodon } from 'react-icons/fa6';

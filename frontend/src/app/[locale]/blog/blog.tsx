@@ -1,7 +1,8 @@
+'use client';
 
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
 import { BlogsPageMeta, BlogsPageData } from './page';
 import { usePagination } from '@/hooks/usePagination';

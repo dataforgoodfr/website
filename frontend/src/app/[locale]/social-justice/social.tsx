@@ -14,7 +14,7 @@ import {
   transformPartners,
   transformThematics,
 } from '@/lib/formatters/thematics';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/index';
 import { ThematicPageData, ThematicsData } from './page';
 
 type ThematicsProps = {
