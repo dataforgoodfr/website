@@ -29,6 +29,7 @@ function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
   return funders.map(partner => ({
     id: partner.id,
     name: partner.name,
+    description: partner.description,
     image: partner.logo?.url,
     link: partner.website_link ?? 'https://www.dataforgood.fr',
   }));
