@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { createTranslator, setMessages } from './translations';
 
 const messageFiles = [
@@ -20,13 +21,31 @@ function tryLoadMessageFile(filePath: string): Record<string, unknown> | null {
   return null;
 }
 
-async function tryLoadMessage(locale: string, file: string): Promise<Record<string, unknown> | null> {
+function getSearchPaths(locale: string, file: string): string[] {
+  const paths: string[] = [];
+
+  // Paths relative to process.cwd() — works in dev mode
   const cwd = process.cwd();
-  const paths = [
-    path.join(cwd, 'messages', locale, `${file}.json`),
-    path.join(cwd, '..', 'messages', locale, `${file}.json`),
-    path.join(cwd, '..', '..', 'messages', locale, `${file}.json`),
-  ];
+  for (let i = 0; i <= 4; i++) {
+    paths.push(path.join(cwd, ...Array(i).fill('..'), 'messages', locale, `${file}.json`));
+  }
+
+  // Paths relative to the module's own location — works in standalone builds
+  // regardless of where the server is launched from
+  try {
+    const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+    for (let i = 0; i < 5; i++) {
+      paths.push(path.join(moduleDir, ...Array(i).fill('..'), 'messages', locale, `${file}.json`));
+    }
+  } catch {
+    // import.meta.url not available in this environment
+  }
+
+  return paths;
+}
+
+async function tryLoadMessage(locale: string, file: string): Promise<Record<string, unknown> | null> {
+  const paths = getSearchPaths(locale, file);
   for (const p of paths) {
     const result = tryLoadMessageFile(p);
     if (result) return result;
