@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBluesky, FaLinkedin } from 'react-icons/fa6';
+import { FaBluesky, FaInstagram, FaLinkedin, FaMastodon } from 'react-icons/fa6';
 import { Button, SocialLink } from '@/components/atoms';
 import { usePathLocale } from '@/hooks/usePathLocale';
 import { NewsletterForm } from '@/components';
@@ -18,8 +18,16 @@ const Footer = () => {
       icon: <FaBluesky />,
     },
     linkedin: {
-      href: 'https://www.linkedin.com/company/dataforgoodfr/',
+      href: 'https://www.linkedin.com/company/dataforgood/',
       icon: <FaLinkedin />,
+    },
+    instagram: {
+      href: 'https://www.instagram.com/dataforgoodfr/',
+      icon: <FaInstagram />,
+    },
+    mastodon: {
+      href: 'https://piaille.fr/@dataforgood',
+      icon: <FaMastodon />,
     },
   };
 

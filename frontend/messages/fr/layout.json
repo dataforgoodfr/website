@@ -56,7 +56,9 @@
       },
       "social": {
         "bluesky": "Bluesky",
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "instagram": "Instagram",
+        "mastodon": "Mastodon"
       }
     }
   },
