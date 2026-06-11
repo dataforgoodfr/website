@@ -14,7 +14,7 @@ const Footer = () => {
 
   const socialLinks: Record<string, { href: string; icon: React.ReactNode }> = {
     bluesky: {
-      href: 'https://bsky.app/profile/dataforgood.fr',
+      href: 'https://bsky.app/profile/dataforgoodfr.bsky.social',
       icon: <FaBluesky />,
     },
     linkedin: {
