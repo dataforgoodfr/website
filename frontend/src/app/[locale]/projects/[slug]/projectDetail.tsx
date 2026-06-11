@@ -4,6 +4,7 @@ import { Banner, BannerVideo, MembersBlock, NewsSmallBlock, PartnersBlock, Proje
 import { IMembers, IProjectImpacts } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { type ProjectPageData } from './page';
+import { getPressReleaseLink } from '@/lib/utils';
 
 type ProjectPageProps = {
   project: ProjectPageData;
