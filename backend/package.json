@@ -36,15 +36,16 @@
     "react-router-dom": "^6.0.0",
     "sharp": "^0.34.4",
     "strapi-plugin-multi-select": "^2.1.1",
-    "strapi-v5-redirects": "^1.0.4",
     "strapi-plugin-tagsinput": "^2.0.2",
     "strapi-provider-email-brevo": "^1.0.4",
+    "strapi-v5-redirects": "^1.0.4",
     "styled-components": "^6.0.0"
   },
   "strapi": {
     "uuid": "23578308-9b2f-4525-aca3-db1c4f9e3b2d"
   },
   "devDependencies": {
-    "@types/qs": "^6.9.16"
+    "@types/qs": "^6.9.16",
+    "baseline-browser-mapping": "^2.10.23"
   }
 }

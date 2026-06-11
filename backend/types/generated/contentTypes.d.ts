@@ -1190,6 +1190,14 @@ export interface ApiPressReleasePressRelease
     };
   };
   attributes: {
+    article_file: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     article_link: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1223,6 +1231,12 @@ export interface ApiPressReleasePressRelease
       'api::press-release.press-release'
     >;
     media_name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    press_release_type: Schema.Attribute.Enumeration<['link', 'file']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

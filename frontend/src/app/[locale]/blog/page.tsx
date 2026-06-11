@@ -57,7 +57,7 @@ export default async function Page({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
-  const pageSize = 8;
+  const pageSize = 12;
   const response = await fetchBlogsPageData(page, pageSize);
 
   if (!response?.data || !response?.data.meta?.pagination) {
