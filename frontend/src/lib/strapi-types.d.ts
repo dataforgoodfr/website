@@ -3306,8 +3306,7 @@ export interface components {
         VideoVideoEmbedComponent: {
             id?: number;
             url?: string;
-            embed?: string;
-            orientation?: "horizontal" | "vertical";
+            orientation?: "paysage" | "portrait";
         };
         BlogRequest: {
             data: {

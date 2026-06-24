@@ -10,16 +10,13 @@
     "url": {
       "type": "string"
     },
-    "embed": {
-      "type": "text"
-    },
     "orientation": {
       "type": "enumeration",
       "enum": [
-        "horizontal",
-        "vertical"
+        "paysage",
+        "portrait"
       ],
-      "default": "horizontal"
+      "default": "paysage"
     }
   }
 }
