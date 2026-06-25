@@ -44,7 +44,7 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
       title: isBlog ? (resource.blog as { title: string })?.title || '' : (resource.press_release as { title: string })?.title || '',
       tags: isBlog ? [new Date(resource.blog?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })] : [new Date(resource.press_release?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), resource.press_release?.media_name],
       image: isBlog ? resource.blog?.thumbnail?.url || '/images/dataforgood.svg' : resource.press_release?.thumbnail?.url || "/images/dataforgood.svg",
-      link: isBlog ? `/blog/${resource.blog?.slug || ''}` : getPressReleaseLink(resource as { press_release_type: string; article_link: string; article_file: {url: string;}}) || '',
+      link: isBlog ? `/blog/${resource.blog?.slug || ''}` : getPressReleaseLink(resource.press_release as { press_release_type: string; article_link: string; article_file: {url: string;}}) || '',
       subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags?.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
       isBlank: true,
     }
