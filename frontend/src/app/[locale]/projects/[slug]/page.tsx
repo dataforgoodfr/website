@@ -49,6 +49,9 @@ async function fetchProjectPageData(slug: string) {
           },
           seasons: {
             populate: '*'
+          },
+          video: {
+            populate: '*'
           }
         },
       },

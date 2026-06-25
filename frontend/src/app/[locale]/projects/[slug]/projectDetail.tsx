@@ -189,6 +189,12 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         className="my-lg"
       />}
 
+      {project.video && <BannerVideo
+        url={project.video.url}
+        format={project.video.orientation as 'paysage' | 'portrait'}
+        className='my-lg'
+      />}
+
     </>
   );
 }
