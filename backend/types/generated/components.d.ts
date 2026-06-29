@@ -164,6 +164,20 @@ export interface TestimonialTestimonial extends Struct.ComponentSchema {
   };
 }
 
+export interface VideoVideoEmbed extends Struct.ComponentSchema {
+  collectionName: 'components_video_video_embeds';
+  info: {
+    description: '';
+    displayName: 'video_embed';
+    icon: 'play';
+  };
+  attributes: {
+    orientation: Schema.Attribute.Enumeration<['paysage', 'portrait']> &
+      Schema.Attribute.DefaultTo<'paysage'>;
+    url: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -179,6 +193,7 @@ declare module '@strapi/strapi' {
       'kpi.kpi-with-cta': KpiKpiWithCta;
       'seo-meta.seo-meta': SeoMetaSeoMeta;
       'testimonial.testimonial': TestimonialTestimonial;
+      'video.video-embed': VideoVideoEmbed;
     }
   }
 }
