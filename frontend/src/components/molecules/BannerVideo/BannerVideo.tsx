@@ -41,7 +41,7 @@ const BannerVideo: React.FC<BannerVideoProps> = ({
     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
     return (
-      <div className={clsx('mx-auto shadow-lg', className)} {...props}>
+      <div className={clsx('mx-auto shadow-lg w-fit', className)} {...props}>
         <iframe
           className={clsx(
             'max-w-full',
@@ -63,7 +63,7 @@ const BannerVideo: React.FC<BannerVideoProps> = ({
   }
 
   return (
-    <div className={clsx('mx-auto shadow-lg', className)} {...props}>
+    <div className={clsx('mx-auto shadow-lg w-fit', className)} {...props}>
       <div
         className={clsx(
           'max-w-full',
