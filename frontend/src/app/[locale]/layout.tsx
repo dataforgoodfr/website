@@ -3,7 +3,6 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { DM_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { routing } from '@/i18n/routing';
 import Footer from './_partials/footer';
 import Header from './_partials/header';
@@ -71,14 +70,13 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
-        <Script
+        <script
           src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
-          strategy="beforeInteractive"
           defer
         />
-        <Script
+        <script
           src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js"
-          defer={true}
+          defer
           data-domain="dataforgood.fr"
         />
       </head>

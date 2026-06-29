@@ -3303,6 +3303,11 @@ export interface components {
             stat?: string;
             description?: string;
         };
+        VideoVideoEmbedComponent: {
+            id?: number;
+            url?: string;
+            orientation?: "paysage" | "portrait";
+        };
         BlogRequest: {
             data: {
                 title?: string;

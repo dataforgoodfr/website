@@ -1505,6 +1505,12 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    video: Schema.Attribute.Component<'video.video-embed', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     volunteers: Schema.Attribute.Relation<
       'manyToMany',
       'api::volunteer.volunteer'

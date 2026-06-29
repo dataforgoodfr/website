@@ -33,7 +33,7 @@ const ProjectProcesses: React.FC<ProjectProcessesProps> = ({
   return (
     <div
       className={clsx(
-        "prose prose--big my-xs max-w-4xl ml-0",
+        "prose prose--big my-xs max-w-4xl mx-auto",
         className,
       )}
       {...props}

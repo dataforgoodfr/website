@@ -116,6 +116,16 @@
         }
       }
     },
+    "video": {
+      "type": "component",
+      "repeatable": false,
+      "component": "video.video-embed",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "related_projects": {
       "type": "relation",
       "relation": "oneToMany",

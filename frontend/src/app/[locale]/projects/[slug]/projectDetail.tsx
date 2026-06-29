@@ -143,10 +143,18 @@ export default function ProjectDetailPage({ project }: ProjectPageProps) {
         className='my-lg'
       />
 
-      {project.demo_video && <BannerVideo
-        video={project.demo_video_embed}
-        className='my-lg'
-      />}
+      {project.video?.url ? (
+        <BannerVideo
+          url={project.video.url}
+          format={project.video.orientation as 'paysage' | 'portrait'}
+          className='my-lg'
+        />
+      ) : project.demo_video_embed ? (
+        <BannerVideo
+          video={project.demo_video_embed}
+          className='my-lg'
+        />
+      ) : null}
 
       {presentationContent.length > 0 && <Banner
         content={presentationContent}

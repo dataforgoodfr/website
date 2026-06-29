@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-06-10T10:21:11.749Z"
+    "x-generation-date": "2026-06-29T16:26:56.132Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -13437,6 +13437,9 @@
                             "demo_video_embed": {
                               "type": "string"
                             },
+                            "video": {
+                              "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                            },
                             "related_projects": {
                               "type": "array",
                               "items": {
@@ -16059,6 +16062,24 @@
           }
         }
       },
+      "VideoVideoEmbedComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "url": {
+            "type": "string"
+          },
+          "orientation": {
+            "type": "string",
+            "enum": [
+              "paysage",
+              "portrait"
+            ]
+          }
+        }
+      },
       "KpiKpiComponent": {
         "type": "object",
         "properties": {
@@ -17441,6 +17462,9 @@
                     },
                     "demo_video_embed": {
                       "type": "string"
+                    },
+                    "video": {
+                      "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                     },
                     "related_projects": {
                       "type": "array",
@@ -20964,6 +20988,9 @@
                           "demo_video_embed": {
                             "type": "string"
                           },
+                          "video": {
+                            "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                          },
                           "related_projects": {
                             "type": "array",
                             "items": {
@@ -23958,6 +23985,9 @@
                     "demo_video_embed": {
                       "type": "string"
                     },
+                    "video": {
+                      "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                    },
                     "related_projects": {
                       "type": "array",
                       "items": {
@@ -26710,6 +26740,9 @@
                     },
                     "demo_video_embed": {
                       "type": "string"
+                    },
+                    "video": {
+                      "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                     },
                     "related_projects": {
                       "type": "array",
@@ -32376,6 +32409,9 @@
                       "demo_video_embed": {
                         "type": "string"
                       },
+                      "video": {
+                        "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                      },
                       "related_projects": {
                         "type": "array",
                         "items": {
@@ -35220,6 +35256,9 @@
                 },
                 "demo_video_embed": {
                   "type": "string"
+                },
+                "video": {
+                  "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                 },
                 "related_projects": {
                   "type": "array",
@@ -40364,6 +40403,9 @@
                 "demo_video_embed": {
                   "type": "string"
                 },
+                "video": {
+                  "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                },
                 "related_projects": {
                   "type": "array",
                   "items": {
@@ -43311,6 +43353,9 @@
                             },
                             "demo_video_embed": {
                               "type": "string"
+                            },
+                            "video": {
+                              "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                             },
                             "related_projects": {
                               "type": "array",
@@ -47581,6 +47626,9 @@
                       "demo_video_embed": {
                         "type": "string"
                       },
+                      "video": {
+                        "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                      },
                       "related_projects": {
                         "type": "array",
                         "items": {
@@ -49852,6 +49900,9 @@
               "demo_video_embed": {
                 "type": "string"
               },
+              "video": {
+                "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+              },
               "related_projects": {
                 "type": "array",
                 "items": {
@@ -51258,6 +51309,9 @@
                       },
                       "demo_video_embed": {
                         "type": "string"
+                      },
+                      "video": {
+                        "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                       },
                       "related_projects": {
                         "type": "array",
@@ -53343,6 +53397,9 @@
           "demo_video_embed": {
             "type": "string"
           },
+          "video": {
+            "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+          },
           "related_projects": {
             "type": "array",
             "items": {
@@ -54431,6 +54488,9 @@
               },
               "demo_video_embed": {
                 "type": "string"
+              },
+              "video": {
+                "$ref": "#/components/schemas/VideoVideoEmbedComponent"
               },
               "related_projects": {
                 "type": "array",
@@ -57778,6 +57838,9 @@
                       },
                       "demo_video_embed": {
                         "type": "string"
+                      },
+                      "video": {
+                        "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                       },
                       "related_projects": {
                         "type": "array",
@@ -61290,6 +61353,9 @@
                         "demo_video_embed": {
                           "type": "string"
                         },
+                        "video": {
+                          "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                        },
                         "related_projects": {
                           "type": "array",
                           "items": {
@@ -64613,6 +64679,9 @@
                 "demo_video_embed": {
                   "type": "string"
                 },
+                "video": {
+                  "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                },
                 "related_projects": {
                   "type": "array",
                   "items": {
@@ -67441,6 +67510,9 @@
                     },
                     "demo_video_embed": {
                       "type": "string"
+                    },
+                    "video": {
+                      "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                     },
                     "related_projects": {
                       "type": "array",
@@ -71210,6 +71282,9 @@
                 "demo_video_embed": {
                   "type": "string"
                 },
+                "video": {
+                  "$ref": "#/components/schemas/VideoVideoEmbedComponent"
+                },
                 "related_projects": {
                   "type": "array",
                   "items": {
@@ -74972,6 +75047,9 @@
                 },
                 "demo_video_embed": {
                   "type": "string"
+                },
+                "video": {
+                  "$ref": "#/components/schemas/VideoVideoEmbedComponent"
                 },
                 "related_projects": {
                   "type": "array",

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_video_video_embeds",
+  "info": {
+    "displayName": "video_embed",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "orientation": {
+      "type": "enumeration",
+      "enum": [
+        "paysage",
+        "portrait"
+      ],
+      "default": "paysage"
+    }
+  }
+}
