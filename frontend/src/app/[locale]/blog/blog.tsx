@@ -22,48 +22,27 @@ function getTagsAsStrings(tags: unknown): string[] {
   });
 }
 
-function determineType(element: Record<string, any> | null, tagStrings: string[]): string {
-  // Check tags first
-  const types = ['podcast', 'article', 'rapport', 'prise de position', 'autre'];
-  for (const t of tagStrings) {
-    const lower = t.toLowerCase();
-    if (types.includes(lower)) return lower;
-  }
-  // Check media_name (it sometimes contains the type, e.g. "Rapport")
-  if (element?.media_name) {
-    const lower = element.media_name.toLowerCase();
-    if (types.includes(lower)) return lower;
-  }
-  // Check title for clues
-  if (element?.title) {
-    const lower = element.title.toLowerCase();
-    if (lower.startsWith('podcast') || lower.startsWith('vidéo') || lower.startsWith('video')) return 'article';
-    if (lower.startsWith('rapport')) return 'rapport';
-    if (lower.startsWith('communiqué')) return 'article';
-  }
-  // Default
+// Fallback used only while a resource has no `resource_type` set in Strapi.
+// Once editors fill the field it becomes the source of truth (see transformBlogsData).
+function determineType(element: Record<string, any> | null): string {
+  const title = (element?.title ?? '').toLowerCase();
+  const media = (element?.media_name ?? '').toLowerCase();
+  const url = (element?.article_link ?? '').toLowerCase();
+
+  if (media === 'rapport' || title.startsWith('rapport') || url.endsWith('.pdf')) return 'rapport';
+  if (url.includes('/podcast') || url.includes('radiofrance') || title.startsWith('podcast')) return 'podcast';
+  if (title.startsWith('vidéo') || title.startsWith('video') || title.startsWith('communiqué')) return 'article';
+  // A named press outlet (not our own brand, not a newsletter) => article.
+  if (media && media !== 'data for good' && !media.startsWith('newsletter')) return 'article';
   return 'autre';
 }
 
-function determineNewsletter(element: Record<string, any> | null, tagStrings: string[]): string | null {
-  const newsletters = ['Techno-lucides', "Vers l'autonomie et au-delà"];
-  // Check tags
-  for (const n of newsletters) {
-    if (tagStrings.includes(n)) return n;
-  }
-  // Check media_name (e.g. "Newsletter - Technolucide", "Newsletter - Vers l'autonomie et au-delà")
-  if (element?.media_name) {
-    if (element.media_name === 'Newsletter - Technolucide') return 'Techno-lucides';
-    if (element.media_name === "Newsletter - Vers l'autonomie et au-delà") return "Vers l'autonomie et au-delà";
-  }
-  // Check title
-  if (element?.title) {
-    for (const n of newsletters) {
-      if (element.title.includes(n)) return n;
-    }
-    if (element.title.startsWith('Techno-Lucide')) return 'Techno-lucides';
-    if (element.title.startsWith("Vers l'autonomie")) return "Vers l'autonomie et au-delà";
-  }
+// Fallback used only while a resource has no `newsletter` set in Strapi.
+function determineNewsletter(element: Record<string, any> | null): string | null {
+  const media = element?.media_name ?? '';
+  const title = element?.title ?? '';
+  if (media === 'Newsletter - Technolucide' || title.startsWith('Techno-Lucide')) return 'techno_lucides';
+  if (media === "Newsletter - Vers l'autonomie et au-delà" || title.startsWith("Vers l'autonomie")) return 'vers_lautonomie';
   return null;
 }
 
@@ -91,27 +70,26 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedR
 
     const publishedDate = element?.published_date ?? '';
     const parsedDate = new Date(publishedDate);
+    const isValidDate = !isNaN(parsedDate.getTime());
 
     return {
       id: resource.id,
       title: element?.title ?? '',
       rawDate: publishedDate,
-      date: parsedDate instanceof Date && !isNaN(parsedDate.getTime())
-        ? parsedDate.toLocaleString(undefined, {dateStyle: 'medium'})
-        : '',
+      date: isValidDate ? parsedDate.toLocaleString(undefined, {dateStyle: 'medium'}) : '',
       image: element?.thumbnail?.url ?? '/images/dataforgood.svg',
       link: isBlog ? `/blog/${element?.slug ?? ''}` : getPressReleaseLink(element as any),
       subInfos: tagStrings,
       tags: [
-        parsedDate instanceof Date && !isNaN(parsedDate.getTime())
-          ? parsedDate.toLocaleDateString(undefined, {dateStyle: 'long'})
-          : null,
+        isValidDate ? parsedDate.toLocaleDateString(undefined, {dateStyle: 'long'}) : null,
         element?.media_name,
       ].filter(Boolean),
       isBlank: true,
-      year: parsedDate instanceof Date && !isNaN(parsedDate.getTime()) ? parsedDate.getFullYear() : 0,
-      type: determineType(element, tagStrings),
-      newsletter: determineNewsletter(element, tagStrings),
+      year: isValidDate ? parsedDate.getFullYear() : 0,
+      // `resource_type`/`newsletter` are the source of truth once set in Strapi;
+      // fall back to a best-effort guess for rows not yet categorized by editors.
+      type: element?.resource_type ?? determineType(element),
+      newsletter: element?.newsletter ?? determineNewsletter(element),
     };
   });
 }
@@ -132,10 +110,17 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
   const searchParams = useSearchParams();
   const allResources = useMemo(() => transformBlogsData(data), [data]);
 
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') ?? '');
-  const [activeYears, setActiveYears] = useState<string[]>(() => getSearchParamValues(searchParams, 'years'));
-  const [activeTypes, setActiveTypes] = useState<string[]>(() => getSearchParamValues(searchParams, 'types'));
-  const [activeNewsletters, setActiveNewsletters] = useState<string[]>(() => getSearchParamValues(searchParams, 'newsletters'));
+  // The URL query string is the single source of truth for filters/search, so
+  // that shareable links and browser Back/Forward restore the exact state.
+  const yearsParam = searchParams.get('years') ?? '';
+  const typesParam = searchParams.get('types') ?? '';
+  const newslettersParam = searchParams.get('newsletters') ?? '';
+  const searchQuery = searchParams.get('search') ?? '';
+
+  const activeYears = useMemo(() => (yearsParam ? yearsParam.split(',').filter(Boolean) : []), [yearsParam]);
+  const activeTypes = useMemo(() => (typesParam ? typesParam.split(',').filter(Boolean) : []), [typesParam]);
+  const activeNewsletters = useMemo(() => (newslettersParam ? newslettersParam.split(',').filter(Boolean) : []), [newslettersParam]);
+
   const [hideFilters, setHideFilters] = useState(true);
 
   const { currentPage, handlePageChange } = usePagination(1);
@@ -173,53 +158,39 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
 
   const pageCount = Math.ceil(filteredResources.length / pageSize);
 
-  const syncFiltersToUrl = useCallback((years: string[], types: string[], newsletters: string[], search: string, page: number) => {
+  // Toggle a comma-separated multi-value param, always resetting to page 1.
+  const toggleFilterParam = useCallback((key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (years.length > 0) params.set('years', years.join(','));
-    else params.delete('years');
-    if (types.length > 0) params.set('types', types.join(','));
-    else params.delete('types');
-    if (newsletters.length > 0) params.set('newsletters', newsletters.join(','));
-    else params.delete('newsletters');
-    if (search) params.set('search', search);
-    else params.delete('search');
-    if (page > 1) params.set('page', String(page));
-    else params.delete('page');
+    const current = getSearchParamValues(params, key);
+    const next = current.includes(value)
+      ? current.filter(v => v !== value)
+      : [...current, value];
+    if (next.length > 0) params.set(key, next.join(','));
+    else params.delete(key);
+    params.delete('page');
     router.push(`?${params.toString()}`, { scroll: false });
   }, [router, searchParams]);
 
   const handleSearchChange = (e: any) => {
     const query = e.value ?? '';
-    setSearchQuery(query);
-    syncFiltersToUrl(activeYears, activeTypes, activeNewsletters, query, 1);
+    const params = new URLSearchParams(searchParams.toString());
+    if (query) params.set('search', query);
+    else params.delete('search');
+    params.delete('page');
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
+  const paramKeyByFilterType: Record<string, string> = {
+    year: 'years',
+    type: 'types',
+    newsletter: 'newsletters',
   };
 
   const handleFilterClick = (e: any) => {
     const filterValue = e.value as string;
-    const filterType = e.getAttribute('data-type');
-
-    let newYears = activeYears;
-    let newTypes = activeTypes;
-    let newNewsletters = activeNewsletters;
-
-    if (filterType === 'year') {
-      newYears = activeYears.includes(filterValue)
-        ? activeYears.filter(v => v !== filterValue)
-        : [...activeYears, filterValue];
-      setActiveYears(newYears);
-    } else if (filterType === 'type') {
-      newTypes = activeTypes.includes(filterValue)
-        ? activeTypes.filter(v => v !== filterValue)
-        : [...activeTypes, filterValue];
-      setActiveTypes(newTypes);
-    } else if (filterType === 'newsletter') {
-      newNewsletters = activeNewsletters.includes(filterValue)
-        ? activeNewsletters.filter(v => v !== filterValue)
-        : [...activeNewsletters, filterValue];
-      setActiveNewsletters(newNewsletters);
-    }
-
-    syncFiltersToUrl(newYears, newTypes, newNewsletters, searchQuery, 1);
+    const filterType = e.getAttribute('data-type') as string;
+    const key = paramKeyByFilterType[filterType];
+    if (key) toggleFilterParam(key, filterValue);
   };
 
   const yearFilters = [
@@ -236,13 +207,13 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
     { filterName: 'Podcast', filterValue: 'podcast' },
     { filterName: 'Article', filterValue: 'article' },
     { filterName: 'Rapport', filterValue: 'rapport' },
-    { filterName: 'Prise de position', filterValue: 'prise de position' },
+    { filterName: 'Prise de position', filterValue: 'prise_de_position' },
     { filterName: 'Autre', filterValue: 'autre' },
   ];
 
   const newsletterFilters = [
-    { filterName: 'Techno-lucides', filterValue: 'Techno-lucides' },
-    { filterName: "Vers l'autonomie et au-delà", filterValue: "Vers l'autonomie et au-delà" },
+    { filterName: 'Techno-lucides', filterValue: 'techno_lucides' },
+    { filterName: "Vers l'autonomie et au-delà", filterValue: 'vers_lautonomie' },
   ];
 
   const allActiveFilterValues = [...activeYears, ...activeTypes, ...activeNewsletters];
