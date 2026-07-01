@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { BaseCardsBlock, LargeTextImage } from '@/components';
 import Animation from './_partials/Animations';
-import { PositionsPageData } from './page';
+import type { PositionsPageData } from './page';
 import { useRef } from 'react';
 import { getPressReleaseLink } from '@/lib/utils';
 
@@ -17,7 +17,7 @@ function transformPressReleases(press_releases: NonNullable<PositionsPageData['p
     tags: [new Date(release.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), release.media_name],
     image: release.thumbnail?.url ?? '/images/dataforgood.svg',
     link: getPressReleaseLink(release as { press_release_type: string; article_link: string; article_file: {url: string;}}),
-    subInfos: release.tags,
+    subInfos: (release.tags as { tag: string }[] | undefined)?.map((t) => t.tag) ?? [],
     isBlank: true,
   }))
 }
@@ -45,7 +45,7 @@ function transformResources(resources: NonNullable<PositionsPageData['resources'
       tags: isBlog ? [new Date(resource.blog?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })] : [new Date(resource.press_release?.published_date || '').toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }), resource.press_release?.media_name],
       image: isBlog ? resource.blog?.thumbnail?.url || '/images/dataforgood.svg' : resource.press_release?.thumbnail?.url || "/images/dataforgood.svg",
       link: isBlog ? `/blog/${resource.blog?.slug || ''}` : getPressReleaseLink(resource.press_release as { press_release_type: string; article_link: string; article_file: {url: string;}}) || '',
-      subInfos: isBlog ? (resource.blog as { tags: string[] })?.tags?.map((tag) => tag.name) || [] : (resource.press_release as { tags: string[] })?.tags || [],
+      subInfos: isBlog ? (resource.blog as { tags: { name: string }[] })?.tags?.map((tag) => tag.name) || [] : (resource.press_release as { tags: { tag: string }[] })?.tags?.map((tag) => tag.tag) || [],
       isBlank: true,
     }
   })
