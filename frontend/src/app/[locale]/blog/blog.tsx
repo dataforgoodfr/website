@@ -46,6 +46,23 @@ function determineNewsletter(element: Record<string, any> | null): string | null
   return null;
 }
 
+// Human labels for the category slugs. These map the values stored in Strapi
+// (the `resource_type`/`newsletter` enums, or the `tags` field while those
+// enums aren't deployed yet) to what is shown in the filter pills and cards.
+const TYPE_LABELS: Record<string, string> = {
+  podcast: 'Podcast',
+  article: 'Article',
+  rapport: 'Rapport',
+  prise_de_position: 'Prise de position',
+  autre: 'Autre',
+};
+const NEWSLETTER_LABELS: Record<string, string> = {
+  techno_lucides: 'Techno-lucides',
+  vers_lautonomie: "Vers l'autonomie et au-delà",
+};
+const TYPE_SLUGS = Object.keys(TYPE_LABELS);
+const NEWSLETTER_SLUGS = Object.keys(NEWSLETTER_LABELS);
+
 interface TransformedResource {
   id: number | undefined;
   title: string;
@@ -57,7 +74,7 @@ interface TransformedResource {
   tags: string[];
   isBlank: boolean;
   year: number;
-  type: string;
+  types: string[];
   newsletter: string | null;
 }
 
@@ -67,6 +84,19 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedR
     const element = (isBlog ? resource.blog : resource.press_release) as Record<string, any> | null;
 
     const tagStrings = getTagsAsStrings(element?.tags);
+
+    // Categories are read, in priority order, from: the structured Strapi enum
+    // (once deployed), then the `tags` field (where editors currently store the
+    // slugs), then a best-effort heuristic. A resource can hold several types
+    // (e.g. a "communiqué" that is both article and prise de position), so types
+    // is a list; newsletter is single.
+    const tagTypeSlugs = tagStrings.filter(tag => TYPE_SLUGS.includes(tag));
+    const types = element?.resource_type
+      ? [element.resource_type]
+      : (tagTypeSlugs.length > 0 ? tagTypeSlugs : [determineType(element)]);
+    const newsletter = element?.newsletter
+      ?? tagStrings.find(tag => NEWSLETTER_SLUGS.includes(tag))
+      ?? determineNewsletter(element);
 
     const publishedDate = element?.published_date ?? '';
     const parsedDate = new Date(publishedDate);
@@ -79,17 +109,16 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedR
       date: isValidDate ? parsedDate.toLocaleString(undefined, {dateStyle: 'medium'}) : '',
       image: element?.thumbnail?.url ?? '/images/dataforgood.svg',
       link: isBlog ? `/blog/${element?.slug ?? ''}` : getPressReleaseLink(element as any),
-      subInfos: tagStrings,
+      // Show category slugs with their human labels; keep any other free tag as-is.
+      subInfos: tagStrings.map(tag => TYPE_LABELS[tag] ?? NEWSLETTER_LABELS[tag] ?? tag),
       tags: [
         isValidDate ? parsedDate.toLocaleDateString(undefined, {dateStyle: 'long'}) : null,
         element?.media_name,
       ].filter(Boolean),
       isBlank: true,
       year: isValidDate ? parsedDate.getFullYear() : 0,
-      // `resource_type`/`newsletter` are the source of truth once set in Strapi;
-      // fall back to a best-effort guess for rows not yet categorized by editors.
-      type: element?.resource_type ?? determineType(element),
-      newsletter: element?.newsletter ?? determineNewsletter(element),
+      types,
+      newsletter,
     };
   });
 }
@@ -139,7 +168,7 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
       })) {
         return false;
       }
-      if (activeTypes.length > 0 && !activeTypes.includes(resource.type)) {
+      if (activeTypes.length > 0 && !activeTypes.some(t => resource.types.includes(t))) {
         return false;
       }
       if (activeNewsletters.length > 0) {
@@ -203,18 +232,8 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
     { filterName: '2026', filterValue: '2026' },
   ];
 
-  const typeFilters = [
-    { filterName: 'Podcast', filterValue: 'podcast' },
-    { filterName: 'Article', filterValue: 'article' },
-    { filterName: 'Rapport', filterValue: 'rapport' },
-    { filterName: 'Prise de position', filterValue: 'prise_de_position' },
-    { filterName: 'Autre', filterValue: 'autre' },
-  ];
-
-  const newsletterFilters = [
-    { filterName: 'Techno-lucides', filterValue: 'techno_lucides' },
-    { filterName: "Vers l'autonomie et au-delà", filterValue: 'vers_lautonomie' },
-  ];
+  const typeFilters = TYPE_SLUGS.map(slug => ({ filterName: TYPE_LABELS[slug], filterValue: slug }));
+  const newsletterFilters = NEWSLETTER_SLUGS.map(slug => ({ filterName: NEWSLETTER_LABELS[slug], filterValue: slug }));
 
   const allActiveFilterValues = [...activeYears, ...activeTypes, ...activeNewsletters];
 
