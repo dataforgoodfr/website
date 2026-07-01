@@ -27,12 +27,11 @@ export async function generateMetadata({
   return generateMetadataFromSeo(data.data.seo_meta);
 }
 
-async function fetchBlogsPageData(page: number, pageSize: number) {
+async function fetchBlogsPageData() {
   return await client.GET('/resources', {
       params: {
         query: {
-          "pagination[page]": page,
-          "pagination[pageSize]": pageSize,
+          "pagination[pageSize]": 200,
           "sort": "createdAt:desc",
           populate: {
             blog: {
@@ -51,18 +50,12 @@ export type BlogsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchBlogs
 export type BlogsPageData = NonNullable<BlogsPageResponse["data"]>;
 export type BlogsPageMeta = NonNullable<NonNullable<BlogsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
-  const pageSize = 12;
-  const response = await fetchBlogsPageData(page, pageSize);
+export default async function Page() {
+  const response = await fetchBlogsPageData();
 
-  if (!response?.data || !response?.data.meta?.pagination) {
+  if (!response?.data || !response?.data?.meta?.pagination) {
     return null;
   }
 
-  return <BlogPage data={response.data?.data} pagination={response.data.meta.pagination} currentPage={page}/>;
+  return <BlogPage data={response.data?.data} pagination={response.data.meta.pagination} />;
 };

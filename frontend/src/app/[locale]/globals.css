@@ -220,6 +220,10 @@
 
 
   /* Others */
+  .filter-pill:hover .checkbox::after {
+    border-color: hsl(266 100% 92%);
+  }
+
   .mask-papper {
     mask-image: url('/images/mask-papper.svg');
     mask-size: cover;

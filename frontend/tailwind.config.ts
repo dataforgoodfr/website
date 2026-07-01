@@ -186,7 +186,7 @@ const config: Config = {
         },
         /* Style search input */
         '.checkbox': {
-          '@apply cursor-pointer after:align-middle after:pb-4 after:cursor-pointer after:ml-4 after:inline-block after:h-[17px] after:w-[22px] after:border-2 after:border-violet-light group-hover:after:border-0': {},
+          '@apply cursor-pointer after:align-middle after:pb-4 after:cursor-pointer after:ml-4 after:inline-block after:h-[17px] after:w-[22px] after:border-2 after:border-transparent': {},
         },
         '.checked-label': {
           '@apply after:content-checkmark after:pl-1': {},

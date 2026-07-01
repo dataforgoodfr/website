@@ -2,3 +2,5 @@
 .DS_Store
 .pi/extensions/emdash-hook.ts
 .factory/settings.json
+.claude/settings.local.json
+.factory/hooks.json
