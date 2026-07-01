@@ -55,3 +55,6 @@ export type { CampaignBannerProps } from './CampaignBanner/CampaignBanner';
 
 export { default as CtaList } from './CtaList/CtaList';
 export type { CtaListProps, CtaListItem } from './CtaList/CtaList';
+
+export { default as ManifestoBanner } from './ManifestoBanner/ManifestoBanner';
+export type { ManifestoBannerProps } from './ManifestoBanner/ManifestoBanner';
