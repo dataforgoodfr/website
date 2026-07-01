@@ -22,30 +22,6 @@ function getTagsAsStrings(tags: unknown): string[] {
   });
 }
 
-// Fallback used only while a resource has no `resource_type` set in Strapi.
-// Once editors fill the field it becomes the source of truth (see transformBlogsData).
-function determineType(element: Record<string, any> | null): string {
-  const title = (element?.title ?? '').toLowerCase();
-  const media = (element?.media_name ?? '').toLowerCase();
-  const url = (element?.article_link ?? '').toLowerCase();
-
-  if (media === 'rapport' || title.startsWith('rapport') || url.endsWith('.pdf')) return 'rapport';
-  if (url.includes('/podcast') || url.includes('radiofrance') || title.startsWith('podcast')) return 'podcast';
-  if (title.startsWith('vidéo') || title.startsWith('video') || title.startsWith('communiqué')) return 'article';
-  // A named press outlet (not our own brand, not a newsletter) => article.
-  if (media && media !== 'data for good' && !media.startsWith('newsletter')) return 'article';
-  return 'autre';
-}
-
-// Fallback used only while a resource has no `newsletter` set in Strapi.
-function determineNewsletter(element: Record<string, any> | null): string | null {
-  const media = element?.media_name ?? '';
-  const title = element?.title ?? '';
-  if (media === 'Newsletter - Technolucide' || title.startsWith('Techno-Lucide')) return 'techno_lucides';
-  if (media === "Newsletter - Vers l'autonomie et au-delà" || title.startsWith("Vers l'autonomie")) return 'vers_lautonomie';
-  return null;
-}
-
 // Human labels for the category slugs. These map the values stored in Strapi
 // (the `resource_type`/`newsletter` enums, or the `tags` field while those
 // enums aren't deployed yet) to what is shown in the filter pills and cards.
@@ -85,18 +61,18 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedR
 
     const tagStrings = getTagsAsStrings(element?.tags);
 
-    // Categories are read, in priority order, from: the structured Strapi enum
-    // (once deployed), then the `tags` field (where editors currently store the
-    // slugs), then a best-effort heuristic. A resource can hold several types
-    // (e.g. a "communiqué" that is both article and prise de position), so types
-    // is a list; newsletter is single.
+    // Categories are read, in priority order, from the structured Strapi enum
+    // (once deployed) then the `tags` field (where editors currently store the
+    // slugs); an uncategorized resource defaults to "autre" / no newsletter.
+    // A resource can hold several types (e.g. a "communiqué" that is both
+    // article and prise de position), so types is a list; newsletter is single.
     const tagTypeSlugs = tagStrings.filter(tag => TYPE_SLUGS.includes(tag));
     const types = element?.resource_type
       ? [element.resource_type]
-      : (tagTypeSlugs.length > 0 ? tagTypeSlugs : [determineType(element)]);
+      : (tagTypeSlugs.length > 0 ? tagTypeSlugs : ['autre']);
     const newsletter = element?.newsletter
       ?? tagStrings.find(tag => NEWSLETTER_SLUGS.includes(tag))
-      ?? determineNewsletter(element);
+      ?? null;
 
     const publishedDate = element?.published_date ?? '';
     const parsedDate = new Date(publishedDate);
