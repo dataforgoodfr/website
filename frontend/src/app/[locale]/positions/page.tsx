@@ -30,9 +30,6 @@ async function fetchPositionPageData() {
               thumbnail: {
                 populate: '*'
               },
-              article_file: {
-                fields: ['url']
-              }
             }
           },
           resources: {
@@ -47,9 +44,6 @@ async function fetchPositionPageData() {
                   },
                   thumbnail: {
                     populate: '*'
-                  },
-                  article_file: {
-                    fields: ['url']
                   }
                 }
               }

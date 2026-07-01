@@ -86,6 +86,23 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::volunteer.volunteer"
+    },
+    "resource_type": {
+      "type": "enumeration",
+      "enum": [
+        "podcast",
+        "article",
+        "rapport",
+        "prise_de_position",
+        "autre"
+      ]
+    },
+    "newsletter": {
+      "type": "enumeration",
+      "enum": [
+        "techno_lucides",
+        "vers_lautonomie"
+      ]
     }
   }
 }

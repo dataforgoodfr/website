@@ -1,63 +1,217 @@
 
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Title, BaseCardsBlock, Pagination, SearchInput } from '@/components';
+import { Title, BaseCardsBlock, Pagination, SearchInput, Filter, Button } from '@/components';
 import { BlogsPageMeta, BlogsPageData } from './page';
-import { usePagination } from '@/hooks/usePagination';
-import { useState, useEffect } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { getPressReleaseLink } from '@/lib/utils';
+import { usePagination } from '@/hooks/usePagination';
+import clsx from 'clsx';
 
 
-function transformBlogsData(resources: NonNullable<BlogsPageData>) {
+function getTagsAsStrings(tags: unknown): string[] {
+  if (!tags) return [];
+  if (!Array.isArray(tags)) return [];
+  return tags.map((tag: unknown) => {
+    if (typeof tag === 'string') return tag;
+    if (tag && typeof tag === 'object' && 'name' in (tag as object)) return (tag as { name: string }).name;
+    if (tag && typeof tag === 'object' && 'tag' in (tag as object)) return (tag as { tag: string }).tag;
+    return String(tag);
+  });
+}
+
+// Human labels for the category slugs. These map the values stored in Strapi
+// (the `resource_type`/`newsletter` enums, or the `tags` field while those
+// enums aren't deployed yet) to what is shown in the filter pills and cards.
+const TYPE_LABELS: Record<string, string> = {
+  podcast: 'Podcast',
+  article: 'Article',
+  rapport: 'Rapport',
+  prise_de_position: 'Prise de position',
+  autre: 'Autre',
+};
+const NEWSLETTER_LABELS: Record<string, string> = {
+  techno_lucides: 'Techno-lucides',
+  vers_lautonomie: "Vers l'autonomie et au-delà",
+};
+const TYPE_SLUGS = Object.keys(TYPE_LABELS);
+const NEWSLETTER_SLUGS = Object.keys(NEWSLETTER_LABELS);
+
+interface TransformedResource {
+  id: number | undefined;
+  title: string;
+  rawDate: string;
+  date: string;
+  image: string;
+  link: string | undefined;
+  subInfos: string[];
+  tags: string[];
+  isBlank: boolean;
+  year: number;
+  types: string[];
+  newsletter: string | null;
+}
+
+function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedResource[] {
   return resources.map(resource => {
     const isBlog = !!resource.blog;
-    const element = isBlog ? resource.blog : resource.press_release;
+    const element = (isBlog ? resource.blog : resource.press_release) as Record<string, any> | null;
 
-    return ({
+    const tagStrings = getTagsAsStrings(element?.tags);
+
+    // Categories are read, in priority order, from the structured Strapi enum
+    // (once deployed) then the `tags` field (where editors currently store the
+    // slugs); an uncategorized resource defaults to "autre" / no newsletter.
+    // A resource can hold several types (e.g. a "communiqué" that is both
+    // article and prise de position), so types is a list; newsletter is single.
+    const tagTypeSlugs = tagStrings.filter(tag => TYPE_SLUGS.includes(tag));
+    const types = element?.resource_type
+      ? [element.resource_type]
+      : (tagTypeSlugs.length > 0 ? tagTypeSlugs : ['autre']);
+    const newsletter = element?.newsletter
+      ?? tagStrings.find(tag => NEWSLETTER_SLUGS.includes(tag))
+      ?? null;
+
+    const publishedDate = element?.published_date ?? '';
+    const parsedDate = new Date(publishedDate);
+    const isValidDate = !isNaN(parsedDate.getTime());
+
+    return {
       id: resource.id,
-      title: element.title,
-      rawDate: resource.published_date,
-      date: new Date(resource.published_date).toLocaleString(undefined, {dateStyle: 'medium'}),
-      image: element.thumbnail?.url ?? "/images/dataforgood.svg",
-      link: isBlog ? `/blog/${element.slug}` : getPressReleaseLink(element as { press_release_type: string; article_link: string; article_file: {url: string;}}),
-      subInfos: element.tags ? element.tags.map(tag => tag.name) : [],
-      tags: [new Date(element.published_date).toLocaleDateString(undefined, {dateStyle: 'long'}), element.media_name],
+      title: element?.title ?? '',
+      rawDate: publishedDate,
+      date: isValidDate ? parsedDate.toLocaleString(undefined, {dateStyle: 'medium'}) : '',
+      image: element?.thumbnail?.url ?? '/images/dataforgood.svg',
+      link: isBlog ? `/blog/${element?.slug ?? ''}` : getPressReleaseLink(element as any),
+      // Show category slugs with their human labels; keep any other free tag as-is.
+      subInfos: tagStrings.map(tag => TYPE_LABELS[tag] ?? NEWSLETTER_LABELS[tag] ?? tag),
+      tags: [
+        isValidDate ? parsedDate.toLocaleDateString(undefined, {dateStyle: 'long'}) : null,
+        element?.media_name,
+      ].filter(Boolean),
       isBlank: true,
-    })
-  })
+      year: isValidDate ? parsedDate.getFullYear() : 0,
+      types,
+      newsletter,
+    };
+  });
+}
+
+function getSearchParamValues(params: URLSearchParams, key: string): string[] {
+  const val = params.get(key);
+  return val ? val.split(',').filter(Boolean) : [];
 }
 
 type BlogsPageProps = {
   data: BlogsPageData
   pagination: BlogsPageMeta
-  currentPage: number
 }
 
-export default function BlogPage({data, pagination, currentPage}: BlogsPageProps) {
+export default function BlogPage({data, pagination: _pagination}: BlogsPageProps) {
   const t = useTranslations('blog');
-  const resources = transformBlogsData(data)
-  const [filteredResources, setFilteredResources] = useState(resources);
-  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const allResources = useMemo(() => transformBlogsData(data), [data]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.value);
-  };
+  // The URL query string is the single source of truth for filters/search, so
+  // that shareable links and browser Back/Forward restore the exact state.
+  const yearsParam = searchParams.get('years') ?? '';
+  const typesParam = searchParams.get('types') ?? '';
+  const newslettersParam = searchParams.get('newsletters') ?? '';
+  const searchQuery = searchParams.get('search') ?? '';
 
-  const handleSearch = (query: string) => {
-    const filtered = resources.filter(resource => {
-      const title = resource.title.toLowerCase();
-      const queryLower = query.toLowerCase();
-      return title.includes(queryLower);
+  const activeYears = useMemo(() => (yearsParam ? yearsParam.split(',').filter(Boolean) : []), [yearsParam]);
+  const activeTypes = useMemo(() => (typesParam ? typesParam.split(',').filter(Boolean) : []), [typesParam]);
+  const activeNewsletters = useMemo(() => (newslettersParam ? newslettersParam.split(',').filter(Boolean) : []), [newslettersParam]);
+
+  const [hideFilters, setHideFilters] = useState(true);
+
+  const { currentPage, handlePageChange } = usePagination(1);
+
+  const pageSize = 12;
+
+  const filteredResources = useMemo(() => {
+    return allResources.filter(resource => {
+      if (searchQuery && !resource.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
+      if (activeYears.length > 0 && !activeYears.some(y => {
+        if (resource.year === 0) return false;
+        if (y === '2020') return resource.year <= 2020;
+        return resource.year === parseInt(y);
+      })) {
+        return false;
+      }
+      if (activeTypes.length > 0 && !activeTypes.some(t => resource.types.includes(t))) {
+        return false;
+      }
+      if (activeNewsletters.length > 0) {
+        if (!resource.newsletter || !activeNewsletters.includes(resource.newsletter)) {
+          return false;
+        }
+      }
+      return true;
     });
-    setFilteredResources(filtered);
+  }, [allResources, searchQuery, activeYears, activeTypes, activeNewsletters]);
+
+  const displayResources = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return filteredResources.slice(start, start + pageSize);
+  }, [filteredResources, currentPage]);
+
+  const pageCount = Math.ceil(filteredResources.length / pageSize);
+
+  // Toggle a comma-separated multi-value param, always resetting to page 1.
+  const toggleFilterParam = useCallback((key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const current = getSearchParamValues(params, key);
+    const next = current.includes(value)
+      ? current.filter(v => v !== value)
+      : [...current, value];
+    if (next.length > 0) params.set(key, next.join(','));
+    else params.delete(key);
+    params.delete('page');
+    router.push(`?${params.toString()}`, { scroll: false });
+  }, [router, searchParams]);
+
+  const handleSearchChange = (e: any) => {
+    const query = e.value ?? '';
+    const params = new URLSearchParams(searchParams.toString());
+    if (query) params.set('search', query);
+    else params.delete('search');
+    params.delete('page');
+    router.push(`?${params.toString()}`, { scroll: false });
   };
 
-  useEffect(() => {
-    handleSearch(searchQuery);
-  }, [searchQuery]);
+  const paramKeyByFilterType: Record<string, string> = {
+    year: 'years',
+    type: 'types',
+    newsletter: 'newsletters',
+  };
 
-  const { handlePageChange } = usePagination(currentPage);
+  const handleFilterClick = (e: any) => {
+    const filterValue = e.value as string;
+    const filterType = e.getAttribute('data-type') as string;
+    const key = paramKeyByFilterType[filterType];
+    if (key) toggleFilterParam(key, filterValue);
+  };
+
+  const yearFilters = [
+    { filterName: '2020 et avant', filterValue: '2020' },
+    { filterName: '2021', filterValue: '2021' },
+    { filterName: '2022', filterValue: '2022' },
+    { filterName: '2023', filterValue: '2023' },
+    { filterName: '2024', filterValue: '2024' },
+    { filterName: '2025', filterValue: '2025' },
+    { filterName: '2026', filterValue: '2026' },
+  ];
+
+  const typeFilters = TYPE_SLUGS.map(slug => ({ filterName: TYPE_LABELS[slug], filterValue: slug }));
+  const newsletterFilters = NEWSLETTER_SLUGS.map(slug => ({ filterName: NEWSLETTER_LABELS[slug], filterValue: slug }));
+
+  const allActiveFilterValues = [...activeYears, ...activeTypes, ...activeNewsletters];
 
   return (
       <div className="my-lg pt-md">
@@ -65,24 +219,79 @@ export default function BlogPage({data, pagination, currentPage}: BlogsPageProps
           <Title className="mb-md max-w-5xl" variant="big">
             {t('title')}
           </Title>
-          <SearchInput
-            handleChange={handleInputChange}
-            value={searchQuery}
+
+          <div className="flex w-full flex-col md:flex-row mb-md gap-xs">
+            <div className="flex w-full gap-xs flex-col justify-center md:justify-start">
+              <Button
+                variant="secondary"
+                color="black"
+                className={clsx('w-max hover:bg-building', hideFilters ? 'not-rotate-arrow' : 'rotate-arrow')}
+                onClick={() => setHideFilters(!hideFilters)}
+              >
+                Filtres
+              </Button>
+
+              <div
+                className="flex w-full gap-xs flex-col md:flex-row flex-wrap transition-base"
+                style={{ visibility: hideFilters ? 'hidden' : 'visible', opacity: hideFilters ? 0 : 1, height: hideFilters ? 0 : 'auto' }}
+              >
+                {yearFilters.map((filter, index) => (
+                  <Filter
+                    key={`year-${index}`}
+                    filterName={filter.filterName}
+                    filterValue={filter.filterValue}
+                    filterType={'year' as any}
+                    checked={allActiveFilterValues.includes(filter.filterValue)}
+                    onClick={handleFilterClick}
+                    variant="light"
+                  />
+                ))}
+                {typeFilters.map((filter, index) => (
+                  <Filter
+                    key={`type-${index}`}
+                    filterName={filter.filterName}
+                    filterValue={filter.filterValue}
+                    filterType={'type' as any}
+                    checked={allActiveFilterValues.includes(filter.filterValue)}
+                    onClick={handleFilterClick}
+                    variant="light"
+                  />
+                ))}
+                {newsletterFilters.map((filter, index) => (
+                  <Filter
+                    key={`newsletter-${index}`}
+                    filterName={filter.filterName}
+                    filterValue={filter.filterValue}
+                    filterType={'newsletter' as any}
+                    checked={allActiveFilterValues.includes(filter.filterValue)}
+                    onClick={handleFilterClick}
+                    variant="light"
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="flex w-full md:w-1/2 justify-center md:justify-end gap-xs flex-row flex-wrap md:pr-10">
+              <SearchInput
+                searchFilter={searchQuery}
+                handleChange={handleSearchChange}
+              />
+            </div>
+          </div>
+
+          <BaseCardsBlock
+            blocks={displayResources as any}
+            className="my-lg"
+          />
+
+          <Pagination
+            pageCount={pageCount}
+            currentPage={currentPage}
+            setCurrentPage={handlePageChange}
+            className="mt-sm mb-lg mx-auto max-w-max"
+            color="black"
           />
         </div>
-
-        <BaseCardsBlock
-          blocks={filteredResources}
-          className="my-lg"
-        />
-
-        <Pagination
-          pageCount={pagination.pageCount}
-          currentPage={pagination.page}
-          setCurrentPage={handlePageChange}
-          className="mt-sm mb-lg mx-auto max-w-max"
-          color="black"
-        />
     </div>
   );
 }
