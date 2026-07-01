@@ -1,11 +1,13 @@
 
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Title, BaseCardsBlock, Pagination, SearchInput, Filter, Button } from '@/components';
 import { BlogsPageMeta, BlogsPageData } from './page';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { getPressReleaseLink } from '@/lib/utils';
+import { usePagination } from '@/hooks/usePagination';
 import clsx from 'clsx';
 
 
@@ -114,6 +116,11 @@ function transformBlogsData(resources: NonNullable<BlogsPageData>): TransformedR
   });
 }
 
+function getSearchParamValues(params: URLSearchParams, key: string): string[] {
+  const val = params.get(key);
+  return val ? val.split(',').filter(Boolean) : [];
+}
+
 type BlogsPageProps = {
   data: BlogsPageData
   pagination: BlogsPageMeta
@@ -121,14 +128,17 @@ type BlogsPageProps = {
 
 export default function BlogPage({data, pagination: _pagination}: BlogsPageProps) {
   const t = useTranslations('blog');
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const allResources = useMemo(() => transformBlogsData(data), [data]);
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeYears, setActiveYears] = useState<string[]>([]);
-  const [activeTypes, setActiveTypes] = useState<string[]>([]);
-  const [activeNewsletters, setActiveNewsletters] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') ?? '');
+  const [activeYears, setActiveYears] = useState<string[]>(() => getSearchParamValues(searchParams, 'years'));
+  const [activeTypes, setActiveTypes] = useState<string[]>(() => getSearchParamValues(searchParams, 'types'));
+  const [activeNewsletters, setActiveNewsletters] = useState<string[]>(() => getSearchParamValues(searchParams, 'newsletters'));
   const [hideFilters, setHideFilters] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const { currentPage, handlePageChange } = usePagination(1);
 
   const pageSize = 12;
 
@@ -163,37 +173,53 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
 
   const pageCount = Math.ceil(filteredResources.length / pageSize);
 
+  const syncFiltersToUrl = useCallback((years: string[], types: string[], newsletters: string[], search: string, page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (years.length > 0) params.set('years', years.join(','));
+    else params.delete('years');
+    if (types.length > 0) params.set('types', types.join(','));
+    else params.delete('types');
+    if (newsletters.length > 0) params.set('newsletters', newsletters.join(','));
+    else params.delete('newsletters');
+    if (search) params.set('search', search);
+    else params.delete('search');
+    if (page > 1) params.set('page', String(page));
+    else params.delete('page');
+    router.push(`?${params.toString()}`, { scroll: false });
+  }, [router, searchParams]);
+
   const handleSearchChange = (e: any) => {
-    if (searchQuery !== e.value) {
-      setSearchQuery(e.value);
-      setCurrentPage(1);
-    }
+    const query = e.value ?? '';
+    setSearchQuery(query);
+    syncFiltersToUrl(activeYears, activeTypes, activeNewsletters, query, 1);
   };
 
   const handleFilterClick = (e: any) => {
     const filterValue = e.value as string;
     const filterType = e.getAttribute('data-type');
 
+    let newYears = activeYears;
+    let newTypes = activeTypes;
+    let newNewsletters = activeNewsletters;
+
     if (filterType === 'year') {
-      setActiveYears(prev =>
-        prev.includes(filterValue)
-          ? prev.filter(v => v !== filterValue)
-          : [...prev, filterValue]
-      );
+      newYears = activeYears.includes(filterValue)
+        ? activeYears.filter(v => v !== filterValue)
+        : [...activeYears, filterValue];
+      setActiveYears(newYears);
     } else if (filterType === 'type') {
-      setActiveTypes(prev =>
-        prev.includes(filterValue)
-          ? prev.filter(v => v !== filterValue)
-          : [...prev, filterValue]
-      );
+      newTypes = activeTypes.includes(filterValue)
+        ? activeTypes.filter(v => v !== filterValue)
+        : [...activeTypes, filterValue];
+      setActiveTypes(newTypes);
     } else if (filterType === 'newsletter') {
-      setActiveNewsletters(prev =>
-        prev.includes(filterValue)
-          ? prev.filter(v => v !== filterValue)
-          : [...prev, filterValue]
-      );
+      newNewsletters = activeNewsletters.includes(filterValue)
+        ? activeNewsletters.filter(v => v !== filterValue)
+        : [...activeNewsletters, filterValue];
+      setActiveNewsletters(newNewsletters);
     }
-    setCurrentPage(1);
+
+    syncFiltersToUrl(newYears, newTypes, newNewsletters, searchQuery, 1);
   };
 
   const yearFilters = [
@@ -295,7 +321,7 @@ export default function BlogPage({data, pagination: _pagination}: BlogsPageProps
           <Pagination
             pageCount={pageCount}
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={handlePageChange}
             className="mt-sm mb-lg mx-auto max-w-max"
             color="black"
           />
