@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { TiltedTitle, Button } from '@/components';
+import { TiltedTitle } from '@/components';
 import Image from 'next/image';
 import {
   useScroll,
@@ -31,7 +31,7 @@ export default function Animation({ animationData, handleSkipClick }: {
   return (
     <div className="container flex justify-center items-center h-[700dvh]" ref={refContainer}>
       <motion.div className="bg-fixed bg-[url('/images/bg-paper.jpg')] bg-repeat-y bg-cover fixed top-0 left-0 right-0 bottom-0" style={{ opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0]) }} />
-      <Link href="#lastContent" onClick={handleSkipClick} className="absolute z-1 top-[calc(100dvh-40px)] right-[40px] text-grey-text flex flex-col items-center hover:text-black">
+      <Link href="#manifesto" onClick={(e) => { e.preventDefault(); handleSkipClick(); }} className="absolute z-1 top-[calc(100dvh-40px)] right-[40px] text-grey-text flex flex-col items-center hover:text-black">
         {t('skipLink')}
         <Image src="/icons/skip-arrow.svg" alt="" width={16} height={16} />
       </Link>
@@ -116,10 +116,9 @@ export default function Animation({ animationData, handleSkipClick }: {
       <motion.div id="lastContent" className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.80, 0.85, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <div className="mt-36 relative md:top-[-180px] px-4 lead flex flex-col items-center">
           <TiltedTitle level={1} variant="big" rotation={-3.49} className="relative top-4 drop-shadow-3 drop-shadow-black">{t('intro.5.title')}</TiltedTitle>
-          <p className="h3-like relative  p-2 max-w-[564px] rotate-[-3.49deg] drop-shadow-3 drop-shadow-black">
+          <p className="h3-like relative p-2 max-w-[564px] rotate-[-3.49deg] drop-shadow-3 drop-shadow-black">
             <span className="bg-alive relative z-1">{t('intro.5.description')}</span>
           </p>
-          <Button color="white" href={animationData.manifestCta.link} className="relative -bottom-2">{animationData.manifestCta.text ?? t('intro.5.cta')}</Button>
         </div>
       </motion.div>
     </div>

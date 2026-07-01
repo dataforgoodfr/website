@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BaseCardsBlock, LargeTextImage } from '@/components';
+import { BaseCardsBlock, LargeTextImage, ManifestoBanner } from '@/components';
 import Animation from './_partials/Animations';
 import type { PositionsPageData } from './page';
 import { useRef } from 'react';
@@ -60,7 +60,7 @@ export default function PositionsPage({ data }: PositionPageProps) {
 
   const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
     if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -70,17 +70,22 @@ export default function PositionsPage({ data }: PositionPageProps) {
     <>
       <Animation animationData={animationData} handleSkipClick={handleSkipClick} />
 
-      <div ref={skipToSectionRef}>
-        <LargeTextImage
-          image={data.testimonial_background?.url}
-          citation={data.testimonial?.quote}
-          citationAuthor={data.testimonial?.author}
-          citationAuthorImage={data.testimonial?.avatar?.url}
-          background="purple"
-          className="-mt-[25vh]"
-          internalClassName='max-h-[750px]'
+      <div id="manifesto" ref={skipToSectionRef} className="-mt-[15vh]">
+        <ManifestoBanner
+          text={t('manifestoBanner')}
+          link={animationData.manifestCta.link}
+          className="mb-lg"
         />
       </div>
+
+      <LargeTextImage
+        image={data.testimonial_background?.url}
+        citation={data.testimonial?.quote}
+        citationAuthor={data.testimonial?.author}
+        citationAuthorImage={data.testimonial?.avatar?.url}
+        background="purple"
+        internalClassName='max-h-[750px]'
+      />
 
       <BaseCardsBlock
         title={t('press')}
