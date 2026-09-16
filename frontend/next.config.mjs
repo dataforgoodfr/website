@@ -21,13 +21,41 @@ const nextConfig = {
 };
 
 export async function getRedirects() {
+  const apiUrl = process.env.STRAPI_API_URL;
+  const token = process.env.STRAPI_API_TOKEN;
+
+  // Sans jeton, /redirects repond 403 avec un corps d'erreur JSON. L'ancien code
+  // appelait data.map() sur ce corps et levait « data.map is not a function »,
+  // ce qui masquait la vraie cause (absence de jeton) derriere un TypeError.
+  if (!apiUrl || !token) {
+    console.warn(
+      '[redirects] STRAPI_API_URL ou STRAPI_API_TOKEN absent : aucune redirection du CMS ne sera chargee.',
+    );
+    return [];
+  }
+
   try {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
+    const res = await fetch(`${apiUrl}/redirects`, {
       headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     });
+
+    if (!res.ok) {
+      console.warn(
+        `[redirects] /redirects a repondu ${res.status} ${res.statusText} : aucune redirection du CMS ne sera chargee.`,
+      );
+      return [];
+    }
+
     const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      console.warn(
+        '[redirects] reponse inattendue de /redirects (un tableau etait attendu) : aucune redirection du CMS ne sera chargee.',
+      );
+      return [];
+    }
 
     return data.map((redirect) => ({
       source: redirect.source,
