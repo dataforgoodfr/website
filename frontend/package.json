@@ -21,7 +21,7 @@
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.447.0",
     "motion": "^12.23.13",
-    "next": "15.5.25",
+    "next": "16.3.5",
     "next-intl": "^4.14.5",
     "openapi-fetch": "^0.14.0",
     "openapi-typescript": "^7.8.0",

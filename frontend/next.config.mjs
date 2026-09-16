@@ -15,10 +15,6 @@ const nextConfig = {
     ],
   },
   redirects: () => getRedirects(),
-  // VRAIMENT PAS OUF
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
