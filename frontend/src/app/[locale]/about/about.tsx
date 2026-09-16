@@ -14,10 +14,16 @@ import {
 import { IMembers } from '@/lib/types';
 import { AboutPageData } from './page';
 
-function transformTestimonials(
-  testimonials: NonNullable<AboutPageData['testimonials']>
-) {
-  return testimonials.map(testimonial => ({
+// Les relations du CMS peuvent etre absentes de la reponse (relation non
+// renseignee, ou droits d'acces differents selon le jeton utilise). Les
+// transformations tolerent donc l'absence et retombent sur un tableau vide :
+// sans cela la page entiere plantait au rendu (`Cannot read properties of
+// undefined (reading 'map')`).
+
+type AboutMember = NonNullable<AboutPageData['board_of_directors']>[number];
+
+function transformTestimonials(testimonials: AboutPageData['testimonials']) {
+  return (testimonials ?? []).map(testimonial => ({
     id: testimonial.id,
     author: testimonial.author,
     content: testimonial.quote,
@@ -25,8 +31,8 @@ function transformTestimonials(
   }));
 }
 
-function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
-  return funders.map(funder => ({
+function transformFunders(funders: AboutPageData['funders']) {
+  return (funders ?? []).map(funder => ({
     id: funder.id,
     name: funder.name,
     description: funder.description,
@@ -35,9 +41,7 @@ function transformFunders(funders: NonNullable<AboutPageData['funders']>) {
   }));
 }
 
-function transformMember(
-  member: NonNullable<AboutPageData['board_of_directors']>
-) {
+function transformMember(member: AboutMember) {
   return {
     id: member.id,
     name: member.name,
@@ -54,42 +58,40 @@ function transformMembers({
   strategic_committee,
   division_managers,
 }: {
-  board_of_directors: Array<NonNullable<AboutPageData['board_of_directors']>>;
-  employees: Array<NonNullable<AboutPageData['employees']>>;
-  scientific_committee: Array<
-    NonNullable<AboutPageData['scientific_committee']>
-  >;
-  strategic_committee: Array<NonNullable<AboutPageData['strategic_committee']>>;
-  division_managers: Array<NonNullable<AboutPageData['division_managers']>>;
+  board_of_directors: AboutPageData['board_of_directors'];
+  employees: AboutPageData['employees'];
+  scientific_committee: AboutPageData['scientific_committee'];
+  strategic_committee: AboutPageData['strategic_committee'];
+  division_managers: AboutPageData['division_managers'];
 }) {
   return [
     {
       title: "Le conseil d'administration",
-      members: board_of_directors.map(transformMember),
+      members: (board_of_directors ?? []).map(transformMember),
     },
     {
       title: "L'équipe salariée",
-      members: employees.map(transformMember),
+      members: (employees ?? []).map(transformMember),
     },
     {
       title: 'Le comité scientifique',
-      members: scientific_committee.map(transformMember),
+      members: (scientific_committee ?? []).map(transformMember),
     },
     {
       title: 'Le comité stratégique',
-      members: strategic_committee.map(transformMember),
+      members: (strategic_committee ?? []).map(transformMember),
     },
     {
       title: 'Les responsables de pôles',
-      members: division_managers.map(transformMember),
+      members: (division_managers ?? []).map(transformMember),
     },
   ];
 }
 
 function transformActivityReports(
-  reports: NonNullable<AboutPageData['activity_reports']>
+  reports: AboutPageData['activity_reports']
 ) {
-  return reports.map(report => ({
+  return (reports ?? []).map(report => ({
     id: report.documentId || report.id,
     text: new Date(report.date).getFullYear().toString(),
     link: report.file?.url || '#',
@@ -103,8 +105,8 @@ type AboutProps = {
 export default function AboutPage({ data }: AboutProps) {
   const t = useTranslations('about');
 
-  const testimonies = transformTestimonials(data.testimonials!);
-  const funders = transformFunders(data.funders!);
+  const testimonies = transformTestimonials(data.testimonials);
+  const funders = transformFunders(data.funders);
   const members: IMembers[] = transformMembers({
     board_of_directors: data.board_of_directors,
     employees: data.employees,
@@ -137,12 +139,12 @@ export default function AboutPage({ data }: AboutProps) {
               rotation: -7,
               className: 'sm:left-8',
             }}
-            image={data.cta_left?.image.url}
+            image={data.cta_left?.image?.url}
             imagePosition="left"
             contentClassName="relative lg:-top-24 lg:-left-12"
             cta={{
-              text: data.cta_left?.cta.text,
-              link: data.cta_left?.cta.link,
+              text: data.cta_left?.cta?.text,
+              link: data.cta_left?.cta?.link,
               rotation: -3.7,
               className: 'relative sm:left-[182px] md:-top-4',
             }}
@@ -159,12 +161,12 @@ export default function AboutPage({ data }: AboutProps) {
             rotation: 1.5,
             className: 'sm:left-6',
           }}
-          image={data.cta_right?.image.url ?? ''}
+          image={data.cta_right?.image?.url ?? ''}
           className="w-full lg:w-[770px] overflow-hidden md:overflow-visible"
           contentClassName="relative lg:top-24"
           cta={{
-            text: data.cta_right?.cta.text,
-            link: data.cta_right?.cta.link,
+            text: data.cta_right?.cta?.text,
+            link: data.cta_right?.cta?.link,
             rotation: 0.5,
             className: 'relative sm:left-48 -top-2',
           }}
@@ -180,9 +182,9 @@ export default function AboutPage({ data }: AboutProps) {
 
       <EditoCard
         title={data.map_cta?.title}
-        image={data.map_cta?.image.url}
-        ctaText={data.map_cta?.cta.text}
-        ctaLink={data.map_cta?.cta.link}
+        image={data.map_cta?.image?.url}
+        ctaText={data.map_cta?.cta?.text}
+        ctaLink={data.map_cta?.cta?.link}
         className="my-lg"
       >
         <>
@@ -195,9 +197,9 @@ export default function AboutPage({ data }: AboutProps) {
       <LargeTextImage
         title={data.volunteer_cta?.title}
         content={data.volunteer_cta?.content}
-        image={data.volunteer_cta?.image.url}
-        ctaText={data.volunteer_cta.cta.text}
-        ctaLink={data.volunteer_cta.cta.link}
+        image={data.volunteer_cta?.image?.url}
+        ctaText={data.volunteer_cta?.cta?.text}
+        ctaLink={data.volunteer_cta?.cta?.link}
         className="my-lg"
         internalClassName='max-h-[650px]'
       />
