@@ -1,19 +1,11 @@
-import clsx from 'clsx';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { DM_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Footer from './_partials/footer';
 import Header from './_partials/header';
-import './globals.css';
 import { CampaignBanner, NewsletterBlock } from '@/components';
-
-const dmMono = DM_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-secondary',
-});
+import './globals.css';
 
 export async function generateMetadata({
   params,
@@ -68,32 +60,14 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
-      <head>
-        <script
-          src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
-          defer
-        />
-        <script
-          src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js"
-          defer
-          data-domain="dataforgood.fr"
-        />
-      </head>
-      <body
-        className={clsx([dmMono.variable, 'min-h-screen overflow-x-hidden flex flex-col antialiased bg-[url("/images/bg-paper.jpg")] bg-repeat-y'])}
-        style={{ backgroundSize: '100vw 100vh' }}
-      >
-        <NextIntlClientProvider>
-          <CampaignBanner/>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <NewsletterBlock />
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider>
+      <CampaignBanner/>
+      <Header />
+      <main className="flex-1">
+        {children}
+      </main>
+      <NewsletterBlock />
+      <Footer />
+    </NextIntlClientProvider>
   );
 }
