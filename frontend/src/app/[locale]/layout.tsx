@@ -68,7 +68,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <script
           src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"

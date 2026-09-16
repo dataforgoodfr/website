@@ -4,13 +4,14 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: [
-      'localhost',
-      'backend',
-      'dataforgood.fr',
-      'strapi.services.dataforgood.fr',
-      's3.fr-par.scw.cloud',
-      'images.pexels.com',
+    // `domains` est deprecie : remplace par `remotePatterns` (equivalent exact).
+    remotePatterns: [
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'http', hostname: 'backend' },
+      { protocol: 'https', hostname: 'dataforgood.fr' },
+      { protocol: 'https', hostname: 'strapi.services.dataforgood.fr' },
+      { protocol: 'https', hostname: 's3.fr-par.scw.cloud' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
     ],
   },
   redirects: () => getRedirects(),
