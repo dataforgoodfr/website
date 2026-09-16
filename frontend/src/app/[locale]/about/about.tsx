@@ -68,7 +68,7 @@ function transformMembers({
       members: board_of_directors.map(transformMember),
     },
     {
-      title: 'Les salariés',
+      title: "L'équipe salariée",
       members: employees.map(transformMember),
     },
     {
