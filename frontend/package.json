@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "generate:types": "openapi-typescript ../backend/src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/lib/strapi-types.d.ts",
+    "generate:types": "openapi-typescript ../backend/src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/lib/strapi-types.d.ts && node ./scripts/widen-strapi-query-types.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit"
