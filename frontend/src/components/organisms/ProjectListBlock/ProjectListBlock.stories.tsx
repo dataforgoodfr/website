@@ -32,25 +32,30 @@ type Story = StoryObj<typeof meta>;
 
   const filters: IFilter[] = [
     {
+      filterType: "thematic",
       filterName: "Climat et biodiversité",
       filterValue: "climate",
       thematic: "climate" as ThematicValues,
     },
     {
+      filterType: "thematic",
       filterName: "Justice sociale",
       filterValue: "social",
       thematic: "social" as ThematicValues,
     },
     {
+      filterType: "thematic",
       filterName: "Démocratie",
       filterValue: "democracy",
       thematic: "democracy" as ThematicValues,
     },
     {
+      filterType: "season",
       filterName: "Saison 11",
       filterValue: "Saison 11",
     },
     {
+      filterType: "season",
       filterName: "Saison 12",
       filterValue: "Saison 12",
     },
@@ -59,7 +64,7 @@ type Story = StoryObj<typeof meta>;
   const projects: IProject[] = [
     {
       project: 'Bloom',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -69,7 +74,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Bloom',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -79,7 +84,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -88,7 +93,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -97,7 +102,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -106,7 +111,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -115,7 +120,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -124,7 +129,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -133,7 +138,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -142,7 +147,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -151,7 +156,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Trawlwatch',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
@@ -160,7 +165,7 @@ type Story = StoryObj<typeof meta>;
     },
     {
       project: 'Page3',
-      association: 'Bloom association',
+      partners: ['Bloom association'],
       description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
       thematics: ['climate', 'democracy'] as ThematicValues[],
       image: '/images/thematics/thematics-social.png',
