@@ -36,7 +36,31 @@ pnpm run storybook
 
 # Construire Storybook pour la production
 pnpm run build-storybook
+
+# Lancer les tests de composants (Vitest + navigateur, voir plus bas)
+pnpm run test
+pnpm run test:watch
 ```
+
+#### Tests de composants
+
+Les stories servent de tests : chaque story est rendue dans un vrai navigateur (Vitest +
+Playwright) et vérifiée. Lancer `pnpm run test` depuis `frontend/`.
+
+Si l'exécution échoue avec un message du type :
+
+```
+Error: browserType.launch: Host system is missing dependencies to run browsers.
+```
+
+c'est que le Chromium embarqué par Playwright ne trouve pas ses bibliothèques système (fréquent
+sur NixOS, ou dans une image de CI minimale). Dans ce cas, pointer vers un Chromium déjà installé :
+
+```bash
+PLAYWRIGHT_EXECUTABLE_PATH=/chemin/vers/chromium pnpm run test
+```
+
+Ce chemin est lu par `vitest.config.ts` et transmis à Playwright.
 
 #### Structure des composants
 
