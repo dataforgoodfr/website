@@ -68,7 +68,7 @@ export default function DonationsPage({ data }: DonationProps) {
         subtitle={data.banner_subtitle}
         titleLevel={1}
         iframe={<div className='p-4 [&>iframe]:rounded-2xl' ref={donationSectionRef}>
-          <a href="https://soutenir.dataforgood.fr/native-/#iraiser_native"></a>
+          <a href="https://soutenir.dataforgood.fr/en2026/~mon-don#iraiser_native"></a>
         </div>}
         className="my-md"
         internalClassName='min-h-[850px]'
