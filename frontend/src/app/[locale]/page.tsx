@@ -1,5 +1,6 @@
 import Homepage from './home';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -73,11 +74,8 @@ async function fetchHomepageData() {
 export type HomepageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchHomepageData>>["data"]>["data"]>;
 
 export default async function Page() {
-  const { data } = await fetchHomepageData();
+  const result = await fetchHomepageData();
+  const data = requireCmsData<HomepageData>(result, 'singleton', '/home-page');
 
-  if (!data?.data) {
-    return null;
-  }
-
-  return <Homepage data={data.data} />;
+  return <Homepage data={data} />;
 }

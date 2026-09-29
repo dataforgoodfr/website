@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectsPage from './projects';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -68,11 +69,8 @@ export type ProjectListPageData = NonNullable<NonNullable<Awaited<ReturnType<typ
 
 
 export default async function Page() {
-  const { data } = await fetchProjectListPageData();
+  const result = await fetchProjectListPageData();
+  const data = requireCmsData<ProjectListPageData>(result, 'singleton', '/projects-list');
 
-  if (!data?.data) {
-    return null;
-  }
-
-  return <ProjectsPage data={data.data} />;
+  return <ProjectsPage data={data} />;
 };
