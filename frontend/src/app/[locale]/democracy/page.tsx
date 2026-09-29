@@ -1,6 +1,7 @@
 import React from 'react';
 import DemocracyPage from './democracy';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -70,12 +71,11 @@ export type ThematicPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof
 export type ThematicsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchThematics>>["data"]>["data"]>;
 
 export default async function Page() {
-  const { data } = await fetchThematicPageData();
-  const { data: thematicsData } = await fetchThematics();
+  const themeResult = await fetchThematicPageData();
+  const thematicsResult = await fetchThematics();
 
-  if (!data?.data || !thematicsData?.data) {
-    return null;
-  }
+  const data = requireCmsData<ThematicPageData>(themeResult, 'singleton', '/democracy');
+  const thematicsData = requireCmsData<ThematicsData>(thematicsResult, 'singleton', '/thematics');
 
-  return <DemocracyPage data={data.data} thematicsData={thematicsData.data} />;
+  return <DemocracyPage data={data} thematicsData={thematicsData} />;
 };

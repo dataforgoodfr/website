@@ -40,7 +40,20 @@ pnpm run build-storybook
 # Lancer les tests de composants (Vitest + navigateur, voir plus bas)
 pnpm run test
 pnpm run test:watch
+
+# Lancer les tests unitaires (Node, sans navigateur)
+pnpm run test:unit
+
+# Lancer les deux
+pnpm run test:all
 ```
+
+#### Tests unitaires
+
+`pnpm run test:unit` exécute les fichiers `src/**/*.test.ts` en environnement Node, sans navigateur :
+quelques centaines de millisecondes, là où les tests de composants demandent une bonne minute. C'est
+le bon endroit pour vérifier de la logique pure, par exemple la décision de rendu prise face à une
+réponse Strapi (`src/lib/cms-outcome.ts`).
 
 #### Tests de composants
 

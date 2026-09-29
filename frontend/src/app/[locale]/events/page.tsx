@@ -1,6 +1,7 @@
 import React from 'react';
 import EventsPage from './events';
 import client from '@/lib/strapi-client';
+import { cmsUnavailable, requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -52,10 +53,12 @@ export default async function Page(
   const pageSize = 6;
 
   const response = await fetchEventPageData(page, pageSize);
+  const data = requireCmsData<EventsPageData>(response, 'singleton', '/events');
+  const pagination = response.data?.meta?.pagination;
 
-  if (!response?.data || !response?.data.meta?.pagination) {
-    return null;
+  if (!pagination) {
+    throw cmsUnavailable('/events', 'pagination absente de la reponse');
   }
 
-  return <EventsPage data={response.data?.data} pagination={response.data.meta.pagination} currentPage={page} />;
+  return <EventsPage data={data} pagination={pagination} currentPage={page} />;
 };

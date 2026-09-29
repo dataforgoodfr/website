@@ -1,6 +1,7 @@
 import React from 'react';
 import PositionsPage from './positions';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -80,11 +81,8 @@ async function fetchPositionPageData() {
 export type PositionsPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchPositionPageData>>["data"]>["data"]>;
 
 export default async function Page() {
-  const { data } = await fetchPositionPageData();
+  const result = await fetchPositionPageData();
+  const data = requireCmsData<PositionsPageData>(result, 'singleton', '/position');
 
-  if (!data?.data) {
-    return null;
-  }
-
-  return <PositionsPage data={data.data} />;
+  return <PositionsPage data={data} />;
 };
