@@ -61,11 +61,11 @@ async function fetchProjectPageData(slug: string) {
 
 export type ProjectPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchProjectPageData>>["data"]>["data"]>[0];
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: { locale: string; slug: string };
-}) {
+export async function generateMetadata(
+  props: { params: Promise<{ locale: string; slug: string }> },
+) {
+  const { locale, slug } = await props.params;
+
   const { data } = await fetchProjectPageData(slug);
 
   if (!data?.data || !data.data.length) {
@@ -80,11 +80,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-   const { slug } = params;
-   const { data } = await fetchProjectPageData(slug);
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params;
+  const { data } = await fetchProjectPageData(slug);
 
-    if (!data?.data || !data.data.length) {
+  if (!data?.data || !data.data.length) {
     return null;
   }
 

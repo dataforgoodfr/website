@@ -76,10 +76,14 @@ COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
 COPY --from=builder /app/frontend/public /app/frontend/public
 COPY --from=builder /app/frontend/messages /app/frontend/messages
 
-# Copy the server wrapper that ensures env vars are available
-COPY frontend/server-wrapper.js /app/frontend/server-wrapper.js
+# Note : aucun wrapper Node n'est necessaire. Le serveur standalone de Next lit
+# les variables d'environnement au moment de la requete (seules les variables
+# NEXT_PUBLIC_* sont figees a la compilation). Le fichier server-wrapper.js qui
+# se contentait de re-affecter process.env.X = process.env.X a ete supprime :
+# ces auto-affectations n'avaient aucun effet. Verifie en executant directement
+# `node frontend/server.js` avec les variables fournies au runtime.
 
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "frontend/server-wrapper.js"]
+CMD ["node", "frontend/server.js"]

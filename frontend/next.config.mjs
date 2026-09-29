@@ -4,33 +4,58 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: [
-      'localhost',
-      'backend',
-      'dataforgood.fr',
-      'strapi.services.dataforgood.fr',
-      's3.fr-par.scw.cloud',
-      'images.pexels.com',
+    // `domains` est deprecie : remplace par `remotePatterns` (equivalent exact).
+    remotePatterns: [
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'http', hostname: 'backend' },
+      { protocol: 'https', hostname: 'dataforgood.fr' },
+      { protocol: 'https', hostname: 'strapi.services.dataforgood.fr' },
+      { protocol: 'https', hostname: 's3.fr-par.scw.cloud' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
     ],
   },
   redirects: () => getRedirects(),
-  // VRAIMENT PAS OUF
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
 };
 
 export async function getRedirects() {
+  const apiUrl = process.env.STRAPI_API_URL;
+  const token = process.env.STRAPI_API_TOKEN;
+
+  // Sans jeton, /redirects repond 403 avec un corps d'erreur JSON. L'ancien code
+  // appelait data.map() sur ce corps et levait « data.map is not a function »,
+  // ce qui masquait la vraie cause (absence de jeton) derriere un TypeError.
+  if (!apiUrl || !token) {
+    console.warn(
+      '[redirects] STRAPI_API_URL ou STRAPI_API_TOKEN absent : aucune redirection du CMS ne sera chargee.',
+    );
+    return [];
+  }
+
   try {
-    const res = await fetch(`${process.env.STRAPI_API_URL}/redirects`, {
+    const res = await fetch(`${apiUrl}/redirects`, {
       headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     });
+
+    if (!res.ok) {
+      console.warn(
+        `[redirects] /redirects a repondu ${res.status} ${res.statusText} : aucune redirection du CMS ne sera chargee.`,
+      );
+      return [];
+    }
+
     const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      console.warn(
+        '[redirects] reponse inattendue de /redirects (un tableau etait attendu) : aucune redirection du CMS ne sera chargee.',
+      );
+      return [];
+    }
 
     return data.map((redirect) => ({
       source: redirect.source,

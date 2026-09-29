@@ -27,11 +27,11 @@ async function fetchBlogPageData(slug: string) {
 
 export type BlogPageData = NonNullable<NonNullable<NonNullable<Awaited<ReturnType<typeof fetchBlogPageData>>["data"]>["data"]>["blogs"]>[0];
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: { locale: string; slug: string };
-}) {
+export async function generateMetadata(
+  props: { params: Promise<{ locale: string; slug: string }> },
+) {
+  const { locale, slug } = await props.params;
+
   const { data } = await fetchBlogPageData(slug);
 
   if (!data?.data || !data.data.length) {
@@ -46,16 +46,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-   const { slug } = params;
-   const { data } = await fetchBlogPageData(slug);
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params;
+  const { data } = await fetchBlogPageData(slug);
 
-   if (!data?.data || !data.data.length) {
-   return null;
- }
+  if (!data?.data || !data.data.length) {
+    return null;
+  }
 
-   const blogPageData = data.data[0] as BlogPageData;
-   const contentHtml = await getMarkdownContent(blogPageData.content)
+  const blogPageData = data.data[0] as BlogPageData;
+  const contentHtml = await getMarkdownContent(blogPageData.content)
 
   return <ArticlePage blog={{...blogPageData, contentHtml}} />;
 };
