@@ -1,4 +1,5 @@
 import path from 'node:path';
+import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
 import { defineConfig } from 'vitest/config';
@@ -38,6 +39,16 @@ export default defineConfig({
             instances: [{ browser: 'chromium' }],
           },
           setupFiles: ['.storybook/vitest.setup.ts'],
+        },
+      },
+      {
+        // Tests unitaires purs : aucune dependance au navigateur, donc
+        // executables partout, y compris en CI, en quelques millisecondes.
+        extends: true,
+        test: {
+          name: 'unit',
+          environment: 'node',
+          include: ['src/**/*.test.ts'],
         },
       },
     ],

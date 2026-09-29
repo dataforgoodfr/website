@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectDetailPage from './projectDetail';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { getMarkdownContent } from '@/lib/markdown';
 
 async function fetchProjectPageData(slug: string) {
@@ -82,16 +83,12 @@ export async function generateMetadata(
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
-  const { data } = await fetchProjectPageData(slug);
+  const result = await fetchProjectPageData(slug);
+  const [projectData] = requireCmsData<ProjectPageData[]>(result, 'detail', `/projects?slug=${slug}`);
 
-  if (!data?.data || !data.data.length) {
-    return null;
-  }
-
-  const projectData = data.data[0] as ProjectPageData;
   const context = await getMarkdownContent(projectData.context);
   const long_description = await getMarkdownContent(projectData.long_description);
   const delivrable = await getMarkdownContent(projectData.delivrable);
 
-  return <ProjectDetailPage  project={{...projectData, context, long_description, delivrable}} />;
+  return <ProjectDetailPage project={{ ...projectData, context, long_description, delivrable }} />;
 };
