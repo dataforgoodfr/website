@@ -50,7 +50,7 @@ const ThematicsBlock: React.FC<ThematicsProps> = ({
           {subtitle}
         </p>}
 
-        <ul className="grid grid-cols-1 md:flex md:flex-wrap justify-between gap-md md:gap-xs mt-md">
+        <ul className="grid grid-cols-1 md:flex md:flex-wrap justify-between gap-md md:gap-xs mt-lg">
           {thematics.map((thematic, index) => (
             <li
               key={index}

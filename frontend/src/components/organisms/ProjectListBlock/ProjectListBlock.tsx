@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { usePathLocale } from '@/hooks/usePathLocale';
 
 export type ProjectListBlockProps = {
   title?: string;
@@ -27,6 +28,8 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
   ...props
 }) => {
   const t = useTranslations('projects');
+  const tDonation = useTranslations('donations');
+  const cta_link = usePathLocale('/donations')
 
   const [filteredProjects, setFilteredProjects] = useState<IProject[]>(projects)
   const [displayProjects, setDisplayProjects] = useState<IProject[]>(projects)
@@ -133,6 +136,10 @@ const ProjectListBlock: React.FC<ProjectListBlockProps> = ({
           <div className='flex justify-center my-md'>
             <Button href={joinCta?.link ?? "/"} color="white" hasArrow> {joinCta?.text ?? t("cta.text")} </Button>
           </div>
+          <div className="container justify-center flex mx-auto mb-md">
+            <Button href={cta_link} color="green"  hasArrow>{tDonation('cta')}</Button>
+          </div>
+
           </div>
       </div>
     </div>

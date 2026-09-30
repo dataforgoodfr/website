@@ -21,7 +21,7 @@ export default function DonationsPage({ data }: DonationProps) {
 
   const DonationButton = () => {
     return (
-      <Button onClick={() => scrollToRef(donationSectionRef)} color="violet" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
+      <Button onClick={() => scrollToRef(donationSectionRef)} color="green" hasArrow>{data.donation_cta?.text ?? t('cta')}</Button>
     )
   }
 
@@ -50,7 +50,7 @@ export default function DonationsPage({ data }: DonationProps) {
       children: goal.goal_cta?.title ?? '',
       props: {
         colors: `text-black bg-${goal.color}`,
-        className: "drop-shadow-3 drop-shadow-black before:-z-1",
+        className: "text-xl lg:text-2xl sm:text-drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
       }
     },
@@ -78,7 +78,7 @@ export default function DonationsPage({ data }: DonationProps) {
         {data.banner_video && <div className="shadow-lg shadow-building bg-building w-fit rotate-[-2deg]" dangerouslySetInnerHTML={{ __html: data.banner_video ?? '' }} />}
 
         <EditoCard contentClassName="flex-1 md:max-w-[80%] md:mx-auto" className="my-lg">
-          <div className="prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
+          <div className="whitespace-pre-wrap prose prose--big leading-tight text-[1.5rem] text-left font-tertiary" dangerouslySetInnerHTML={{ __html: data.introduction_text ?? '' }} />
           <div className="flex justify-center mt-sm">
             <DonationButton />
           </div>

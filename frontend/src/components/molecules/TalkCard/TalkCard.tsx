@@ -41,7 +41,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         imagePosition === 'right' && 'sm:order-2',
       )}>
         <div className={clsx(
-          'relative flex before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
+          'relative inline-block before:absolute before:content-[""] before:bg-black before:-z-1 before:w-full before:h-full before:top-3 before:left-3',
           imagePosition === 'right' ? 'rotate-3' : '-rotate-3',
         )}>
           <Image
@@ -58,7 +58,7 @@ const TalkCard: React.FC<TalkCardProps> = ({
         <p className="h4-like">
           {author}
         </p>
-        <p className="my-xs h3-like lg:text-[1.5rem] leading-[2rem]">
+        <p className="my-xs whitespace-pre-wrap h3-like lg:text-[1.5rem] leading-[2rem]">
           {talk}
         </p>
         {ctaText && ctaLink && (
