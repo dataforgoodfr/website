@@ -50,7 +50,7 @@ export default function DonationsPage({ data }: DonationProps) {
       children: goal.goal_cta?.title ?? '',
       props: {
         colors: `text-black bg-${goal.color}`,
-        className: "text-xl lg:text-2xl sm:text-drop-shadow-3 drop-shadow-black before:-z-1",
+        className: "text-xl lg:text-2xl drop-shadow-3 drop-shadow-black before:-z-1",
         rotation: -2.58,
       }
     },
