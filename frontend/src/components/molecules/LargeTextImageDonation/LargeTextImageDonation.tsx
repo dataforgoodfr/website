@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import { Title, TitleProps } from '@/components';
+import { TiltedTitle, Title, TitleProps } from '@/components';
 
 export type LargeTextImageDonationProps = {
   id?: string;
   title?: string;
   titleLevel?: TitleProps['level'];
+  subtitleLevel?: TitleProps['level'];
   subtitle?: string;
   iframe?: React.ReactNode;
   internalClassName?: string;
@@ -15,7 +16,7 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
   id,
   title,
   titleLevel = 2,
-  subtitle,
+  subtitle = "Une tech moins présente et qui prend soin des gens, de la nature et du vivant.",
   iframe,
   internalClassName,
   className,
@@ -30,13 +31,14 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
       <div
         className={clsx(
           'overflow-hidden grid grid-cols-1 grid-rows-[200px_1fr] md:grid-cols-2 md:grid-rows-1 h-full',
-          `text-white bg-[url("/images/donation-background.jpg")]`,
+          `text-white bg-[url("/images/donation_vivaslowtech.png")]`,
           internalClassName,
         )}
       >
         <div className={clsx("col-start-1 md:col-start-1 row-start-1 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 md:py-24 bg-cover bg-left")}>
-          {title && <Title level={titleLevel} variant="medium">{title}</Title>}
-          {subtitle && <p className="mx-sm text-left h3-like"> {subtitle} </p>}
+          {title && <TiltedTitle level={titleLevel} variant="medium" colors="text-black bg-white" className='drop-shadow-1 drop-shadow-black before:-z-1'>{title}</TiltedTitle>}
+          {/*  TODO - variabilize */}
+          {title && <TiltedTitle level={2} variant="small" colors="text-black bg-white" className='drop-shadow-1 drop-shadow-black before:-z-1'>{"Une tech moins présente et qui prend soin des gens, de la nature et du vivant."}</TiltedTitle>}
         </div>
 
         <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 md:px-12 px-6 pb-24 md:pt-24 bg-cover bg-left")}>

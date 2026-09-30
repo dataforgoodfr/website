@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock } from '@/components';
+import { ThematicsBlock, ImagesCarousel, ResultsCard, NewsSmallBlock, TalksBlock, Title, TitleProps, HeroBlock, Button } from '@/components';
 import { HomepageData } from './page';
 import Image from 'next/image'
 import { getPressReleaseLink } from '@/lib/utils';
+import { usePathLocale } from '@/hooks/usePathLocale';
 
 type HomepageProps = {
   data: HomepageData;
@@ -12,6 +13,8 @@ type HomepageProps = {
 
 export default function Homepage({ data }: HomepageProps) {
   const t = useTranslations('home');
+  const tDonation = useTranslations('donations');
+  const cta_link = usePathLocale('/donations')
 
   const heroData = {
     image: data.hero?.image?.url,
@@ -135,6 +138,10 @@ export default function Homepage({ data }: HomepageProps) {
         blocks={events}
         className='my-lg'
       />
+
+      <div className="container justify-center flex mx-auto mb-md">
+        <Button href={cta_link} color="green" hasArrow>{tDonation('cta')}</Button>
+      </div>
     </>
   );
 }

@@ -5,7 +5,7 @@ import { Button as ButtonUI } from '@/components/ui/button';
 import { ArrowIcon } from '@/components';
 
 type Variant = 'primary' | 'secondary' | 'tertiary';
-type Color = 'black' | 'white' | 'violet';
+type Color = 'black' | 'white' | 'violet' | 'green';
 
 type ButtonChildrenProps = {
   variant: Variant;
@@ -34,6 +34,7 @@ const ButtonChildren = ({ children, hasArrow, variant, color }: ButtonChildrenPr
         black: 'bg-black text-white',
         white: 'bg-white text-black',
         violet: 'bg-building text-white',
+        green: 'bg-alive text-black',
       },
     },
   };
@@ -72,6 +73,7 @@ const Button: React.FC<ButtonProps> = ({
         black: 'before:bg-building',
         white: 'before:bg-building',
         violet: 'before:bg-black',
+        green: 'before:bg-black',
       },
     },
     secondary: {
@@ -80,6 +82,7 @@ const Button: React.FC<ButtonProps> = ({
         black: 'bg-black text-white hover:bg-white hover:text-black',
         white: 'bg-white text-black hover:bg-black hover:text-white',
         violet: 'bg-building text-white hover:bg-black hover:text-white',
+        green: 'bg-building text-white hover:bg-black hover:text-white',
       },
     },
     tertiary: {
@@ -88,6 +91,7 @@ const Button: React.FC<ButtonProps> = ({
         black: 'border border-black hover:bg-black hover:text-white',
         white: 'border border-white hover:bg-black hover:text-white',
         violet: 'border-[2px] border-building hover:bg-building hover:text-white',
+        green: 'border-[2px] border-building hover:bg-building hover:text-white',
       },
     },
   };
