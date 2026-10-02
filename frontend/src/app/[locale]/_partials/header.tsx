@@ -165,7 +165,7 @@ const Header = () => {
               src="/images/dataforgood.svg"
               alt={t('header.title')}
               width={230}
-              height={43}
+              height={48}
               className="w-[176px] lg:w-[230px] object-contain"
             />
           </Link>
