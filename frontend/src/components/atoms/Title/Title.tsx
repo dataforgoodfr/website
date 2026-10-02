@@ -36,7 +36,7 @@ const Title = ({
   return (
     <HeadingTag className={classes} {...props}>
       {children}
-      {hasSeparator && <Image loading="lazy" src="/images/separate.svg" alt="" width={200} height={10} className="mt-xs w-full h-2.5" />}
+      {hasSeparator && <Image loading="lazy" src="/images/separate.svg" alt="" width={1322} height={7} className="mt-xs w-full h-2.5" />}
     </HeadingTag>
   );
 };

@@ -7,7 +7,7 @@ export function transformPartners(
   return partners?.map(partner => ({
     name: partner.name,
     description: partner.description,
-    image: partner.logo,
+    image: partner.logo?.url,
     link: partner.website_link,
   })) ?? [];
 }

@@ -33,7 +33,7 @@ export default function Animation({ animationData, handleSkipClick }: {
       <motion.div className="bg-fixed bg-[url('/images/bg-paper.jpg')] bg-repeat-y bg-cover fixed top-0 left-0 right-0 bottom-0" style={{ opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0]) }} />
       <Link href="#manifesto" onClick={(e) => { e.preventDefault(); handleSkipClick(); }} className="absolute z-1 top-[calc(100dvh-40px)] right-[40px] text-grey-text flex flex-col items-center hover:text-black">
         {t('skipLink')}
-        <Image src="/icons/skip-arrow.svg" alt="" width={16} height={16} />
+        <Image src="/icons/skip-arrow.svg" alt="" width={16} height={11} />
       </Link>
 
       {/* Screen 1 */}
@@ -47,7 +47,7 @@ export default function Animation({ animationData, handleSkipClick }: {
       {/* Screen 2 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.05, 0.1, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <Image
-          src={animationData.images.length > 0 && animationData.images[0].image.url || ""}
+          src={animationData.images.length > 0 && animationData.images[0].image.url || "/images/default-image.svg"}
           alt={animationData.images.length > 0 && animationData.images[0].image.altText || ""}
           width={1250}
           height={1089}
@@ -64,7 +64,7 @@ export default function Animation({ animationData, handleSkipClick }: {
       {/* Screen 3 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.25, 0.3, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <Image
-          src={animationData.images.length > 1 && animationData.images[1].image.url || ""}
+          src={animationData.images.length > 1 && animationData.images[1].image.url || "/images/default-image.svg"}
           alt={animationData.images.length > 1 && animationData.images[1].image.altText || ""}
           width={1250}
           height={1089}
@@ -81,8 +81,8 @@ export default function Animation({ animationData, handleSkipClick }: {
       {/* Screen 4 */}
       <motion.div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center" style={{ opacity: useTransform(scrollYProgress, [0, 0.45, 0.5, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <Image
-          src={animationData.images.length > 1 && animationData.images[2].image.url || ""}
-          alt={animationData.images.length > 1 && animationData.images[2].image.altText || ""}
+          src={animationData.images.length > 2 && animationData.images[2].image.url || "/images/default-image.svg"}
+          alt={animationData.images.length > 2 && animationData.images[2].image.altText || ""}
           width={1250}
           height={1089}
           className='absolute top-[7.5vh] h-[85vh] object-contain'
@@ -98,8 +98,8 @@ export default function Animation({ animationData, handleSkipClick }: {
       {/* Screen 5 */}
       <motion.div className={clsx("fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center")} style={{ opacity: useTransform(scrollYProgress, [0, 0.65, 0.7, 0.95, 1], [0, 0, 1, 1, 0]) }}>
         <Image
-          src={animationData.images.length > 1 && animationData.images[3].image.url || ""}
-          alt={animationData.images.length > 1 && animationData.images[3].image.altText || ""}
+          src={animationData.images.length > 3 && animationData.images[3].image.url || "/images/default-image.svg"}
+          alt={animationData.images.length > 3 && animationData.images[3].image.altText || ""}
           width={1250}
           height={1089}
           className='absolute top-[7.5vh] h-[85vh] object-contain'

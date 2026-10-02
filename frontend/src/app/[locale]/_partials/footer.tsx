@@ -54,7 +54,7 @@ const Footer = () => {
                 src="/images/dataforgood.svg"
                 alt={t('title')}
                 width={212}
-                height={48}
+                height={44}
                 className="object-contain"
               />
             </Link>
