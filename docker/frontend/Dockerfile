@@ -76,10 +76,11 @@ COPY --from=builder /app/frontend/.next/static /app/frontend/.next/static
 COPY --from=builder /app/frontend/public /app/frontend/public
 COPY --from=builder /app/frontend/messages /app/frontend/messages
 
-# Copy the server wrapper that ensures env vars are available
-COPY frontend/server-wrapper.js /app/frontend/server-wrapper.js
+# Le serveur standalone de Next lit les variables d'environnement au moment de
+# la requete : seules les variables NEXT_PUBLIC_* et les redirections du CMS
+# (next.config.mjs) sont figees a la compilation.
 
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "frontend/server-wrapper.js"]
+CMD ["node", "frontend/server.js"]

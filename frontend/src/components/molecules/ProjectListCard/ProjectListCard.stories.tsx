@@ -14,11 +14,10 @@ const meta: Meta<typeof ProjectListCard> = {
       control: 'text',
       description: 'Nom du projet',
     },
-    association: {
-      control: 'text',
-      description: 'Association liée au projet',
-    },
-    description: {
+    partners: {
+      control: 'object',
+      description: 'Partenaires du projet',
+    },    description: {
       control: 'text',
       description: 'Description du projet',
     },
@@ -44,28 +43,28 @@ type Story = StoryObj<typeof meta>;
 const sampleProjects = [
   {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
   {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['climate', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
@@ -75,7 +74,7 @@ const sampleProjects = [
 export const Default: Story = {
   args: {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['climate', 'social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
@@ -85,7 +84,7 @@ export const Default: Story = {
 export const WithLessThematics: Story = {
   args: {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
     description: 'Suivre les trajectoires de milliers de bateaux de pêche en quasi temps réel afin de pouvoir analyser leurs pratiques de pêche',
     thematics: ['social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
@@ -95,7 +94,8 @@ export const WithLessThematics: Story = {
 export const WithoutDescription: Story = {
   args: {
     project: 'Trawlwatch',
-    association: 'Bloom association',
+    partners: ['Bloom association'],
+    description: '',
     thematics: ['social', 'democracy'] as ThematicValues[],
     image: 'https://picsum.photos/160/209?random=1',
   },
@@ -108,7 +108,7 @@ export const MultipleProjects: Story = {
         <ProjectListCard
           key={index}
           project={project.project}
-          association={project.association}
+          partners={project.partners}
           description={project.description}
           thematics={project.thematics}
           image={project.image}
