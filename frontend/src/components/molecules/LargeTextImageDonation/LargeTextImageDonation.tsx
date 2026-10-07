@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { TiltedTitle, Title, TitleProps } from '@/components';
+import { TiltedTitle, type TitleProps } from '@/components';
 
 export type LargeTextImageDonationProps = {
   id?: string;
@@ -16,33 +16,65 @@ const LargeTextImageDonation: React.FC<LargeTextImageDonationProps> = ({
   id,
   title,
   titleLevel = 2,
-  subtitle = "Une tech moins présente et qui prend soin des gens, de la nature et du vivant.",
+  subtitle = 'Une tech moins présente et qui prend soin des gens, de la nature et du vivant.',
   iframe,
   internalClassName,
   className,
   ...props
 }) => {
   return (
-    <div
-      id={id}
-      className={clsx(className, 'mask-papper')}
-      {...props}
-    >
+    <div id={id} className={clsx(className, 'mask-papper')} {...props}>
       <div
         className={clsx(
           'overflow-hidden grid grid-cols-1 grid-rows-[200px_1fr] md:grid-cols-2 md:grid-rows-1 h-full',
-          `text-white bg-[url("/images/donation_vivaslowtech.png")]`,
-          internalClassName,
+          // TODO(strapi): asset is hardcoded — expose it as a media field on the `donation` single type
+          // (backend/src/api/donation/content-types/donation/schema.json) so editors can change the background.
+          // bg-cover is required: the asset is wider than the container, default `background-size: auto` shows it zoomed in.
+          // Position intentionally left unset (top-left) to keep the illustration anchored like the previous 1920x1080 asset.
+          `text-white bg-[url("/images/donation_vivaslowtech.png")] bg-cover`,
+          internalClassName
         )}
       >
-        <div className={clsx("col-start-1 md:col-start-1 row-start-1 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 md:py-24 bg-cover bg-left")}>
-          {title && <TiltedTitle level={titleLevel} variant="medium" colors="text-black bg-white" className='drop-shadow-1 drop-shadow-black before:-z-1'>{title}</TiltedTitle>}
+        <div
+          className={clsx(
+            'col-start-1 md:col-start-1 row-start-1 md:row-start-1 flex flex-col justify-center items-start md:pl-32 p-12 md:py-24 bg-cover bg-left'
+          )}
+        >
+          {title && (
+            <TiltedTitle
+              level={titleLevel}
+              variant="medium"
+              colors="text-black bg-white"
+              className="drop-shadow-1 drop-shadow-black before:-z-1"
+            >
+              {title}
+            </TiltedTitle>
+          )}
           {/*  TODO - variabilize */}
-          {title && <TiltedTitle level={2} variant="small" colors="text-black bg-white" className='drop-shadow-1 drop-shadow-black before:-z-1'>{"Une tech moins présente et qui prend soin des gens, de la nature et du vivant."}</TiltedTitle>}
+          {title && (
+            <TiltedTitle
+              level={2}
+              variant="small"
+              colors="text-black bg-white"
+              className="drop-shadow-1 drop-shadow-black before:-z-1"
+            >
+              {
+                'Une tech moins présente et qui prend soin des gens, de la nature et du vivant.'
+              }
+            </TiltedTitle>
+          )}
         </div>
 
-        <div className={clsx("col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 md:px-12 px-6 pb-24 md:pt-24 bg-cover bg-left")}>
-          {iframe && <div className="mt-8 flex justify-center h-full items-center w-full">{iframe}</div>}
+        <div
+          className={clsx(
+            'col-start-1 md:col-start-2 row-start-2 md:row-start-1 flex flex-col justify-center items-start md:pl-32 md:px-12 px-6 pb-24 md:pt-24 bg-cover bg-left'
+          )}
+        >
+          {iframe && (
+            <div className="mt-8 flex justify-center h-full items-center w-full">
+              {iframe}
+            </div>
+          )}
         </div>
       </div>
     </div>
