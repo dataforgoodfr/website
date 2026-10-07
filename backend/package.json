@@ -27,7 +27,7 @@
     "@strapi/plugin-documentation": "^5.23.5",
     "@strapi/plugin-users-permissions": "5.23.5",
     "@strapi/provider-upload-aws-s3": "^5.1.0",
-    "@strapi/strapi": "5.23.5",
+    "@strapi/strapi": "5.24.2",
     "@typescript-eslint/parser": "^8.44.0",
     "better-sqlite3": "11.3.0",
     "pg": "^8.13.1",
