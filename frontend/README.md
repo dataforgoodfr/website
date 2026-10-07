@@ -123,3 +123,9 @@ export default async function Homepage() {
 ## Déploiement
 
 Rien pour le moment
+
+## Known gaps
+
+- `fragile` : les redirections du CMS sont figées au `build` (`next.config.mjs`). L'image Docker de la CI est construite sans `STRAPI_API_TOKEN` → elle part sans aucune redirection, avec un simple avertissement.
+- `not done` : `docker-compose.yml` vise une cible `frontend` absente du Dockerfile (étapes `base`, `builder`, `runner`) et fournit `STRAPI_URL` au lieu de `STRAPI_API_URL`.
+- `not done` : 141 erreurs TypeScript et 43 erreurs ESLint restent ouvertes ; `ignoreBuildErrors` est actif et le workflow `quality.yml` est en `continue-on-error`.
