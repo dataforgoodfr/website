@@ -40,7 +40,20 @@ pnpm run build-storybook
 # Lancer les tests de composants (Vitest + navigateur, voir plus bas)
 pnpm run test
 pnpm run test:watch
+
+# Lancer les tests unitaires (Node, sans navigateur)
+pnpm run test:unit
+
+# Lancer les deux
+pnpm run test:all
 ```
+
+#### Tests unitaires
+
+`pnpm run test:unit` exécute les fichiers `src/**/*.test.ts` en environnement Node, sans navigateur :
+quelques centaines de millisecondes, là où les tests de composants demandent une bonne minute. C'est
+le bon endroit pour vérifier de la logique pure, par exemple la décision de rendu prise face à une
+réponse Strapi (`src/lib/cms-outcome.ts`).
 
 #### Tests de composants
 
@@ -101,19 +114,19 @@ Voici les étapes à suivre:
 
 ```typescript
 export default async function Homepage() {
-  const { data, error } = await client.GET('/home-page');
-  if (error) {
-    return <div>Error</div>;
-  }
+  const result = await client.GET('/home-page');
+  const data = requireCmsData<HomepageData>(result, 'singleton', '/home-page');
 
   return (
     <div>
       Title:
-      {data.data?.title}
+      {data.title}
     </div>
   );
 }
 ```
+
+3. Passer le résultat par `requireCmsData` (`src/lib/cms-guard.ts`), jamais `data` directement : le client ne lève pas d'exception, il rend `{ data, error }`. La garde rend le contenu, répond 404 (`'detail'` sans entrée) ou lève une erreur journalisée `[cms] <adresse> : <statut>` qui produit un 500. Les pages dont seules les métadonnées viennent du CMS (charte, FAQ, CGU) restent tolérantes.
 
 > [!NOTE]
 > Avec le client fetch type-safe, les routes sont typées automatiquement ainsi que les paramètres et les données de réponse.
@@ -128,4 +141,4 @@ Rien pour le moment
 
 - `fragile` : les redirections du CMS sont figées au `build` (`next.config.mjs`). L'image Docker de la CI est construite sans `STRAPI_API_TOKEN` → elle part sans aucune redirection, avec un simple avertissement.
 - `not done` : `docker-compose.yml` vise une cible `frontend` absente du Dockerfile (étapes `base`, `builder`, `runner`) et fournit `STRAPI_URL` au lieu de `STRAPI_API_URL`.
-- `not done` : 141 erreurs TypeScript et 43 erreurs ESLint restent ouvertes ; `ignoreBuildErrors` est actif et le workflow `quality.yml` est en `continue-on-error`.
+- `not done` : 141 erreurs TypeScript et 41 erreurs ESLint restent ouvertes ; `ignoreBuildErrors` est actif et le workflow `quality.yml` est en `continue-on-error`.

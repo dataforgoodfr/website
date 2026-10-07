@@ -1,11 +1,11 @@
-name: Quality (lint + typecheck)
+name: Quality (lint + typecheck + unit tests)
 
 # Garde-fous statiques du frontend. Introduits en amont de l'upgrade Next 16
 # pour rendre visibles les regressions de typage et de lint.
 #
-# Etat actuel : NON BLOQUANT. Le depot demarre avec un passif d'erreurs de
-# typage et de lint ; les etapes sont donc en `continue-on-error` le temps de
-# resorber ce passif. Le passage en bloquant est le sujet de TASK-12.
+# Etat actuel : typage et lint NON BLOQUANTS. Le depot demarre avec un passif
+# d'erreurs ; ces deux etapes sont donc en `continue-on-error` le temps de
+# resorber ce passif. Les tests unitaires, eux, sont bloquants. Le passage en bloquant est le sujet de TASK-12.
 
 on:
   push:
@@ -39,3 +39,6 @@ jobs:
       - name: Lint
         continue-on-error: true
         run: pnpm --filter frontend run lint
+
+      - name: Unit tests
+        run: pnpm --filter frontend run test:unit
