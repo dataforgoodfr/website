@@ -218,7 +218,7 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       <span className="relative flex items-center justify-center bg-building h-12 w-12">
-        <Image src="/images/carousel-previous.svg" alt={t('previous')} width={14} height={14} />
+        <Image src="/images/carousel-previous.svg" alt={t('previous')} width={14} height={24} />
       </span>
     </Button>
   )
@@ -246,7 +246,7 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       <span className="relative flex items-center justify-center bg-building h-12 w-12">
-        <Image src="/images/carousel-next.svg" alt={t('next')} width={14} height={14} />
+        <Image src="/images/carousel-next.svg" alt={t('next')} width={14} height={24} />
       </span>
     </Button>
   )
