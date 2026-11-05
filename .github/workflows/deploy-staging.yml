@@ -1,0 +1,139 @@
+name: Deploy staging
+
+# `/deploy-staging` en commentaire d'une PR publie en `:staging` l'image
+# frontend que la CI a deja construite pour cette PR ; Watchtower la redeploie
+# sur website-staging.services.dataforgood.fr.
+#
+# Qui deploie :
+# - seul un commentaire d'une personne ayant le droit d'ecriture sur le depot
+#   est pris en compte (depot public : tout compte GitHub peut commenter) ;
+# - le job `deploy` attend l'approbation d'un relecteur de l'environment
+#   `staging` (Settings > Environments) : sans elle, rien n'est publie.
+# Un commentaire tourne toujours avec la version de ce fichier sur `main` :
+# une PR ne peut pas retirer ces garde-fous. Le code de la PR n'est jamais
+# execute ici ; on ne fait que retaguer une image existante.
+
+on:
+  issue_comment:
+    types: [created]
+
+run-name: "staging ← #${{ github.event.issue.number }} par @${{ github.event.comment.user.login }}"
+
+permissions: {}
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}-frontend
+  STAGING_URL: https://website-staging.services.dataforgood.fr
+
+jobs:
+  resolve:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/deploy-staging')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      pull-requests: write
+    outputs:
+      source: ${{ steps.image.outputs.source }}
+      head: ${{ steps.pr.outputs.head }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.issue.number }}
+      REQUESTER: ${{ github.event.comment.user.login }}
+    steps:
+      - name: Check requester can write to the repository
+        id: auth
+        run: |
+          can_push=$(gh api "repos/${GH_REPO}/collaborators/${REQUESTER}/permission" --jq '.user.permissions.push' || echo false)
+          if [ "$can_push" != "true" ]; then
+            echo "@${REQUESTER} n'a pas le droit d'ecriture : demande ignoree."
+            exit 1
+          fi
+
+      - name: Resolve pull request
+        id: pr
+        run: |
+          read -r head merge fork < <(gh api "repos/${GH_REPO}/pulls/${PR}" --jq '[.head.sha, .merge_commit_sha, (.head.repo.full_name != .base.repo.full_name)] | @tsv')
+          if [ "$fork" = "true" ]; then
+            echo "reason=PR issue d'un fork : la CI n'en publie pas d'image." >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "head=${head}" >> "$GITHUB_OUTPUT"
+          echo "merge=${merge}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # La CI tague l'image d'une PR `<numero>-merge-<sha du merge de test>`
+      # (voir build-and-push.yml).
+      - name: Find image built by CI
+        id: image
+        env:
+          MERGE: ${{ steps.pr.outputs.merge }}
+        run: |
+          source="${IMAGE}:${PR}-merge-${MERGE}"
+          if ! docker buildx imagetools inspect "$source" > /dev/null 2>&1; then
+            echo "reason=image \`${PR}-merge-${MERGE:0:7}\` introuvable : build CI en cours ou en echec, ou base modifiee depuis." >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "source=${source}" >> "$GITHUB_OUTPUT"
+
+      - name: Announce pending approval
+        env:
+          HEAD: ${{ steps.pr.outputs.head }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh pr comment "$PR" --body "Deploiement staging de \`${HEAD:0:7}\` demande par @${REQUESTER}, en attente d'approbation : ${RUN_URL}"
+
+      # Un demandeur sans droit d'ecriture n'obtient pas de reponse.
+      - name: Report failure
+        if: failure() && steps.auth.outcome == 'success'
+        env:
+          REASON: ${{ steps.pr.outputs.reason || steps.image.outputs.reason }}
+        run: |
+          gh pr comment "$PR" --body "Deploiement staging impossible : ${REASON:-voir le run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}}"
+
+  deploy:
+    needs: resolve
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ env.STAGING_URL }}
+    # Une nouvelle demande remplace celle encore en attente d'approbation.
+    concurrency:
+      group: deploy-staging
+    permissions:
+      packages: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.issue.number }}
+      SOURCE: ${{ needs.resolve.outputs.source }}
+      HEAD: ${{ needs.resolve.outputs.head }}
+    steps:
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag image as staging
+        run: docker buildx imagetools create --tag "${IMAGE}:staging" "$SOURCE"
+
+      - name: Report result
+        if: always()
+        env:
+          OUTCOME: ${{ job.status }}
+        run: |
+          if [ "$OUTCOME" = "success" ]; then
+            gh pr comment "$PR" --body "Deploye en staging : \`${HEAD:0:7}\` → ${STAGING_URL} (Watchtower redeploie sous quelques minutes)."
+          else
+            gh pr comment "$PR" --body "Deploiement staging de \`${HEAD:0:7}\` en echec : ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
