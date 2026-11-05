@@ -11,3 +11,7 @@ allowBuilds:
   esbuild: true
   msw: true
   sharp: true
+
+# Comportement de pnpm 10 : pnpm 11+ reinstallait tout le workspace avant
+# `pnpm build` dans l'image backend (+183 Mio de dependances du frontend).
+verifyDepsBeforeRun: false
