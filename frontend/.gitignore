@@ -38,3 +38,8 @@ next-env.d.ts
 
 *storybook.log
 storybook-static
+
+# fichiers generes automatiquement par Next 16 a chaque "next dev"
+# (desactivable avec agentRules: false dans next.config.mjs)
+AGENTS.md
+CLAUDE.md

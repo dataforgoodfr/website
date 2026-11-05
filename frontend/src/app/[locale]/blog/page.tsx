@@ -3,11 +3,11 @@ import BlogPage from './blog';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export async function generateMetadata(
+  props: { params: Promise<{ locale: string }> },
+) {
+  const { locale } = await props.params;
+
   const { data } = await client.GET('/blog-list', {
     params: {
       query: {

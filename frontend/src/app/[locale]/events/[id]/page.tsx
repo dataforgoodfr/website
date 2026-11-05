@@ -2,11 +2,11 @@ import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import ArticlePage from './article';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export async function generateMetadata(
+  props: { params: Promise<{ locale: string }> },
+) {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'blog' });
 
   return {

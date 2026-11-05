@@ -3,11 +3,11 @@ import EventsPage from './events';
 import client from '@/lib/strapi-client';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export async function generateMetadata(
+  props: { params: Promise<{ locale: string }> },
+) {
+  const { locale } = await props.params;
+
   const { data } = await client.GET('/evenement', {
     params: {
       query: {
@@ -44,11 +44,10 @@ export type EventsPageResponse = NonNullable<Awaited<ReturnType<typeof fetchEven
 export type EventsPageData = NonNullable<EventsPageResponse["data"]>;
 export type EventsPageMeta = NonNullable<NonNullable<EventsPageResponse["meta"]>["pagination"]>;
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default async function Page(
+  props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> },
+) {
+  const searchParams = await props.searchParams;
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
   const pageSize = 6;
 

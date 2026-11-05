@@ -1,0 +1,41 @@
+name: Quality (lint + typecheck)
+
+# Garde-fous statiques du frontend. Introduits en amont de l'upgrade Next 16
+# pour rendre visibles les regressions de typage et de lint.
+#
+# Etat actuel : NON BLOQUANT. Le depot demarre avec un passif d'erreurs de
+# typage et de lint ; les etapes sont donc en `continue-on-error` le temps de
+# resorber ce passif. Le passage en bloquant est le sujet de TASK-12.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  frontend-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --filter frontend
+
+      - name: Typecheck
+        continue-on-error: true
+        run: pnpm --filter frontend run typecheck
+
+      - name: Lint
+        continue-on-error: true
+        run: pnpm --filter frontend run lint

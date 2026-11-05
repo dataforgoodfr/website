@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
 
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
@@ -22,11 +23,20 @@ export default defineConfig({
         test: {
           name: 'storybook',
           browser: {
-        enabled: true,
-        headless: true,
-        provider: 'playwright',
-        instances: [{ browser: 'chromium' }]
-      },
+            enabled: true,
+            headless: true,
+            // Vitest 4 : le fournisseur est une fabrique importee du paquet
+            // dedie @vitest/browser-playwright (avant : provider: 'playwright').
+            // PLAYWRIGHT_EXECUTABLE_PATH permet d'utiliser un Chromium deja
+            // present sur la machine (NixOS, image de CI sur mesure) au lieu du
+            // binaire telecharge par Playwright.
+            provider: playwright(
+              process.env.PLAYWRIGHT_EXECUTABLE_PATH
+                ? { launchOptions: { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } }
+                : undefined,
+            ),
+            instances: [{ browser: 'chromium' }],
+          },
           setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
