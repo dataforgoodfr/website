@@ -1,6 +1,7 @@
 import React from 'react';
 import DonationsPage from './donation';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 import { getMarkdownContent } from '@/lib/markdown';
 
@@ -48,12 +49,9 @@ async function fetchDonationData() {
 export type DonationsData = NonNullable<NonNullable<Awaited<ReturnType<typeof fetchDonationData>>["data"]>["data"]>;
 
 export default async function Page() {
-  const { data } = await fetchDonationData();
+  const result = await fetchDonationData();
+  const data = requireCmsData<DonationsData>(result, 'singleton', '/donation');
 
-  if (!data?.data) {
-    return null;
-  }
-
-  const introduction_text = await getMarkdownContent(data.data.introduction_text);
-  return <DonationsPage data={{ ...data.data, introduction_text }} />;
+  const introduction_text = await getMarkdownContent(data.introduction_text);
+  return <DonationsPage data={{ ...data, introduction_text }} />;
 };

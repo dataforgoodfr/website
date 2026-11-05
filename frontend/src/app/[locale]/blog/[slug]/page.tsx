@@ -1,5 +1,6 @@
 import React from 'react';
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import ArticlePage from './article';
 import { getMarkdownContent } from '@/lib/markdown';
 
@@ -48,14 +49,9 @@ export async function generateMetadata(
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
-  const { data } = await fetchBlogPageData(slug);
+  const result = await fetchBlogPageData(slug);
+  const [blogPageData] = requireCmsData<BlogPageData[]>(result, 'detail', `/blogs?slug=${slug}`);
+  const contentHtml = await getMarkdownContent(blogPageData.content);
 
-  if (!data?.data || !data.data.length) {
-    return null;
-  }
-
-  const blogPageData = data.data[0] as BlogPageData;
-  const contentHtml = await getMarkdownContent(blogPageData.content)
-
-  return <ArticlePage blog={{...blogPageData, contentHtml}} />;
+  return <ArticlePage blog={{ ...blogPageData, contentHtml }} />;
 };

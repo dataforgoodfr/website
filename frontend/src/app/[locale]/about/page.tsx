@@ -1,4 +1,5 @@
 import client from '@/lib/strapi-client';
+import { requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 import AboutPage from './about';
 
@@ -74,12 +75,8 @@ export type AboutPageData = NonNullable<NonNullable<Awaited<ReturnType<typeof fe
 
 
 export default async function Page() {
-  const { data, error } = await fetchAboutPageData();
+  const result = await fetchAboutPageData();
+  const data = requireCmsData<AboutPageData>(result, 'singleton', '/about');
 
-  if (!data?.data) {
-    console.error(error);
-    return null;
-  }
-
-  return <AboutPage data={data.data} />;
+  return <AboutPage data={data} />;
 };

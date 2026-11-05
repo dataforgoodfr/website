@@ -1,6 +1,7 @@
 import React from 'react';
 import EventsPage from './events';
 import client from '@/lib/strapi-client';
+import { cmsUnavailable, requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -48,14 +49,19 @@ export default async function Page(
   props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> },
 ) {
   const searchParams = await props.searchParams;
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+  // Un `page` non entier (`?page=abc`) fait repondre 500 a Strapi : on retombe
+  // sur la premiere page plutot que d'afficher une erreur.
+  const requestedPage = Number(searchParams.page);
+  const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
   const pageSize = 6;
 
   const response = await fetchEventPageData(page, pageSize);
+  const data = requireCmsData<EventsPageData>(response, 'singleton', '/events');
+  const pagination = response.data?.meta?.pagination;
 
-  if (!response?.data || !response?.data.meta?.pagination) {
-    return null;
+  if (!pagination) {
+    throw cmsUnavailable('/events', 'pagination absente de la reponse');
   }
 
-  return <EventsPage data={response.data?.data} pagination={response.data.meta.pagination} currentPage={page} />;
+  return <EventsPage data={data} pagination={pagination} currentPage={page} />;
 };
