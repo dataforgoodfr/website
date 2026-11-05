@@ -49,7 +49,10 @@ export default async function Page(
   props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> },
 ) {
   const searchParams = await props.searchParams;
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
+  // Un `page` non entier (`?page=abc`) fait repondre 500 a Strapi : on retombe
+  // sur la premiere page plutot que d'afficher une erreur.
+  const requestedPage = Number(searchParams.page);
+  const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
   const pageSize = 6;
 
   const response = await fetchEventPageData(page, pageSize);

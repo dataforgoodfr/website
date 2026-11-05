@@ -6,10 +6,10 @@ import { Button, Title } from '@/components';
 
 export default function ErrorPage({
   error,
-  reset,
+  retry,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  retry: () => void;
 }) {
   const t = useTranslations('error');
 
@@ -29,7 +29,9 @@ export default function ErrorPage({
           {t('description')}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-sm">
-          <Button variant="primary" color="black" onClick={() => reset()}>
+          {/* `retry` et non `reset` : `reset` re-rend avec la reponse serveur deja
+              recue, qui porte encore l'erreur ; `retry` interroge a nouveau le serveur. */}
+          <Button variant="primary" color="black" onClick={() => retry()}>
             {t('retry')}
           </Button>
           <Button href="/" variant="tertiary" color="black" hasArrow={false}>
