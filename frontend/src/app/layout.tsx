@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Script from 'next/script';
 import { DM_Mono } from 'next/font/google';
+import { IRaiserScript } from './IRaiserScript';
 
 const dmMono = DM_Mono({
   subsets: ['latin'],
@@ -36,10 +37,7 @@ export default function RootLayout({
             script iRaiser detourne `console.error` et casse le flux RSC de Next
             (`enqueueModel is not a function`), ce qui fait echouer les
             navigations cote client. */}
-        <Script
-          src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
-          strategy="afterInteractive"
-        />
+        <IRaiserScript />
         <Script
           src="https://plausible.services.dataforgood.fr/js/script.file-downloads.hash.outbound-links.js"
           strategy="afterInteractive"
