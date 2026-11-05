@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" data-scroll-behavior="smooth">
+    <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <script
           src="https://soutenir.dataforgood.fr/libs.iraiser.eu/libs/payment/frame/1.6/IRaiserFrame.js"
