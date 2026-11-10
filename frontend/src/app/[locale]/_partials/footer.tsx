@@ -34,7 +34,7 @@ const Footer = () => {
   const communityNav: Record<string, string> = {
     github: 'https://github.com/dataforgoodfr',
     youtube: 'https://www.youtube.com/channel/UCA_utdbmVhAOFujulWlaaCQ?themeRefresh=1',
-    meetup: 'https://www.meetup.com/data-for-good-fr/',
+    eventbrite: 'https://www.eventbrite.fr/o/data-for-good-france-17194799911?aff=ebdsshcopyurl',
   };
 
   const informationsNav: Record<string, string> = {
