@@ -22,7 +22,6 @@ const BaseCard: React.FC<BaseCardProps> = ({
   subInfos,
   className,
   isBlank = false,
-  ...props
 }) => {
   if (!title || !link) {
     return null;
@@ -38,7 +37,6 @@ const BaseCard: React.FC<BaseCardProps> = ({
       rel={isBlank ? 'noreferrer' : undefined}
       href={link}
       aria-label={title}
-      {...props}
     >
       <div className="relative flex flex-col z-1 bg-white h-full">
         <div className="flex flex-col justify-between flex-1 min-h-64 px-6 py-7 gap-y-2">

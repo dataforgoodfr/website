@@ -38,7 +38,10 @@ const ThematicHeroBlock: React.FC<ThematicHeroBlockProps> = ({
       {...props}
     >
       <div className="col-start-1 row-start-1">
-        <Image src={image} alt="" width={1000} height={400} className="object-contain h-full w-full" />
+        {/* Pas de banniere dans le CMS : ne rien rendre plutot qu'une image
+            au `src` vide, que React signale et que le navigateur resout sur
+            l'URL de la page. Meme convention que `EditoCard`. */}
+        {image && <Image src={image} alt="" width={1000} height={400} preload className="object-contain h-full w-full" />}
       </div>
       <div className="col-start-1 row-start-1 flex items-center justify-center">
         <TiltedTitle variant="big" className={clsx(titleClassName, "drop-shadow-3 drop-shadow-black")} colors={colorsClass[colors]}>{title}</TiltedTitle>
