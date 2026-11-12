@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogPage from './blog';
 import client from '@/lib/strapi-client';
+import { cmsUnavailable, requireCmsData } from '@/lib/cms-guard';
 import { generateMetadataFromSeo } from '@/lib/utils';
 
 export async function generateMetadata(
@@ -52,10 +53,12 @@ export type BlogsPageMeta = NonNullable<NonNullable<BlogsPageResponse["meta"]>["
 
 export default async function Page() {
   const response = await fetchBlogsPageData();
+  const data = requireCmsData<BlogsPageData>(response, 'singleton', '/resources');
+  const pagination = response.data?.meta?.pagination;
 
-  if (!response?.data || !response?.data?.meta?.pagination) {
-    return null;
+  if (!pagination) {
+    throw cmsUnavailable('/resources', 'pagination absente de la reponse');
   }
 
-  return <BlogPage data={response.data?.data} pagination={response.data.meta.pagination} />;
+  return <BlogPage data={data} pagination={pagination} />;
 };

@@ -12,6 +12,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run --project storybook",
+    "test:unit": "vitest run --project unit",
+    "test:all": "vitest run",
     "test:watch": "vitest --project storybook",
     "typecheck": "tsc --noEmit"
   },
