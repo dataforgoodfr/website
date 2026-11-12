@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Filter, Pagination, Title, TitleProps } from '@/components';
 import { ProjectListCard, SearchInput } from '@/components/molecules';
 import { IFilter, IProject } from '@/lib/types';
